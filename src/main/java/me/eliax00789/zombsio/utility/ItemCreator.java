@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.utility;
 
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -17,6 +18,17 @@ public class ItemCreator {
         item.setAmount(amount);
         return this;
     }
+
+    public ItemCreator setUnbreakable(Boolean unbreakable) {
+        meta.setUnbreakable(unbreakable);
+        return this;
+    }
+
+    public ItemCreator addEnchant(Enchantment enchantment, Integer lvl, Boolean ignoreLvlRestriction) {
+        meta.addEnchant(enchantment,lvl, ignoreLvlRestriction);
+        return this;
+    }
+
 
     public ItemCreator setName(String name) {
         meta.setDisplayName(name);
