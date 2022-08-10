@@ -128,21 +128,21 @@ public class ArrowTower {
             { // x = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y =
-                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER},  // y = 2
                     {Material.PRISMARINE_WALL, Material.PRISMARINE_WALL, Material.PRISMARINE_WALL}, // y = 3
                     {null, null, null} // y = 4
             },
             { // x = 1
                     {null, null, null}, // y = 0
                     {null, null, null}, // y = 1
-                    {Material.SCULK, Material.OBSIDIAN, Material.SCULK},  // y = 2
+                    {Material.WAXED_OXIDIZED_COPPER, Material.DIAMOND_BLOCK, Material.WAXED_OXIDIZED_COPPER},  // y = 2
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 3
                     {null, Material.FLETCHING_TABLE, null} // y = 4
             },
             { // x = 2
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 1
-                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER},  // y = 2
                     {Material.PRISMARINE_WALL, Material.PRISMARINE_WALL, Material.PRISMARINE_WALL}, // y = 3
                     {null, null, null} // y = 4
             }

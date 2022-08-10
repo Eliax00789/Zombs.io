@@ -6,6 +6,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class ShopPotionsInventory {
@@ -44,7 +46,18 @@ class ShopPotionsInventory {
                     }
                 })
                 .setItem(4, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Potions").getItem())
+                .setItem(10, new ItemCreator(Material.POTION).setName("Health Potion").getItem(), new BukkitRunnable() {
+                    @Override
+                    public void run() {
 
+                    }
+                })
+                .setItem(11, new ItemCreator(Material.POTION).setName("Pet Health Potion").getItem(), new BukkitRunnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                })
                 .getInventory();
     }
 

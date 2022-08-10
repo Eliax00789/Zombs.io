@@ -44,13 +44,13 @@ class ShopPetsInventory {
                         }
                     }
                 })
-                .setItem(13, new ItemCreator(Material.RAVAGER_SPAWN_EGG).setName("Carl").getItem(), new BukkitRunnable() {
+                .setItem(10, new ItemCreator(Material.RAVAGER_SPAWN_EGG).setName("Carl").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(13, new ItemCreator(Material.GOAT_SPAWN_EGG).setName("Woody").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.GOAT_SPAWN_EGG).setName("Woody").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
