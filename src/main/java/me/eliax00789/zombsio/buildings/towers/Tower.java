@@ -43,9 +43,9 @@ public class Tower implements Listener {
         this.mk1 = mk1; this.mk2 = mk2; this.mk3 = mk3; this.mk4 = mk4; this.mk5 = mk5; this.mk6 = mk6; this.mk7 = mk7; this.mk8 = mk8;
         this.currenthealth = health[0]; this.health = health; this.damage = damage; this.range = range;
         this.wood = wood; this.stone = stone; this.gold = gold;
-        Zombsio.buildings.set(id.toString(),name);
-        Zombsio.buildings.set(id.toString(),level);
-        Zombsio.buildings.set(id.toString(),location);
+        Zombsio.buildings.set(id.toString() + ".name",name);
+        Zombsio.buildings.set(id.toString() + ".level",level);
+        Zombsio.buildings.set(id.toString() + ".location",location);
         build();
     }
 
