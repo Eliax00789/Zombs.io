@@ -45,7 +45,9 @@ public class Tower implements Listener {
         this.wood = wood; this.stone = stone; this.gold = gold;
         Zombsio.buildings.set(id.toString() + ".name",name);
         Zombsio.buildings.set(id.toString() + ".level",level);
-        Zombsio.buildings.set(id.toString() + ".location",location);
+        Zombsio.buildings.set(id.toString() + ".location.x",location.getBlockX());
+        Zombsio.buildings.set(id.toString() + ".location.y",location.getBlockX());
+        Zombsio.buildings.set(id.toString() + ".location.z",location.getBlockX());
         build();
     }
 
