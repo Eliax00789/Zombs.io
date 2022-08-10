@@ -25,6 +25,20 @@ public class GoldStash {
                     {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR} // y = 4
+            },
+            { // x = 2
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 0
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 1
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR},  // y = 2
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 3
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR} // y = 4
+            },
+            { // x = 2
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 0
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 1
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR},  // y = 2
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR}, // y = 3
+                    {Material.AIR, Material.AIR, Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
 }
