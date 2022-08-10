@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,5 +21,6 @@ public class PlayerJoinListener implements Listener {
             Config.getInstance().GOLD.put(e.getPlayer().getName(), 0);
             Config.getInstance().LASTSHOPPAGE.put(e.getPlayer().getName(), "tools");
         }
+        new ResourceScoreboard(e.getPlayer());
     }
 }
