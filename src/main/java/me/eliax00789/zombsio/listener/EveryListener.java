@@ -9,10 +9,12 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class EveryListener implements Listener {
 
@@ -23,6 +25,13 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
           if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak")) {
+               e.setCancelled(true);
+          }
+     }
+
+     @EventHandler
+     public void onBlockPlace(BlockPlaceEvent e) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.blockplace")) {
                e.setCancelled(true);
           }
      }
@@ -49,32 +58,16 @@ public class EveryListener implements Listener {
      }
 
      @EventHandler
-     public void onPickup(InventoryPickupItemEvent e) {
-          for (HumanEntity i: e.getInventory().getViewers()) {
-               if(!i.hasPermission("zombs.bypass.pickup")) {
-                    e.setCancelled(true);
-               }
+     public void onPickup(PlayerPickupItemEvent e) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.pickupitem")) {
+               e.setCancelled(true);
           }
      }
 
      @EventHandler
-     public void onInventory(InventoryMoveItemEvent e) {
-          for (HumanEntity i: e.getSource().getViewers()) {
-               if(!i.hasPermission("zombs.bypass.inventorymoveitem")) {
-                    e.setCancelled(true);
-               }
+     public void onInventoryClick(InventoryClickEvent e) {
+          if(!e.getView().getPlayer().hasPermission("zombs.bypass.inventoryclick")) {
+               e.setCancelled(true);
           }
      }
-
-     @EventHandler
-     public void onInventory(InventoryDragEvent e) {
-          for (HumanEntity i: e.getViewers()) {
-               if(!i.hasPermission("zombs.bypass.inventorymoveitem")) {
-                    e.setCancelled(true);
-               }
-          }
-     }
-
-
-
 }

@@ -6,10 +6,9 @@ import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.Criteria;
-import org.bukkit.scoreboard.DisplaySlot;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Scoreboard;
+import org.bukkit.scoreboard.*;
+
+import java.util.logging.Level;
 
 public class ResourceScoreboard {
 
@@ -29,9 +28,16 @@ public class ResourceScoreboard {
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         objective = scoreboard.registerNewObjective("scoreboard", "Test Scoreboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
-        objective.getScore("Wood: " + Config.getInstance().WOOD.get(player.getName())).setScore(2);
-        objective.getScore("Stone: " + Config.getInstance().STONE.get(player.getName())).setScore(1);
+        objective.setDisplayName("Resources");
+
+        objective.getScore("Wood: " + Config.getInstance().WOOD.get(player.getName())).setScore(4);
+        objective.getScore("§c ").setScore(3);
+        objective.getScore("Stone: " + Config.getInstance().STONE.get(player.getName())).setScore(2);
+        objective.getScore("§a ").setScore(1);
         objective.getScore("Gold: " + Config.getInstance().STONE.get(player.getName())).setScore(0);
+
+
         return scoreboard;
     }
+
 }

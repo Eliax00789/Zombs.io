@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.commands.Debug;
 import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
+import me.eliax00789.zombsio.listener.EveryListener;
 import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
@@ -81,7 +82,7 @@ public final class Zombsio extends JavaPlugin {
         new Shop();
         //LISTENERS:
         new PlayerJoinListener();
-        //new EveryListener();
+        new EveryListener();
         //COMMANDS:
         new Debug();
         new Resources();
