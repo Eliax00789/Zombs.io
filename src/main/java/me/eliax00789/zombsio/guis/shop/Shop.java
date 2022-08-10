@@ -12,10 +12,10 @@ public class Shop implements Listener {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
     }
     @EventHandler
-    public void onEnderChestPlace(BlockPlaceEvent event) {
-        if (event.getBlockPlaced().getType().equals(Material.ENDER_CHEST)) {
-            event.getPlayer().openInventory(new ShopToolsInventory().getInventory());
-            event.setCancelled(true);
+    public void onEnderChestPlace(BlockPlaceEvent e) {
+        if (e.getBlockPlaced().getType().equals(Material.ENDER_CHEST)) {
+            e.getPlayer().openInventory(new ShopToolsInventory().getInventory());
+            e.setCancelled(true);
         }
     }
 }

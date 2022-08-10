@@ -18,7 +18,6 @@ public class Config {
     public HashMap<String,Integer> GOLD;
 
     public Config() {
-        configfile = new File(Zombsio.plugin.getDataFolder() + File.separator + "configandotherstuff.json");
         this.LASTSHOPPAGE = new HashMap<String,String>();
         this.WOOD = new HashMap<String,Integer>();
         this.STONE = new HashMap<String,Integer>();
@@ -35,10 +34,10 @@ public class Config {
     }
 
     public static void setup() {
-        String path = configfile.getParent();
-        if (!(new File(path).exists())) {
-            new File(path).mkdirs();
+        if (!(new File(Zombsio.plugin.getDataFolder() + File.separator).exists())) {
+            new File(Zombsio.plugin.getDataFolder() + File.separator).mkdirs();
         }
+        configfile = new File(Zombsio.plugin.getDataFolder() + File.separator + "configandotherstuff.json");
         if (!(configfile.exists())) {
             try {
                 configfile.createNewFile();
@@ -57,8 +56,7 @@ public class Config {
     }
 
     private static Config fromDefaults() {
-        Config config = new Config();
-        return config;
+        return new Config();
     }
 
     public void save() {
