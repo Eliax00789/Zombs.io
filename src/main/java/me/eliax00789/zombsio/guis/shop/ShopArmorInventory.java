@@ -20,7 +20,6 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.closeInventory();
                             i.openInventory(new ShopToolsInventory().getInventory());
                         }
                     }
@@ -30,7 +29,6 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.closeInventory();
                             i.openInventory(new ShopPetsInventory().getInventory());
                         }
                     }
@@ -39,7 +37,6 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.closeInventory();
                             i.openInventory(new ShopPotionsInventory().getInventory());
                         }
                     }
