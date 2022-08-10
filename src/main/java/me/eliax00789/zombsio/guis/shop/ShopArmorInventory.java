@@ -20,7 +20,9 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopToolsInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopToolsInventory().getInventory());
+                            }
                         }
                     }
                 })
@@ -29,7 +31,9 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopPetsInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopPetsInventory().getInventory());
+                            }
                         }
                     }
                 })
@@ -37,35 +41,37 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopPotionsInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopPotionsInventory().getInventory());
+                            }
                         }
                     }
                 })
-                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName("Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName("Helmet MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName("Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName("Chestplate MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName("Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName("Leggings MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName("Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName("Boots MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("Shield MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 

@@ -22,7 +22,9 @@ class ShopPotionsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopToolsInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopToolsInventory().getInventory());
+                            }
                         }
                     }
                 })
@@ -30,7 +32,9 @@ class ShopPotionsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopArmorInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopArmorInventory().getInventory());
+                            }
                         }
                     }
                 })
@@ -38,7 +42,9 @@ class ShopPotionsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
-                            i.openInventory(new ShopPetsInventory().getInventory());
+                            if (inventory != null) {
+                                i.openInventory(new ShopPetsInventory().getInventory());
+                            }
                         }
                     }
                 })
