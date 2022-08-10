@@ -1,5 +1,7 @@
 package me.eliax00789.zombsio;
 
+import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
+import me.eliax00789.zombsio.guis.shop.Shop;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,6 +14,7 @@ public final class Zombsio extends JavaPlugin {
         // Plugin startup logic
         plugin = this;
         enableConfig();
+        init();
     }
 
     @Override
@@ -32,5 +35,11 @@ public final class Zombsio extends JavaPlugin {
 
     private void disableConfig() {
         Config.getInstance().save();
+    }
+
+    private void init() {
+        //GUIS:
+        new BuildMenu();
+        new Shop();
     }
 }

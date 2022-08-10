@@ -18,11 +18,11 @@ class BuildMenuInventory {
                 .setItem(13, new ItemCreator(Material.IRON_BARS).setName("Wall").getItem())
                 .setItem(14, new ItemCreator(Material.IRON_DOOR).setName("Door").getItem())
                 .setItem(16, new ItemCreator(Material.HONEYCOMB).setName("Slow Trap").getItem())
-                .setItem(19, new ItemCreator(Material.ARROW).setName("Arrow Tower").getItem())
-                .setItem(20, new ItemCreator(Material.FIRE_CHARGE).setName("Cannon Tower").getItem())
-                .setItem(21, new ItemCreator(Material.TNT).setName("Bomb Tower").getItem())
-                .setItem(22, new ItemCreator(Material.BOOK).setName("Mage Tower").addEnchant(Enchantment.MULTISHOT,1,false).getItem())
-                .setItem(23,new ItemCreator(Material.STONE_SWORD).setName("Melee Tower").getItem())
+                .setItem(20, new ItemCreator(Material.ARROW).setName("Arrow Tower").getItem())
+                .setItem(21, new ItemCreator(Material.FIRE_CHARGE).setName("Cannon Tower").getItem())
+                .setItem(22, new ItemCreator(Material.TNT).setName("Bomb Tower").getItem())
+                .setItem(23, new ItemCreator(Material.BOOK).setName("Mage Tower").addEnchant(Enchantment.MULTISHOT,1,false).getItem())
+                .setItem(24,new ItemCreator(Material.STONE_SWORD).setName("Melee Tower").getItem())
                 .getInventory();
     }
 
