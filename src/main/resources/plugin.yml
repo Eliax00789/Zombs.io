@@ -1,0 +1,8 @@
+name: Zombsio
+version: '${project.version}'
+main: me.eliax00789.zombsio.Zombsio
+api-version: 1.19
+prefix: [ zombs ]
+load: STARTUP
+authors: [ Eliax00789 ]
+description: zombs.io in minecraft
