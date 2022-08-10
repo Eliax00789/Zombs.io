@@ -11,6 +11,7 @@ import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -50,13 +51,7 @@ public final class Zombsio extends JavaPlugin {
                 Bukkit.getLogger().log(Level.WARNING,e.toString());
             }
         }
-        try {
-            buildings.load(file);
-        } catch (IOException e) {
-            Bukkit.getLogger().log(Level.WARNING,e.toString());
-        } catch (InvalidConfigurationException e) {
-            Bukkit.getLogger().log(Level.WARNING,e.toString());
-        }
+        buildings = YamlConfiguration.loadConfiguration(file);
         if (buildings.get("nextid") == null) {
             buildings.set("nextid",0);
         }
