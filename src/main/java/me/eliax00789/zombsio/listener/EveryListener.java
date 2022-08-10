@@ -9,6 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
@@ -66,6 +67,15 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onInventory(InventoryMoveItemEvent e) {
           for (HumanEntity i: e.getSource().getViewers()) {
+               if(!i.hasPermission("zombs.bypass.inventorymoveitem")) {
+                    e.setCancelled(true);
+               }
+          }
+     }
+
+     @EventHandler
+     public void onInventory(InventoryDragEvent e) {
+          for (HumanEntity i: e.getViewers()) {
                if(!i.hasPermission("zombs.bypass.inventorymoveitem")) {
                     e.setCancelled(true);
                }
