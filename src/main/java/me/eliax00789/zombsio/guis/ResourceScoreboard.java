@@ -17,9 +17,6 @@ public class ResourceScoreboard {
     private Objective objective;
 
     public ResourceScoreboard(Player player) {
-        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective("scoreboard", "Test Scoreboard");
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -29,6 +26,9 @@ public class ResourceScoreboard {
     }
 
     public Scoreboard getScoreboard(Player player) {
+        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
+        objective = scoreboard.registerNewObjective("scoreboard", "Test Scoreboard");
+        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.getScore("Wood: " + Config.getInstance().WOOD.get(player.getName())).setScore(2);
         objective.getScore("Stone: " + Config.getInstance().STONE.get(player.getName())).setScore(1);
         objective.getScore("Gold: " + Config.getInstance().STONE.get(player.getName())).setScore(0);
