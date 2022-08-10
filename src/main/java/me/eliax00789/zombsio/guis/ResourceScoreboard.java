@@ -18,7 +18,7 @@ public class ResourceScoreboard {
 
     public ResourceScoreboard(Player player) {
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective("scoreboard", Criteria.DEATH_COUNT, "Test Scoreboard");
+        objective = scoreboard.registerNewObjective("scoreboard", Criteria.DUMMY, "Test Scoreboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         new BukkitRunnable() {
             @Override
