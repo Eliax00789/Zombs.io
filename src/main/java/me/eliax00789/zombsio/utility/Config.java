@@ -16,12 +16,14 @@ public class Config {
     public HashMap<String,Integer> WOOD;
     public HashMap<String,Integer> STONE;
     public HashMap<String,Integer> GOLD;
+    public HashMap<Integer[], String> TOWERS;
 
     public Config() {
         this.LASTSHOPPAGE = new HashMap<String,String>();
         this.WOOD = new HashMap<String,Integer>();
         this.STONE = new HashMap<String,Integer>();
         this.GOLD = new HashMap<String,Integer>();
+        this.TOWERS = new HashMap<Integer[],String>();
     }
 
     private static Config instance;

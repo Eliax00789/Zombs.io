@@ -1,7 +1,9 @@
 package me.eliax00789.zombsio.guis.buildmenu;
 
+import me.eliax00789.zombsio.buildings.towers.ArrowTower;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.Inventory;
@@ -9,7 +11,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 class BuildMenuInventory {
     Inventory inventory;
-    public BuildMenuInventory() {
+    public BuildMenuInventory(Location location) {
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -47,7 +49,7 @@ class BuildMenuInventory {
                 .setItem(20, new ItemCreator(Material.ARROW).setName("Arrow Tower").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new ArrowTower(location);
                     }
                 })
                 .setItem(21, new ItemCreator(Material.FIRE_CHARGE).setName("Cannon Tower").getItem(), new BukkitRunnable() {
