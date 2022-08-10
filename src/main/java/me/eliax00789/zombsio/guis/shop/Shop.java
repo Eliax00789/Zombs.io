@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 
 public class Shop implements Listener {
 
@@ -14,9 +15,9 @@ public class Shop implements Listener {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
     }
     @EventHandler
-    public void onEnderChestPlace(InventoryClickEvent e) {
-        if (e.getCursor().getType().equals(Material.ENDER_CHEST)) {
-            e.getWhoClicked().openInventory(new ShopToolsInventory().getInventory());
+    public void onEnderChestPlace(PlayerInteractEvent e) {
+        if (e.getMaterial().equals(Material.ENDER_CHEST)) {
+            e.getPlayer().openInventory(new ShopToolsInventory().getInventory());
             e.setCancelled(true);
         }
     }
