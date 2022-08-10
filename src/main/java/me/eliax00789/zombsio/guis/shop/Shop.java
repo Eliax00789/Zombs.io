@@ -1,12 +1,10 @@
 package me.eliax00789.zombsio.guis.shop;
 
 import me.eliax00789.zombsio.Zombsio;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.inventory.Inventory;
 
 public class Shop implements Listener {
 

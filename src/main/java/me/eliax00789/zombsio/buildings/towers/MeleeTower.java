@@ -1,4 +1,4 @@
 package me.eliax00789.zombsio.buildings.towers;
 
-public class Bomb {
+public class MeleeTower {
 }
