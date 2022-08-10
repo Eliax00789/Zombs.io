@@ -52,7 +52,7 @@ public class GUICreator implements Listener {
 
     public GUICreator fillPlaceHolder() {
         ItemStack item = new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName("").getItem();
-        for (Integer i = 0; i <= inventory.getSize(); i++) {
+        for (Integer i = 0; i <= (inventory.getSize() - 1); i++) {
             inventory.setItem(i,item);
         }
         return this;
