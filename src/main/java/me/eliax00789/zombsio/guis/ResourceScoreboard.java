@@ -1,11 +1,15 @@
 package me.eliax00789.zombsio.guis;
 
+
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scoreboard.*;
+import org.bukkit.scoreboard.Criteria;
+import org.bukkit.scoreboard.DisplaySlot;
+import org.bukkit.scoreboard.Objective;
+import org.bukkit.scoreboard.Scoreboard;
 
 public class ResourceScoreboard {
 
@@ -14,8 +18,7 @@ public class ResourceScoreboard {
 
     public ResourceScoreboard(Player player) {
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-        objective = scoreboard.registerNewObjective("scoreboard", Criteria.DUMMY, "Test");
-        objective.setDisplayName("Test Scoreboard");
+        objective = scoreboard.registerNewObjective("scoreboard", Criteria.DEATH_COUNT, "Test Scoreboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         new BukkitRunnable() {
             @Override
