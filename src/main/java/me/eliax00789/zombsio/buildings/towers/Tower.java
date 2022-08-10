@@ -1,10 +1,23 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.utility.GUICreator;
+import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.scheduler.BukkitRunnable;
 
-public class Tower {
+public class Tower implements Listener {
 
+    Integer id;
     String name;
     Integer level;
     Location location;
@@ -16,7 +29,6 @@ public class Tower {
     Material[][][] mk6;
     Material[][][] mk7;
     Material[][][] mk8;
-
     Integer currenthealth;
     Integer[] health;
     Integer[] damage;
@@ -29,11 +41,36 @@ public class Tower {
                  Material[][][] mk1, Material[][][] mk2, Material[][][] mk3, Material[][][] mk4, Material[][][] mk5, Material[][][] mk6, Material[][][] mk7, Material[][][] mk8,
                  Integer[] health,Integer[] damage,Integer[] range,
                  Integer[] wood,Integer[] stone,Integer[] gold) {
+        this.id = (Integer) Zombsio.buildings.get("nextid");
+        Zombsio.buildings.set("nextid",id + 1);
         this.name = name; this.level = 1; this.location = location;
         this.mk1 = mk1; this.mk2 = mk2; this.mk3 = mk3; this.mk4 = mk4; this.mk5 = mk5; this.mk6 = mk6; this.mk7 = mk7; this.mk8 = mk8;
         this.currenthealth = health[0]; this.health = health; this.damage = damage; this.range = range;
         this.wood = wood; this.stone = stone; this.gold = gold;
+        Zombsio.buildings.set(id.toString(),name);
+        Zombsio.buildings.set(id.toString(),location);
         build();
+    }
+
+    @EventHandler
+    public void onRightClick(PlayerInteractEvent e) {
+        if (e.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            if (e.getClickedBlock() == null /* TODO: IF CLICKED BLOCK IS PART OF THIS TOWER */) {
+                e.getPlayer().openInventory(getInventory());
+            }
+        }
+    }
+
+    private Inventory getInventory() {
+        return new GUICreator(9*3,name)
+                .setCancelAllClicks(true)
+                .fillPlaceHolder()
+                .addExitButton()
+                //TODO ALL FUCKING ACTIONS FOR STUFF
+                .setItem(10, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade").getItem())
+                .setItem(11,new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("Remove").getItem())
+                .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats").getItem())
+                .getInventory();
     }
 
     private void build() {
@@ -43,7 +80,7 @@ public class Tower {
                 for (int y = 0; y < mk1[x].length; y++) {
                     for (int z = 0; z < mk1[x][y].length; z++) {
                         Location tmp = structOrigin.clone();
-                        tmp.add(x,y,z).getBlock().setType(mk1[x][y][z]);
+                        tmp.add(x,y,z).getBlock().setType(mk2[x][y][z]);
                     }
                 }
             }

@@ -9,13 +9,18 @@ import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.listener.PlayerLeaveListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 
 public final class Zombsio extends JavaPlugin {
     public static JavaPlugin plugin;
+    public static FileConfiguration buildings;
 
     @Override
     public void onEnable() {
@@ -37,16 +42,45 @@ public final class Zombsio extends JavaPlugin {
 
     private void enableConfig() {
         Config.setup();
+        File file = new File(getDataFolder() + File.separator + "buildings.yml");
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Bukkit.getLogger().log(Level.WARNING,e.toString());
+            }
+        }
+        try {
+            buildings.load(file);
+        } catch (IOException e) {
+            Bukkit.getLogger().log(Level.WARNING,e.toString());
+        } catch (InvalidConfigurationException e) {
+            Bukkit.getLogger().log(Level.WARNING,e.toString());
+        }
+        if (buildings.get("nextid") == null) {
+            buildings.set("nextid",0);
+        }
         new BukkitRunnable() {
             @Override
             public void run() {
                 Config.getInstance().save();
+                try {
+                    buildings.save(file);
+                } catch (IOException e) {
+                    Bukkit.getLogger().log(Level.WARNING,e.toString());
+                }
             }
-        }.runTaskTimer(this,5,60);
+        }.runTaskTimer(this,5,30);
     }
 
     private void disableConfig() {
         Config.getInstance().save();
+        File file = new File(getDataFolder() + File.separator + "buildings.yml");
+        try {
+            buildings.save(file);
+        } catch (IOException e) {
+            Bukkit.getLogger().log(Level.WARNING,e.toString());
+        }
     }
 
     private void init() {
