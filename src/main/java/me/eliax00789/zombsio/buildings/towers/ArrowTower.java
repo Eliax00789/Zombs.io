@@ -40,7 +40,7 @@ public class ArrowTower {
                     {null, null, null}, // y = 0
                     {null, null, null}, // y = 1
                     {Material.STONE_BRICKS, Material.STONE, Material.STONE_BRICKS},  // y = 2
-                    {Material.COBBLESTONE_WALL, Material.COBBLESTONE_WALL, Material.COBBLESTONE_WALL}, // y = 3
+                    {Material.COBBLESTONE_WALL, null, Material.COBBLESTONE_WALL}, // y = 3
                     {null, Material.FLETCHING_TABLE, null} // y = 4
             },
             { // x = 2
@@ -64,7 +64,7 @@ public class ArrowTower {
                     {null, null, null}, // y = 0
                     {null, null, null}, // y = 1
                     {Material.SMOOTH_STONE, Material.IRON_BLOCK, Material.SMOOTH_STONE},  // y = 2
-                    {Material.IRON_BARS, Material.IRON_BARS, Material.IRON_BARS}, // y = 3
+                    {Material.IRON_BARS, null, Material.IRON_BARS}, // y = 3
                     {null, Material.FLETCHING_TABLE, null} // y = 4
             },
             { // x = 2
@@ -88,7 +88,7 @@ public class ArrowTower {
                     {null, null, null}, // y = 0
                     {null, null, null}, // y = 1
                     {Material.GILDED_BLACKSTONE, Material.GOLD_BLOCK, Material.GILDED_BLACKSTONE},  // y = 2
-                    {Material.NETHER_BRICK_FENCE, Material.NETHER_BRICK_FENCE, Material.NETHER_BRICK_FENCE}, // y = 3
+                    {Material.NETHER_BRICK_FENCE, null, Material.NETHER_BRICK_FENCE}, // y = 3
                     {null, Material.FLETCHING_TABLE, null} // y = 4
             },
             { // x = 2
@@ -96,6 +96,54 @@ public class ArrowTower {
                     {Material.NETHER_BRICK_FENCE, null, Material.NETHER_BRICK_FENCE}, // y = 1
                     {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE},  // y = 2
                     {Material.NETHER_BRICK_FENCE, Material.NETHER_BRICK_FENCE, Material.NETHER_BRICK_FENCE}, // y = 3
+                    {null, null, null} // y = 4
+            }
+    };
+
+    private static Material[][][] mk5 = new Material[][][]{
+            { // x = 0
+                    {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y = 0
+                    {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y =
+                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.POLISHED_BLACKSTONE_WALL, Material.POLISHED_BLACKSTONE_WALL, Material.POLISHED_BLACKSTONE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            },
+            { // x = 1
+                    {null, null, null}, // y = 0
+                    {null, null, null}, // y = 1
+                    {Material.SCULK, Material.OBSIDIAN, Material.SCULK},  // y = 2
+                    {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y = 3
+                    {null, Material.FLETCHING_TABLE, null} // y = 4
+            },
+            { // x = 2
+                    {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y = 0
+                    {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y = 1
+                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.POLISHED_BLACKSTONE_WALL, Material.POLISHED_BLACKSTONE_WALL, Material.POLISHED_BLACKSTONE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            }
+    };
+
+    private static Material[][][] mk6 = new Material[][][]{
+            { // x = 0
+                    {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
+                    {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y =
+                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.PRISMARINE_WALL, Material.PRISMARINE_WALL, Material.PRISMARINE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            },
+            { // x = 1
+                    {null, null, null}, // y = 0
+                    {null, null, null}, // y = 1
+                    {Material.SCULK, Material.OBSIDIAN, Material.SCULK},  // y = 2
+                    {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 3
+                    {null, Material.FLETCHING_TABLE, null} // y = 4
+            },
+            { // x = 2
+                    {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
+                    {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 1
+                    {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
+                    {Material.PRISMARINE_WALL, Material.PRISMARINE_WALL, Material.PRISMARINE_WALL}, // y = 3
                     {null, null, null} // y = 4
             }
     };
