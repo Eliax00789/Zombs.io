@@ -22,6 +22,7 @@ import java.util.logging.Level;
 public final class Zombsio extends JavaPlugin {
     public static JavaPlugin plugin;
     public static FileConfiguration buildings;
+    private File file;
 
     @Override
     public void onEnable() {
@@ -43,16 +44,16 @@ public final class Zombsio extends JavaPlugin {
 
     private void enableConfig() {
         Config.setup();
-        File file = new File(getDataFolder() + File.separator + "buildings.yml");
-        if (!file.exists()) {
+        file = new File(getDataFolder(), "buildings.yml");
+        if (!file.exists()){
             try {
                 file.createNewFile();
             } catch (IOException e) {
-                Bukkit.getLogger().log(Level.WARNING,e.toString());
+                e.printStackTrace();
             }
         }
         buildings = YamlConfiguration.loadConfiguration(file);
-        if (buildings.get("nextid") == null) {
+        if (!buildings.contains("nextid")) {
             buildings.set("nextid",0);
         }
         new BukkitRunnable() {
