@@ -77,7 +77,7 @@ public class Tower implements Listener {
                 for (int y = 0; y < mk1[x].length; y++) {
                     for (int z = 0; z < mk1[x][y].length; z++) {
                         Location tmp = structOrigin.clone();
-                        tmp.add(x,y,z).getBlock().setType(mk2[x][y][z]);
+                        tmp.add(x,y,z).getBlock().setType(mk1[x][y][z]);
                     }
                 }
             }
