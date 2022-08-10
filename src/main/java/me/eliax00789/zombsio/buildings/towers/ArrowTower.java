@@ -4,7 +4,7 @@ import org.bukkit.Material;
 
 public class ArrowTower {
 
-    private static Material[][][] mk1 = new Material[][][]{
+    public static Material[][][] mk1 = new Material[][][]{
             { // x = 0
                     {Material.OAK_LOG, null, Material.OAK_LOG}, // y = 0
                     {Material.OAK_LOG, null, Material.OAK_LOG}, // y = 1
@@ -28,7 +28,7 @@ public class ArrowTower {
             }
     };
 
-    private static Material[][][] mk2 = new Material[][][]{
+    public static Material[][][] mk2 = new Material[][][]{
             { // x = 0
                     {Material.STONE_BRICK_WALL, null, Material.STONE_BRICK_WALL}, // y = 0
                     {Material.STONE_BRICK_WALL, null, Material.STONE_BRICK_WALL}, // y = 1
@@ -52,7 +52,7 @@ public class ArrowTower {
             }
     };
 
-    private static Material[][][] mk3 = new Material[][][]{
+    public static Material[][][] mk3 = new Material[][][]{
             { // x = 0
                     {Material.CHAIN, null, Material.CHAIN}, // y = 0
                     {Material.CHAIN, null, Material.CHAIN}, // y = 1
@@ -76,7 +76,7 @@ public class ArrowTower {
             }
     };
 
-    private static Material[][][] mk4 = new Material[][][]{
+    public static Material[][][] mk4 = new Material[][][]{
             { // x = 0
                     {Material.NETHER_BRICK_FENCE, null, Material.NETHER_BRICK_FENCE}, // y = 0
                     {Material.NETHER_BRICK_FENCE, null, Material.NETHER_BRICK_FENCE}, // y =
@@ -100,7 +100,7 @@ public class ArrowTower {
             }
     };
 
-    private static Material[][][] mk5 = new Material[][][]{
+    public static Material[][][] mk5 = new Material[][][]{
             { // x = 0
                     {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y = 0
                     {Material.POLISHED_BLACKSTONE_WALL, null, Material.POLISHED_BLACKSTONE_WALL}, // y =
@@ -124,7 +124,7 @@ public class ArrowTower {
             }
     };
 
-    private static Material[][][] mk6 = new Material[][][]{
+    public static Material[][][] mk6 = new Material[][][]{
             { // x = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y =
@@ -144,6 +144,54 @@ public class ArrowTower {
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 1
                     {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER},  // y = 2
                     {Material.PRISMARINE_WALL, Material.PRISMARINE_WALL, Material.PRISMARINE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            }
+    };
+
+    public static Material[][][] mk7 = new Material[][][]{
+            { // x = 0
+                    {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
+                    {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y =
+                    {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE},  // y = 2
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.POLISHED_DEEPSLATE_WALL, Material.POLISHED_DEEPSLATE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            },
+            { // x = 1
+                    {null, null, null}, // y = 0
+                    {null, null, null}, // y = 1
+                    {Material.DEEPSLATE, Material.NETHERITE_BLOCK, Material.DEEPSLATE},  // y = 2
+                    {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y = 3
+                    {null, Material.FLETCHING_TABLE, null} // y = 4
+            },
+            { // x = 2
+                    {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
+                    {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y = 1
+                    {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE},  // y = 2
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.POLISHED_DEEPSLATE_WALL, Material.POLISHED_DEEPSLATE_WALL}, // y = 3
+                    {null, null, null} // y = 4
+            }
+    };
+
+    public static Material[][][] mk8 = new Material[][][]{
+            { // x = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y =
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
+                    {null, null, null} // y = 4
+            },
+            { // x = 1
+                    {null, null, null}, // y = 0
+                    {null, null, null}, // y = 1
+                    {Material.GREEN_CONCRETE, Material.EMERALD_BLOCK, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 3
+                    {null, Material.FLETCHING_TABLE, null} // y = 4
+            },
+            { // x = 2
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 1
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
                     {null, null, null} // y = 4
             }
     };
