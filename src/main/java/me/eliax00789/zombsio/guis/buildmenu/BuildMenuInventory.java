@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.guis.buildmenu;
 
 import me.eliax00789.zombsio.buildings.towers.ArrowTower;
+import me.eliax00789.zombsio.buildings.towers.MeleeTower;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
@@ -73,7 +74,7 @@ class BuildMenuInventory {
                 .setItem(24,new ItemCreator(Material.STONE_SWORD).setName("Melee Tower").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new MeleeTower(location);
                     }
                 })
                 .getInventory();

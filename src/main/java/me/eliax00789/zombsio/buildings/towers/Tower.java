@@ -1,7 +1,5 @@
 package me.eliax00789.zombsio.buildings.towers;
 
-import me.eliax00789.zombsio.utility.Config;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
