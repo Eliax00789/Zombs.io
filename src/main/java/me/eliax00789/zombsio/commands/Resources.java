@@ -21,6 +21,13 @@ public class Resources implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender.hasPermission("zombs.commands.zresources")) {
+            if (args.length != 4) {
+                return false;
+            }
+            if (!Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[0]))) {
+                sender.sendMessage("Player is not online");
+                return true;
+            }
             if (args[1].equalsIgnoreCase("wood")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     Config.getInstance().WOOD.put(args[0], Config.getInstance().WOOD.get(args[0]) + Integer.valueOf(args[3]));
