@@ -1,12 +1,8 @@
 package me.eliax00789.zombsio.commands;
 
 import me.eliax00789.zombsio.Zombsio;
-import me.eliax00789.zombsio.buildings.towers.ArrowTower;
-import me.eliax00789.zombsio.buildings.towers.Tower;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
