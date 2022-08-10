@@ -95,7 +95,7 @@ public class Resources implements TabExecutor {
         }
         if (args.length == 4) {
             for (String s: new ArrayList<String>(){{for (Integer i = 0;i < 100; i++) add(i.toString());}}) {
-                if (s.contains(args[4].toLowerCase())) {
+                if (s.contains(args[3].toLowerCase())) {
                     toCompleteTo.add(s);
                 }
             }
