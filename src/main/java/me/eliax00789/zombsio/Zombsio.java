@@ -2,6 +2,7 @@ package me.eliax00789.zombsio;
 
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
+import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -48,5 +49,7 @@ public final class Zombsio extends JavaPlugin {
         //GUIS:
         new BuildMenu();
         new Shop();
+        //LISTENERS:
+        new PlayerJoinListener();
     }
 }
