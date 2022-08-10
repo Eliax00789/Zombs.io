@@ -8,10 +8,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 class BuildMenuInventory {
     Inventory inventory;
     public BuildMenuInventory() {
-        inventory = new GUICreator(9 * 4)
-                                    .fillPlaceHolder()
-                                    .addExitButton()
-                                    .getInventory();
+        inventory = new GUICreator(9 * 4,"Build Menu")
+                .setCancelAllClicks(true)
+                .fillPlaceHolder()
+                .addExitButton()
+                .
+                .getInventory();
         //TODO REST OF INVENTORY;
     }
 

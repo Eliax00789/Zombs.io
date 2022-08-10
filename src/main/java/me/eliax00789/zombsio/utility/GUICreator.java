@@ -1,8 +1,13 @@
 package me.eliax00789.zombsio.utility;
 
+import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -10,22 +15,36 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
 
-public class GUICreator {
+public class GUICreator implements Listener {
     private Inventory inventory;
+    private Boolean cancelClicks;
+    private HashMap<Integer,BukkitRunnable> actionmap;
 
-    public GUICreator(Integer size) {
-        inventory = Bukkit.createInventory(null, size);
+    public GUICreator(Integer size,String title) {
+        inventory = Bukkit.createInventory(null, size, title);
+        cancelClicks = false;
+        actionmap = new HashMap<Integer,BukkitRunnable>();
+        Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
     }
 
-    public GUICreator setTitle(String title) {
-        Inventory newinventory = Bukkit.createInventory(null,inventory.getSize(),title);
-        newinventory.setContents(inventory.getContents());
-        inventory = newinventory;
+    public GUICreator setCancelAllClicks(Boolean cancel) {
+        cancelClicks = cancel;
         return this;
     }
 
     public GUICreator setItem(Integer index,ItemStack item) {
         inventory.setItem(index,item);
+        return this;
+    }
+
+    public GUICreator setClickAction(Integer index,BukkitRunnable action) {
+        actionmap.put(index,action);
+        return this;
+    }
+
+    public GUICreator setItem(Integer index,ItemStack item,BukkitRunnable action) {
+        inventory.setItem(index,item);
+        setClickAction(index,action);
         return this;
     }
 
@@ -40,10 +59,44 @@ public class GUICreator {
     public GUICreator addExitButton() {
         ItemStack item = new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("EXIT").getItem();
         inventory.setItem(inventory.getSize() - 8,item);
+        setClickAction(inventory.getSize() - 8, new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (HumanEntity i: inventory.getViewers()) {
+                    i.closeInventory();
+                }
+            }
+        });
         return this;
     }
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    @EventHandler
+    public void onInventoryClick(InventoryClickEvent e) {
+        if (e.getInventory().equals(inventory)) {
+            if (cancelClicks) {
+                e.setCancelled(true);
+            }
+            if (actionmap.containsKey(e.getRawSlot())) {
+                actionmap.get(e.getRawSlot()).run();
+            }
+         }
+    }
+
+    @EventHandler
+    public void onInventoryDrag(InventoryDragEvent e) {
+        if (e.getInventory().equals(inventory)) {
+            if (cancelClicks) {
+                e.setCancelled(true);
+            }
+            for (Integer i:e.getInventorySlots()) {
+                if (actionmap.containsKey(i)) {
+                    actionmap.get(i).run();
+                }
+            }
+        }
     }
 }
