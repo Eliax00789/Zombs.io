@@ -25,7 +25,7 @@ public class ResourceScoreboard {
             public void run() {
                 player.setScoreboard(getScoreboard(player));
             }
-        }.runTaskTimer(Zombsio.plugin,5,5);
+        }.runTaskTimer(Zombsio.plugin,5,10);
     }
 
     public Scoreboard getScoreboard(Player player) {
