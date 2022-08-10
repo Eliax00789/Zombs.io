@@ -1,8 +1,9 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class CannonTower {
+public class CannonTower extends Tower {
 
     public static Material[][][] mk1 = new Material[][][]{
             { // x = 0
@@ -195,4 +196,11 @@ public class CannonTower {
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
+
+    public CannonTower(Location location) {
+        super("Cannon Tower",location,
+                mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
+                new Integer[]{150,200,400,800,1200,1600,2200,3600},new Integer[]{20,30,50,70,120,150,200,300},new Integer[]{500,500,500,500,600,600,600,600},
+                new Integer[]{15,25,40,50,80,120,300,800},new Integer[]{15,25,40,50,80,120,300,800},new Integer[]{0,100,200,600,1200,2000,8000,35000});
+    }
 }

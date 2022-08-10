@@ -1,7 +1,6 @@
 package me.eliax00789.zombsio.guis.buildmenu;
 
-import me.eliax00789.zombsio.buildings.towers.ArrowTower;
-import me.eliax00789.zombsio.buildings.towers.MeleeTower;
+import me.eliax00789.zombsio.buildings.towers.*;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
@@ -56,19 +55,19 @@ class BuildMenuInventory {
                 .setItem(21, new ItemCreator(Material.FIRE_CHARGE).setName("Cannon Tower").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new CannonTower(location);
                     }
                 })
                 .setItem(22, new ItemCreator(Material.TNT).setName("Bomb Tower").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new BombTower(location);
                     }
                 })
                 .setItem(23, new ItemCreator(Material.ENCHANTED_BOOK).setName("Mage Tower").addEnchant(Enchantment.MULTISHOT,1,false).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new MageTower(location);
                     }
                 })
                 .setItem(24,new ItemCreator(Material.STONE_SWORD).setName("Melee Tower").getItem(), new BukkitRunnable() {
