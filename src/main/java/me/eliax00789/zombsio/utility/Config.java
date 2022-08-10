@@ -23,7 +23,6 @@ public class Config {
         this.WOOD = new HashMap<String,Integer>();
         this.STONE = new HashMap<String,Integer>();
         this.GOLD = new HashMap<String,Integer>();
-        this.TOWERS = new HashMap<Integer[],String>();
     }
 
     private static Config instance;

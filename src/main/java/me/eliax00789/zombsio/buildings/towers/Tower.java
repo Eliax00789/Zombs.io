@@ -33,7 +33,6 @@ public class Tower {
         this.mk1 = mk1; this.mk2 = mk2; this.mk3 = mk3; this.mk4 = mk4; this.mk5 = mk5; this.mk6 = mk6; this.mk7 = mk7; this.mk8 = mk8;
         this.health = health; this.damage = damage; this.range = range;
         this.wood = wood; this.stone = stone; this.gold = gold;
-        Config.getInstance().TOWERS.put(new Integer[]{location.getBlockX(),location.getBlockY(), location.getBlockZ(), level},name);
         build();
     }
 
