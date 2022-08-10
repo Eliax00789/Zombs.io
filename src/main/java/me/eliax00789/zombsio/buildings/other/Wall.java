@@ -95,7 +95,7 @@ public class Wall {
     private Integer[] gold = new Integer[]{0,10,50,70,150,200,250,800};
 
     public Wall(Location location) {
-        level = 0;
+        level = 1;
         currenthealth = health[0];
         build();
     }
