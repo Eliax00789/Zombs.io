@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio;
 
+import me.eliax00789.zombsio.commands.Debug;
 import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
@@ -54,5 +55,6 @@ public final class Zombsio extends JavaPlugin {
         new PlayerJoinListener();
         //COMMANDS:
         new Resources();
+        new Debug();
     }
 }
