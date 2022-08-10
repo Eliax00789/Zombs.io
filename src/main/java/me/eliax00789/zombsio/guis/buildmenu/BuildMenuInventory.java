@@ -1,5 +1,7 @@
 package me.eliax00789.zombsio.guis.buildmenu;
 
+import me.eliax00789.zombsio.buildings.other.Door;
+import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.towers.*;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
@@ -31,13 +33,13 @@ class BuildMenuInventory {
                 .setItem(13, new ItemCreator(Material.IRON_BARS).setName("Wall").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new Wall(location);
                     }
                 })
                 .setItem(14, new ItemCreator(Material.IRON_DOOR).setName("Door").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new Door(location);
                     }
                 })
                 .setItem(16, new ItemCreator(Material.HONEYCOMB).setName("Slow Trap").getItem(), new BukkitRunnable() {
