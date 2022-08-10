@@ -110,7 +110,7 @@ public class Door {
 
     private void build() {
         if (level.equals(1)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk1.length; x ++) {
                 for (int y = 0; y < mk1[x].length; y++) {
                     for (int z = 0; z < mk1[x][y].length; z++) {
@@ -121,7 +121,7 @@ public class Door {
             }
         }
         else if (level.equals(2)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk2.length; x ++) {
                 for (int y = 0; y < mk2[x].length; y++) {
                     for (int z = 0; z < mk2[x][y].length; z++) {
@@ -132,7 +132,7 @@ public class Door {
             }
         }
         else if (level.equals(3)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk3.length; x ++) {
                 for (int y = 0; y < mk3[x].length; y++) {
                     for (int z = 0; z < mk3[x][y].length; z++) {
@@ -143,7 +143,7 @@ public class Door {
             }
         }
         else if (level.equals(4)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk4.length; x ++) {
                 for (int y = 0; y < mk4[x].length; y++) {
                     for (int z = 0; z < mk4[x][y].length; z++) {
@@ -154,7 +154,7 @@ public class Door {
             }
         }
         else if (level.equals(5)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk5.length; x ++) {
                 for (int y = 0; y < mk5[x].length; y++) {
                     for (int z = 0; z < mk5[x][y].length; z++) {
@@ -165,7 +165,7 @@ public class Door {
             }
         }
         else if (level.equals(6)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk6.length; x ++) {
                 for (int y = 0; y < mk6[x].length; y++) {
                     for (int z = 0; z < mk6[x][y].length; z++) {
@@ -176,7 +176,7 @@ public class Door {
             }
         }
         else if (level.equals(7)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk7.length; x ++) {
                 for (int y = 0; y < mk7[x].length; y++) {
                     for (int z = 0; z < mk7[x][y].length; z++) {
@@ -187,7 +187,7 @@ public class Door {
             }
         }
         else if (level.equals(8)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.add(0,0,0);
             for ( int x = 0; x < mk8.length; x ++) {
                 for (int y = 0; y < mk8[x].length; y++) {
                     for (int z = 0; z < mk8[x][y].length; z++) {
