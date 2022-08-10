@@ -13,6 +13,11 @@ public class ItemCreator {
         meta = item.getItemMeta();
     }
 
+    public ItemCreator setAmount(Integer amount) {
+        item.setAmount(amount);
+        return this;
+    }
+
     public ItemCreator setName(String name) {
         meta.setDisplayName(name);
         return this;
