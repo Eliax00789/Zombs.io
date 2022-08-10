@@ -27,7 +27,7 @@ public class Debug implements TabExecutor {
 
         Player player = (Player) commandSender;
 
-        new Tower().build(player.getLocation(), ArrowTower.mk1);
+        // TODO: new Tower().build(player.getLocation(), ArrowTower.mk1);
 
 
         return false;
