@@ -3,6 +3,8 @@ package me.eliax00789.zombsio.listener;
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.utility.Config;
+import me.eliax00789.zombsio.utility.ItemCreator;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -22,5 +24,8 @@ public class PlayerJoinListener implements Listener {
             Config.getInstance().LASTSHOPPAGE.put(e.getPlayer().getName(), "tools");
         }
         new ResourceScoreboard(e.getPlayer());
+
+        e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
+        e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
     }
 }
