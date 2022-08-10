@@ -39,15 +39,15 @@ public class Tower {
 
     private void build() {
         if (level.equals(1)) {
-            location.add(-1,-1,0).getBlock().setType(mk1[0][0][0]);
+            location.add(-1,0,-1).getBlock().setType(mk1[0][0][0]);
             location.add(-1,0,0).getBlock().setType(mk1[0][0][1]);
-            location.add(-1,1,0).getBlock().setType(mk1[0][0][2]);
-            location.add(0,-1,0).getBlock().setType(mk1[1][0][0]);
+            location.add(-1,0,1).getBlock().setType(mk1[0][0][2]);
+            location.add(0,0,-1).getBlock().setType(mk1[1][0][0]);
             location.add(0,0,0).getBlock().setType(mk1[1][0][1]);
-            location.add(0,1,0).getBlock().setType(mk1[1][0][2]);
-            location.add(1,-1,0).getBlock().setType(mk1[2][0][0]);
+            location.add(0,0,1).getBlock().setType(mk1[1][0][2]);
+            location.add(1,0,-1).getBlock().setType(mk1[2][0][0]);
             location.add(1,0,0).getBlock().setType(mk1[2][0][1]);
-            location.add(1,1,0).getBlock().setType(mk1[2][0][2]);
+            location.add(1,0,1).getBlock().setType(mk1[2][0][2]);
         }
     }
 }
