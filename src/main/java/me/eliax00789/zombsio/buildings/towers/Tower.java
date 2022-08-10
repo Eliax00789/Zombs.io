@@ -38,25 +38,13 @@ public class Tower {
 
     private void build() {
         if (level.equals(1)) {
-            Location temploc = location;
-            temploc.add(1,0,1).getBlock().setType(mk1[0][0][0]);
-            temploc = location;
-            temploc.add(1,0,0).getBlock().setType(mk1[0][0][1]);
-            temploc = location;
-            temploc.add(1,0,-1).getBlock().setType(mk1[0][0][2]);
-            temploc = location;
-            temploc.add(0,0,1).getBlock().setType(mk1[1][0][0]);
-            temploc = location;
-            temploc.add(0,0,0).getBlock().setType(mk1[1][0][1]);
-            temploc = location;
-            temploc.add(0,0,-1).getBlock().setType(mk1[1][0][2]);
-            temploc = location;
-            temploc.add(-1,0,1).getBlock().setType(mk1[2][0][0]);
-            temploc = location;
-            temploc.add(-1,0,0).getBlock().setType(mk1[2][0][1]);
-            temploc = location;
-            temploc.add(-1,0,-1).getBlock().setType(mk1[2][0][2]);
-            temploc = location;
+            Location temploc = location.subtract(1 ,0 ,1).clone();
+
+            temploc.add(0,0,0).getBlock().setType(mk1[0][0][0]);
+            temploc = location.subtract(1 ,0 ,1).clone();
+            temploc.add(0,0,1).getBlock().setType(mk1[0][0][1]);
+            temploc = location.subtract(1 ,0 ,1).clone();
+            temploc.add(0,0,2).getBlock().setType(mk1[0][0][2]);
         }
     }
 }
