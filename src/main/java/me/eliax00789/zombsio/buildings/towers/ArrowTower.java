@@ -196,7 +196,6 @@ public class ArrowTower extends Tower{
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
-
     public ArrowTower(Location location) {
         super("ArrowTower",location,
                 mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
