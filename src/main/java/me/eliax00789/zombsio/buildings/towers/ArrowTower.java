@@ -126,6 +126,30 @@ public class ArrowTower {
 
     public static Material[][][] mk6 = new Material[][][]{
             { // x = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y =
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
+                    {null, null, null} // y = 4
+            },
+            { // x = 1
+                    {null, null, null}, // y = 0
+                    {null, null, null}, // y = 1
+                    {Material.GREEN_CONCRETE, Material.EMERALD_BLOCK, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 3
+                    {null, Material.FLETCHING_TABLE, null} // y = 4
+            },
+            { // x = 2
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 1
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
+                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
+                    {null, null, null} // y = 4
+            }
+    };
+
+    public static Material[][][] mk7 = new Material[][][]{
+            { // x =
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y = 0
                     {Material.PRISMARINE_WALL, null, Material.PRISMARINE_WALL}, // y =
                     {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER},  // y = 2
@@ -148,7 +172,7 @@ public class ArrowTower {
             }
     };
 
-    public static Material[][][] mk7 = new Material[][][]{
+    public static Material[][][] mk8 = new Material[][][]{
             { // x = 0
                     {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
                     {Material.POLISHED_DEEPSLATE_WALL, null, Material.POLISHED_DEEPSLATE_WALL}, // y =
@@ -172,27 +196,5 @@ public class ArrowTower {
             }
     };
 
-    public static Material[][][] mk8 = new Material[][][]{
-            { // x = 0
-                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
-                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y =
-                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
-                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
-                    {null, null, null} // y = 4
-            },
-            { // x = 1
-                    {null, null, null}, // y = 0
-                    {null, null, null}, // y = 1
-                    {Material.GREEN_CONCRETE, Material.EMERALD_BLOCK, Material.GREEN_CONCRETE},  // y = 2
-                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 3
-                    {null, Material.FLETCHING_TABLE, null} // y = 4
-            },
-            { // x = 2
-                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 0
-                    {Material.WARPED_FENCE, null, Material.WARPED_FENCE}, // y = 1
-                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
-                    {Material.WARPED_FENCE, Material.WARPED_FENCE, Material.WARPED_FENCE}, // y = 3
-                    {null, null, null} // y = 4
-            }
-    };
+
 }
