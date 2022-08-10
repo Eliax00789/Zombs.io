@@ -1,8 +1,9 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class MeleeTower {
+public class MeleeTower extends Tower {
 
     public static Material[][][] mk1 = new Material[][][]{
             { // x = 0
@@ -195,4 +196,12 @@ public class MeleeTower {
                     {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE} // y = 4
             }
     };
+
+    public MeleeTower(Location location) {
+        super("MeleeTower",location,
+                mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
+                new Integer[]{200,400,800,1200,1600,2200,4000,9000},new Integer[]{50, 80,200,280,500,1000,2000,3000},new Integer[]{110,110,110,110,110,110,110,110},
+                new Integer[]{10,25,30,40,50,70,300,800},new Integer[]{10,20,30,40,60,80,300,800},new Integer[]{0,100,200,600,1200,2000,8000,35000});
+    }
+
 }
