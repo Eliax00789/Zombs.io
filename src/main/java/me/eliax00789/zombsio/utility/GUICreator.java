@@ -37,14 +37,16 @@ public class GUICreator implements Listener {
         return this;
     }
 
-    public GUICreator setClickAction(Integer index,BukkitRunnable action) {
-        actionmap.put(index,action);
+    public GUICreator setClickAction(BukkitRunnable action,Integer... index) {
+        for (Integer i:index) {
+            actionmap.put(i,action);
+        }
         return this;
     }
 
     public GUICreator setItem(Integer index,ItemStack item,BukkitRunnable action) {
         inventory.setItem(index,item);
-        setClickAction(index,action);
+        setClickAction(action,index);
         return this;
     }
 
@@ -59,14 +61,14 @@ public class GUICreator implements Listener {
     public GUICreator addExitButton() {
         ItemStack item = new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("EXIT").getItem();
         inventory.setItem(inventory.getSize() - 8,item);
-        setClickAction(inventory.getSize() - 8, new BukkitRunnable() {
+        setClickAction(new BukkitRunnable() {
             @Override
             public void run() {
                 for (HumanEntity i: inventory.getViewers()) {
                     i.closeInventory();
                 }
             }
-        });
+        }, inventory.getSize() - 8);
         return this;
     }
 
