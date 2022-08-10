@@ -6,8 +6,15 @@ import org.bukkit.Material;
 
 public class Tower {
 
-    public void build(Location location, Material[][][] material) {
+    public Tower(Location location, Material[][][] material,
+                 Integer health,Integer damage,Integer range,
+                 Integer healthperlevel,Integer damageperlevel,Integer rangeperlevel,
+                 Integer wood,Integer stone,Integer gold,
+                 Integer woodmultperlevel,Integer stonemultperlevel,Integer goldmultperlevel) {
 
-        location.getBlock().setType(material[0][0][0]);
+    }
+
+    public void build() {
+
     }
 }
