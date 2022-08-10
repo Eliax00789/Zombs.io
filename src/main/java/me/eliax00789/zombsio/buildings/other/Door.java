@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.other;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 
 public class Door {
@@ -91,4 +92,19 @@ public class Door {
 
 
     };
+
+    private Integer currenthealth;
+    private Integer[] health = new Integer[]{150,200,300,500,700,1000,1500,2000};
+    private Integer[] wood = new Integer[]{5,5,0,0,0,0,0,0};
+    private Integer[] stone = new Integer[]{5,5,0,0,0,0,0,0};
+    private Integer[] gold = new Integer[]{0,10,50,70,150,200,250,800};
+
+    public Door(Location location) {
+        currenthealth = health[0];
+        build();
+    }
+
+    private void build() {
+
+    }
 }
