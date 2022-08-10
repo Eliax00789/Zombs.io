@@ -103,6 +103,7 @@ public class Door {
 
     public Door(Location location) {
         level = 1;
+        this.location = location;
         currenthealth = health[0];
         build();
     }

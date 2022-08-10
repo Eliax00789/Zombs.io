@@ -96,6 +96,7 @@ public class Wall {
 
     public Wall(Location location) {
         level = 1;
+        this.location = location;
         currenthealth = health[0];
         build();
     }
