@@ -12,7 +12,6 @@ class BuildMenuInventory {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
-                .
                 .getInventory();
         //TODO REST OF INVENTORY;
     }
