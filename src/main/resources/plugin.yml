@@ -4,7 +4,7 @@ main: me.eliax00789.zombsio.Zombsio
 api-version: 1.19
 prefix: zombs
 load: STARTUP
-authors: [ Eliax00789 , Nifflör77 ]
+authors: [ Eliax00789 , Nifflör77, Dario_LP ]
 description: zombs.io in
 commands:
   zresources:
