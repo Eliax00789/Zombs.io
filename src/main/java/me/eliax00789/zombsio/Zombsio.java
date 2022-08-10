@@ -5,7 +5,6 @@ import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
 import me.eliax00789.zombsio.listener.PlayerJoinListener;
-import me.eliax00789.zombsio.listener.PlayerLeaveListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -69,7 +68,6 @@ public final class Zombsio extends JavaPlugin {
 
     private void disableConfig() {
         Config.getInstance().save();
-        File file = new File(getDataFolder() + File.separator + "buildings.yml");
         try {
             buildings.save(file);
         } catch (IOException e) {
@@ -83,7 +81,6 @@ public final class Zombsio extends JavaPlugin {
         new Shop();
         //LISTENERS:
         new PlayerJoinListener();
-        new PlayerLeaveListener();
         //new EveryListener();
         //COMMANDS:
         new Debug();
