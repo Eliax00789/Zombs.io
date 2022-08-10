@@ -33,6 +33,7 @@ public class Resources implements TabExecutor {
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
+                return true;
             }
             else if (args[2].equalsIgnoreCase("stone")) {
                 if (args[3].equalsIgnoreCase("add")) {
@@ -47,6 +48,7 @@ public class Resources implements TabExecutor {
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
+                return true;
             }
             else if (args[2].equalsIgnoreCase("gold")) {
                 if (args[3].equalsIgnoreCase("add")) {
@@ -61,10 +63,12 @@ public class Resources implements TabExecutor {
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
+                return true;
             }
             else {
                 sender.sendMessage("Couldn't recognize resource type");
             }
+            return true;
         }
         return false;
     }
@@ -100,6 +104,6 @@ public class Resources implements TabExecutor {
                 }
             }
         }
-        return null;
+        return toCompleteTo;
     }
 }
