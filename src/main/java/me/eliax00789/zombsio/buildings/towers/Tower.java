@@ -38,13 +38,15 @@ public class Tower {
 
     private void build() {
         if (level.equals(1)) {
-            Location temploc = location.subtract(1 ,0 ,1).clone();
-
-            temploc.add(0,0,0).getBlock().setType(mk1[0][0][0]);
-            temploc = location.subtract(1 ,0 ,1).clone();
-            temploc.add(0,0,1).getBlock().setType(mk1[0][0][1]);
-            temploc = location.subtract(1 ,0 ,1).clone();
-            temploc.add(0,0,2).getBlock().setType(mk1[0][0][2]);
+            Location structOrigin = location.add(-1,0,-1);
+            for ( int x = 0; x < mk1.length; x ++) {
+                for (int y = 0; y < mk1[x].length; y++) {
+                    for (int z = 0; z < mk1[x][y].length; z++) {
+                        Location tmp = structOrigin.clone();
+                        tmp.add(x,y,z).getBlock().setType(mk1[x][y][z]);
+                    }
+                }
+            }
         }
     }
 }
