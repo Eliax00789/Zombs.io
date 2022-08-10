@@ -5,4 +5,9 @@ api-version: 1.19
 prefix: zombs
 load: STARTUP
 authors: [ Eliax00789 , Nifflör77 ]
-description: zombs.io in minecraft
+description: zombs.io in
+commands:
+  zresources:
+    description: add or remove resources
+    usage: /<command> <player> [wood|stone|gold] [add|remove|set] <amount>
+    permission: zombs.commands.zresources

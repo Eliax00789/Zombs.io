@@ -37,7 +37,7 @@ public final class Zombsio extends JavaPlugin {
             public void run() {
                 Config.getInstance().save();
             }
-        }.runTaskTimer(this,5,120);
+        }.runTaskTimer(this,5,60);
     }
 
     private void disableConfig() {
