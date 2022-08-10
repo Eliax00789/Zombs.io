@@ -12,8 +12,6 @@ class ShopToolsInventory {
 
     private Inventory inventory;
     public ShopToolsInventory() {
-        //TODO: THIS FUCKING SHIT
-
         inventory = new GUICreator(9 * 3,"Shop: Tools")
                 .fillPlaceHolder()
                 .addExitButton()
@@ -23,6 +21,7 @@ class ShopToolsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
+                            i.closeInventory();
                             i.openInventory(new ShopArmorInventory().getInventory());
                         }
                     }
@@ -31,6 +30,7 @@ class ShopToolsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
+                            i.closeInventory();
                             i.openInventory(new ShopPetsInventory().getInventory());
                         }
                     }
@@ -39,6 +39,7 @@ class ShopToolsInventory {
                     @Override
                     public void run() {
                         for (HumanEntity i: inventory.getViewers()) {
+                            i.closeInventory();
                             i.openInventory(new ShopPotionsInventory().getInventory());
                         }
                     }

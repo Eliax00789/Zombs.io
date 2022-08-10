@@ -11,6 +11,7 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
+import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
@@ -51,7 +52,7 @@ public class GUICreator implements Listener {
     }
 
     public GUICreator fillPlaceHolder() {
-        ItemStack item = new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName("").getItem();
+        ItemStack item = new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem();
         for (Integer i = 0; i <= (inventory.getSize() - 1); i++) {
             inventory.setItem(i,item);
         }
@@ -60,7 +61,7 @@ public class GUICreator implements Listener {
 
     public GUICreator addExitButton() {
         ItemStack item = new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("EXIT").getItem();
-        inventory.setItem(inventory.getSize() - 8,item);
+        inventory.setItem(inventory.getSize() - 9,item);
         setClickAction(new BukkitRunnable() {
             @Override
             public void run() {
@@ -68,7 +69,7 @@ public class GUICreator implements Listener {
                     i.closeInventory();
                 }
             }
-        }, inventory.getSize() - 8);
+        }, inventory.getSize() - 9);
         return this;
     }
 
