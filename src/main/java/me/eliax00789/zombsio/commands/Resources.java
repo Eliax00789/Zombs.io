@@ -80,7 +80,10 @@ public class Resources implements TabExecutor {
             }
             return true;
         }
-        return false;
+        else {
+            sender.sendMessage("You do not have permission to execute this command");
+            return true;
+        }
     }
 
     @Override
