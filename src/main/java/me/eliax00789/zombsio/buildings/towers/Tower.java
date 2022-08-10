@@ -46,8 +46,8 @@ public class Tower implements Listener {
         Zombsio.buildings.set(id.toString() + ".name",name);
         Zombsio.buildings.set(id.toString() + ".level",level);
         Zombsio.buildings.set(id.toString() + ".location.x",location.getBlockX());
-        Zombsio.buildings.set(id.toString() + ".location.y",location.getBlockX());
-        Zombsio.buildings.set(id.toString() + ".location.z",location.getBlockX());
+        Zombsio.buildings.set(id.toString() + ".location.y",location.getBlockY());
+        Zombsio.buildings.set(id.toString() + ".location.z",location.getBlockZ());
         build();
     }
 
