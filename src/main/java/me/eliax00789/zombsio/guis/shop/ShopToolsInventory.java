@@ -20,31 +20,19 @@ class ShopToolsInventory {
                 .setItem(2, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Armor").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        for (HumanEntity i: inventory.getViewers()) {
-                            if (inventory != null) {
-                                i.openInventory(new ShopArmorInventory().getInventory());
-                            }
-                        }
+                        inventory.getViewers().get(0).openInventory(new ShopArmorInventory().getInventory());
                     }
                 })
                 .setItem(3, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Pets").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        for (HumanEntity i: inventory.getViewers()) {
-                            if (inventory != null) {
-                                i.openInventory(new ShopPetsInventory().getInventory());
-                            }
-                        }
+                        inventory.getViewers().get(0).openInventory(new ShopPetsInventory().getInventory());
                     }
                 })
                 .setItem(4, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Potions").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        for (HumanEntity i: inventory.getViewers()) {
-                            if (inventory != null) {
-                                i.openInventory(new ShopPotionsInventory().getInventory());
-                            }
-                        }
+                        inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
                 .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("Axe MK.1").getItem(), new BukkitRunnable() {
