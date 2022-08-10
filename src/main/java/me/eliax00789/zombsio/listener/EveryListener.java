@@ -28,13 +28,6 @@ public class EveryListener implements Listener {
      }
 
      @EventHandler
-     public void onBlockPlace(BlockPlaceEvent e) {
-          if(!e.getPlayer().hasPermission("zombs.bypass.blockplace")) {
-               e.setCancelled(true);
-          }
-     }
-
-     @EventHandler
      public void onHungerTick(FoodLevelChangeEvent e) {
           if(!e.getEntity().hasPermission("zombs.bypass.foodlvlchange")) {
                e.setCancelled(true);

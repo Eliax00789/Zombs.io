@@ -85,7 +85,7 @@ public final class Zombsio extends JavaPlugin {
         //LISTENERS:
         new PlayerJoinListener();
         new PlayerLeaveListener();
-        new EveryListener();
+        //new EveryListener();
         //COMMANDS:
         new Debug();
         new Resources();
