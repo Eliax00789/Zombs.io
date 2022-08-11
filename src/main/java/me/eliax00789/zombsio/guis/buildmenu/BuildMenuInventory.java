@@ -23,14 +23,6 @@ import java.util.logging.Level;
 class BuildMenuInventory {
     Inventory inventory;
     public BuildMenuInventory(Location location) {
-        try {
-            Zombsio.plugin.getConfig().load(new File(Zombsio.plugin.getConfig().getCurrentPath()));
-        } catch (IOException e) {
-            Bukkit.getLogger().log(Level.WARNING,e.toString());
-        } catch (InvalidConfigurationException e) {
-            Bukkit.getLogger().log(Level.WARNING,e.toString());
-        }
-
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
