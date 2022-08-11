@@ -164,10 +164,15 @@ public class Building implements Listener {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
-                .setItem(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
+                        .setLore("Cost for Tier " + (level + 1),
+                                "Wood: " + wood.get(level),
+                                "Stone: " + stone.get(level),
+                                "Gold: " + gold.get(level)).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         upgrade((Player) inventory.getViewers().get(0));
+                        inventory.getViewers().get(0).closeInventory();
                     }
                 })
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
@@ -180,6 +185,7 @@ public class Building implements Listener {
                     @Override
                     public void run() {
                         remove();
+                        inventory.getViewers().get(0).closeInventory();
                     }
                 })
                 .getInventory();
