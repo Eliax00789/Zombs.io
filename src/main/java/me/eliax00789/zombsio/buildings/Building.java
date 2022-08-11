@@ -1,12 +1,14 @@
 package me.eliax00789.zombsio.buildings;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.towers.MeleeTower;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -147,13 +149,6 @@ public class Building implements Listener {
         else {return false;}
     }
 
-    private String hasResourcesString(Player player) {
-        if (Config.getInstance().WOOD.get(player.getName()) >= wood.get(level)
-                && Config.getInstance().STONE.get(player.getName()) >= stone.get(level)
-                && Config.getInstance().GOLD.get(player.getName()) >= gold.get(level)) {return "&7You can afford this upgrade";}
-        else {return "&7You can not afford this upgrade";}
-    }
-
     private void removeResources(Player player) {
         Config.getInstance().WOOD.put(player.getName(),Config.getInstance().WOOD.get(player.getName()) - wood.get(level));
         Config.getInstance().STONE.put(player.getName(),Config.getInstance().STONE.get(player.getName()) - stone.get(level));
@@ -207,18 +202,31 @@ public class Building implements Listener {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
-                .setItem(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
-                        .setLore("&7Cost for Tier " + (level + 1),
-                                "&7Wood: " + wood.get(level - 1),
-                                "&7Stone: " + stone.get(level - 1),
-                                "&7Gold: " + gold.get(level - 1),
-                                hasResourcesString(player)).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        upgrade(player);
-                        player.closeInventory();
-                    }
-                })
+                .addItemSwitch(24, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
+                                .setLore("&7Cost for Tier " + (level + 1),
+                                        "&7Wood: " + wood.get(level - 1),
+                                        "&7Stone: " + stone.get(level - 1),
+                                        "&7Gold: " + gold.get(level - 1)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                upgrade(player);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Can't be Upgraded")
+                                .setLore("&7Cost for Tier " + (level + 1),
+                                        "&7Wood: " + wood.get(level - 1),
+                                        "&7Stone: " + stone.get(level - 1),
+                                        "&7Gold: " + gold.get(level - 1),
+                                        "&4You can afford this upgrade"
+                                ).getItem()
+                        , wood.get(level - 1)
+                        , stone.get(level - 1)
+                        , gold.get(level - 1)
+                        , 0
+                        , 0
+                        , player)
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
                         .setLore("&7Tier " + level + " Building",
                                 "&7Current > Next level",

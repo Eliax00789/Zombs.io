@@ -49,7 +49,7 @@ class BuildMenuInventory {
                                 new GoldMine(player, location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Gold Mine (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Gold Mine (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
@@ -74,7 +74,7 @@ class BuildMenuInventory {
                                 new Wall(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Wall (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Wall (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
@@ -98,7 +98,7 @@ class BuildMenuInventory {
                                 new Door(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Door (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Door (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
@@ -122,7 +122,7 @@ class BuildMenuInventory {
                                 new SlowTrap(player, location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Slow Trap (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Slow Trap (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
@@ -148,7 +148,7 @@ class BuildMenuInventory {
                                 new ArrowTower(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Arrow Tower (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Arrow Tower (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
@@ -176,7 +176,7 @@ class BuildMenuInventory {
                                 new CannonTower(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Cannon Tower (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Cannon Tower (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
@@ -204,7 +204,7 @@ class BuildMenuInventory {
                                 new BombTower(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Bomb Tower (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Bomb Tower (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
@@ -232,7 +232,7 @@ class BuildMenuInventory {
                                 new MageTower(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Mage Tower (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Mage Tower (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Gold").get(0)
@@ -260,7 +260,7 @@ class BuildMenuInventory {
                                 new MeleeTower(player,location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Melee Tower (Can't Be Build)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Melee Tower (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Gold").get(0)
