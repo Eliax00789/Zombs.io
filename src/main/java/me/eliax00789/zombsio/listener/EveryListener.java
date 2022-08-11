@@ -46,7 +46,8 @@ public class EveryListener implements Listener {
 
                for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                     if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
-                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+
+                         Config.getInstance().WOOD.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get( name.charAt(name.length() - 1)));
                          e.setCancelled(true);
                     }
                }
@@ -57,7 +58,7 @@ public class EveryListener implements Listener {
 
                for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                     if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
-                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                         Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get( name.charAt(name.length() - 1)));
                          e.setCancelled(true);
                     }
                }
