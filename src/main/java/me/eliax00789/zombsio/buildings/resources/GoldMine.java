@@ -67,7 +67,7 @@ public class GoldMine extends Building {
                     {Material.CHAIN, Material.AIR, Material.CHAIN}, // y = 0
                     {Material.CHAIN, Material.END_ROD, Material.CHAIN}, // y = 1
                     {Material.CHAIN, Material.HOPPER, Material.CHAIN},  // y = 2
-                    {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE}, // y = 3
+                    {Material.SMOOTH_STONE, Material.SMOOTH_STONE, Material.SMOOTH_STONE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
@@ -75,7 +75,7 @@ public class GoldMine extends Building {
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
                     {Material.HOPPER, Material.IRON_BLOCK, Material.HOPPER},  // y = 2
-                    {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE}, // y = 3
+                    {Material.SMOOTH_STONE, Material.SMOOTH_STONE, Material.SMOOTH_STONE}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
             },
@@ -83,7 +83,7 @@ public class GoldMine extends Building {
                     {Material.CHAIN, Material.AIR, Material.CHAIN}, // y = 0
                     {Material.CHAIN, Material.END_ROD, Material.CHAIN}, // y = 1
                     {Material.CHAIN, Material.HOPPER, Material.CHAIN},  // y = 2
-                    {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE}, // y = 3
+                    {Material.SMOOTH_STONE, Material.SMOOTH_STONE, Material.SMOOTH_STONE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
@@ -145,26 +145,26 @@ public class GoldMine extends Building {
 
     public static Material[][][] mk6 = new Material[][][]{
             { // x = 0
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.WARPED_FENCE, Material.AIR, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, Material.END_ROD, Material.WARPED_FENCE}, // y = 1
+                    {Material.WARPED_FENCE, Material.HOPPER, Material.WARPED_FENCE},  // y = 2
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 1
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
-                    {Material.HOPPER, Material.DIRT, Material.HOPPER},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_PLANKS, Material.OAK_SLAB}, // y = 3
+                    {Material.HOPPER, Material.EMERALD_BLOCK, Material.HOPPER},  // y = 2
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
             },
             { // x = 2
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.WARPED_FENCE, Material.AIR, Material.WARPED_FENCE}, // y = 0
+                    {Material.WARPED_FENCE, Material.END_ROD, Material.WARPED_FENCE}, // y = 1
+                    {Material.WARPED_FENCE, Material.HOPPER, Material.WARPED_FENCE},  // y = 2
+                    {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
@@ -172,10 +172,10 @@ public class GoldMine extends Building {
 
     public static Material[][][] mk7 = new Material[][][]{
             { // x = 0
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.PRISMARINE_WALL, Material.AIR, Material.PRISMARINE_WALL}, // y = 0
+                    {Material.PRISMARINE_WALL, Material.END_ROD, Material.PRISMARINE_WALL}, // y = 1
+                    {Material.PRISMARINE_WALL, Material.HOPPER, Material.PRISMARINE_WALL},  // y = 2
+                    {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
@@ -183,15 +183,15 @@ public class GoldMine extends Building {
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
                     {Material.HOPPER, Material.DIRT, Material.HOPPER},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_PLANKS, Material.OAK_SLAB}, // y = 3
+                    {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
             },
             { // x = 2
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.PRISMARINE_WALL, Material.AIR, Material.PRISMARINE_WALL}, // y = 0
+                    {Material.PRISMARINE_WALL, Material.END_ROD, Material.PRISMARINE_WALL}, // y = 1
+                    {Material.PRISMARINE_WALL, Material.HOPPER, Material.PRISMARINE_WALL},  // y = 2
+                    {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
@@ -199,10 +199,10 @@ public class GoldMine extends Building {
 
     public static Material[][][] mk8 = new Material[][][]{
             { // x = 0
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.AIR, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.END_ROD, Material.POLISHED_DEEPSLATE_WALL}, // y = 1
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.HOPPER, Material.POLISHED_DEEPSLATE_WALL},  // y = 2
+                    {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
@@ -210,15 +210,15 @@ public class GoldMine extends Building {
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
                     {Material.HOPPER, Material.DIRT, Material.HOPPER},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_PLANKS, Material.OAK_SLAB}, // y = 3
+                    {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
             },
             { // x = 2
-                    {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 0
-                    {Material.OAK_LOG, Material.END_ROD, Material.OAK_LOG}, // y = 1
-                    {Material.OAK_LOG, Material.HOPPER, Material.OAK_LOG},  // y = 2
-                    {Material.OAK_SLAB, Material.OAK_SLAB, Material.OAK_SLAB}, // y = 3
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.AIR, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.END_ROD, Material.POLISHED_DEEPSLATE_WALL}, // y = 1
+                    {Material.POLISHED_DEEPSLATE_WALL, Material.HOPPER, Material.POLISHED_DEEPSLATE_WALL},  // y = 2
+                    {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
