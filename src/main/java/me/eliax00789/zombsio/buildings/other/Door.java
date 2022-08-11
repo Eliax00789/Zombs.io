@@ -68,18 +68,18 @@ public class Door extends Building {
                     {Material.AIR}, // y = 1
                     {Material.AIR},  // y = 2
                     {Material.GLASS}, // y = 3
-                    {Material.DIAMOND_BLOCK} // y = 4
+                    {Material.EMERALD_BLOCK} // y = 4
             },
 
-
     };
+
     private static Material[][][] mk7 = new Material[][][]{
             { // x = 0
                     {Material.AIR}, // y = 0
                     {Material.AIR}, // y = 1
                     {Material.AIR},  // y = 2
                     {Material.GLASS}, // y = 3
-                    {Material.NETHERITE_BLOCK} // y = 4
+                    {Material.DIAMOND_BLOCK} // y = 4
             },
 
 
@@ -90,11 +90,12 @@ public class Door extends Building {
                     {Material.AIR}, // y = 1
                     {Material.AIR},  // y = 2
                     {Material.GLASS}, // y = 3
-                    {Material.EMERALD_BLOCK} // y = 4
+                    {Material.NETHERITE_BLOCK} // y = 4
             },
 
 
     };
+
 
     public Door(Player player, Location location) {
         super(player,"Door",1,8,location,

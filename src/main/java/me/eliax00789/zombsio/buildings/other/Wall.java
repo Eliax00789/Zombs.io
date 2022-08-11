@@ -58,7 +58,20 @@ public class Wall extends Building {
             },
 
     };
+
     private static Material[][][] mk6 = new Material[][][]{
+            { // x = 0
+                    {Material.EMERALD_BLOCK}, // y = 0
+                    {Material.EMERALD_BLOCK}, // y = 1
+                    {Material.EMERALD_BLOCK},  // y = 2
+                    {Material.EMERALD_BLOCK}, // y = 3
+                    {Material.EMERALD_BLOCK} // y = 4
+            },
+
+    };
+
+
+    private static Material[][][] mk7 = new Material[][][]{
             { // x = 0
                     {Material.DIAMOND_BLOCK}, // y = 0
                     {Material.DIAMOND_BLOCK}, // y = 1
@@ -68,23 +81,13 @@ public class Wall extends Building {
             },
 
     };
-    private static Material[][][] mk7 = new Material[][][]{
+    private static Material[][][] mk8 = new Material[][][]{
             { // x = 0
                     {Material.NETHERITE_BLOCK}, // y = 0
                     {Material.NETHERITE_BLOCK}, // y = 1
                     {Material.NETHERITE_BLOCK},  // y = 2
                     {Material.NETHERITE_BLOCK}, // y = 3
                     {Material.NETHERITE_BLOCK} // y = 4
-            },
-
-    };
-    private static Material[][][] mk8 = new Material[][][]{
-            { // x = 0
-                    {Material.EMERALD_BLOCK}, // y = 0
-                    {Material.EMERALD_BLOCK}, // y = 1
-                    {Material.EMERALD_BLOCK},  // y = 2
-                    {Material.EMERALD_BLOCK}, // y = 3
-                    {Material.EMERALD_BLOCK} // y = 4
             },
 
     };

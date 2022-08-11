@@ -182,7 +182,7 @@ public class GoldMine extends Building {
             { // x = 1
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
-                    {Material.HOPPER, Material.DIRT, Material.HOPPER},  // y = 2
+                    {Material.HOPPER, Material.DIAMOND_BLOCK, Material.HOPPER},  // y = 2
                     {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
@@ -209,7 +209,7 @@ public class GoldMine extends Building {
             { // x = 1
                     {Material.AIR, Material.END_ROD, Material.AIR}, // y = 0
                     {Material.END_ROD, Material.HOPPER, Material.END_ROD}, // y = 1
-                    {Material.HOPPER, Material.DIRT, Material.HOPPER},  // y = 2
+                    {Material.HOPPER, Material.NETHERITE_BLOCK, Material.HOPPER},  // y = 2
                     {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE}, // y = 3
                     {Material.AIR, Material.COBBLESTONE_WALL, Material.AIR}, // y = 4
                     {Material.AIR, Material.IRON_BARS, Material.AIR} // y = 4
