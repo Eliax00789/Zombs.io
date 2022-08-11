@@ -189,25 +189,37 @@ public class Building implements Listener {
         String nextHealth;
         String nextDamage;
         String nextRange;
+        String nextWood;
+        String nextStone;
+        String nextGold;
         if (level == maxLevel) {
             nextHealth = "";
             nextDamage = "";
             nextRange = "" ;
+            nextWood = "";
+            nextStone = "";
+            nextGold = "";
+
         }
         else {
             nextHealth = String.valueOf(health.get(level));
             nextDamage = String.valueOf(damage.get(level));
             nextRange = String.valueOf(range.get(level));
+            nextWood = String.valueOf(wood.get(level));
+            nextStone = String.valueOf(stone.get(level));
+            nextGold = String.valueOf(gold.get(level));
         }
+
+
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
                 .addItemSwitch(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
                                 .setLore("&7Cost for Tier " + (level + 1),
-                                        "&7Wood: " + wood.get(level),
-                                        "&7Stone: " + stone.get(level),
-                                        "&7Gold: " + gold.get(level)
+                                        "&7Wood: " + nextWood,
+                                        "&7Stone: " + nextStone,
+                                        "&7Gold: " + nextGold
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -217,9 +229,9 @@ public class Building implements Listener {
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Can't be Upgraded")
                                 .setLore("&7Cost for Tier " + (level + 1),
-                                        "&7Wood: " + wood.get(level),
-                                        "&7Stone: " + stone.get(level),
-                                        "&7Gold: " + gold.get(level),
+                                        "&7Wood: " + nextWood,
+                                        "&7Stone: " + nextStone,
+                                        "&7Gold: " + nextGold,
                                         "&4You can afford this upgrade"
                                 ).getItem()
                         , wood.get(level)

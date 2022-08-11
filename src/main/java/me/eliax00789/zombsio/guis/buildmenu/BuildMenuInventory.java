@@ -49,7 +49,7 @@ class BuildMenuInventory {
                                 new GoldMine(player, location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Not Implemented")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Gold Mine (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
@@ -60,9 +60,33 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)
                         , 0
+                        , 0
+                        , player)
+                .addItemSwitch(12, new ItemCreator(Material.DIAMOND_PICKAXE).setName("&7Resource Harvester")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Health").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new GoldMine(player, location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Not Implemented")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Health").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Gold").get(0)
+                        , 0
                         , 420
                         , player)
-                .addItemSwitch(13, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
+                .addItemSwitch(14, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
@@ -86,7 +110,7 @@ class BuildMenuInventory {
                         , 0
                         , 0
                         , player)
-                .addItemSwitch(14, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
+                .addItemSwitch(15, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
