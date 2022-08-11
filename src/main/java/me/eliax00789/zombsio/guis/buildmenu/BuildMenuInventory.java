@@ -83,18 +83,7 @@ class BuildMenuInventory {
                         , 0
                         , 0
                         , player)
-                .setItem(14, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Health").get(0)).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new Door(location);
-                        player.closeInventory();
-                    }
-                })
-                .addItemSwitch(14, new ItemCreator(Material.IRON_BARS).setName("&7Door")
+                .addItemSwitch(14, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
@@ -142,75 +131,146 @@ class BuildMenuInventory {
                         , 0
                         , 69420
                         , player)
-                .setItem(20, new ItemCreator(Material.ARROW).setName("&7Arrow Tower")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Health").get(0)
-                                ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Damage").get(0)
-                                ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Range").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new ArrowTower(location);
-                        player.closeInventory();
-                    }
-                })
-                .setItem(21, new ItemCreator(Material.FIRE_CHARGE).setName("&7Cannon Tower")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Health").get(0)
-                                ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Damage").get(0)
-                                ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Range").get(0)).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new CannonTower(location);
-                        player.closeInventory();
-                    }
-                })
-                .setItem(22, new ItemCreator(Material.TNT).setName("&7Bomb Tower")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
-                                ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
-                                ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new BombTower(location);
-                        player.closeInventory();
-                    }
-                })
-                .setItem(23, new ItemCreator(Material.ENCHANTED_BOOK).setName("&7Mage Tower")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Health").get(0)
-                                ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Damage").get(0)
-                                ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Range").get(0)
-                        ).addEnchant(Enchantment.MULTISHOT, 69420, true).addFlag(ItemFlag.HIDE_ENCHANTS).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new MageTower(location);
-                        player.closeInventory();
-                    }
-                })
-                .setItem(24,new ItemCreator(Material.STONE_SWORD).setName("&7Melee Tower")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Health").get(0)
-                                ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Damage").get(0)
-                                ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Range").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new MeleeTower(location);
-                        player.closeInventory();
-                    }
-                })
+                .addItemSwitch(20, new ItemCreator(Material.ARROW).setName("&7Arrow Tower")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Range").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new ArrowTower(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Arrow Tower (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Range").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
+                .addItemSwitch(21, new ItemCreator(Material.FIRE_CHARGE).setName("&7Cannon Tower")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Range").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new CannonTower(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Cannon Tower (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Range").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
+                .addItemSwitch(22, new ItemCreator(Material.TNT).setName("&7Bomb Tower")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new BombTower(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Bomb Tower (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
+                .addItemSwitch(23, new ItemCreator(Material.ENCHANTED_BOOK).setName("&7Mage Tower")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
+                                ).addEnchant(Enchantment.MULTISHOT, 69420, true).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new MageTower(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Mage Tower (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Range").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
+                .addItemSwitch(24, new ItemCreator(Material.STONE_SWORD).setName("&7Melee Tower")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
+                                ).addEnchant(Enchantment.MULTISHOT, 69420, true).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new MeleeTower(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Melee Tower (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Health").get(0)
+                                        ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Damage").get(0)
+                                        ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Range").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
                 .getInventory();
     }
 

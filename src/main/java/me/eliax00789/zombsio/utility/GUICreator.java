@@ -87,11 +87,12 @@ public class GUICreator implements Listener {
         return this;
     }
 
-    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Integer wood, Integer stone, Integer gold, Player player) {
+    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Integer wood, Integer stone, Integer gold, Integer currenttier, Integer neededtier, Player player) {
 
         if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
                 && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
-                && Config.getInstance().GOLD.get(player.getName().toString()) >= gold) {
+                && Config.getInstance().GOLD.get(player.getName().toString()) >= gold
+                && currenttier >= neededtier) {
             setItem(index,item1);
         } else {
             setItem(index,item2);
