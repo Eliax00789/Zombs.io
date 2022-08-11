@@ -23,7 +23,6 @@ import java.util.logging.Level;
 class BuildMenuInventory {
     Inventory inventory;
     public BuildMenuInventory(Location location) {
-        Bukkit.getLogger().log(Level.ALL,"OpenBuildMenu");
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -97,9 +96,7 @@ class BuildMenuInventory {
                         ).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        Bukkit.broadcastMessage("New arrowTower");
                         new ArrowTower(location);
-                        Bukkit.broadcastMessage("Close inv");
                         inventory.getViewers().get(0).closeInventory();
                     }
                 })

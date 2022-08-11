@@ -24,7 +24,6 @@ public class Debug implements TabExecutor {
         }
 
         Player player = (Player) commandSender;
-        Bukkit.broadcastMessage("Trying to create arrowTower");
         new ArrowTower(player.getLocation());
 
         return false;

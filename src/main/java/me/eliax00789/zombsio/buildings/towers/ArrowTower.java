@@ -211,8 +211,6 @@ public class ArrowTower extends Building {
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold"));
-        Bukkit.broadcastMessage("Trying to create arrowTower inclass");
     }
-
 
 }

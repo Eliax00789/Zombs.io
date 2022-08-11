@@ -43,16 +43,12 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
                     List<Integer> wood, List<Integer> stone, List<Integer> gold) {
-        Bukkit.broadcastMessage("Trying to create Building");
         this.name = name;
         this.level = level;
         this.maxLevel = maxLevel;
         this.location = location;
-        Bukkit.broadcastMessage("Location");
         this.structure = structure;
-        Bukkit.broadcastMessage("Structure");
         this.currentHealth = health.get(0);
-        Bukkit.broadcastMessage("Helth");
         this.health = health;
         this.damage = damage;
         this.range = range;
@@ -60,11 +56,10 @@ public class Building implements Listener {
         this.stone = stone;
         this.gold = gold;
 
-        Bukkit.getLogger().log(Level.ALL,"Trying to create building");
-        Bukkit.getLogger().log(Level.ALL,"currentHealth = " + currentHealth);
-
         this.id = (Integer) Zombsio.buildings.get("nextid");
         Zombsio.buildings.set("nextid",id + 1);
+
+        build();
 
         if (projectile != null) {
             new BukkitRunnable() {
