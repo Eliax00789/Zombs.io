@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
 import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.towers.*;
+import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
@@ -45,6 +46,38 @@ class BuildMenuInventory {
                         player.closeInventory();
                     }
                 })
+                .addItemSwitch(11, new ItemCreator(Material.GOLD_NUGGET).setName("&7Gold Mine")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
+                                        ,"&7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Gold Stash (Not Enough)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
+                                        ,"&7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+
+
+                            }
+                        }
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)
+                        , 0
+                        , player)
                 .setItem(13, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
                         .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
                                 ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)

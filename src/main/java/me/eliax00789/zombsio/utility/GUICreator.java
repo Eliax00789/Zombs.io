@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -73,12 +74,27 @@ public class GUICreator implements Listener {
         return this;
     }
 
-    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Boolean swap) {
+    public GUICreator addItemSwitch(Integer index,ItemStack item1,BukkitRunnable action1,ItemStack item2, BukkitRunnable action2, Integer wood, Integer stone, Integer gold, Integer Tier, Player player) {
 
-        if (swap = true) {
-            inventory.setItem(index,item1);
+        if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
+                && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
+                && Config.getInstance().GOLD.get(player.getName().toString()) >= gold
+                && Tier >= 0) {
+            setItem(index,item1,action1);
         } else {
-            inventory.setItem(index,item2);
+            setItem(index,item2,action2);
+        }
+        return this;
+    }
+
+    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Integer wood, Integer stone, Integer gold, Player player) {
+
+        if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
+                && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
+                && Config.getInstance().GOLD.get(player.getName().toString()) >= gold) {
+            setItem(index,item1);
+        } else {
+            setItem(index,item2);
         }
         return this;
     }
