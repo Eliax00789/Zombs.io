@@ -36,31 +36,30 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          if (e.getPlayer().getInventory().getItemInMainHand().equals(null)) {
-               e.setCancelled(true);
-               return;
-          }
-
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-               if (e.getBlock().getType().equals(Material.OAK_LOG)) {
+               if (e.getBlock().getType() == (Material.OAK_LOG)) {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
+                         Bukkit.getConsoleSender().sendMessage(name);
+                         Bukkit.getConsoleSender().sendMessage(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName());
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              Bukkit.getConsoleSender().sendMessage(String.valueOf(Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1))));
+                              //Bukkit.getConsoleSender().sendMessage(String.valueOf(Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1))));
                               Config.getInstance().WOOD.put(e.getPlayer().getName(), 1);
                               e.setCancelled(true);
                          }
                     }
                }
 
-               if (e.getBlock().getType().equals(Material.STONE)) {
-
+               if (e.getBlock().getType() == (Material.STONE)) {
+                    Bukkit.getConsoleSender().sendMessage("Help3");
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1)));
+                              //Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1)));
+                              Config.getInstance().STONE.put(e.getPlayer().getName(), 1);
                               e.setCancelled(true);
                          }
                     }
                }
+
           } else return;
 
 
@@ -72,8 +71,6 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
-          e.setCancelled(true);
-
           if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
                e.setCancelled(true);
                return;
