@@ -2,6 +2,7 @@ package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -24,21 +25,21 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak")) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onBlockPlace(BlockPlaceEvent e) {
-          if(!e.getPlayer().hasPermission("zombs.bypass.blockplace")) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.blockplace") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onHungerTick(FoodLevelChangeEvent e) {
-          if(!e.getEntity().hasPermission("zombs.bypass.foodlvlchange")) {
+          if(!e.getEntity().hasPermission("zombs.bypass.foodlvlchange") || e.getEntity().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
@@ -52,21 +53,21 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onDrop(PlayerDropItemEvent e) {
-          if(!e.getPlayer().hasPermission("zombs.bypass.dropitem")) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.dropitem") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onPickup(PlayerPickupItemEvent e) {
-          if(!e.getPlayer().hasPermission("zombs.bypass.pickupitem")) {
+          if(!e.getPlayer().hasPermission("zombs.bypass.pickupitem") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
 
      @EventHandler
      public void onInventoryClick(InventoryClickEvent e) {
-          if(!e.getView().getPlayer().hasPermission("zombs.bypass.inventoryclick")) {
+          if(!e.getView().getPlayer().hasPermission("zombs.bypass.inventoryclick") || e.getView().getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
      }
