@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 public class Door extends Building {
 
@@ -95,8 +96,8 @@ public class Door extends Building {
 
     };
 
-    public Door(Location location) {
-        super("Door",1,8,location,
+    public Door(Player player, Location location) {
+        super(player,"Door",1,8,location,
                 null,null,null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Health"),

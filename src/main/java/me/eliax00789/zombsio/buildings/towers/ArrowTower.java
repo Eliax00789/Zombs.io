@@ -202,8 +202,8 @@ public class ArrowTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
-    public ArrowTower(Player builder, Location location) {
-        super(builder,"ArrowTower",1,8,location,
+    public ArrowTower(Player player, Location location) {
+        super(player,"ArrowTower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health"),

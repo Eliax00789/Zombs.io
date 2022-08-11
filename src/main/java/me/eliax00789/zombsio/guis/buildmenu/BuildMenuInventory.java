@@ -2,7 +2,10 @@ package me.eliax00789.zombsio.guis.buildmenu;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
+import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
+import me.eliax00789.zombsio.buildings.resources.GoldMine;
+import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.towers.*;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
@@ -29,7 +32,7 @@ class BuildMenuInventory {
                         ).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-
+                        new GoldStash(player,location);
                         player.closeInventory();
                     }
                 })
@@ -43,7 +46,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-
+                                new GoldMine(player, location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Gold Mine (Can't Be Build)")
@@ -68,7 +71,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new Wall(location);
+                                new Wall(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Wall (Can't Be Build)")
@@ -92,7 +95,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new Door(location);
+                                new Door(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Door (Can't Be Build)")
@@ -107,7 +110,7 @@ class BuildMenuInventory {
                         , 0
                         , 0
                         , player)
-                .addItemSwitch(16, new ItemCreator(Material.IRON_BARS).setName("&7Slow Trap")
+                .addItemSwitch(16, new ItemCreator(Material.HONEYCOMB).setName("&7Slow Trap")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
@@ -116,7 +119,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-
+                                new SlowTrap(player, location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Slow Trap (Can't Be Build)")
@@ -142,7 +145,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new ArrowTower(location);
+                                new ArrowTower(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Arrow Tower (Can't Be Build)")
@@ -170,7 +173,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new CannonTower(location);
+                                new CannonTower(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Cannon Tower (Can't Be Build)")
@@ -198,7 +201,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new BombTower(location);
+                                new BombTower(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Bomb Tower (Can't Be Build)")
@@ -226,7 +229,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new MageTower(location);
+                                new MageTower(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Mage Tower (Can't Be Build)")
@@ -254,7 +257,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new MeleeTower(location);
+                                new MeleeTower(player,location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Melee Tower (Can't Be Build)")
