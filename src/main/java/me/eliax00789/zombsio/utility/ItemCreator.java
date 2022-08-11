@@ -7,6 +7,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.potion.PotionEffect;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class ItemCreator {
     private ItemStack item;
     private ItemMeta meta;
@@ -28,6 +33,11 @@ public class ItemCreator {
 
     public ItemCreator setUnbreakable(Boolean unbreakable) {
         meta.setUnbreakable(unbreakable);
+        return this;
+    }
+
+    public ItemCreator setLore(String... lore) {
+        meta.setLore(Arrays.asList(lore));
         return this;
     }
 

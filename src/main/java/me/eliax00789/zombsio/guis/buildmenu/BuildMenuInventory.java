@@ -68,7 +68,7 @@ class BuildMenuInventory {
                         inventory.getViewers().get(0).closeInventory();
                     }
                 })
-                .setItem(22, new ItemCreator(Material.TNT).setName("Bomb Tower").getItem(), new BukkitRunnable() {
+                .setItem(22, new ItemCreator(Material.TNT).setName("Bomb Tower").setLore("Damage: 10" , "Health : 10", "Test").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         new BombTower(location);
