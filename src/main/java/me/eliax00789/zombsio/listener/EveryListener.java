@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -81,6 +82,7 @@ public class EveryListener implements Listener {
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                          if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 30));
+                              e.setInstaBreak(true);
                          }
                     }
 
@@ -169,6 +171,12 @@ public class EveryListener implements Listener {
                e.setCancelled(true);
           }
      }
+
+     @EventHandler
+     public void onEnityDeath(EntityDeathEvent e) {
+          e.getDrops().set(0, null);
+     }
+
 
      @EventHandler
      public void onDeath(PlayerDeathEvent e) {
