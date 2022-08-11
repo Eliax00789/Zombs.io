@@ -57,6 +57,42 @@ public class Building implements Listener {
         this.wood = wood;
         this.stone = stone;
         this.gold = gold;
+        if (health == null) {
+            this.health = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                health.add(0);
+            }
+        }
+        if (damage == null) {
+            this.damage = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                damage.add(0);
+            }
+        }
+        if (range == null) {
+            this.range = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                range.add(0);
+            }
+        }
+        if (wood == null) {
+            this.wood = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                wood.add(0);
+            }
+        }
+        if (stone == null) {
+            this.stone = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                stone.add(0);
+            }
+        }
+        if (gold == null) {
+            this.gold = new ArrayList<Integer>();
+            for (Integer i = 0;i <= maxLevel;i++) {
+                gold.add(0);
+            }
+        }
 
         build();
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
@@ -172,9 +208,9 @@ public class Building implements Listener {
                 .addExitButton()
                 .setItem(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
                         .setLore("&7Cost for Tier " + (level + 1),
-                                "&7Wood: " + wood.get(level),
-                                "&7Stone: " + stone.get(level),
-                                "&7Gold: " + gold.get(level),
+                                "&7Wood: " + wood.get(level - 1),
+                                "&7Stone: " + stone.get(level - 1),
+                                "&7Gold: " + gold.get(level - 1),
                                 hasResourcesString(player)).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
