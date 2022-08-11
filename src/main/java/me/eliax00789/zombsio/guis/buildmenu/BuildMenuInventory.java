@@ -225,7 +225,7 @@ class BuildMenuInventory {
                                         ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
                                         ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
                                         ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
-                                ).addEnchant(Enchantment.MULTISHOT, 69420, true).getItem()
+                                ).addEnchant(Enchantment.MULTISHOT, 69420, true).addFlag(ItemFlag.HIDE_ENCHANTS).getItem()
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
@@ -253,7 +253,7 @@ class BuildMenuInventory {
                                         ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
                                         ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
                                         ,"&7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
-                                ).addEnchant(Enchantment.MULTISHOT, 69420, true).getItem()
+                                ).getItem()
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
