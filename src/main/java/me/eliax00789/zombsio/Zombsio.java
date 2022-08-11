@@ -26,8 +26,12 @@ public final class Zombsio extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
+        plugin = this;
         Bukkit.getConsoleSender().sendMessage("========================");
         Bukkit.getConsoleSender().sendMessage("Starting " + plugin.getDescription().getName() + " Plugin");
+        Bukkit.getConsoleSender().sendMessage(" ");
+        Bukkit.getConsoleSender().sendMessage("Description :");
+        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getDescription());
         Bukkit.getConsoleSender().sendMessage("========================");
         Bukkit.getConsoleSender().sendMessage("Created By");
         Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getAuthors()));
@@ -40,7 +44,6 @@ public final class Zombsio extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage("========================");
         Bukkit.getConsoleSender().sendMessage("Commands:");
         Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getCommands()));
-        plugin = this;
         enableConfig();
         init();
         Bukkit.getConsoleSender().sendMessage("Loading " + plugin.getDescription().getName() + " Plugin");
