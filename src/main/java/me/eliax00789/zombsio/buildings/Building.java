@@ -17,11 +17,13 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 
 public class Building implements Listener {
 
+    //private ArrayList<Building> buildings;
     Integer id;
     private String name;
     private Integer level;
@@ -43,6 +45,8 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
                     List<Integer> wood, List<Integer> stone, List<Integer> gold) {
+        this.id = (Integer) Zombsio.buildings.get("nextid");
+        Zombsio.buildings.set("nextid",id + 1);
         this.name = name;
         this.level = level;
         this.maxLevel = maxLevel;
@@ -55,9 +59,6 @@ public class Building implements Listener {
         this.wood = wood;
         this.stone = stone;
         this.gold = gold;
-
-        this.id = (Integer) Zombsio.buildings.get("nextid");
-        Zombsio.buildings.set("nextid",id + 1);
 
         build();
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
@@ -125,13 +126,13 @@ public class Building implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            Bukkit.broadcastMessage(e.getClickedBlock().getType().name());
             Location structOrigin = location.add(-1,0,-1);
             for ( int x = 0; x < structure[0].length; x ++) {
                 for (int y = 0; y < structure[0][x].length; y++) {
                     for (int z = 0; z < structure[0][x][y].length; z++) {
                         Location tmp = structOrigin.clone();
                         if (e.getClickedBlock().equals(tmp.add(x,y,z).getBlock())) {
+                            Bukkit.broadcastMessage("YES");
                             e.getPlayer().openInventory(getInventory());
                         }
                     }
