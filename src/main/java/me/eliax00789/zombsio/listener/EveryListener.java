@@ -80,13 +80,12 @@ public class EveryListener implements Listener {
           }
 
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-               if (e.getBlock().getType().equals(Material.STONE)
-                       && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+               if (e.getBlock().getType().equals(Material.STONE)) {
 
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                          if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
                               e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
-                         } else e.setCancelled(true);
+                         }
                     }
 
                }
