@@ -39,8 +39,8 @@ public class Building implements Listener {
     public Building(Player builder,String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
                     Material[][][][] structure,
-                    List<Integer> health, List<Integer>  damage, List<Integer> range,
-                    List<Integer> wood, List<Integer> stone, List<Integer> gold) {
+                    @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,
+                    @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
         this.id = (Integer) Zombsio.buildings.get("nextid");
         Zombsio.buildings.set("nextid",id + 1);
         this.name = name;
