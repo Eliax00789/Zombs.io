@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.towers.projectiles;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.World;
@@ -34,6 +35,7 @@ public class CustomProjectile {
                 }
             }
         }
+        Bukkit.broadcastMessage(nearest.getType().name());
         if (nearest.getLocation().distance(startLocation) <= range) {
             Vector direction = nearest.getLocation().toVector().subtract(startLocation.toVector()).normalize();
             world.spawnParticle(particle, startLocation.getX(), startLocation.getY(), startLocation.getZ(), 0, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, null);
