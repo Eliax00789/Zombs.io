@@ -82,7 +82,7 @@ public class Building implements Listener {
         else if (level.equals(7)) {temp = structure[6];}
         else if (level.equals(8)) {temp = structure[7];}
         else {temp = structure[0];}
-        Location structOrigin = location.add(-1,0,-1);
+        Location structOrigin = location.clone().add(-1,0,-1);
         for ( int x = 0; x < temp.length; x ++) {
             for (int y = 0; y < temp[x].length; y++) {
                 for (int z = 0; z < temp[x][y].length; z++) {
@@ -117,7 +117,7 @@ public class Building implements Listener {
     }
 
     private void remove() {
-        Location structOrigin = location.add(-1,0,-1);
+        Location structOrigin = location.clone().add(-1,0,-1);
         for ( int x = 0; x < structure[0].length; x ++) {
             for (int y = 0; y < structure[0][x].length; y++) {
                 for (int z = 0; z < structure[0][x][y].length; z++) {
@@ -131,7 +131,7 @@ public class Building implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            Location structOrigin = location.add(-1,0,-1);
+            Location structOrigin = location.clone().add(-1,0,-1);
             e.getPlayer().sendMessage(e.getClickedBlock().getType().name(),structOrigin.toString(), String.valueOf(structure.length), String.valueOf(structure[level-1].length));
             for ( int x = 0; x < structure[level - 1].length; x ++) {
                 for (int y = 0; y < structure[level - 1][x].length; y++) {
