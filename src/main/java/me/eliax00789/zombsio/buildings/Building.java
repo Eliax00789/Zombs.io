@@ -125,6 +125,7 @@ public class Building implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            Bukkit.broadcastMessage(e.getClickedBlock().getType().name());
             Location structOrigin = location.add(-1,0,-1);
             for ( int x = 0; x < structure[0].length; x ++) {
                 for (int y = 0; y < structure[0][x].length; y++) {
