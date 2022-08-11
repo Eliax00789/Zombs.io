@@ -8,6 +8,7 @@ import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Mob;
+import org.bukkit.entity.Monster;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
@@ -31,7 +32,7 @@ public class CustomProjectile {
     public void shoot() {
         Entity nearest = null;
         for (Entity e:world.getEntities()) {
-            if (e instanceof Mob) {
+            if (e instanceof Monster) {
                 if (nearest == null) {
                     nearest = e;
                 }
