@@ -75,7 +75,7 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
           PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);
-
+          ((CraftPlayer) e.getPlayer()).getHandle().con
 
           if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
                e.setCancelled(true);
