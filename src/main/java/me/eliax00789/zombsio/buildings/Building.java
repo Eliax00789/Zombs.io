@@ -110,6 +110,13 @@ public class Building implements Listener {
         else {return false;}
     }
 
+    private String hasResourcesString(Player player) {
+        if (Config.getInstance().WOOD.get(player.getName()) >= wood.get(level)
+                && Config.getInstance().STONE.get(player.getName()) >= stone.get(level)
+                && Config.getInstance().GOLD.get(player.getName()) >= gold.get(level)) {return "&7You can afford this upgrade";}
+        else {return "&7You can not afford this upgrade";}
+    }
+
     private void removeResources(Player player) {
         Config.getInstance().WOOD.put(player.getName(),Config.getInstance().WOOD.get(player.getName()) - wood.get(level));
         Config.getInstance().STONE.put(player.getName(),Config.getInstance().STONE.get(player.getName()) - stone.get(level));
@@ -132,7 +139,6 @@ public class Building implements Listener {
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             Location structOrigin = location.clone().add(-1,0,-1);
-            e.getPlayer().sendMessage(e.getClickedBlock().getType().name(),structOrigin.toString(), String.valueOf(structure.length), String.valueOf(structure[level-1].length));
             for ( int x = 0; x < structure[level - 1].length; x ++) {
                 for (int y = 0; y < structure[level - 1][x].length; y++) {
                     for (int z = 0; z < structure[level - 1][x][y].length; z++) {
@@ -165,10 +171,11 @@ public class Building implements Listener {
                 .fillPlaceHolder()
                 .addExitButton()
                 .setItem(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
-                        .setLore("Cost for Tier " + (level + 1),
-                                "Wood: " + wood.get(level),
-                                "Stone: " + stone.get(level),
-                                "Gold: " + gold.get(level)).getItem(), new BukkitRunnable() {
+                        .setLore("&7Cost for Tier " + (level + 1),
+                                "&7Wood: " + wood.get(level),
+                                "&7Stone: " + stone.get(level),
+                                "&7Gold: " + gold.get(level),
+                                hasResourcesString((Player) inventory.getViewers().get(0))).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         upgrade((Player) inventory.getViewers().get(0));
@@ -176,11 +183,11 @@ public class Building implements Listener {
                     }
                 })
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
-                        .setLore("Tier " + level + "Building",
-                                "Current > Next level",
-                                "Health: " + health.get(level - 1) + " > " + nextHealth,
-                                "Damage: " + damage.get(level - 1) + " > " + nextDamage,
-                                "Range: " + range.get(level - 1) + " > " + nextRange).getItem())
+                        .setLore("&7Tier " + level + " Building",
+                                "&7Current > Next level",
+                                "&7Health: " + health.get(level - 1) + " > " + nextHealth,
+                                "&7Damage: " + damage.get(level - 1) + " > " + nextDamage,
+                                "&7Range: " + range.get(level - 1) + " > " + nextRange).getItem())
                 .setItem(15, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("Remove").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
