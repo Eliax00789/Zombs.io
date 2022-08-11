@@ -60,6 +60,7 @@ public class Building implements Listener {
         Zombsio.buildings.set("nextid",id + 1);
 
         build();
+        Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
 
         if (projectile != null) {
             new BukkitRunnable() {
