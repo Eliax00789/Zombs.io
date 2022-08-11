@@ -132,10 +132,10 @@ public class Building implements Listener {
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             Location structOrigin = location.add(-1,0,-1);
-            e.getPlayer().sendMessage(e.getClickedBlock().getType().name(),structOrigin.toString(),structure[0].toString(), String.valueOf(structure.length));
-            for ( int x = 0; x < structure[0].length; x ++) {
-                for (int y = 0; y < structure[0][x].length; y++) {
-                    for (int z = 0; z < structure[0][x][y].length; z++) {
+            e.getPlayer().sendMessage(e.getClickedBlock().getType().name(),structOrigin.toString(), String.valueOf(structure.length), String.valueOf(structure[level-1].length));
+            for ( int x = 0; x < structure[level - 1].length; x ++) {
+                for (int y = 0; y < structure[level - 1][x].length; y++) {
+                    for (int z = 0; z < structure[level - 1][x][y].length; z++) {
                         Location tmp = structOrigin.clone();
                         if (e.getClickedBlock().equals(tmp.add(x,y,z).getBlock())) {
                             e.getPlayer().openInventory(getInventory());
