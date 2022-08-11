@@ -17,53 +17,53 @@ class ShopArmorInventory {
                 .fillPlaceHolder()
                 .addExitButton()
                 .setCancelAllClicks(true)
-                .setItem(1, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Tools").getItem(), new BukkitRunnable() {
+                .setItem(1, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Tools").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"tools");
                         inventory.getViewers().get(0).openInventory(new ShopToolsInventory().getInventory());
                     }
                 })
-                .setItem(2, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Armor").getItem())
-                .setItem(3, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Pets").getItem(), new BukkitRunnable() {
+                .setItem(2, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("&aArmor").getItem())
+                .setItem(3, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Pets").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"pets");
                         inventory.getViewers().get(0).openInventory(new ShopPetsInventory().getInventory());
                     }
                 })
-                .setItem(4, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("Potions").getItem(), new BukkitRunnable() {
+                .setItem(4, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Potions").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"potions");
                         inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
-                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName("Helmet MK.1").getItem(), new BukkitRunnable() {
+                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName("&7Helmet MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName("Chestplate MK.1").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName("&7Chestplate MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName("Leggings MK.1").getItem(), new BukkitRunnable() {
+                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName("&7Leggings MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName("Boots MK.1").getItem(), new BukkitRunnable() {
+                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName("&7Boots MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("Shield MK.1").getItem(), new BukkitRunnable() {
+                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("&7Shield MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
