@@ -106,15 +106,8 @@ public class Resources implements TabExecutor {
         optionlist.add("remove");
         optionlist.add("set");
         ArrayList<String> numberlist = new ArrayList<String>();
-        for (Integer i = 0; i < 100; i++) {
+        for (Integer i = 0; i < 1000; i++) {
             numberlist.add(String.valueOf(i));
-        }
-        if (args.length == 1) {
-            for (Player p: playerlist) {
-                if (p.getName().contains(args[0].toLowerCase())) {
-                    toCompleteTo.add(p.getName());
-                }
-            }
         }
         if (args.length == 2) {
             for (String s: resourcelist) {
