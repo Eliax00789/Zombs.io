@@ -24,6 +24,7 @@ import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -71,6 +72,8 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
+          e.setCancelled(true);
+
           if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
                e.setCancelled(true);
                return;
@@ -102,9 +105,20 @@ public class EveryListener implements Listener {
      public void onGamemodeChange(PlayerGameModeChangeEvent e) {
           if (e.getNewGameMode() == GameMode.SURVIVAL) {
 
+               e.getPlayer().getInventory().clear();
+               for (Integer i = 0; i <= 35; i++) {
+                    e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
+               }
+
+               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
+                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                       .setUnbreakable(true)
+                       .addFlag(ItemFlag.HIDE_UNBREAKABLE)
+                       .getItem());
 
                e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
                e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
+
           }
      }
 
@@ -124,6 +138,10 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onDamage(EntityDamageEvent e) {
+          if (!(e.getEntity() instanceof Player)) {
+               return;
+          }
+
           if(!e.getEntity().hasPermission("zombs.bypass.damage")){
                e.setCancelled(true);
           }

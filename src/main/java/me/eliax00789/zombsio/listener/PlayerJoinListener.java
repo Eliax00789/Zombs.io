@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 public class PlayerJoinListener implements Listener {
@@ -27,6 +28,12 @@ public class PlayerJoinListener implements Listener {
         }
         e.getPlayer().getInventory().clear();
         e.getPlayer().setGameMode(GameMode.SURVIVAL);
+
+        e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
+                .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                .setUnbreakable(true)
+                .addFlag(ItemFlag.HIDE_UNBREAKABLE)
+                .getItem());
 
 
         e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
