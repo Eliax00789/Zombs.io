@@ -197,7 +197,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new CannonTower(player,location);
+                                new CannonTower(player, location);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Cannon Tower (Can't Be Build)")

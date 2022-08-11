@@ -1,6 +1,9 @@
 package me.eliax00789.zombsio.buildings;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.other.Door;
+import me.eliax00789.zombsio.buildings.other.SlowTrap;
+import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.towers.MeleeTower;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
@@ -123,7 +126,12 @@ public class Building implements Listener {
         else if (level.equals(7)) {temp = structure[6];}
         else if (level.equals(8)) {temp = structure[7];}
         else {temp = structure[0];}
-        Location structOrigin = location.clone().add(-1,0,-1);
+        Location structOrigin;
+        if(this instanceof Door || this instanceof Wall) {
+            structOrigin = location.clone();
+        } else {
+            structOrigin = location.clone().add(-1, 0, -1);
+        }
         for ( int x = 0; x < temp.length; x ++) {
             for (int y = 0; y < temp[x].length; y++) {
                 for (int z = 0; z < temp[x][y].length; z++) {
@@ -162,7 +170,12 @@ public class Building implements Listener {
         if (projectileLoop != null) {
             projectileLoop.cancel();
         }
-        Location structOrigin = location.clone().add(-1,0,-1);
+        Location structOrigin;
+        if(this instanceof Door || this instanceof Wall) {
+            structOrigin = location.clone();
+        } else {
+            structOrigin = location.clone().add(-1, 0, -1);
+        }
         for ( int x = 0; x < structure[0].length; x ++) {
             for (int y = 0; y < structure[0][x].length; y++) {
                 for (int z = 0; z < structure[0][x][y].length; z++) {
@@ -176,7 +189,12 @@ public class Building implements Listener {
     @EventHandler
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-            Location structOrigin = location.clone().add(-1,0,-1);
+            Location structOrigin;
+            if(this instanceof Door || this instanceof Wall) {
+                structOrigin = location.clone();
+            } else {
+                structOrigin = location.clone().add(-1, 0, -1);
+            }
             for ( int x = 0; x < structure[level - 1].length; x ++) {
                 for (int y = 0; y < structure[level - 1][x].length; y++) {
                     for (int z = 0; z < structure[level - 1][x][y].length; z++) {
