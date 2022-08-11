@@ -33,6 +33,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scheduler.BukkitRunnable;
 
 public class EveryListener implements Listener {
 
@@ -74,9 +75,13 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
-          PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);
-          ((EntityPlayer) e.getPlayer()).b.a(packet);
-
+          new BukkitRunnable() {
+               @Override
+               public void run() {
+                    PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);
+                    ((EntityPlayer) e.getPlayer()).b.a(packet);
+               }
+          }.runTaskTimer(Zombsio.plugin,0,1);
 
           if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
                e.setCancelled(true);
