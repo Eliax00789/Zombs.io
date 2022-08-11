@@ -28,9 +28,6 @@ public final class Zombsio extends JavaPlugin {
         // Plugin startup logic
         Bukkit.getConsoleSender().sendMessage("========================");
         Bukkit.getConsoleSender().sendMessage("Starting " + plugin.getDescription().getName() + " Plugin");
-        Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage("Description :");
-        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getDescription());
         Bukkit.getConsoleSender().sendMessage("========================");
         Bukkit.getConsoleSender().sendMessage("Created By");
         Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getAuthors()));
