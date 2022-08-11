@@ -35,7 +35,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.STONE, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.STONE_BRICK_WALL, Material.AIR, Material.STONE_BRICK_WALL}, // y = 0
@@ -54,7 +54,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.IRON_BLOCK, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.CHAIN, Material.AIR, Material.CHAIN}, // y = 0
@@ -73,7 +73,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.GOLD_BLOCK, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.NETHER_BRICK_FENCE, Material.AIR, Material.NETHER_BRICK_FENCE}, // y = 0
@@ -91,7 +91,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.OBSIDIAN, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.POLISHED_BLACKSTONE_WALL, Material.AIR, Material.POLISHED_BLACKSTONE_WALL}, // y = 0
@@ -109,7 +109,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.EMERALD_BLOCK, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.WARPED_FENCE, Material.AIR, Material.WARPED_FENCE}, // y = 0
@@ -127,7 +127,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.DIAMOND_BLOCK, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.PRISMARINE_WALL, Material.AIR, Material.PRISMARINE_WALL}, // y = 0
@@ -145,7 +145,7 @@ public class ResourceHarvester extends Building {
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
-                    {Material.PISTON, Material.DIRT, Material.PISTON},  // y = 2
+                    {Material.PISTON, Material.NETHERITE_BLOCK, Material.PISTON},  // y = 2
             },
             { // x = 2
                     {Material.POLISHED_DEEPSLATE_WALL, Material.AIR, Material.POLISHED_DEEPSLATE_WALL}, // y = 0
