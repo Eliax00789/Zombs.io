@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.BlockChangeDelegate;
@@ -36,14 +37,12 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
+
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
                if (e.getBlock().getType() == (Material.OAK_LOG)) {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
-                         Bukkit.getConsoleSender().sendMessage(name);
-                         Bukkit.getConsoleSender().sendMessage(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName());
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              //Bukkit.getConsoleSender().sendMessage(String.valueOf(Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1))));
-                              Config.getInstance().WOOD.put(e.getPlayer().getName(), 1);
+                              Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) +  1);
                               e.setCancelled(true);
                          }
                     }
@@ -53,20 +52,18 @@ public class EveryListener implements Listener {
                     Bukkit.getConsoleSender().sendMessage("Help3");
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              //Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1)));
-                              Config.getInstance().STONE.put(e.getPlayer().getName(), 1);
+                              Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
                               e.setCancelled(true);
                          }
                     }
                }
 
-          } else return;
+          }
 
 
           if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
-
      }
 
      @EventHandler
@@ -75,6 +72,8 @@ public class EveryListener implements Listener {
                e.setCancelled(true);
                return;
           }
+
+          new ResourceScoreboard(e.getPlayer());
 
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
                if (e.getBlock().getType().equals(Material.STONE)) {
