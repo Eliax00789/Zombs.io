@@ -2,6 +2,7 @@ package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.utility.Config;
+import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -20,6 +21,7 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 
 public class EveryListener implements Listener {
@@ -30,12 +32,12 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          if (e.getBlock().getType().equals(Material.OAK_LOG)) {
+          if (e.getBlock().getType().equals(Material.OAK_LOG) && e.getPlayer().getItemInHand().equals(new ItemCreator(Material.WOODEN_AXE).setName("Pickaxe MK.1").getItem())) {
                Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
                e.setCancelled(true);
           }
 
-          if (e.getBlock().getType().equals(Material.STONE)) {
+          if (e.getBlock().getType().equals(Material.STONE) && e.getPlayer().getItemInHand().equals(new ItemCreator(Material.WOODEN_AXE).setName("Pickaxe MK.1").getItem())) {
                Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + 1);
                e.setCancelled(true);
           }
@@ -44,8 +46,16 @@ public class EveryListener implements Listener {
                e.setCancelled(true);
           }
 
+     }
+
+     @EventHandler
+     public void onGamemodeChange(PlayerGameModeChangeEvent e) {
+          if (e.getNewGameMode() == GameMode.SURVIVAL) {
 
 
+               e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
+               e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
+          }
      }
 
      @EventHandler

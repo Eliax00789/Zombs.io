@@ -65,7 +65,7 @@ class ShopToolsInventory {
                 .setItem(12, new ItemCreator(Material.BOW).setName("&7Bow MK.1")
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Bow.Gold").get(0)
                                 ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Items.Bow.Damage").get(0)
-                                ,"&7Attackspeed: " + Zombsio.plugin.getConfig().getList("Bow.Spear.Attackspeed").get(0)
+                                ,"&7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Bow.Attackspeed").get(0)
                         ).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
