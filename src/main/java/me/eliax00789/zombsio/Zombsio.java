@@ -43,6 +43,8 @@ public final class Zombsio extends JavaPlugin {
     private void enableConfig() {
         Config.setup();
         filebuildings = new File(getDataFolder(), "buildings.yml");
+        getConfig().options().copyDefaults(true);
+        saveResource("config.yml", false);
         saveConfig();
         if (!filebuildings.exists()){
             try {

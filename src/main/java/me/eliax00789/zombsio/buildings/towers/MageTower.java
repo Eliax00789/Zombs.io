@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -200,7 +201,11 @@ public class MageTower extends Tower {
     public MageTower(Location location) {
         super("MageTower",location,
                 mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
-                new Integer[]{150,200,400,800,1200,1600,2200,3600},new Integer[]{10, 50,40,50,70,80,120,160},new Integer[]{400,400,400,400,400,400,400,425},
-                new Integer[]{15,25,40,50,70,100,300,800},new Integer[]{15,25,40,50,70,100,300,800},new Integer[]{0,100,200,600,1200,2000,8000,35000});
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Health").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Damage").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Range").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").toArray());
     }
 }

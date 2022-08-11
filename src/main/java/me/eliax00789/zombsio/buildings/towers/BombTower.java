@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -200,7 +201,11 @@ public class BombTower extends Tower{
     public BombTower(Location location) {
         super("Bomb Tower",location,
                 mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
-                new Integer[]{150,200,400,800,1200,1600,2200,3600},new Integer[]{30,60,100,140,200,600,1200,1600},new Integer[]{1000,1000,1000,1000,1000,1000,1000,1000},
-                new Integer[]{15,25,40,50,80,120,300,800},new Integer[]{15,25,40,50,80,120,300,800},new Integer[]{0,100,200,600,1200,2000,8000,35000});
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Health").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Damage").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Range").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").toArray());
     }
 }

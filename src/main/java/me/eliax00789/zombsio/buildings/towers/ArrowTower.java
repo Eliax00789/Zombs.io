@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.towers;
 
+import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -199,8 +200,12 @@ public class ArrowTower extends Tower{
     public ArrowTower(Location location) {
         super("ArrowTower",location,
                 mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
-                new Integer[]{150,200,400,800,1200,1600,2200,3600},new Integer[]{20,40,70,120,180,250,400,500},new Integer[]{600,650,700,750,800,850,900,1000},
-                new Integer[]{5,25,30,40,50,70,300,600},new Integer[]{5,20,30,40,60,80,300,800},new Integer[]{0,100,200,600,1200,2000,8000,35000});
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Range").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").toArray(),
+                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").toArray());
     }
 
 
