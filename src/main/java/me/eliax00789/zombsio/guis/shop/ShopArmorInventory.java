@@ -40,7 +40,7 @@ class ShopArmorInventory {
                         inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
-                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName("&7Helmet MK.1")
+                .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName(Zombsio.plugin.getConfig().getStringList("Items.Helmet.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Helmet.Gold").get(0)
                                 ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Helmet.Health").get(0)
                         ).getItem(), new BukkitRunnable() {
@@ -49,7 +49,7 @@ class ShopArmorInventory {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName("&7Chestplate MK.1")
+                .setItem(11, new ItemCreator(Material.LEATHER_CHESTPLATE).setName(Zombsio.plugin.getConfig().getStringList("Items.Chestplate.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Chestplate.Gold").get(0)
                                 ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Chestplate.Health").get(0)
                         ).getItem(), new BukkitRunnable() {
@@ -58,16 +58,7 @@ class ShopArmorInventory {
 
                     }
                 })
-                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName("&7Leggings MK.1")
-                        .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Chestplate.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Chestplate.Health").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                })
-                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName("&7Boots MK.1")
+                .setItem(12, new ItemCreator(Material.LEATHER_LEGGINGS).setName(Zombsio.plugin.getConfig().getStringList("Items.Leggings.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Leggings.Gold").get(0)
                                 ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Leggings.Health").get(0)
                         ).getItem(), new BukkitRunnable() {
@@ -76,7 +67,16 @@ class ShopArmorInventory {
 
                     }
                 })
-                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName("&7Shield MK.1")
+                .setItem(13, new ItemCreator(Material.LEATHER_BOOTS).setName(Zombsio.plugin.getConfig().getStringList("Items.Boots.Name").get(0))
+                        .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Boots.Gold").get(0)
+                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Boots.Health").get(0)
+                        ).getItem(), new BukkitRunnable() {
+                    @Override
+                    public void run() {
+
+                    }
+                })
+                .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Shield.Gold").get(0)
                                 ,"&7Health: " + Zombsio.plugin.getConfig().getList("Items.Shield.Health").get(0)
                                 ,"&7RechargeDelay: " + Zombsio.plugin.getConfig().getList("Items.Shield.RechargeDelay").get(0)

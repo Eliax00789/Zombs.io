@@ -12,10 +12,7 @@ import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockDamageEvent;
-import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.block.BlockReceiveGameEvent;
+import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -26,6 +23,7 @@ import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -37,16 +35,31 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          if (e.getBlock().getType().equals(Material.OAK_LOG)
-                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
-               Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
+          if (e.getPlayer().getInventory().getItemInMainHand().equals(null)) {
                e.setCancelled(true);
+               return;
+          }
+
+          if (e.getBlock().getType().equals(Material.OAK_LOG)
+                  && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+
+               for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
+                    if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
+                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                         e.setCancelled(true);
+                    }
+               }
           }
 
           if (e.getBlock().getType().equals(Material.STONE)
-                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
-               Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + 1);
-               e.setCancelled(true);
+                  && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+
+               for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
+                    if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
+                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                         e.setCancelled(true);
+                    }
+               }
           }
 
 
@@ -58,12 +71,31 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
-          e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20, 5));
-
-          if (e.getBlock().getType().equals(Material.STONE)
-                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
-
+          if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
+               e.setCancelled(true);
+               return;
           }
+
+          if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+               if (e.getBlock().getType().equals(Material.STONE)
+                       && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+
+                    for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
+                         if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
+                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                         } else e.setCancelled(true);
+                    }
+
+               }
+          }
+
+
+     }
+
+     @EventHandler
+     public void onBlockDamageCancel(BlockDamageAbortEvent e) {
+          e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
+
      }
 
      @EventHandler

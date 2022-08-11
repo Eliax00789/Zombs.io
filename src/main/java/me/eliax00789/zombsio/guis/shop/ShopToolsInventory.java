@@ -40,7 +40,7 @@ class ShopToolsInventory {
                         inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
-                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("&7Pickaxe MK.1")
+                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Gold").get(0)
                                 ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Damage").get(0)
                                 ,"&7Resource Amount: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Harvest").get(0)
@@ -51,7 +51,7 @@ class ShopToolsInventory {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.WOODEN_SWORD).setName("&7Spear MK.1")
+                .setItem(11, new ItemCreator(Material.WOODEN_SWORD).setName(Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Spear.Gold").get(0)
                                 ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Items.Spear.Damage").get(0)
                                 ,"&7Range: " + Zombsio.plugin.getConfig().getList("Items.Spear.Range").get(0)
@@ -62,7 +62,7 @@ class ShopToolsInventory {
 
                     }
                 })
-                .setItem(12, new ItemCreator(Material.BOW).setName("&7Bow MK.1")
+                .setItem(12, new ItemCreator(Material.BOW).setName(Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Bow.Gold").get(0)
                                 ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Items.Bow.Damage").get(0)
                                 ,"&7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Bow.Attackspeed").get(0)
@@ -72,7 +72,7 @@ class ShopToolsInventory {
 
                     }
                 })
-                .setItem(13, new ItemCreator(Material.FIRE_CHARGE).setName("&7Bomb MK.1")
+                .setItem(13, new ItemCreator(Material.FIRE_CHARGE).setName(Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0))
                         .setLore("&7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Gold").get(0)
                                 ,"&7Damage: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Damage").get(0)
                                 ,"&7Range: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Range").get(0)
