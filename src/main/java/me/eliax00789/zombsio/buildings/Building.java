@@ -202,7 +202,7 @@ public class Building implements Listener {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
-                .addItemSwitch(24, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
+                .addItemSwitch(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
                                 .setLore("&7Cost for Tier " + (level + 1),
                                         "&7Wood: " + wood.get(level - 1),
                                         "&7Stone: " + stone.get(level - 1),
