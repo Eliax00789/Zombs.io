@@ -201,7 +201,7 @@ public class ArrowTower extends Building {
     };
     public ArrowTower(Player player, Location location) {
         super(player,"ArrowTower",1,8,location,
-                new CustomProjectile(player.getWorld(),location.clone().add(0,10,0),20, Particle.CRIT,0.5,5.0), null, 1,
+                new CustomProjectile(player.getWorld(),location.clone().add(0,5,0),20, Particle.CRIT,0.5,5.0), null, 1,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage"),

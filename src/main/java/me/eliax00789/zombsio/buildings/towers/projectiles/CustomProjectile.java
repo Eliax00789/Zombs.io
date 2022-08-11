@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio.buildings.towers.projectiles;
 
+import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
@@ -50,7 +51,7 @@ public class CustomProjectile {
                         ((LivingEntity) finalNearest).damage(damage);
                     }
                 }
-            };
+            }.runTaskLater(Zombsio.plugin, (long) (finalNearest.getLocation().distance(startLocation) / speed));
         }
     }
 }
