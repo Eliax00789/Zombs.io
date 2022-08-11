@@ -39,7 +39,7 @@ class ShopToolsInventory {
                         inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
-                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("&7Axe MK.1").getItem(), new BukkitRunnable() {
+                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("&7Pickaxe MK.1").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
