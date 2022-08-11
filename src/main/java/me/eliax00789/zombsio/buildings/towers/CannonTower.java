@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 public class CannonTower extends Building {
 
@@ -199,8 +200,8 @@ public class CannonTower extends Building {
             }
     };
 
-    public CannonTower(Location location) {
-        super("Cannon Tower",1,8,location,
+    public CannonTower(Player builder, Location location) {
+        super(builder,"Cannon Tower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Health"),

@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 
 public class MageTower extends Building {
 
@@ -223,8 +224,8 @@ public class MageTower extends Building {
             }
     };
 
-    public MageTower(Location location) {
-        super("MageTower",1,8,location,
+    public MageTower(Player builder, Location location) {
+        super(builder,"MageTower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Health"),
