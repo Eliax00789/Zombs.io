@@ -5,6 +5,7 @@ import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -17,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.logging.Level;
 
 public class Building implements Listener {
 
@@ -53,6 +55,9 @@ public class Building implements Listener {
         this.wood = wood;
         this.stone = stone;
         this.gold = gold;
+
+        Bukkit.getLogger().log(Level.ALL,"Trying to create building");
+        Bukkit.getLogger().log(Level.ALL,"currentHealth = " + currentHealth);
 
         this.id = (Integer) Zombsio.buildings.get("nextid");
         Zombsio.buildings.set("nextid",id + 1);

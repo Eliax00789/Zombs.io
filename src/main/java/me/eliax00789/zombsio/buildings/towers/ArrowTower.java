@@ -2,8 +2,11 @@ package me.eliax00789.zombsio.buildings.towers;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+
+import java.util.logging.Level;
 
 public class ArrowTower extends Building {
 
@@ -208,6 +211,7 @@ public class ArrowTower extends Building {
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold"));
+        Bukkit.getLogger().log(Level.ALL,"Trying to create arrowTower");
     }
 
 
