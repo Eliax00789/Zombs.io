@@ -22,28 +22,29 @@ public final class Zombsio extends JavaPlugin {
     public static JavaPlugin plugin;
     public static FileConfiguration buildings;
     private File filebuildings;
+    public String prefix;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
-        Bukkit.getConsoleSender().sendMessage("========================");
-        Bukkit.getConsoleSender().sendMessage("Starting " + plugin.getDescription().getName() + " Plugin");
-        Bukkit.getConsoleSender().sendMessage(" ");
-        Bukkit.getConsoleSender().sendMessage("Description :");
-        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getDescription());
-        Bukkit.getConsoleSender().sendMessage("========================");
-        Bukkit.getConsoleSender().sendMessage("Created By");
-        Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getAuthors()));
-        Bukkit.getConsoleSender().sendMessage("========================");
-        Bukkit.getConsoleSender().sendMessage("Idea by:");
-        Bukkit.getConsoleSender().sendMessage("Zombs.io");
-        Bukkit.getConsoleSender().sendMessage("========================");
-        Bukkit.getConsoleSender().sendMessage("Version:");
-        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getVersion());
-        Bukkit.getConsoleSender().sendMessage("========================");
-        Bukkit.getConsoleSender().sendMessage("Commands:");
-        Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getCommands()));
+        prefix = getDescription().getPrefix() +  " ";
+
+        Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Starting " + plugin.getDescription().getName() + " Plugin");
+        Bukkit.getConsoleSender().sendMessage(prefix + " ");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Description :");
+        Bukkit.getConsoleSender().sendMessage(prefix + plugin.getDescription().getDescription());
+        Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Created By");
+        Bukkit.getConsoleSender().sendMessage(prefix + String.valueOf(plugin.getDescription().getAuthors()));
+        Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Idea by:");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Zombs.io");
+        Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
+        Bukkit.getConsoleSender().sendMessage(prefix + "Version:");
+        Bukkit.getConsoleSender().sendMessage(prefix + plugin.getDescription().getVersion());
+        Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
         enableConfig();
         init();
         Bukkit.getConsoleSender().sendMessage("Loading " + plugin.getDescription().getName() + " Plugin");
