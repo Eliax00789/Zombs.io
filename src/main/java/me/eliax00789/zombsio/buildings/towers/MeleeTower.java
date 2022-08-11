@@ -203,12 +203,12 @@ public class MeleeTower extends Building {
         super("MeleeTower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Health").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Damage").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Range").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold").toArray());
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Health"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Damage"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Range"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold"));
     }
 
 }

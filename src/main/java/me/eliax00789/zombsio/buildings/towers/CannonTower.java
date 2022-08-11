@@ -203,11 +203,11 @@ public class CannonTower extends Building {
         super("Cannon Tower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Health").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Damage").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Range").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold").toArray());
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Health"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Damage"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Range"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold"));
     }
 }

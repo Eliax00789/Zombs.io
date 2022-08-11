@@ -203,11 +203,11 @@ public class MageTower extends Building {
         super("MageTower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Health").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Damage").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Range").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").toArray());
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Health"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Damage"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Range"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold"));
     }
 }

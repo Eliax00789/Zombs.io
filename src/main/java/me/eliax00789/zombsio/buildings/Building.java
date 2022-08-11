@@ -5,7 +5,6 @@ import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -28,26 +27,26 @@ public class Building implements Listener {
     private Location location;
     private Material [][][][] structure;
     private Integer currentHealth;
-    private Integer[] health;
-    private Integer[] damage;
-    private Integer[] range;
-    private Integer[] wood;
-    private Integer[] stone;
-    private Integer[] gold;
+    private List<Integer>  health;
+    private List<Integer>  damage;
+    private List<Integer>  range;
+    private List<Integer>  wood;
+    private List<Integer>  stone;
+    private List<Integer>  gold;
 
     private Inventory inventory;
 
     public Building(String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
                     Material[][][][] structure,
-                    Integer[] health, Integer[] damage, Integer[] range,
-                    Integer[] wood, Integer[] stone, Integer[] gold) {
+                    List<Integer> health, List<Integer>  damage, List<Integer> range,
+                    List<Integer> wood, List<Integer> stone, List<Integer> gold) {
         this.name = name;
         this.level = level;
         this.maxLevel = maxLevel;
         this.location = location;
         this.structure = structure;
-        this.currentHealth = health[0];
+        this.currentHealth = health.get(0);
         this.health = health;
         this.damage = damage;
         this.range = range;
@@ -100,9 +99,9 @@ public class Building implements Listener {
     }
 
     private boolean hasResources(Player player) {
-        if (Config.getInstance().WOOD.get(player.getName()) >= wood[level + 1]
-                && Config.getInstance().STONE.get(player.getName()) >= stone[level + 1]
-                && Config.getInstance().GOLD.get(player.getName()) >= gold[level + 1]) {return true;}
+        if (Config.getInstance().WOOD.get(player.getName()) >= wood.get(level)
+                && Config.getInstance().STONE.get(player.getName()) >= stone.get(level)
+                && Config.getInstance().GOLD.get(player.getName()) >= gold.get(level)) {return true;}
         else {return false;}
     }
 
@@ -145,9 +144,9 @@ public class Building implements Listener {
             nextRange = "" ;
         }
         else {
-            nextHealth = String.valueOf(health[level]);
-            nextDamage = String.valueOf(damage[level]);
-            nextRange = String.valueOf(range[level]);
+            nextHealth = String.valueOf(health.get(level));
+            nextDamage = String.valueOf(damage.get(level));
+            nextRange = String.valueOf(range.get(level));
         }
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
@@ -162,9 +161,9 @@ public class Building implements Listener {
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
                         .setLore("Tier " + level + "Building",
                                 "Current > Next level",
-                                "Health: " + health[level - 1] + " > " + nextHealth,
-                                "Damage: " + damage[level - 1] + " > " + nextDamage,
-                                "Range: " + range[level - 1] + " > " + nextRange).getItem())
+                                "Health: " + health.get(level - 1) + " > " + nextHealth,
+                                "Damage: " + damage.get(level - 1) + " > " + nextDamage,
+                                "Range: " + range.get(level - 1) + " > " + nextRange).getItem())
                 .setItem(15, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("Remove").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {

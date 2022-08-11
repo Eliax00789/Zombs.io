@@ -203,11 +203,11 @@ public class BombTower extends Building {
         super("Bomb Tower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Health").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Damage").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Range").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").toArray());
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Health"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Damage"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Range"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold"));
     }
 }

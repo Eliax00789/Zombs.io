@@ -202,12 +202,12 @@ public class ArrowTower extends Building {
         super("ArrowTower",1,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Range").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").toArray(),
-                (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").toArray());
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Range"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone"),
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold"));
     }
 
 
