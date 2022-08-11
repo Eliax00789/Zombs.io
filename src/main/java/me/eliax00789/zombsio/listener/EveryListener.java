@@ -115,7 +115,10 @@ public class EveryListener implements Listener {
                e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
                e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
 
+          } else {
+               e.getPlayer().getInventory().clear();
           }
+
      }
 
      @EventHandler
