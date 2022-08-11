@@ -14,7 +14,7 @@ public class BuildMenu implements Listener {
     @EventHandler
     public void onCraftingTablePlace(BlockPlaceEvent e) {
         if (e.getBlockPlaced().getType().equals(Material.CRAFTING_TABLE)) {
-            e.getPlayer().openInventory(new BuildMenuInventory(e.getBlockPlaced().getLocation()).getInventory());
+            e.getPlayer().openInventory(new BuildMenuInventory(e.getBlockPlaced().getLocation(),e.getPlayer()).getInventory());
             e.setCancelled(true);
         }
     }

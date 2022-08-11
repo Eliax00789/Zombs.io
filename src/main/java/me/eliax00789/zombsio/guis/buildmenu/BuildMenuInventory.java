@@ -9,13 +9,14 @@ import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class BuildMenuInventory {
     private Inventory inventory;
-    public BuildMenuInventory(Location location) {
+    public BuildMenuInventory(Location location, Player player) {
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -28,7 +29,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
 
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(11, new ItemCreator(Material.GOLD_NUGGET).setName("&7Gold Mine")
@@ -41,7 +42,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
 
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(13, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
@@ -53,7 +54,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new Wall(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(14, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
@@ -64,7 +65,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new Door(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(16, new ItemCreator(Material.HONEYCOMB).setName("&7Slow Trap")
@@ -76,7 +77,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
 
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(20, new ItemCreator(Material.ARROW).setName("&7Arrow Tower")
@@ -90,7 +91,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new ArrowTower(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(21, new ItemCreator(Material.FIRE_CHARGE).setName("&7Cannon Tower")
@@ -103,7 +104,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new CannonTower(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(22, new ItemCreator(Material.TNT).setName("&7Bomb Tower")
@@ -117,7 +118,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new BombTower(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(23, new ItemCreator(Material.ENCHANTED_BOOK).setName("&7Mage Tower")
@@ -131,7 +132,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new MageTower(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .setItem(24,new ItemCreator(Material.STONE_SWORD).setName("&7Melee Tower")
@@ -145,7 +146,7 @@ class BuildMenuInventory {
                     @Override
                     public void run() {
                         new MeleeTower(location);
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .getInventory();
