@@ -144,7 +144,7 @@ public class Building implements Listener {
                     for (int z = 0; z < structure[level - 1][x][y].length; z++) {
                         Location tmp = structOrigin.clone();
                         if (e.getClickedBlock().equals(tmp.add(x,y,z).getBlock())) {
-                            e.getPlayer().openInventory(getInventory());
+                            e.getPlayer().openInventory(getInventory(e.getPlayer()));
                         }
                     }
                 }
@@ -152,7 +152,7 @@ public class Building implements Listener {
         }
     }
 
-    private Inventory getInventory() {
+    private Inventory getInventory(Player player) {
         String nextHealth;
         String nextDamage;
         String nextRange;
@@ -175,11 +175,11 @@ public class Building implements Listener {
                                 "&7Wood: " + wood.get(level),
                                 "&7Stone: " + stone.get(level),
                                 "&7Gold: " + gold.get(level),
-                                hasResourcesString((Player) inventory.getViewers().get(0))).getItem(), new BukkitRunnable() {
+                                hasResourcesString(player)).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        upgrade((Player) inventory.getViewers().get(0));
-                        inventory.getViewers().get(0).closeInventory();
+                        upgrade(player);
+                        player.closeInventory();
                     }
                 })
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
@@ -192,7 +192,7 @@ public class Building implements Listener {
                     @Override
                     public void run() {
                         remove();
-                        inventory.getViewers().get(0).closeInventory();
+                        player.closeInventory();
                     }
                 })
                 .getInventory();
