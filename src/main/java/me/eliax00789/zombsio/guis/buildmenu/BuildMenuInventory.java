@@ -33,19 +33,6 @@ class BuildMenuInventory {
                         player.closeInventory();
                     }
                 })
-                .setItem(11, new ItemCreator(Material.GOLD_NUGGET).setName("&7Gold Mine")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                ,"&7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-
-                        player.closeInventory();
-                    }
-                })
                 .addItemSwitch(11, new ItemCreator(Material.GOLD_NUGGET).setName("&7Gold Mine")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
@@ -59,37 +46,43 @@ class BuildMenuInventory {
 
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Gold Stash (Not Enough)")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Gold Mine (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
                                         ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
                                         ,"&7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
-                        , new BukkitRunnable() {
-                            @Override
-                            public void run() {
-
-
-                            }
-                        }
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)
                         , 0
+                        , 420
                         , player)
-                .setItem(13, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Health").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        new Wall(location);
-                        player.closeInventory();
-                    }
-                })
+                .addItemSwitch(13, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Health").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new Wall(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Wall (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Health").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
                 .setItem(14, new ItemCreator(Material.IRON_DOOR).setName("&7Door")
                         .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                 ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
@@ -101,18 +94,54 @@ class BuildMenuInventory {
                         player.closeInventory();
                     }
                 })
-                .setItem(16, new ItemCreator(Material.HONEYCOMB).setName("&7Slow Trap")
-                        .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
-                                ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
-                                ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
-                                ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Health").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
+                .addItemSwitch(14, new ItemCreator(Material.IRON_BARS).setName("&7Door")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Health").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
+                                new Door(location);
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Door (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Health").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Gold").get(0)
+                        , 0
+                        , 0
+                        , player)
+                .addItemSwitch(16, new ItemCreator(Material.IRON_BARS).setName("&7Slow Trap")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Health").get(0)
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
 
-                        player.closeInventory();
-                    }
-                })
+                                player.closeInventory();
+                            }
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&7Slow Trap (Can't Be Build)")
+                                .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
+                                        ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
+                                        ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
+                                        ,"&7Health: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Health").get(0)
+                                ).getItem()
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Wood").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)
+                        , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Gold").get(0)
+                        , 0
+                        , 69420
+                        , player)
                 .setItem(20, new ItemCreator(Material.ARROW).setName("&7Arrow Tower")
                         .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
                                 ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
