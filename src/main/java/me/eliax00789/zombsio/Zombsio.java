@@ -28,7 +28,7 @@ public final class Zombsio extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         plugin = this;
-        prefix = getDescription().getPrefix() +  " ";
+        prefix = "[" + getDescription().getPrefix() + "]" +  " ";
 
         Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
         Bukkit.getConsoleSender().sendMessage(prefix + "Starting " + plugin.getDescription().getName() + " Plugin");
