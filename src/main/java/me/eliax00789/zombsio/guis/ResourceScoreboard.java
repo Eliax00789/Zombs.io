@@ -30,11 +30,18 @@ public class ResourceScoreboard {
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
         objective.setDisplayName("Resources");
 
+        scoreboard.resetScores("Wood: " + Config.getInstance().WOOD.get(player.getName()));
         objective.getScore("Wood: " + Config.getInstance().WOOD.get(player.getName())).setScore(4);
+
+        scoreboard.resetScores("§c ");
         objective.getScore("§c ").setScore(3);
+
+        scoreboard.resetScores("Stone: " + Config.getInstance().STONE.get(player.getName()));
         objective.getScore("Stone: " + Config.getInstance().STONE.get(player.getName())).setScore(2);
         objective.getScore("§a ").setScore(1);
-        objective.getScore("Gold: " + Config.getInstance().STONE.get(player.getName())).setScore(0);
+
+        scoreboard.resetScores("Gold: " + Config.getInstance().GOLD.get(player.getName()));
+        objective.getScore("Gold: " + Config.getInstance().GOLD.get(player.getName())).setScore(0);
 
 
         return scoreboard;
