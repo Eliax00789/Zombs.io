@@ -3,6 +3,7 @@ package me.eliax00789.zombsio.listener;
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import org.bukkit.BlockChangeDelegate;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -12,7 +13,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.block.BlockReceiveGameEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
@@ -23,6 +26,8 @@ import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class EveryListener implements Listener {
 
@@ -32,20 +37,33 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          if (e.getBlock().getType().equals(Material.OAK_LOG) && e.getPlayer().getItemInHand().equals(new ItemCreator(Material.WOODEN_AXE).setName("Pickaxe MK.1").getItem())) {
+          if (e.getBlock().getType().equals(Material.OAK_LOG)
+                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
                Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
                e.setCancelled(true);
           }
 
-          if (e.getBlock().getType().equals(Material.STONE) && e.getPlayer().getItemInHand().equals(new ItemCreator(Material.WOODEN_AXE).setName("Pickaxe MK.1").getItem())) {
+          if (e.getBlock().getType().equals(Material.STONE)
+                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
                Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + 1);
                e.setCancelled(true);
           }
+
 
           if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
 
+     }
+
+     @EventHandler
+     public void onBlockDamage(BlockDamageEvent e) {
+          e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20, 5));
+
+          if (e.getBlock().getType().equals(Material.STONE)
+                  && e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals("Pickaxe MK.1")) {
+
+          }
      }
 
      @EventHandler
