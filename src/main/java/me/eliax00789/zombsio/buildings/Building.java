@@ -5,7 +5,6 @@ import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -19,7 +18,6 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 public class Building implements Listener {
     public Integer id;
@@ -38,7 +36,7 @@ public class Building implements Listener {
 
     private Inventory inventory;
 
-    public Building(String name, Integer level, Integer maxLevel, Location location,
+    public Building(Player builder,String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
@@ -60,42 +58,45 @@ public class Building implements Listener {
         if (health == null) {
             this.health = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                health.add(0);
+                this.health.add(0);
             }
         }
         if (damage == null) {
             this.damage = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                damage.add(0);
+                this.damage.add(0);
             }
         }
         if (range == null) {
             this.range = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                range.add(0);
+                this.range.add(0);
             }
         }
         if (wood == null) {
             this.wood = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                wood.add(0);
+                this.wood.add(0);
             }
         }
         if (stone == null) {
             this.stone = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                stone.add(0);
+                this.stone.add(0);
             }
         }
         if (gold == null) {
             this.gold = new ArrayList<Integer>();
             for (Integer i = 0;i <= maxLevel;i++) {
-                gold.add(0);
+                this.gold.add(0);
             }
         }
 
-        build();
-        Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+        if (hasResources(builder)) {
+            removeResources(builder);
+            build();
+            Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+        }
 
         if (projectile != null) {
             new BukkitRunnable() {
