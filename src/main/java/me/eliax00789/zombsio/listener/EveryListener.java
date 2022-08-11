@@ -106,7 +106,7 @@ public class EveryListener implements Listener {
           if (e.getNewGameMode() == GameMode.SURVIVAL) {
 
                e.getPlayer().getInventory().clear();
-               for (Integer i = 0; i <= 35; i++) {
+               for (Integer i = 8; i <= 35; i++) {
                     e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
                }
 
