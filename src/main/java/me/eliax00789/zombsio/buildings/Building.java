@@ -157,6 +157,7 @@ public class Building implements Listener {
     }
 
     private void remove() {
+        PlayerInteractEvent.getHandlerList().unregister(this);
         Location structOrigin = location.clone().add(-1,0,-1);
         for ( int x = 0; x < structure[0].length; x ++) {
             for (int y = 0; y < structure[0][x].length; y++) {
