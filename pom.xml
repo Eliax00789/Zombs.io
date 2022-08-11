@@ -9,7 +9,7 @@
     <version>0.0.1-preAlpha</version>
     <packaging>jar</packaging>
 
-    <name>Zombsio</name>
+    //<name>Zombsio</name>
 
     <description>zombs.io in minecraft</description>
     <properties>
