@@ -73,6 +73,16 @@ public class GUICreator implements Listener {
         return this;
     }
 
+    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Boolean swap) {
+
+        if (swap = true) {
+            inventory.setItem(index,item1);
+        } else {
+            inventory.setItem(index,item2);
+        }
+        return this;
+    }
+
     public Inventory getInventory() {
         return inventory;
     }
