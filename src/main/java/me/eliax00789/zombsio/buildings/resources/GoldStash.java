@@ -1,8 +1,15 @@
 package me.eliax00789.zombsio.buildings.resources;
 
+import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.Building;
+import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
+import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class GoldStash {
+import javax.annotation.Nullable;
+import java.util.List;
+
+public class GoldStash extends Building {
 
     public static Material[][][] mk1 = new Material[][][] {
             { // x = 0
@@ -219,4 +226,17 @@ public class GoldStash {
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
+
+
+    public GoldStash(Location location) {
+        super("MeleeTower",1,8,location,
+                null, null, null,
+                new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldStash.Health"),
+                null,
+                null,
+                null,
+                null,
+                Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldStash.Gold"));
+    }
 }
