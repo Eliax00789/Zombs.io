@@ -198,12 +198,12 @@ public class Building implements Listener {
         String nextStone;
         String nextGold;
         if (level == maxLevel) {
-            nextHealth = "";
-            nextDamage = "";
-            nextRange = "" ;
-            nextWood = "";
-            nextStone = "";
-            nextGold = "";
+            nextHealth = "0";
+            nextDamage = "0";
+            nextRange = "0" ;
+            nextWood = "0";
+            nextStone = "0";
+            nextGold = "0";
 
         }
         else {
