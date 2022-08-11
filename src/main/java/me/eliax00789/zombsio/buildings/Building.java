@@ -201,6 +201,7 @@ public class Building implements Listener {
                         Location tmp = structOrigin.clone();
                         if (e.getClickedBlock().equals(tmp.add(x,y,z).getBlock())) {
                             e.getPlayer().openInventory(getInventory(e.getPlayer()));
+                            e.setCancelled(true);
                         }
                     }
                 }
