@@ -1,10 +1,11 @@
 package me.eliax00789.zombsio.buildings.towers;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.Building;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
-public class MeleeTower extends Tower {
+public class MeleeTower extends Building {
 
     public static Material[][][] mk1 = new Material[][][]{
             { // x = 0
@@ -199,8 +200,9 @@ public class MeleeTower extends Tower {
     };
 
     public MeleeTower(Location location) {
-        super("MeleeTower",location,
-                mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8,
+        super("MeleeTower",1,8,location,
+                null, null, null,
+                new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Health").toArray(),
                 (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Damage").toArray(),
                 (Integer[]) Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Range").toArray(),
