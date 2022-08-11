@@ -50,7 +50,6 @@ public class EveryListener implements Listener {
                }
 
                if (e.getBlock().getType() == (Material.STONE)) {
-                    Bukkit.getConsoleSender().sendMessage("Help3");
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
@@ -78,10 +77,10 @@ public class EveryListener implements Listener {
           new ResourceScoreboard(e.getPlayer());
 
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-               if (e.getBlock().getType().equals(Material.STONE)) {
+               if (e.getBlock().getType().equals(Material.STONE) || e.getBlock().getType().equals(Material.OAK_LOG)) {
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                          if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 40));
+                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 30));
                          }
                     }
 
@@ -105,7 +104,7 @@ public class EveryListener implements Listener {
                     e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
                }
 
-               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
+               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.PRISMARINE_SHARD)
                        .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
