@@ -79,7 +79,7 @@ public class EveryListener implements Listener {
                @Override
                public void run() {
                     PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);
-                    ((EntityPlayer) e.getPlayer()).b.a(packet);
+                    ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                }
           }.runTaskTimer(Zombsio.plugin,0,1);
 
