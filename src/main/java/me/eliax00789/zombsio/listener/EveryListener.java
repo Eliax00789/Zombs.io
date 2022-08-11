@@ -41,27 +41,27 @@ public class EveryListener implements Listener {
                return;
           }
 
-          if (e.getBlock().getType().equals(Material.OAK_LOG)
-                  && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-
-               for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
-                    if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
-                         Config.getInstance().WOOD.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get( name.charAt(name.length() - 1)));
-                         e.setCancelled(true);
+          if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+               if (e.getBlock().getType().equals(Material.OAK_LOG)) {
+                    for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
+                         if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
+                              Bukkit.getConsoleSender().sendMessage(String.valueOf(Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1))));
+                              Config.getInstance().WOOD.put(e.getPlayer().getName(), 1);
+                              e.setCancelled(true);
+                         }
                     }
                }
-          }
 
-          if (e.getBlock().getType().equals(Material.STONE)
-                  && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
+               if (e.getBlock().getType().equals(Material.STONE)) {
 
-               for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
-                    if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
-                         Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length()-1)));
-                         e.setCancelled(true);
+                    for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
+                         if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
+                              Config.getInstance().STONE.put(e.getPlayer().getName(), Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(name.charAt(name.length() - 1)));
+                              e.setCancelled(true);
+                         }
                     }
                }
-          }
+          } else return;
 
 
           if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
@@ -81,9 +81,8 @@ public class EveryListener implements Listener {
 
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
                if (e.getBlock().getType().equals(Material.STONE)) {
-
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
-                         if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(name)) {
+                         if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
                          }
                     }
