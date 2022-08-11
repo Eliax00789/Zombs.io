@@ -6,6 +6,7 @@ import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.resources.GoldMine;
 import me.eliax00789.zombsio.buildings.resources.GoldStash;
+import me.eliax00789.zombsio.buildings.resources.ResourceHarvester;
 import me.eliax00789.zombsio.buildings.towers.*;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
@@ -71,10 +72,10 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new GoldMine(player, location);
+                                new ResourceHarvester(player, location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Not Implemented")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Resource Harvester (Can't Be Build)")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Wood").get(0)
                                         ,"&7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Stone").get(0)
                                         ,"&7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Gold").get(0)
@@ -84,7 +85,7 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Gold").get(0)
                         , 0
-                        , 420
+                        , 0
                         , player)
                 .addItemSwitch(14, new ItemCreator(Material.IRON_BARS).setName("&7Wall")
                                 .setLore("&7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)

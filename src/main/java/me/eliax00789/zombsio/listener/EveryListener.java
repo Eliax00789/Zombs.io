@@ -15,6 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -43,16 +44,17 @@ public class EveryListener implements Listener {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) +  1);
+                              e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
                               e.setCancelled(true);
                          }
                     }
                }
 
                if (e.getBlock().getType() == (Material.STONE)) {
-                    Bukkit.getConsoleSender().sendMessage("Help3");
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
+                              e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
                               e.setCancelled(true);
                          }
                     }
@@ -76,10 +78,11 @@ public class EveryListener implements Listener {
           new ResourceScoreboard(e.getPlayer());
 
           if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-               if (e.getBlock().getType().equals(Material.STONE)) {
+               if (e.getBlock().getType().equals(Material.STONE) || e.getBlock().getType().equals(Material.OAK_LOG)) {
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                          if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 30));
+                              e.setInstaBreak(true);
                          }
                     }
 
@@ -92,7 +95,6 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onBlockDamageCancel(BlockDamageAbortEvent e) {
           e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
-
      }
 
      @EventHandler
@@ -104,7 +106,7 @@ public class EveryListener implements Listener {
                     e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
                }
 
-               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
+               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.PRISMARINE_SHARD)
                        .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
@@ -169,6 +171,13 @@ public class EveryListener implements Listener {
                e.setCancelled(true);
           }
      }
+
+     @EventHandler
+     public void onEnityDeath(EntityDeathEvent e) {
+          e.getDrops().set(0, null);
+          e.setDroppedExp(0);
+     }
+
 
      @EventHandler
      public void onDeath(PlayerDeathEvent e) {
