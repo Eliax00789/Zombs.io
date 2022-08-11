@@ -43,12 +43,16 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
                     List<Integer> wood, List<Integer> stone, List<Integer> gold) {
+        Bukkit.getLogger().log(Level.ALL,"Trying to create building");
         this.name = name;
         this.level = level;
         this.maxLevel = maxLevel;
         this.location = location;
+        Bukkit.getLogger().log(Level.ALL,"Location");
         this.structure = structure;
+        Bukkit.getLogger().log(Level.ALL,"Structure");
         this.currentHealth = health.get(0);
+        Bukkit.getLogger().log(Level.ALL,"Helth");
         this.health = health;
         this.damage = damage;
         this.range = range;

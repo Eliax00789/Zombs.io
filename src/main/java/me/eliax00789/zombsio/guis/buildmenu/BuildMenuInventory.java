@@ -96,7 +96,9 @@ class BuildMenuInventory {
                         ).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
+                        Bukkit.getLogger().log(Level.ALL,"New ArrowTower");
                         new ArrowTower(location);
+                        Bukkit.getLogger().log(Level.ALL,"CloseInventory");
                         inventory.getViewers().get(0).closeInventory();
                     }
                 })
