@@ -8,6 +8,7 @@ import me.eliax00789.zombsio.listener.EveryListener;
 import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.GameRule;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -90,5 +91,9 @@ public final class Zombsio extends JavaPlugin {
         //COMMANDS:
         new Debug();
         new Resources();
+
+        //GAMERULE:
+        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.DO_MOB_LOOT, false);
+        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.MOB_GRIEFING, false);
     }
 }
