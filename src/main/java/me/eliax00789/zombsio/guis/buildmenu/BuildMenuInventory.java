@@ -23,6 +23,7 @@ import java.util.logging.Level;
 class BuildMenuInventory {
     Inventory inventory;
     public BuildMenuInventory(Location location) {
+        Bukkit.getLogger().log(Level.ALL,"OpenBuildMenu");
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()

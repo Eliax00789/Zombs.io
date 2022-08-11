@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.commands;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.towers.ArrowTower;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -23,7 +24,7 @@ public class Debug implements TabExecutor {
 
         Player player = (Player) commandSender;
 
-        //Todo: EVERTHING
+        new ArrowTower(player.getLocation());
 
         return false;
     }
