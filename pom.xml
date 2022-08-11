@@ -6,7 +6,7 @@
 
     <groupId>me.eliax00789</groupId>
     <artifactId>zombsio</artifactId>
-    <version>0.0.0.0.1-preAlpha</version>
+    <version>0.0.1-preAlpha</version>
     <packaging>jar</packaging>
 
     <name>Zombsio</name>
