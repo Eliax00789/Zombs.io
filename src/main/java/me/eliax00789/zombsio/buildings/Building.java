@@ -36,8 +36,8 @@ public class Building implements Listener {
     private List<Integer>  wood;
     private List<Integer>  stone;
     private List<Integer>  gold;
-
     private Inventory inventory;
+    private BukkitRunnable projectileLoop;
 
     public Building(Player builder,String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
@@ -102,12 +102,13 @@ public class Building implements Listener {
         }
 
         if (projectile != null) {
-            new BukkitRunnable() {
+            projectileLoop = new BukkitRunnable() {
                 @Override
                 public void run() {
                     projectile.shoot();
                 }
-            }.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
+            };
+            projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
         }
     }
 
@@ -158,6 +159,9 @@ public class Building implements Listener {
 
     private void remove() {
         PlayerInteractEvent.getHandlerList().unregister(this);
+        if (projectileLoop != null) {
+            projectileLoop.cancel();
+        }
         Location structOrigin = location.clone().add(-1,0,-1);
         for ( int x = 0; x < structure[0].length; x ++) {
             for (int y = 0; y < structure[0][x].length; y++) {
@@ -235,9 +239,9 @@ public class Building implements Listener {
                                         "&7Gold: " + nextGold,
                                         "&4You can afford this upgrade"
                                 ).getItem()
-                        , wood.get(level)
-                        , stone.get(level)
-                        , gold.get(level)
+                        , Integer.valueOf(nextWood)
+                        , Integer.valueOf(nextStone)
+                        , Integer.valueOf(nextGold)
                         , 0
                         , 0
                         , player)

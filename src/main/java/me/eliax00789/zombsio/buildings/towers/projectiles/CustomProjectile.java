@@ -35,7 +35,6 @@ public class CustomProjectile {
                 }
             }
         }
-        Bukkit.broadcastMessage(nearest.getType().name());
         if (nearest.getLocation().distance(startLocation) <= range) {
             Vector direction = nearest.getLocation().toVector().subtract(startLocation.toVector()).normalize();
             world.spawnParticle(particle, startLocation.getX(), startLocation.getY(), startLocation.getZ(), 0, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, null);
