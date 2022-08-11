@@ -4,8 +4,8 @@ main: me.eliax00789.zombsio.Zombsio
 api-version: 1.19
 prefix: zombs
 load: STARTUP
-authors: [ Eliax00789 , Nifflör77, Dario_LP ]
-description: zombs.io in
+authors: [ Eliax00789 , Niffler77, Dario_LP ]
+description: Minecraft Zombs.io
 commands:
   zresources:
     description: add or remove resources

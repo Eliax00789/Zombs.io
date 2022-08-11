@@ -26,19 +26,35 @@ public final class Zombsio extends JavaPlugin {
     @Override
     public void onEnable() {
         // Plugin startup logic
-        Bukkit.getLogger().log(Level.ALL,"Starting Zombsio Plugin");
+        Bukkit.getConsoleSender().sendMessage("========================");
+        Bukkit.getConsoleSender().sendMessage("Starting " + plugin.getDescription().getName() + " Plugin");
+        Bukkit.getConsoleSender().sendMessage(" ");
+        Bukkit.getConsoleSender().sendMessage("Description :");
+        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getDescription());
+        Bukkit.getConsoleSender().sendMessage("========================");
+        Bukkit.getConsoleSender().sendMessage("Created By");
+        Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getAuthors()));
+        Bukkit.getConsoleSender().sendMessage("========================");
+        Bukkit.getConsoleSender().sendMessage("Idea by:");
+        Bukkit.getConsoleSender().sendMessage("Zombs.io");
+        Bukkit.getConsoleSender().sendMessage("========================");
+        Bukkit.getConsoleSender().sendMessage("Version:");
+        Bukkit.getConsoleSender().sendMessage(plugin.getDescription().getVersion());
+        Bukkit.getConsoleSender().sendMessage("========================");
+        Bukkit.getConsoleSender().sendMessage("Commands:");
+        Bukkit.getConsoleSender().sendMessage(String.valueOf(plugin.getDescription().getCommands()));
         plugin = this;
         enableConfig();
         init();
-        Bukkit.getLogger().log(Level.ALL,"Loading Zombsio Plugin");
+        Bukkit.getConsoleSender().sendMessage("Loading " + plugin.getDescription().getName() + " Plugin");
     }
 
     @Override
     public void onDisable() {
         // Plugin shutdown logic
-        Bukkit.getLogger().log(Level.ALL,"Stopping Zombsio Plugin");
+        Bukkit.getConsoleSender().sendMessage("Stopping " + plugin.getDescription().getName() + " Plugin");
         disableConfig();
-        Bukkit.getLogger().log(Level.ALL,"Disabled Zombsio Plugin");
+        Bukkit.getConsoleSender().sendMessage("Disabled " + plugin.getDescription().getName() + " Plugin");
     }
 
     private void enableConfig() {
@@ -93,6 +109,8 @@ public final class Zombsio extends JavaPlugin {
         new Resources();
 
         //GAMERULE:
+
+        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.DO_MOB_SPAWNING, false);
         this.getServer().getWorld("GUIWorld").setGameRule(GameRule.DO_MOB_LOOT, false);
         this.getServer().getWorld("GUIWorld").setGameRule(GameRule.MOB_GRIEFING, false);
     }
