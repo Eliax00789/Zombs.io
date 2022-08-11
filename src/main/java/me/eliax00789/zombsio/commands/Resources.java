@@ -109,6 +109,13 @@ public class Resources implements TabExecutor {
         for (Integer i = 0; i < 1000; i++) {
             numberlist.add(String.valueOf(i));
         }
+        if (args.length == 1) {
+            for (Player p:Bukkit.getOnlinePlayers()) {
+                if (p.getName().contains(args[0].toLowerCase())) {
+                    toCompleteTo.add(p.getName());
+                }
+            }
+        }
         if (args.length == 2) {
             for (String s: resourcelist) {
                 if (s.contains(args[1].toLowerCase())) {
