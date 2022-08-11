@@ -175,6 +175,7 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onEnityDeath(EntityDeathEvent e) {
           e.getDrops().set(0, null);
+          e.setDroppedExp(0);
      }
 
 
