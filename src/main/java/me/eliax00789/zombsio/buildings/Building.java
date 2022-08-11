@@ -22,8 +22,6 @@ import java.util.List;
 import java.util.logging.Level;
 
 public class Building implements Listener {
-
-    public static ArrayList<Building> buildingsList;
     public Integer id;
     private String name;
     private Integer level;
@@ -45,10 +43,6 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
                     List<Integer> wood, List<Integer> stone, List<Integer> gold) {
-        if (buildingsList == null) {
-            buildingsList = new ArrayList<Building>();
-        }
-        buildingsList.add(this);
         this.id = (Integer) Zombsio.buildings.get("nextid");
         Zombsio.buildings.set("nextid",id + 1);
         this.name = name;
@@ -102,6 +96,7 @@ public class Building implements Listener {
     private void upgrade(Player player) {
         if (!(level == maxLevel)) {
             if (hasResources(player)) {
+                removeResources(player);
                 level++;
                 build();
             }
@@ -137,6 +132,7 @@ public class Building implements Listener {
     public void onRightClick(PlayerInteractEvent e) {
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
             Location structOrigin = location.add(-1,0,-1);
+            e.getPlayer().sendMessage(e.getClickedBlock().getType().name(),structOrigin.toString(),structure[0].toString(), String.valueOf(structure.length));
             for ( int x = 0; x < structure[0].length; x ++) {
                 for (int y = 0; y < structure[0][x].length; y++) {
                     for (int z = 0; z < structure[0][x][y].length; z++) {

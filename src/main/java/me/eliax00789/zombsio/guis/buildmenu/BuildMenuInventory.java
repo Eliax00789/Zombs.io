@@ -6,22 +6,15 @@ import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.towers.*;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.entity.HumanEntity;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-
 class BuildMenuInventory {
-    Inventory inventory;
+    private Inventory inventory;
     public BuildMenuInventory(Location location) {
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
