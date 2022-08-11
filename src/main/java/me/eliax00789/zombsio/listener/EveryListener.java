@@ -43,6 +43,7 @@ public class EveryListener implements Listener {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) +  1);
+                              e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
                               e.setCancelled(true);
                          }
                     }
@@ -53,6 +54,7 @@ public class EveryListener implements Listener {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
                               Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + 1);
+                              e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
                               e.setCancelled(true);
                          }
                     }
@@ -79,7 +81,7 @@ public class EveryListener implements Listener {
                if (e.getBlock().getType().equals(Material.STONE)) {
                     for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
                          if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 10));
+                              e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 40));
                          }
                     }
 
@@ -92,7 +94,6 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onBlockDamageCancel(BlockDamageAbortEvent e) {
           e.getPlayer().removePotionEffect(PotionEffectType.FAST_DIGGING);
-
      }
 
      @EventHandler
