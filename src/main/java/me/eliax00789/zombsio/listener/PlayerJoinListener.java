@@ -28,6 +28,9 @@ public class PlayerJoinListener implements Listener {
         }
         e.getPlayer().getInventory().clear();
         e.getPlayer().setGameMode(GameMode.SURVIVAL);
+        for (Integer i = 0; i <= 35; i++) {
+            e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
+        }
 
         e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
                 .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
