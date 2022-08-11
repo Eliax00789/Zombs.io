@@ -45,6 +45,9 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     List<Integer> health, List<Integer>  damage, List<Integer> range,
                     List<Integer> wood, List<Integer> stone, List<Integer> gold) {
+        if (buildingsList == null) {
+            buildingsList = new ArrayList<Building>();
+        }
         buildingsList.add(this);
         this.id = (Integer) Zombsio.buildings.get("nextid");
         Zombsio.buildings.set("nextid",id + 1);
