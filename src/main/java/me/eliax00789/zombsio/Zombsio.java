@@ -2,7 +2,6 @@ package me.eliax00789.zombsio;
 
 import me.eliax00789.zombsio.commands.Debug;
 import me.eliax00789.zombsio.commands.Resources;
-import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
 import me.eliax00789.zombsio.listener.EveryListener;
@@ -110,7 +109,7 @@ public final class Zombsio extends JavaPlugin {
         new Resources();
 
         //HEALTHPLAYER
-        new PlayerStatsSystem();
+        new HealthPlayer();
 
     }
 }
