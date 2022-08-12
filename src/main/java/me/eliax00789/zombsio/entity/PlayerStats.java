@@ -129,6 +129,7 @@ public class PlayerStats implements Listener {
             Double damage = e.getDamage() * 10;
             Double[] oldstats = stats.get(player);
             Double[] newstats = stats.get(player);
+            newstats[5] = 60.0;
             if (oldstats[2] > 0) {
                 if (oldstats[2] >= damage) {
                     newstats[2] = oldstats[2] - damage;
@@ -142,7 +143,7 @@ public class PlayerStats implements Listener {
                 newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
             }
             if (newstats[0] <= 0) {
-                newstats[0] = 0.0;
+                newstats[0] = stats.get(player)[1];
             }
             stats.put(player,newstats);
             try {playerstats.save(playerStatsFile);}
