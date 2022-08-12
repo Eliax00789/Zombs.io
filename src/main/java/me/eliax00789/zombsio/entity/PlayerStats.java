@@ -3,16 +3,18 @@ package me.eliax00789.zombsio.entity;
 import me.eliax00789.zombsio.Zombsio;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.minecraft.network.protocol.game.PacketPlayOutAnimation;
+import net.minecraft.world.entity.Entity;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -159,10 +161,22 @@ public class PlayerStats implements Listener {
                 newstats[0] = stats.get(player)[1];
                 player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
                 player.teleport(player.getWorld().getSpawnLocation());
-                Bukkit.broadcastMessage(player.getName() + " fricking died");
+                for (Player p:Bukkit.getOnlinePlayers()) {
+                    if (p.getWorld().equals(player.getWorld())) {
+                        p.sendMessage(player.getName() + " fricking died");
+                    }
+                }
             }
             else {
-                player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
+                if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
+                    PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((Entity) player),1);
+                    for (Player p:Bukkit.getOnlinePlayers()) {
+                        if (p.getWorld().equals(player)) {
+                            ((CraftPlayer) p).getHandle().b.a(packet);
+                        }
+                    }
+                }
             }
             stats.put(player,newstats);
             save();
