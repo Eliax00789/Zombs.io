@@ -244,6 +244,9 @@ public class PlayerStatsSystem implements Listener {
     }
 
     public PlayerStatsSystem updatestats() {
+        if (statsupdate != null) {
+            statsupdate.cancel();
+        }
         statsupdate = new BukkitRunnable() {
             @Override
             public void run() {
