@@ -117,7 +117,6 @@ public class PlayerStatsSystem implements Listener {
         }
 
         for (OfflinePlayer player: Bukkit.getOfflinePlayers()) {
-
             playerstats.set(player.getName() + ".health", getdefaulthealth());
             playerstats.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
             playerstats.set(player.getName() + ".shield", getdefaultshield());
@@ -260,7 +259,11 @@ public class PlayerStatsSystem implements Listener {
                                 )
 
                         );
-                        player.setHealth((double) gethealth(player)/10);
+                        if (gethealth(player) <= getmaxhealth(player)) {
+                            player.setHealth((double) gethealth(player)/10);
+                        } else {
+                            player.setHealth(player.getMaxHealth());
+                        }
                         player.setMaxHealth((double) getmaxhealth(player)/10);
                     }
                 }

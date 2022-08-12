@@ -79,7 +79,7 @@ public class CustomBreakListener implements Listener {
                                     public void run() {
                                         new PlayerStatsSystem().updatestats();
                                     }
-                                }.runTaskLater(Zombsio.plugin,  20);
+                                }.runTaskLater(Zombsio.plugin,  20*6);
                             }
                             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                             counter += attackspeed;

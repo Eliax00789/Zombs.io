@@ -61,7 +61,7 @@ public class Stats implements TabExecutor {
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().setmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    new PlayerStatsSystem().setmaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
                     sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
