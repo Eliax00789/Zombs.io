@@ -1,40 +1,27 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
-import me.eliax00789.zombsio.enitiy.HealthPlayer;
-import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.core.BlockPosition;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
-import net.minecraft.server.level.EntityPlayer;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.HumanEntity;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryDragEvent;
-import org.bukkit.event.inventory.InventoryMoveItemEvent;
-import org.bukkit.event.inventory.InventoryPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
-import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class EveryListener implements Listener {
 

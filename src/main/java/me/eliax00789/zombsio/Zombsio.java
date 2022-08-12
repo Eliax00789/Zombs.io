@@ -2,14 +2,13 @@ package me.eliax00789.zombsio;
 
 import me.eliax00789.zombsio.commands.Debug;
 import me.eliax00789.zombsio.commands.Resources;
-import me.eliax00789.zombsio.enitiy.HealthPlayer;
+import me.eliax00789.zombsio.entity.HealthPlayer;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
 import me.eliax00789.zombsio.listener.EveryListener;
 import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
-import org.bukkit.GameRule;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;

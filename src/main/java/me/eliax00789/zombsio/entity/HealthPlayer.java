@@ -1,4 +1,4 @@
-package me.eliax00789.zombsio.enitiy;
+package me.eliax00789.zombsio.entity;
 
 import me.eliax00789.zombsio.Zombsio;
 import net.md_5.bungee.api.ChatMessageType;
