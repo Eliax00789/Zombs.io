@@ -66,7 +66,7 @@ public class CustomBreakListener implements Listener {
                             else if (counter >= 80 && counter < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
                             else if (counter >= 90) {
                                 counter = 0.0;
-                                new PlayerStatsSystem().statsupdate.cancel();
+
                                 if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                     Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Wood"));
@@ -78,7 +78,7 @@ public class CustomBreakListener implements Listener {
 
                                     @Override
                                     public void run() {
-                                        new PlayerStatsSystem().updatestats();
+
                                     }
                                 }.runTaskLater(Zombsio.plugin,  20*6);
                             }
