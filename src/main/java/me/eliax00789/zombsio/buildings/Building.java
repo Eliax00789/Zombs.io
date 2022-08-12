@@ -239,11 +239,11 @@ public class Building implements Listener {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
-                .addItemSwitch(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("Upgrade")
-                                .setLore("&7Cost for Tier " + (level + 1),
-                                        "&7Wood: " + nextWood,
-                                        "&7Stone: " + nextStone,
-                                        "&7Gold: " + nextGold
+                .addItemSwitch(11, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("§7Upgrade")
+                                .setLore("§7Cost for Tier " + (level + 1),
+                                        "§7Wood: " + nextWood,
+                                        "§7Stone: " + nextStone,
+                                        "§7Gold: " + nextGold
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -251,12 +251,12 @@ public class Building implements Listener {
                                 upgrade(player);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("&4Can't be Upgraded")
-                                .setLore("&7Cost for Tier " + (level + 1),
-                                        "&7Wood: " + nextWood,
-                                        "&7Stone: " + nextStone,
-                                        "&7Gold: " + nextGold,
-                                        "&4You can afford this upgrade"
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded")
+                                .setLore("§7Cost for Tier " + (level + 1),
+                                        "§7Wood: " + nextWood,
+                                        "§7Stone: " + nextStone,
+                                        "§7Gold: " + nextGold,
+                                        "§4You can afford this upgrade"
                                 ).getItem()
                         , Integer.valueOf(nextWood)
                         , Integer.valueOf(nextStone)
@@ -264,13 +264,13 @@ public class Building implements Listener {
                         , 0
                         , 0
                         , player)
-                .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("Stats")
-                        .setLore("&7Tier " + level + " Building",
-                                "&7Current > Next level",
-                                "&7Health: " + health.get(level - 1) + " > " + nextHealth,
-                                "&7Damage: " + damage.get(level - 1) + " > " + nextDamage,
-                                "&7Range: " + range.get(level - 1) + " > " + nextRange).getItem())
-                .setItem(15, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("Remove").getItem(), new BukkitRunnable() {
+                .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
+                        .setLore("§7Tier " + level + " Building",
+                                "§7Current > Next level",
+                                "§7Health: " + health.get(level - 1) + " > " + nextHealth,
+                                "§7Damage: " + damage.get(level - 1) + " > " + nextDamage,
+                                "§7Range: " + range.get(level - 1) + " > " + nextRange).getItem())
+                .setItem(15, new ItemCreator(Material.BARRIER).setName("Remove").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         remove();
