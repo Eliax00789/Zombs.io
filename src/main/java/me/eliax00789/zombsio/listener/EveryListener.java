@@ -61,12 +61,28 @@ public class EveryListener implements Listener {
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
                        .getItem());
+               e.getPlayer().getInventory().setItem(1, new ItemCreator(Material.WOODEN_SWORD)
+                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0))
+                       .setUnbreakable(true)
+                       .addFlag(ItemFlag.HIDE_UNBREAKABLE)
+                       .getItem());
+               e.getPlayer().getInventory().setItem(2, new ItemCreator(Material.BOW)
+                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0))
+                       .setUnbreakable(true)
+                       .addFlag(ItemFlag.HIDE_UNBREAKABLE)
+                       .getItem());
+               e.getPlayer().getInventory().setItem(3, new ItemCreator(Material.FIRE_CHARGE)
+                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0))
+                       .setUnbreakable(true)
+                       .addFlag(ItemFlag.HIDE_UNBREAKABLE)
+                       .getItem());
 
                e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
                e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
+               e.getPlayer().getInventory().setItem(9, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0)).getItem());
 
           } else {
-               e.getPlayer().getInventory().clear();
+               //e.getPlayer().getInventory().clear();
           }
 
      }
