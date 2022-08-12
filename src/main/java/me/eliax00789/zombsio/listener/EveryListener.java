@@ -9,10 +9,7 @@ import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.core.BlockPosition;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
 import net.minecraft.server.level.EntityPlayer;
-import org.bukkit.BlockChangeDelegate;
-import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.HumanEntity;
@@ -49,10 +46,11 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
+          e.getBlock().getWorld().spawnParticle(Particle.BLOCK_CRACK, e.getBlock().getLocation().add(0.5,0.5, 0.5), 80, 0.25, 0, 0.25, 0.7,  e.getBlock().getType().createBlockData());
 
           if (e.getBlock().getType() == (Material.OAK_LOG) || e.getBlock().getType() == (Material.STONE)) {
 
-               e.getBlock().setType(e.getBlock().getType());
+               e.getBlock().getWorld().playSound(e.getPlayer(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 50 , 1.0F);
 
           }
 
@@ -91,7 +89,6 @@ public class EveryListener implements Listener {
                                                   }
                                                   e.getPlayer().breakBlock(e.getBlock());
                                                   this.cancel();
-                                                  return;
                                              case 10:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
