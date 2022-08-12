@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.enitiy.HealthPlayer;
 import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.ItemCreator;
@@ -17,10 +18,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
@@ -59,8 +57,8 @@ public class EveryListener implements Listener {
           }
      }
 
-     public Integer duration, resourceamount;
-     public BukkitTask test;
+     private Integer duration, resourceamount;
+     private BukkitTask mining;
 
      @EventHandler
      public void onBlockDamage(BlockDamageEvent e) {
@@ -72,7 +70,7 @@ public class EveryListener implements Listener {
                     for (String name : Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                          if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
 
-                              test = new BukkitRunnable() {
+                              mining = new BukkitRunnable() {
                                    @Override
                                    public void run() {
                                         PacketPlayOutBlockBreakAnimation packet;
@@ -149,24 +147,6 @@ public class EveryListener implements Listener {
           }
           return;
 
-          //if (e.getPlayer().getInventory().getItemInMainHand().equals(null)){
-          //     e.setCancelled(true);
-          //     return;
-          //}
-
-          //new ResourceScoreboard(e.getPlayer());
-
-          //if (e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
-          //     if (e.getBlock().getType().equals(Material.STONE) || e.getBlock().getType().equals(Material.OAK_LOG)) {
-          //          for (String name: Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name") ) {
-          //               if(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().contains(name)) {
-          //                    e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 20 * 4, 30));
-          //               }
-          //          }
-          //
-          //     }
-          //}
-
 
      }
 
@@ -175,8 +155,8 @@ public class EveryListener implements Listener {
           PacketPlayOutBlockBreakAnimation packet = null;
           ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
           e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
-          if (test != null) {
-               test.cancel();
+          if (mining != null) {
+               mining.cancel();
           }
      }
 
@@ -215,25 +195,6 @@ public class EveryListener implements Listener {
      public void onHungerTick(FoodLevelChangeEvent e) {
           if(!e.getEntity().hasPermission("zombs.bypass.foodlvlchange") || e.getEntity().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
-          }
-     }
-
-     @EventHandler
-     public void onDamage(EntityDamageEvent e) {
-          if (!(e.getEntity() instanceof Player)) {
-               return;
-          }
-
-          if(!e.getEntity().hasPermission("zombs.bypass.damage")){
-               e.setCancelled(true);
-          }
-
-          if(e.getEntity() instanceof Player) {
-               Player player = (Player) e.getEntity();
-
-               if(player.getGameMode().equals(GameMode.SURVIVAL)) {
-                    e.setCancelled(true);
-               }
           }
      }
 
