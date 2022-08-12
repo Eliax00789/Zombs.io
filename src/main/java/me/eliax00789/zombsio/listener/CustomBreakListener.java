@@ -25,7 +25,7 @@ public class CustomBreakListener implements Listener {
 
     private BukkitRunnable countercount;
     private BukkitRunnable mining;
-    private Integer counter;
+    private Double counter;
 
     public CustomBreakListener() {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
@@ -38,24 +38,21 @@ public class CustomBreakListener implements Listener {
             for (String name:Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                 if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
                     Integer harvest;
-                    Integer attackspeed;
-                    if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(0); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(0);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(1))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(1); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(1);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(2))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(2); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(2);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(3))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(3); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(3);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(4))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(4); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(4);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(5))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(5); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(5);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(6))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(6); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(6);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(7))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(7); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(7);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(8))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(8); attackspeed = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.AttackSpeed").get(8);}
-                    else {harvest = 1; attackspeed = 1;}
-                    counter = 0;
+                    Double attackspeed;
+                    if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(0); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(0);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(1))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(1); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(1);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(2))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(2); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(2);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(3))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(3); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(3);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(4))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(4); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(4);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(5))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(5); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(5);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(6))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(6); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(6);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(7))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(7); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(7);}
+                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(8))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(8); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(8);}
+                    else {harvest = 1; attackspeed = 1.0;}
+                    counter = 0.0;
                     mining = new BukkitRunnable() {
                         @Override
                         public void run() {
-                            if (counter == null) {
-                                counter = 0;
-                            }
                             PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 0);
                             if (counter >= 0 && counter < 10) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);}
                             else if (counter >= 10 && counter < 20) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 2);}
@@ -67,7 +64,7 @@ public class CustomBreakListener implements Listener {
                             else if (counter >= 70 && counter < 80) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 8);}
                             else if (counter >= 80 && counter < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
                             else if (counter >= 90) {
-                                counter = 0;
+                                counter = 0.0;
                                 if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                     Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Wood"));
@@ -91,8 +88,8 @@ public class CustomBreakListener implements Listener {
         e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
         if (mining != null && !mining.isCancelled()) {
             mining.cancel();
+            PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) e.getBlock().getWorld()).getHandle(), new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()));
+            ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
         }
-        PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) e.getBlock().getWorld()).getHandle(), new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()));
-        ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
     }
 }
