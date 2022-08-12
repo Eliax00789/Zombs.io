@@ -93,7 +93,7 @@ public class CustomBreakListener implements Listener {
     @EventHandler
     public void onBlockDamageAbort(BlockDamageAbortEvent e) {
         e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
-        if (mining.get(e.getPlayer()) != null && !mining.get(e.getPlayer()).isCancelled()) {
+        if (mining != null && mining.get(e.getPlayer()) != null && !mining.get(e.getPlayer()).isCancelled()) {
             mining.get(e.getPlayer()).cancel();
             PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), -1);
             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);

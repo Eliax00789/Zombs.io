@@ -141,6 +141,9 @@ public class PlayerStats implements Listener {
             else {
                 newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
             }
+            if (newstats[0] <= 0) {
+                newstats[0] = 0.0;
+            }
             stats.put(player,newstats);
             try {playerstats.save(playerStatsFile);}
             catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
