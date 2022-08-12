@@ -35,11 +35,15 @@ public class CustomBreakListener implements Listener {
 
     public CustomBreakListener() {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+        mining = new HashMap<Player,BukkitRunnable>();
+        counter = new HashMap<Player,Double>();
     }
 
     @EventHandler
     public void onBlockDamage(BlockDamageEvent e) {
-        e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 9999, 999));
+        if (!e.getInstaBreak()) {
+            e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 9999, 999));
+        }
         if ((e.getBlock().getType().equals(Material.OAK_LOG) || e.getBlock().getType().equals(Material.STONE)) && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
             for (String name:Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                 if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {

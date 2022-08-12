@@ -24,7 +24,7 @@ public class Stats implements TabExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (sender.hasPermission("zombs.commands.zresources")) {
+        if (sender.hasPermission("zombs.commands.zstats")) {
             if (args.length != 4) {
                 return false;
             }
@@ -34,6 +34,9 @@ public class Stats implements TabExecutor {
             }
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
+                    stats[0] = stats[0] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
