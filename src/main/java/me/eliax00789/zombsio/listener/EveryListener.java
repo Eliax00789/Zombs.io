@@ -96,9 +96,11 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onHungerTick(FoodLevelChangeEvent e) {
-          if(!e.getEntity().hasPermission("zombs.bypass.foodlvlchange") || e.getEntity().getGameMode().equals(GameMode.SURVIVAL)) {
+          if(!e.getEntity().hasPermission("zombs.bypass.dropitem") || e.getEntity().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
+
+
      }
 
      @EventHandler
@@ -122,8 +124,4 @@ public class EveryListener implements Listener {
           }
      }
 
-     @EventHandler
-     public void onDeath(PlayerDeathEvent e) {
-          e.setKeepInventory(true);
-     }
 }

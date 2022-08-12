@@ -47,7 +47,6 @@ public class CustomBreakListener implements Listener {
                     else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(5))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(5); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(5);}
                     else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(6))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(6); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(6);}
                     else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(7))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(7); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(7);}
-                    else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(8))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(8); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.AttackSpeed").get(8);}
                     else {harvest = 1; attackspeed = 1.0;}
                     counter = 0.0;
                     mining = new BukkitRunnable() {

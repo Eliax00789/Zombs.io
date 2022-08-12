@@ -11,7 +11,7 @@ commands:
     description: add or remove resources
     usage: /<command> <player> [wood|stone|gold] [add|remove|set] <amount>
     permission: zombs.commands.zresources
-  zdebug:
+  zstats:
     description: yeet
     usage: /<command>
-    permission: zombs.commands.zdebug
+    permission: zombs.commands.zstats

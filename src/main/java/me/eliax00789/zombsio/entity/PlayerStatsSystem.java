@@ -13,6 +13,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -250,7 +251,11 @@ public class PlayerStatsSystem implements Listener {
                     if(player.getGameMode().equals(GameMode.SURVIVAL)) {
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
-                                        "§c " + gethealth(player) + " / " + getmaxhealth(player))
+                                        "§c❤ " + gethealth(player) + " / " + getmaxhealth(player)
+                                        + "  §a❈ " + getdefense(player)
+                                        + "  §b❤ " + getshield(player) + " / " + getmaxshield(player)
+                                )
+
                         );
                         player.setHealth((double) gethealth(player)/10);
                         player.setMaxHealth((double) getmaxhealth(player)/10);
@@ -269,14 +274,44 @@ public class PlayerStatsSystem implements Listener {
         return this;
     }
 
+    public PlayerStatsSystem removemaxhealth(Player player, Integer removemaxhealth) {
+        maxhealth = getmaxhealth(player) - removemaxhealth;
+        saveplayermaxhealth(player);
+        return this;
+    }
+
     public PlayerStatsSystem setmaxhealth(Player player, Integer setmaxhealth) {
         maxhealth = setmaxhealth;
         saveplayermaxhealth(player);
         return this;
     }
 
+    public PlayerStatsSystem addhealth(Player player, Integer addhealth) {
+        health = gethealth(player) + addhealth;
+        saveplayerhealth(player);
+        return this;
+    }
+
+    public PlayerStatsSystem removehealth(Player player, Integer removehealth) {
+        health = gethealth(player) - removehealth;
+        saveplayerhealth(player);
+        return this;
+    }
+
+    public PlayerStatsSystem sethealth(Player player, Integer sethealth) {
+        health = sethealth;
+        saveplayerhealth(player);
+        return this;
+    }
+
     public PlayerStatsSystem addmaxshield(Player player, Integer addmaxshield) {
         maxshield = getmaxshield(player) + addmaxshield;
+        saveplayermaxshield(player);
+        return this;
+    }
+
+    public PlayerStatsSystem removemaxshield(Player player, Integer removemaxshield) {
+        maxshield = getmaxshield(player) - removemaxshield;
         saveplayermaxshield(player);
         return this;
     }
@@ -287,14 +322,38 @@ public class PlayerStatsSystem implements Listener {
         return this;
     }
 
+    public PlayerStatsSystem addshield(Player player, Integer addshield) {
+        shield = getshield(player) + addshield;
+        saveplayershield(player);
+        return this;
+    }
+
+    public PlayerStatsSystem removeshield(Player player, Integer removeshield) {
+        shield = getshield(player) - removeshield;
+        saveplayershield(player);
+        return this;
+    }
+
+    public PlayerStatsSystem setshield(Player player, Integer setshield) {
+        shield = setshield;
+        saveplayershield(player);
+        return this;
+    }
+
     public PlayerStatsSystem adddefence(Player player, Integer adddefence) {
-        maxshield = getmaxshield(player) + adddefence;
+        defense = getdefense(player) + adddefence;
+        saveplayerdefense(player);
+        return this;
+    }
+
+    public PlayerStatsSystem removedefence(Player player, Integer removedefence) {
+        defense = getdefense(player) - removedefence;
         saveplayerdefense(player);
         return this;
     }
 
     public PlayerStatsSystem setdefence(Player player, Integer setdefence) {
-        maxshield = setdefence;
+        defense = setdefence;
         saveplayerdefense(player);
         return this;
     }
@@ -367,6 +426,11 @@ public class PlayerStatsSystem implements Listener {
         }
 
 
+    }
+
+    @EventHandler
+    public void onDeath(PlayerDeathEvent e) {
+        e.getDrops().removeAll(e.getDrops());
     }
 
     @EventHandler

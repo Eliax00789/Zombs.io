@@ -1,6 +1,6 @@
 package me.eliax00789.zombsio;
 
-import me.eliax00789.zombsio.commands.Debug;
+import me.eliax00789.zombsio.commands.Stats;
 import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
@@ -109,7 +109,7 @@ public final class Zombsio extends JavaPlugin {
         new CustomBreakListener();
         new PlayerStatsSystem();
         //COMMANDS:
-        new Debug();
+        new Stats();
         new Resources();
 
 
