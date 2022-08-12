@@ -105,9 +105,9 @@ public class PlayerStats implements Listener {
         for (Player player: stats.keySet()) {
             playerstats.set("stats." + player.getName() + ".health", stats.get(player)[0]);
             playerstats.set("stats." + player.getName() + ".maxhealth", stats.get(player)[1]);
-            playerstats.set("stats." + player.getName() + ".shield", stats.get(player)[0]);
-            playerstats.set("stats." + player.getName() + ".maxshield", stats.get(player)[1]);
-            playerstats.set("stats." + player.getName() + ".defense", stats.get(player)[0]);
+            playerstats.set("stats." + player.getName() + ".shield", stats.get(player)[2]);
+            playerstats.set("stats." + player.getName() + ".maxshield", stats.get(player)[3]);
+            playerstats.set("stats." + player.getName() + ".defense", stats.get(player)[4]);
         }
         try {
             playerstats.save(playerStatsFile);
