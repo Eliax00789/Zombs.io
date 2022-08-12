@@ -5,6 +5,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Sound;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -156,7 +157,12 @@ public class PlayerStats implements Listener {
             }
             if (newstats[0] <= 0) {
                 newstats[0] = stats.get(player)[1];
+                player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
+                player.teleport(player.getWorld().getSpawnLocation());
                 Bukkit.broadcastMessage(player.getName() + " fricking died");
+            }
+            else {
+                player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
             }
             stats.put(player,newstats);
             save();
