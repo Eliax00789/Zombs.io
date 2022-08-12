@@ -6,6 +6,7 @@ import me.eliax00789.zombsio.utility.Config;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.core.BlockPosition;
+import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockChange;
 import org.bukkit.Material;
@@ -96,9 +97,8 @@ public class CustomBreakListener implements Listener {
         e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
         if (mining != null && !mining.isCancelled()) {
             mining.cancel();
-            PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) e.getBlock().getWorld()).getHandle(), new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()));
+            PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), -1);
             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
-            e.getBlock().setBlockData(e.getBlock().getBlockData());
         }
     }
 }
