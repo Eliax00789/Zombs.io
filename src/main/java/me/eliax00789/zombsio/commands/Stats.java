@@ -40,12 +40,16 @@ public class Stats implements TabExecutor {
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    new PlayerStatsSystem().removehealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
+                    stats[0] = stats[0] - Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been removed");
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().sethealth(Bukkit.getPlayer(args[0]), Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
+                    stats[0] = stats[0] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
                 }
                 else
@@ -56,15 +60,21 @@ public class Stats implements TabExecutor {
             }
             else if (args[1].equalsIgnoreCase("maxhealth")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().addmaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[1] = stats[1] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    new PlayerStatsSystem().removemaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[1] = stats[1] - Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[1]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().setmaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[1] = Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[1]),stats);
                     sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
@@ -74,16 +84,22 @@ public class Stats implements TabExecutor {
             }
             else if (args[1].equalsIgnoreCase("shield")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().addshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[2] = stats[2] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    new PlayerStatsSystem().removeshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[2] = stats[2] - Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been removed");
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().setshield(Bukkit.getPlayer(args[0]), Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[2]));
+                    stats[2] = Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage("Shield has been set to " + Integer.valueOf(args[3]));
                 }
                 else
@@ -94,15 +110,21 @@ public class Stats implements TabExecutor {
             }
             else if (args[1].equalsIgnoreCase("maxshield")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().addmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[3] = stats[3] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    new PlayerStatsSystem().removemaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[3] = stats[3] - Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().setmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[3] = Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( "Maxshield has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
@@ -112,15 +134,21 @@ public class Stats implements TabExecutor {
             }
             else if (args[1].equalsIgnoreCase("defense")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().adddefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[4] = stats[4] + Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    new PlayerStatsSystem().removedefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[4] = stats[4] - Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    new PlayerStatsSystem().setdefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
+                    stats[4] = Double.valueOf(args[3]);
+                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( "Defense has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
