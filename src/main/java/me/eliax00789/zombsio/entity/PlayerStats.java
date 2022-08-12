@@ -68,8 +68,9 @@ public class PlayerStats implements Listener {
             public void run() {
                 for (Player player: Bukkit.getOnlinePlayers()) {
                     if (player.getGameMode().equals(GameMode.SURVIVAL)) {
-                        player.setHealth(stats.get(player)[0]);
-                        player.setAbsorptionAmount(stats.get(player)[3]);
+                        player.setMaxHealth(stats.get(player)[1] / 10);
+                        player.setHealth(stats.get(player)[0] / 10);
+                        player.setAbsorptionAmount(stats.get(player)[3] / 10);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
                                         "§c❤ " + stats.get(player)[0] + " / " + stats.get(player)[1]
