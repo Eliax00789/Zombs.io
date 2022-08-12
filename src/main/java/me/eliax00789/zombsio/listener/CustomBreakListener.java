@@ -89,6 +89,7 @@ public class CustomBreakListener implements Listener {
             mining.cancel();
             PacketPlayOutBlockChange packet = new PacketPlayOutBlockChange(((CraftWorld) e.getBlock().getWorld()).getHandle(), new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()));
             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
+            e.getPlayer().sendMessage(e.getBlock().getBlockData().getAsString());
         }
     }
 }
