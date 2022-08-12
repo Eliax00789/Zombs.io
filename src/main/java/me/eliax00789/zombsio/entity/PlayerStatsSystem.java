@@ -5,6 +5,7 @@ import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -55,24 +56,24 @@ public class PlayerStatsSystem implements Listener {
         }
         playerstats = YamlConfiguration.loadConfiguration(playerstatsfile);
 
-        if (!playerstats.contains("config.default.health")) {
-            playerstats.set("config.default.health", 200);
+        if (!playerstats.contains("config.defaults.health")) {
+            playerstats.set("config.defaults.health", 200);
         }
 
-        if (!playerstats.contains("config.default.maxhealth")) {
-            playerstats.set("config.default.maxhealth", 200);
+        if (!playerstats.contains("config.defaults.maxhealth")) {
+            playerstats.set("config.defaults.maxhealth", 200);
         }
 
-        if (!playerstats.contains("config.default.shield")) {
-            playerstats.set("config.default.shield", 0);
+        if (!playerstats.contains("config.defaults.shield")) {
+            playerstats.set("config.defaults.shield", 0);
         }
 
-        if (!playerstats.contains("config.default.maxshield")) {
-            playerstats.set("config.default.maxshield", 0);
+        if (!playerstats.contains("config.defaults.maxshield")) {
+            playerstats.set("config.defaults.maxshield", 0);
         }
 
-        if (!playerstats.contains("config.default.defense")) {
-            playerstats.set("config.default.defense", 0);
+        if (!playerstats.contains("config.defaults.defense")) {
+            playerstats.set("config.defaults.defense", 0);
         }
         try {
             playerstats.save(playerstatsfile);
@@ -93,17 +94,17 @@ public class PlayerStatsSystem implements Listener {
                 playerstats.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
             }
             if (playerstats.contains(player.getName() + ".shield")) {
-                gethealth(player);
+                getshield(player);
             } else {
                 playerstats.set(player.getName() + ".shield", getdefaultshield());
             }
             if (playerstats.contains(player.getName() + ".maxshield")) {
-                getmaxhealth(player);
+                getmaxshield(player);
             } else {
                 playerstats.set(player.getName() + ".maxshield", getdefaultmaxshield());
             }
             if (playerstats.contains(player.getName() + ".defense")) {
-                gethealth(player);
+                getdefense(player);
             } else {
                 playerstats.set(player.getName() + ".defense", getdefaultdefense());
             }
@@ -188,12 +189,18 @@ public class PlayerStatsSystem implements Listener {
     }
 
 
-    public PlayerStatsSystem saveplayer(Player player) {
+    public PlayerStatsSystem saveplayerhealth(Player player) {
         playerstats.set(player.getName() + ".health", health);
+        try {
+            playerstats.save(playerstatsfile);
+        } catch (IOException e) {
+            Bukkit.getConsoleSender().sendMessage(e.toString());
+        }
+        return this;
+    }
+
+    public PlayerStatsSystem saveplayermaxhealth(Player player) {
         playerstats.set(player.getName() + ".maxhealth", maxhealth);
-        playerstats.set(player.getName() + ".shield", shield);
-        playerstats.set(player.getName() + ".maxshield", maxshield);
-        playerstats.set(player.getName() + ".defense", defense);
 
         try {
             playerstats.save(playerstatsfile);
@@ -203,24 +210,37 @@ public class PlayerStatsSystem implements Listener {
         return this;
     }
 
-    public PlayerStatsSystem saveplayer() {
-        for (Player player: Bukkit.getOnlinePlayers()) {
-            if(player.getGameMode().equals(GameMode.SURVIVAL)) {
-                playerstats.set(player.getName() + ".health", health);
-                playerstats.set(player.getName() + ".maxhealth", maxhealth);
-                playerstats.set(player.getName() + ".shield", shield);
-                playerstats.set(player.getName() + ".maxshield", maxshield);
-                playerstats.set(player.getName() + ".defense", defense);
-                try {
-                    playerstats.save(playerstatsfile);
-                } catch (IOException e) {
-                    Bukkit.getConsoleSender().sendMessage(e.toString());
-                }
-            }
+    public PlayerStatsSystem saveplayershield(Player player) {
+        playerstats.set(player.getName() + ".shield", shield);
+        try {
+            playerstats.save(playerstatsfile);
+        } catch (IOException e) {
+            Bukkit.getConsoleSender().sendMessage(e.toString());
         }
         return this;
     }
 
+    public PlayerStatsSystem saveplayermaxshield(Player player) {
+        playerstats.set(player.getName() + ".maxshield", maxshield);
+
+        try {
+            playerstats.save(playerstatsfile);
+        } catch (IOException e) {
+            Bukkit.getConsoleSender().sendMessage(e.toString());
+        }
+        return this;
+    }
+
+    public PlayerStatsSystem saveplayerdefense(Player player) {
+        playerstats.set(player.getName() + ".defense", defense);
+
+        try {
+            playerstats.save(playerstatsfile);
+        } catch (IOException e) {
+            Bukkit.getConsoleSender().sendMessage(e.toString());
+        }
+        return this;
+    }
 
     private PlayerStatsSystem updatehealth() {
         statsupdate = new BukkitRunnable() {
@@ -233,7 +253,7 @@ public class PlayerStatsSystem implements Listener {
                                         "§c " + gethealth(player) + " / " + getmaxhealth(player))
                         );
                         player.setHealth((double) gethealth(player)/10);
-                        player.setMaxHealth((double) gethealth(player)/10);
+                        player.setMaxHealth((double) getmaxhealth(player)/10);
                     }
                 }
 
@@ -245,43 +265,37 @@ public class PlayerStatsSystem implements Listener {
 
     public PlayerStatsSystem addmaxhealth(Player player, Integer addmaxhealth) {
         maxhealth = getmaxhealth(player) + addmaxhealth;
-
-        saveplayer(player);
+        saveplayermaxhealth(player);
         return this;
     }
 
     public PlayerStatsSystem setmaxhealth(Player player, Integer setmaxhealth) {
         maxhealth = setmaxhealth;
-
-        saveplayer(player);
+        saveplayermaxhealth(player);
         return this;
     }
 
     public PlayerStatsSystem addmaxshield(Player player, Integer addmaxshield) {
         maxshield = getmaxshield(player) + addmaxshield;
-
-        saveplayer(player);
+        saveplayermaxshield(player);
         return this;
     }
 
     public PlayerStatsSystem setmaxshield(Player player, Integer setmaxshield) {
         maxshield = setmaxshield;
-
-        saveplayer(player);
+        saveplayermaxshield(player);
         return this;
     }
 
     public PlayerStatsSystem adddefence(Player player, Integer adddefence) {
         maxshield = getmaxshield(player) + adddefence;
-
-        saveplayer(player);
+        saveplayerdefense(player);
         return this;
     }
 
     public PlayerStatsSystem setdefence(Player player, Integer setdefence) {
         maxshield = setdefence;
-
-        saveplayer(player);
+        saveplayerdefense(player);
         return this;
     }
 
@@ -294,7 +308,8 @@ public class PlayerStatsSystem implements Listener {
                 }
             }
             health = gethealth(player) - damage * (1-(getdefense(player)/25));
-            saveplayer(player);
+            playerstats.set(player.getName() + ".health", health);
+            saveplayerhealth(player);
         }
 
         return this;
@@ -303,28 +318,54 @@ public class PlayerStatsSystem implements Listener {
     public PlayerStatsSystem regenhealth(Integer regen, Player player) {
         if (gethealth(player) + regen <= getmaxhealth(player)) {
             health = gethealth(player) + regen;
-            saveplayer(player);
+            playerstats.set(player.getName() + ".health", health);
+            saveplayerhealth(player);
         }
         return this;
     }
 
-    public PlayerStatsSystem regenshield(Integer regen, Player player) {
-        if (getshield(player) + regen <= getmaxshield(player)) {
-            health = getshield(player) + regen;
-            saveplayer(player);
+    public PlayerStatsSystem regenshield(Player player) {
+        for (int i = getshield(player); i < getmaxshield(player); i++) {
+            shield = getshield(player) + 1;
         }
+        saveplayershield(player);
         return this;
     }
+
+    private Integer delay;
 
     @EventHandler
     public void onEntityDamage(EntityDamageEvent e) {
         if (!(e.getEntity() instanceof Player)) {
             return;
         }
-
-        ((Player) e.getEntity()).setHealth(0);
-
         takedamage((int) e.getDamage()*10, (Player) e.getEntity());
+
+        if (((Player) e.getEntity()).getInventory().getItem(9).getType().equals(Material.LIGHT_GRAY_STAINED_GLASS_PANE)) {
+            for (String name:Zombsio.plugin.getConfig().getStringList("Items.Shield.Name")) {
+                if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(0);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(1))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(1);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(2))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(2);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(3))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(3);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(4))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(4);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(5))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(5);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(6))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(6);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(7))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(7);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(8))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(8);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(9))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(9);}
+                else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(10))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(10);}
+
+
+                new BukkitRunnable() {
+
+                    @Override
+                    public void run() {
+                        regenshield((Player) e.getEntity());
+                    }
+                }.runTaskLater(Zombsio.plugin, 20L*delay);
+            }
+        }
+
 
     }
 
