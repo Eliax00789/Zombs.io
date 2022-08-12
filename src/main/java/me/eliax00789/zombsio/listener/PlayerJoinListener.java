@@ -32,7 +32,7 @@ public class PlayerJoinListener implements Listener {
             e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
         }
 
-        e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.PRISMARINE_SHARD)
+        e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
                 .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
                 .setUnbreakable(true)
                 .addFlag(ItemFlag.HIDE_UNBREAKABLE)

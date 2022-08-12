@@ -40,7 +40,7 @@ class ShopToolsInventory {
                         inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
                     }
                 })
-                .setItem(10, new ItemCreator(Material.PRISMARINE_SHARD).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
                         .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Gold").get(0)
                                 ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Damage").get(0)
                                 ,"§7Resource Amount: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Harvest").get(0)
