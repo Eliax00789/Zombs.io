@@ -110,7 +110,7 @@ public class Stats implements TabExecutor {
             else if (args[1].equalsIgnoreCase("defense")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     new PlayerStatsSystem().adddefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + "Defense has been added");
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     new PlayerStatsSystem().removedefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));

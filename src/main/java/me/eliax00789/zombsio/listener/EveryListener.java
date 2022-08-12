@@ -117,7 +117,8 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onRightClickAir(PlayerInteractEvent e) {
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BOW)) {
-               
+               e.getPlayer().getWorld().spawnArrow(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)),e.getPlayer().getLocation().getDirection(),4, 0);
+
           }
      }
 
