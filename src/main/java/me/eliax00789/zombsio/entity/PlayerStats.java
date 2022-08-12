@@ -109,7 +109,11 @@ public class PlayerStats implements Listener {
             playerstats.set("stats." + player.getName() + ".maxshield", stats.get(player)[1]);
             playerstats.set("stats." + player.getName() + ".defense", stats.get(player)[0]);
         }
-        save();
+        try {
+            playerstats.save(playerStatsFile);
+        } catch (IOException e) {
+            Bukkit.getLogger().log(Level.WARNING,e.toString());
+        }
     }
 
     @EventHandler
