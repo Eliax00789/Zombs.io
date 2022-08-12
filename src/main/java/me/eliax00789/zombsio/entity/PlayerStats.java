@@ -118,8 +118,8 @@ public class PlayerStats implements Listener {
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxhealth"),
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".shield"),
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxshield"),
-                playerstats.getDouble("stats." + e.getPlayer().getName() + ".defense",
-                0.0)});
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".defense"),
+                0.0});
     }
 
     @EventHandler
