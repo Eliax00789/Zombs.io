@@ -109,7 +109,6 @@ public final class Zombsio extends JavaPlugin {
         new Resources();
 
         //HEALTHPLAYER
-        new HealthPlayer();
 
     }
 }
