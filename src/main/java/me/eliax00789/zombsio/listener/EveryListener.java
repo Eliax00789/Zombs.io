@@ -16,6 +16,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerGameModeChangeEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
@@ -43,9 +44,6 @@ public class EveryListener implements Listener {
                e.setCancelled(true);
           }
      }
-
-     private Integer duration, resourceamount;
-     private BukkitTask mining;
 
      @EventHandler
      public void onGamemodeChange(PlayerGameModeChangeEvent e) {
@@ -122,6 +120,10 @@ public class EveryListener implements Listener {
           if(!e.getView().getPlayer().hasPermission("zombs.bypass.inventoryclick") || e.getView().getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
+     }
+
+     @EventHandler
+     public void onRightClickAir(PlayerInteractEvent e) {
      }
 
 }
