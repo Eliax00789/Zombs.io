@@ -341,7 +341,7 @@ public class PlayerStatsSystem implements Listener {
         }
         takedamage((int) e.getDamage()*10, (Player) e.getEntity());
 
-        if (((Player) e.getEntity()).getInventory().getItem(9).getType().equals(Material.LIGHT_GRAY_STAINED_GLASS_PANE)) {
+        if (((Player) e.getEntity()).getInventory().getItem(9).getType().equals(Material.LIGHT_BLUE_STAINED_GLASS_PANE)) {
             for (String name:Zombsio.plugin.getConfig().getStringList("Items.Shield.Name")) {
                 if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(0);}
                 else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(1))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(1);}
