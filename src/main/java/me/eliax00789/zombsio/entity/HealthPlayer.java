@@ -25,17 +25,22 @@ public class HealthPlayer implements Listener {
     private Player damagetaker;
     private Integer health;
     private Integer shield;
+    private Integer defense;
     private Integer maxhealth;
     private Integer maxshield;
 
     private Integer defaulthealth;
+    private Integer defaultdefense;
+    private Integer defaultshield;
     private Integer defaultmaxhealth;
+    private Integer defaultmaxshield;
 
-    private File playerhealth;
-    private YamlConfiguration healthsave;
+
+    private File playerstatsfile;
+    private YamlConfiguration playerstats;
 
     private BukkitTask statsupdate;
-
+    private Boolean aktiveshield, aktivedefece;
 
     public HealthPlayer() {
         createplayerhealth();
@@ -43,45 +48,45 @@ public class HealthPlayer implements Listener {
     }
 
     public void createplayerhealth() {
-        playerhealth = new File(Zombsio.plugin.getDataFolder(), "playerhealth.yml");
-        if (!playerhealth.exists()){
+        playerstatsfile = new File(Zombsio.plugin.getDataFolder(), "playerhealth.yml");
+        if (!playerstatsfile.exists()){
             try {
-                playerhealth.createNewFile();
+                playerstatsfile.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        healthsave = YamlConfiguration.loadConfiguration(playerhealth);
+        playerstats = YamlConfiguration.loadConfiguration(playerstatsfile);
 
-        if (!healthsave.contains("config.default.health")) {
-            healthsave.set("config.default.health", 200);
+        if (!playerstats.contains("config.default.health")) {
+            playerstats.set("config.default.health", 200);
         }
 
-        if (!healthsave.contains("config.default.maxhealth")) {
-            healthsave.set("config.default.maxhealth", 200);
+        if (!playerstats.contains("config.default.maxhealth")) {
+            playerstats.set("config.default.maxhealth", 200);
         }
         try {
-            healthsave.save(playerhealth);
+            playerstats.save(playerstatsfile);
         } catch (IOException e) {
             Bukkit.getConsoleSender().sendMessage(e.toString());
         }
 
 
         for (Player player: Bukkit.getOnlinePlayers()) {
-            if (healthsave.contains(player.getName() + ".health")) {
+            if (playerstats.contains(player.getName() + ".health")) {
                 gethealth(player);
             } else {
-                healthsave.set(player.getName() + ".health", getdefaulthealth());
+                playerstats.set(player.getName() + ".health", getdefaulthealth());
             }
 
-            if (healthsave.contains(player.getName() + ".maxhealth")) {
+            if (playerstats.contains(player.getName() + ".maxhealth")) {
                 getmaxhealth(player);
             } else {
-                healthsave.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
+                playerstats.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
             }
 
             try {
-                healthsave.save(playerhealth);
+                playerstats.save(playerstatsfile);
             } catch (IOException e) {
                 Bukkit.getConsoleSender().sendMessage(e.toString());
             }
@@ -89,11 +94,11 @@ public class HealthPlayer implements Listener {
 
         for (OfflinePlayer player: Bukkit.getOfflinePlayers()) {
 
-            healthsave.set(player.getName() + ".health", getdefaulthealth());
-            healthsave.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
+            playerstats.set(player.getName() + ".health", getdefaulthealth());
+            playerstats.set(player.getName() + ".maxhealth", getdefaultmaxhealth());
 
             try {
-                healthsave.save(playerhealth);
+                playerstats.save(playerstatsfile);
             } catch (IOException e) {
                 Bukkit.getConsoleSender().sendMessage(e.toString());
             }
@@ -102,32 +107,76 @@ public class HealthPlayer implements Listener {
         updatehealth();
     }
 
+    public Boolean hasshield() {
+
+        return aktiveshield;
+    }
+
+    public Boolean hasdefece() {
+
+        return aktivedefece;
+    }
+
+
     public Integer gethealth(Player player) {
-        health = healthsave.getInt(player.getName() + ".health");
+        health = playerstats.getInt(player.getName() + ".health");
         return health;
     }
 
     public Integer getmaxhealth(Player player) {
-        maxhealth = healthsave.getInt(player.getName() + ".maxhealth");
+        maxhealth = playerstats.getInt(player.getName() + ".maxhealth");
         return maxhealth;
     }
 
+    public Integer getshield(Player player) {
+        shield = playerstats.getInt(player.getName() + ".shield");
+        return shield;
+    }
+
+    public Integer getmaxshield(Player player) {
+        maxshield = playerstats.getInt(player.getName() + ".maxshield");
+        return maxshield;
+    }
+
+    public Integer getdefense(Player player) {
+        defense = playerstats.getInt(player.getName() + ".defense");
+        return defense;
+    }
+
     public Integer getdefaulthealth() {
-        health = healthsave.getInt("config.default.health");
+        health = playerstats.getInt("config.defaults.health");
         return health;
     }
 
     public Integer getdefaultmaxhealth() {
-        maxhealth = healthsave.getInt("config.default.maxhealth");
+        maxhealth = playerstats.getInt("config.defaults.maxhealth");
         return maxhealth;
     }
+    public Integer getdefaultshield() {
+        defaultshield = playerstats.getInt("config.defaults.shield");
+        return defaultshield;
+    }
+
+    public Integer getdefaultmaxshield() {
+        defaultmaxshield = playerstats.getInt("config.defaults.maxshield");
+        return defaultmaxshield;
+    }
+
+    public Integer getdefensehealth() {
+        defaultdefense = playerstats.getInt("config.defaults.defense");
+        return defaultdefense;
+    }
+
 
     public HealthPlayer saveplayerhealth(Player player) {
-        healthsave.set(player.getName() + ".health", health);
-        healthsave.set(player.getName() + ".maxhealth", maxhealth);
+        playerstats.set(player.getName() + ".health", health);
+        playerstats.set(player.getName() + ".maxhealth", maxhealth);
+        playerstats.set(player.getName() + ".shield", shield);
+        playerstats.set(player.getName() + ".maxshield", maxshield);
+        playerstats.set(player.getName() + ".defense", defense);
 
         try {
-            healthsave.save(playerhealth);
+            playerstats.save(playerstatsfile);
         } catch (IOException e) {
             Bukkit.getConsoleSender().sendMessage(e.toString());
         }
@@ -137,10 +186,13 @@ public class HealthPlayer implements Listener {
     public HealthPlayer saveplayerhealth() {
         for (Player player: Bukkit.getOnlinePlayers()) {
             if(player.getGameMode().equals(GameMode.SURVIVAL)) {
-                healthsave.set(player.getName() + ".health", health);
-                healthsave.set(player.getName() + ".maxhealth", maxhealth);
+                playerstats.set(player.getName() + ".health", health);
+                playerstats.set(player.getName() + ".maxhealth", maxhealth);
+                playerstats.set(player.getName() + ".shield", shield);
+                playerstats.set(player.getName() + ".maxshield", maxshield);
+                playerstats.set(player.getName() + ".defense", defense);
                 try {
-                    healthsave.save(playerhealth);
+                    playerstats.save(playerstatsfile);
                 } catch (IOException e) {
                     Bukkit.getConsoleSender().sendMessage(e.toString());
                 }
@@ -157,7 +209,9 @@ public class HealthPlayer implements Listener {
                 for (Player player: Bukkit.getOnlinePlayers()) {
                     if(player.getGameMode().equals(GameMode.SURVIVAL)) {
                         gethealth(player);
-                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§c " + health + " / " + getmaxhealth(player)));
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                                new TextComponent(
+                                        "§c " + health + " / " + getmaxhealth(player)));
                         player.setHealth((double) health/10);
                         player.setMaxHealth((double) health/10);
                     }
@@ -180,7 +234,7 @@ public class HealthPlayer implements Listener {
 
     public HealthPlayer takedamage(Integer damage, Player player) {
         if (health - damage > 0) {
-            health = health - damage;
+            health = health - damage/defense;
             saveplayerhealth(player);
         }
 
