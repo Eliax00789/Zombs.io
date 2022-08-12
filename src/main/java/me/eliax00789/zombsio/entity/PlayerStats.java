@@ -24,7 +24,7 @@ public class PlayerStats implements Listener {
 
     private File playerStatsFile;
     private YamlConfiguration playerstats;
-    private HashMap<Player,Double[]> stats;
+    public HashMap<Player,Double[]> stats;
 
     public PlayerStats() {
         stats = new HashMap<Player,Double[]>();

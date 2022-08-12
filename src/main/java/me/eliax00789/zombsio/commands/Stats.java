@@ -2,6 +2,7 @@ package me.eliax00789.zombsio.commands;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.towers.ArrowTower;
+import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
@@ -33,7 +34,6 @@ public class Stats implements TabExecutor {
             }
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().addhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
