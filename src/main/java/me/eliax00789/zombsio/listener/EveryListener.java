@@ -71,6 +71,8 @@ public class EveryListener implements Listener {
                e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
                e.getPlayer().getInventory().setItem(9, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0)).getItem());
 
+          } else if(e.getNewGameMode() == GameMode.ADVENTURE) {
+               e.setCancelled(true);
           } else {
                //e.getPlayer().getInventory().clear();
           }
