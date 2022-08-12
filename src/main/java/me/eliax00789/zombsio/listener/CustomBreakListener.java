@@ -16,6 +16,7 @@ import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.block.CraftBlock;
 import org.bukkit.craftbukkit.v1_19_R1.block.data.CraftBlockData;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDamageAbortEvent;
@@ -25,11 +26,12 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
+
 public class CustomBreakListener implements Listener {
 
-    private BukkitRunnable countercount;
-    private BukkitRunnable mining;
-    private Double counter;
+    private HashMap<Player,BukkitRunnable> mining;
+    private HashMap<Player,Double> counter;
 
     public CustomBreakListener() {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
@@ -52,22 +54,22 @@ public class CustomBreakListener implements Listener {
                     else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(6))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(6); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.Attackspeed").get(6);}
                     else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(7))) {harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(7); attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.Attackspeed").get(7);}
                     else {harvest = 1; attackspeed = 1.0;}
-                    counter = 0.0;
-                    mining = new BukkitRunnable() {
+                    counter.put(e.getPlayer(),0.0);
+                    mining.put(e.getPlayer(), new BukkitRunnable() {
                         @Override
                         public void run() {
                             PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 0);
-                            if (counter >= 0 && counter < 10) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);}
-                            else if (counter >= 10 && counter < 20) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 2);}
-                            else if (counter >= 20 && counter < 30) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 3);}
-                            else if (counter >= 30 && counter < 40) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 4);}
-                            else if (counter >= 40 && counter < 50) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 5);}
-                            else if (counter >= 50 && counter < 60) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 6);}
-                            else if (counter >= 60 && counter < 70) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 7);}
-                            else if (counter >= 70 && counter < 80) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 8);}
-                            else if (counter >= 80 && counter < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
-                            else if (counter >= 90) {
-                                counter = 0.0;
+                            if (counter.get(e.getPlayer()) >= 0 && counter.get(e.getPlayer()) < 10) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);}
+                            else if (counter.get(e.getPlayer()) >= 10 && counter.get(e.getPlayer()) < 20) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 2);}
+                            else if (counter.get(e.getPlayer()) >= 20 && counter.get(e.getPlayer()) < 30) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 3);}
+                            else if (counter.get(e.getPlayer()) >= 30 && counter.get(e.getPlayer()) < 40) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 4);}
+                            else if (counter.get(e.getPlayer()) >= 40 && counter.get(e.getPlayer()) < 50) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 5);}
+                            else if (counter.get(e.getPlayer()) >= 50 && counter.get(e.getPlayer()) < 60) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 6);}
+                            else if (counter.get(e.getPlayer()) >= 60 && counter.get(e.getPlayer()) < 70) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 7);}
+                            else if (counter.get(e.getPlayer()) >= 70 && counter.get(e.getPlayer()) < 80) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 8);}
+                            else if (counter.get(e.getPlayer()) >= 80 && counter.get(e.getPlayer()) < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
+                            else if (counter.get(e.getPlayer()) >= 90) {
+                                counter.put(e.getPlayer(),0.0);
                                 if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                     Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Wood"));
@@ -75,14 +77,14 @@ public class CustomBreakListener implements Listener {
                                     Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Stone"));
                                 }
-                                e.getPlayer().playSound(e.getBlock().getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 10000000,1.0F);
+                                e.getPlayer().playSound(e.getBlock().getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 100,1.0F);
                                 e.getBlock().getWorld().spawnParticle(Particle.BLOCK_CRACK, e.getBlock().getLocation().add(0.5,0.5, 0.5), 80, 0.25, 0, 0.25, 0.7,  e.getBlock().getType().createBlockData());
                             }
                             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
-                            counter += attackspeed;
+                            counter.put(e.getPlayer(),counter.get(e.getPlayer()) + attackspeed);
                         }
-                    };
-                    mining.runTaskTimer(Zombsio.plugin,0,1);
+                    });
+                    mining.get(e.getPlayer()).runTaskTimer(Zombsio.plugin,0,1);
                 }
             }
         }
@@ -91,8 +93,8 @@ public class CustomBreakListener implements Listener {
     @EventHandler
     public void onBlockDamageAbort(BlockDamageAbortEvent e) {
         e.getPlayer().removePotionEffect(PotionEffectType.SLOW_DIGGING);
-        if (mining != null && !mining.isCancelled()) {
-            mining.cancel();
+        if (mining.get(e.getPlayer()) != null && !mining.get(e.getPlayer()).isCancelled()) {
+            mining.get(e.getPlayer()).cancel();
             PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), -1);
             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
         }
