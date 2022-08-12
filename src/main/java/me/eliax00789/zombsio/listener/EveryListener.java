@@ -78,65 +78,54 @@ public class EveryListener implements Listener {
                                    @Override
                                    public void run() {
                                         PacketPlayOutBlockBreakAnimation packet;
-
                                         e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 2, 999));
                                         switch (duration) {
                                              case 0:
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Blockbreak");
                                                   if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                                        Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + resourceamount);
                                                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + resourceamount +  " Wood"));
                                                   } else if (e.getBlock().getType().equals(Material.STONE)) {
                                                        Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + resourceamount);
                                                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + resourceamount +  " Stone"));
-                                                  }
 
+                                                  }
                                                   e.getPlayer().breakBlock(e.getBlock());
                                                   this.cancel();
                                                   return;
                                              case 10:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 9");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 20:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 8);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 8");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 30:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 7);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 7");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
 
                                              case 40:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 6);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 6");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 50:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 5);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 5");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
 
                                              case 60:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 4);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 4");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 70:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 3);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 3");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 80:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 2);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 2");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                              case 90:
                                                   packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);
-                                                  Bukkit.broadcastMessage(String.valueOf(duration) + " Frame 1");
                                                   ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                                                   break;
                                         }
@@ -144,7 +133,6 @@ public class EveryListener implements Listener {
 
                                         if (duration > 0) {
                                              duration--;
-                                             Bukkit.broadcastMessage(String.valueOf(duration));
                                         } else {
                                              return;
                                         }
@@ -156,8 +144,7 @@ public class EveryListener implements Listener {
                          }
                     }
                } else {
-                    PacketPlayOutBlockBreakAnimation packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 1);
-                    ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
+                    e.getPlayer().addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, 20*99, 999));
                     e.setCancelled(true);
                }
           } else {
