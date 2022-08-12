@@ -4,7 +4,6 @@ import me.eliax00789.zombsio.Zombsio;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.minecraft.network.protocol.game.PacketPlayOutAnimation;
-import net.minecraft.world.entity.Entity;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -170,7 +169,7 @@ public class PlayerStats implements Listener {
             else {
                 if (!player.getGameMode().equals(GameMode.CREATIVE)) {
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
-                    PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((Entity) player),1);
+                    PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((CraftPlayer) player).getHandle(),1);
                     for (Player p:Bukkit.getOnlinePlayers()) {
                         if (p.getWorld().equals(player)) {
                             ((CraftPlayer) p).getHandle().b.a(packet);
