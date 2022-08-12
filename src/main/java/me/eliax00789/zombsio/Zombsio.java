@@ -5,6 +5,7 @@ import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.entity.HealthPlayer;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
+import me.eliax00789.zombsio.listener.CustomBreakListener;
 import me.eliax00789.zombsio.listener.EveryListener;
 import me.eliax00789.zombsio.listener.PlayerJoinListener;
 import me.eliax00789.zombsio.utility.Config;
@@ -103,13 +104,14 @@ public final class Zombsio extends JavaPlugin {
         new BuildMenu();
         new Shop();
         //LISTENERS:
-        new PlayerJoinListener();
+        new CustomBreakListener();
         new EveryListener();
+        new PlayerJoinListener();
         //COMMANDS:
         new Debug();
         new Resources();
 
-        //HEALTHPLAYER
+        //HEALTHSYSTEM
         new HealthPlayer();
 
     }
