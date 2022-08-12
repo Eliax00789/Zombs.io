@@ -78,8 +78,8 @@ public class PlayerStats implements Listener {
                                 )
                         );
                         Double[] newstats = stats.get(player);
-                        if (stats.get(player)[5] <= 0) {
-                            newstats[5] = 30.0;
+                        if (stats.get(player)[4] <= 0) {
+                            newstats[4] = 30.0;
                             if (stats.get(player)[0] < stats.get(player)[1]) {
                                 newstats[0] = stats.get(player)[0] + 1;
                             }
@@ -90,7 +90,7 @@ public class PlayerStats implements Listener {
                             }
                         }
                         else {
-                            newstats[5] = stats.get(player)[5] - 1.0;
+                            newstats[4] = stats.get(player)[4] - 1.0;
                         }
                         stats.put(player,newstats);
                         try {playerstats.save(playerStatsFile);}
