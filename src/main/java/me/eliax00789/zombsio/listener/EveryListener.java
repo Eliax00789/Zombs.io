@@ -32,14 +32,6 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onBlockBreak(BlockBreakEvent e) {
-          e.getBlock().getWorld().spawnParticle(Particle.BLOCK_CRACK, e.getBlock().getLocation().add(0.5,0.5, 0.5), 80, 0.25, 0, 0.25, 0.7,  e.getBlock().getType().createBlockData());
-
-          if (e.getBlock().getType() == (Material.OAK_LOG) || e.getBlock().getType() == (Material.STONE)) {
-
-               e.getBlock().getWorld().playSound(e.getPlayer(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 50 , 1.0F);
-
-          }
-
           if(!e.getPlayer().hasPermission("zombs.bypass.blockbreak") || e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
@@ -125,7 +117,7 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onRightClickAir(PlayerInteractEvent e) {
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BOW)) {
-               
+               e.get
           }
      }
 

@@ -10,6 +10,8 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockChange;
 import org.bukkit.Material;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
 import org.bukkit.craftbukkit.v1_19_R1.block.CraftBlock;
 import org.bukkit.craftbukkit.v1_19_R1.block.data.CraftBlockData;
@@ -66,7 +68,6 @@ public class CustomBreakListener implements Listener {
                             else if (counter >= 80 && counter < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
                             else if (counter >= 90) {
                                 counter = 0.0;
-
                                 if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                     Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Wood"));
@@ -74,13 +75,8 @@ public class CustomBreakListener implements Listener {
                                     Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Stone"));
                                 }
-                                new BukkitRunnable() {
-
-                                    @Override
-                                    public void run() {
-
-                                    }
-                                }.runTaskLater(Zombsio.plugin,  20*6);
+                                e.getPlayer().playSound(e.getBlock().getLocation(), Sound.BLOCK_AMETHYST_BLOCK_BREAK, 10000000,1.0F);
+                                e.getBlock().getWorld().spawnParticle(Particle.BLOCK_CRACK, e.getBlock().getLocation().add(0.5,0.5, 0.5), 80, 0.25, 0, 0.25, 0.7,  e.getBlock().getType().createBlockData());
                             }
                             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                             counter += attackspeed;
