@@ -136,6 +136,7 @@ public class PlayerStats implements Listener {
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
+            e.setCancelled(true);
             Player player = (Player) e.getEntity();
             Double damage = e.getDamage() * 10;
             Double[] oldstats = stats.get(player);
@@ -155,15 +156,10 @@ public class PlayerStats implements Listener {
             }
             if (newstats[0] <= 0) {
                 newstats[0] = stats.get(player)[1];
-                for (Player p:Bukkit.getOnlinePlayers()) {
-                    if (p.getWorld().equals(player.getWorld())) {
-                        p.sendMessage(player.getName() + "fricking died");
-                    }
-                }
+                Bukkit.broadcastMessage(player.getName() + " fricking died");
             }
             stats.put(player,newstats);
             save();
-            e.setCancelled(true);
         }
     }
 
