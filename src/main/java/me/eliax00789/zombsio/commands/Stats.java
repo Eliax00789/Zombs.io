@@ -10,12 +10,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class Stats implements TabExecutor {
 
     public Stats() {
-        Zombsio.plugin.getCommand("zdebug").setExecutor(this);
+        Zombsio.plugin.getCommand("zstats").setExecutor(this);
     }
 
     @Override
@@ -31,51 +33,92 @@ public class Stats implements TabExecutor {
             }
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    new PlayerStatsSystem().addhealth(Integer.valueOf(args[3])
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Wood has been added");
+                    new PlayerStatsSystem().addhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
                 }
-                else if (args[2].equalsIgnoreCase("set")) {
+                else if (args[2].equalsIgnoreCase("remove")) {
+                    new PlayerStatsSystem().removehealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Health has been removed");
 
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Wood has been removed");
+                }
+                else if (args[2].equalsIgnoreCase("set")) {
+                    new PlayerStatsSystem().sethealth(Bukkit.getPlayer(args[0]), Integer.valueOf(args[3]));
+                    sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
+                }
+                else
+                {
+                    sender.sendMessage("Couldn't recognize operation");
+                }
+                return true;
+            }
+            else if (args[1].equalsIgnoreCase("maxhealth")) {
+                if (args[2].equalsIgnoreCase("add")) {
+                    new PlayerStatsSystem().addmaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    sender.sendMessage( "Wood has been set to " + Integer.valueOf(args[3]));
+                    new PlayerStatsSystem().removemaxhealth(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
+                }
+                else if (args[2].equalsIgnoreCase("set")) {
+                    new PlayerStatsSystem().setmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
                 return true;
             }
-            else if (args[1].equalsIgnoreCase("stone")) {
+            else if (args[1].equalsIgnoreCase("shield")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Config.getInstance().STONE.put(args[0], Config.getInstance().STONE.get(args[0]) + Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Stone has been added");
+                    new PlayerStatsSystem().addshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Config.getInstance().STONE.put(args[0], Config.getInstance().STONE.get(args[0]) - Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Stone has been removed");
+                    new PlayerStatsSystem().removeshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been removed");
+
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Config.getInstance().STONE.put(args[0], Integer.valueOf(args[3]));
-                    sender.sendMessage( "Stone has been set to " + Integer.valueOf(args[3]));
+                    new PlayerStatsSystem().setshield(Bukkit.getPlayer(args[0]), Integer.valueOf(args[3]));
+                    sender.sendMessage("Shield has been set to " + Integer.valueOf(args[3]));
+                }
+                else
+                {
+                    sender.sendMessage("Couldn't recognize operation");
+                }
+                return true;
+            }
+            else if (args[1].equalsIgnoreCase("maxshield")) {
+                if (args[2].equalsIgnoreCase("add")) {
+                    new PlayerStatsSystem().addmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been added");
+                }
+                else if (args[2].equalsIgnoreCase("remove")) {
+                    new PlayerStatsSystem().removemaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been removed");
+                }
+                else if (args[2].equalsIgnoreCase("set")) {
+                    new PlayerStatsSystem().setmaxshield(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( "Maxshield has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
                 return true;
             }
-            else if (args[1].equalsIgnoreCase("gold")) {
+            else if (args[1].equalsIgnoreCase("defense")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Config.getInstance().GOLD.put(args[0], Config.getInstance().GOLD.get(args[0]) + Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Gold has been added");
+                    new PlayerStatsSystem().adddefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + "Defense has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Config.getInstance().GOLD.put(args[0], Config.getInstance().GOLD.get(args[0]) - Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Gold has been removed");
+                    new PlayerStatsSystem().removedefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Config.getInstance().GOLD.put(args[0], Integer.valueOf(args[3]));
-                    sender.sendMessage( "Gold has been set to " + Integer.valueOf(args[3]));
+                    new PlayerStatsSystem().setdefense(Bukkit.getPlayer(args[0]),Integer.valueOf(args[3]));
+                    sender.sendMessage( "Defense has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
@@ -92,11 +135,56 @@ public class Stats implements TabExecutor {
             return true;
         }
 
-        return false;
     }
 
     @Override
-    public List<String> onTabComplete(CommandSender commandSender, Command command, String s, String[] strings) {
-        return null;
+    public List<String> onTabComplete(CommandSender commandSender, Command command, String label, String[] args) {
+        List<String> toCompleteTo = new ArrayList<String>();
+        Collection<Player> playerlist = (Collection<Player>) Bukkit.getOnlinePlayers();
+        ArrayList<String> stattypes = new ArrayList<String>();
+        stattypes.add("health");
+        stattypes.add("maxhealth");
+        stattypes.add("shield");
+        stattypes.add("maxshield");
+        stattypes.add("defense");
+        ArrayList<String> optionlist = new ArrayList<String>();
+        optionlist.add("add");
+        optionlist.add("remove");
+        optionlist.add("set");
+        ArrayList<String> numberlist = new ArrayList<String>();
+        for (Integer i = 0; i < 1000; i++) {
+            numberlist.add(String.valueOf(i));
+        }
+        if (args.length == 1) {
+            for (Player p:Bukkit.getOnlinePlayers()) {
+                if (p.getName().contains(args[0].toLowerCase())) {
+                    toCompleteTo.add(p.getName());
+                }
+            }
+        }
+        if (args.length == 2) {
+            for (String s: stattypes) {
+                if (s.contains(args[1].toLowerCase())) {
+                    toCompleteTo.add(s);
+                }
+            }
+        }
+        if (args.length == 3) {
+            for (String s: optionlist) {
+                if (s.contains(args[2].toLowerCase())) {
+                    toCompleteTo.add(s);
+                }
+            }
+        }
+        if (args.length == 4) {
+            for (String s: numberlist) {
+                if (s.contains(args[3].toLowerCase())) {
+                    toCompleteTo.add(s);
+                }
+            }
+        }
+        return toCompleteTo;
     }
+
 }
+
