@@ -110,9 +110,5 @@ public final class Zombsio extends JavaPlugin {
         new Resources();
 
         //GAMERULE:
-
-        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.DO_MOB_SPAWNING, false);
-        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.DO_MOB_LOOT, false);
-        this.getServer().getWorld("GUIWorld").setGameRule(GameRule.MOB_GRIEFING, false);
     }
 }

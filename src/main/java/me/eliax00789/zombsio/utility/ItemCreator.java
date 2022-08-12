@@ -40,7 +40,7 @@ public class ItemCreator {
     }
 
     public ItemCreator setLore(String... lore) {
-        meta.setLore(Arrays.asList(lore).stream().map(line -> ChatColor.translateAlternateColorCodes('&', line)).collect(Collectors.toList()));
+        meta.setLore(Arrays.asList(lore));
         return this;
     }
 
@@ -55,7 +55,6 @@ public class ItemCreator {
     }
 
     public ItemCreator setName(String name) {
-        name = ChatColor.translateAlternateColorCodes('&', name);
         meta.setDisplayName(name);
         return this;
     }

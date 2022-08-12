@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/zombs.iml" filepath="$PROJECT_DIR$/zombs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zombsio.iml" filepath="$PROJECT_DIR$/zombsio.iml" />
     </modules>
   </component>
 </project>

@@ -11,6 +11,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="zombs" target="1.8" />
+      <module name="zombsio" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

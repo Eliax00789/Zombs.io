@@ -19,35 +19,35 @@ class ShopPotionsInventory {
                 .fillPlaceHolder()
                 .addExitButton()
                 .setCancelAllClicks(true)
-                .setItem(1, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Tools").getItem(), new BukkitRunnable() {
+                .setItem(1, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("§7Tools").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"tools");
                         inventory.getViewers().get(0).openInventory(new ShopToolsInventory().getInventory());
                     }
                 })
-                .setItem(2, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Armor").getItem(), new BukkitRunnable() {
+                .setItem(2, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("§7Armor").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"armor");
                         inventory.getViewers().get(0).openInventory(new ShopArmorInventory().getInventory());
                     }
                 })
-                .setItem(3, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("&7Pets").getItem(), new BukkitRunnable() {
+                .setItem(3, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("§7Pets").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"pets");
                         inventory.getViewers().get(0).openInventory(new ShopPetsInventory().getInventory());
                     }
                 })
-                .setItem(4, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("&aPotions").getItem())
-                .setItem(10, new ItemCreator(Material.POTION).setName("&7Health Potion").getItem(), new BukkitRunnable() {
+                .setItem(4, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("§aPotions").getItem())
+                .setItem(10, new ItemCreator(Material.POTION).setName("§7Health Potion").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.POTION).setName("&7Pet Health Potion").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.POTION).setName("§7Pet Health Potion").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
