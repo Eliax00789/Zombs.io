@@ -49,9 +49,9 @@ public class PlayerStats implements Listener {
             if (!playerstats.contains("stats." + player.getName() + ".shield")) {playerstats.set(player.getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
             if (!playerstats.contains("stats." + player.getName() + ".maxshield")) {playerstats.set(player.getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
             if (!playerstats.contains("stats." + player.getName() + ".defense")) {playerstats.set(player.getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
-            try {playerstats.save(playerStatsFile);}
-            catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
         }
+        try {playerstats.save(playerStatsFile);}
+        catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
 
         for (Player player: Bukkit.getOnlinePlayers()) {
             stats.put(player,new Double[]{
@@ -68,6 +68,8 @@ public class PlayerStats implements Listener {
             public void run() {
                 for (Player player: Bukkit.getOnlinePlayers()) {
                     if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                        player.setHealth(stats.get(player)[0]);
+                        player.setAbsorptionAmount(stats.get(player)[3]);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
                                         "§c❤ " + stats.get(player)[0] + " / " + stats.get(player)[1]
@@ -91,6 +93,8 @@ public class PlayerStats implements Listener {
                             newstats[5] = stats.get(player)[5] - 1.0;
                         }
                         stats.put(player,newstats);
+                        try {playerstats.save(playerStatsFile);}
+                        catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
                     }
                 }
             }
@@ -138,7 +142,6 @@ public class PlayerStats implements Listener {
             stats.put(player,newstats);
             try {playerstats.save(playerStatsFile);}
             catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
-            player.setHealth(stats.get(player)[0]);
             e.setCancelled(true);
         }
     }
