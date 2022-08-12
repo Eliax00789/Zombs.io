@@ -1,0 +1,152 @@
+package me.eliax00789.zombsio.entity;
+
+import me.eliax00789.zombsio.Zombsio;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityRegainHealthEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.scheduler.BukkitRunnable;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.logging.Level;
+
+public class PlayerStats implements Listener {
+
+    private File playerStatsFile;
+    private YamlConfiguration playerstats;
+    private HashMap<Player,Double[]> stats;
+
+    public PlayerStats() {
+        stats = new HashMap<Player,Double[]>();
+        playerStatsFile = new File(Zombsio.plugin.getDataFolder(), "playerstats.yml");
+        if (!playerStatsFile.exists()){
+            try {playerStatsFile.createNewFile();}
+            catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
+        }
+        playerstats = YamlConfiguration.loadConfiguration(playerStatsFile);
+
+        if (!playerstats.contains("config.defaults.health")) {playerstats.set("config.defaults.health", 200.0);}
+        if (!playerstats.contains("config.defaults.maxhealth")) {playerstats.set("config.defaults.maxhealth", 200.0);}
+        if (!playerstats.contains("config.defaults.shield")) {playerstats.set("config.defaults.shield", 0.0);}
+        if (!playerstats.contains("config.defaults.maxshield")) {playerstats.set("config.defaults.maxshield", 0.0);}
+        if (!playerstats.contains("config.defaults.defense")) {playerstats.set("config.defaults.defense", 0.0);}
+        try {playerstats.save(playerStatsFile);}
+        catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
+
+        for (Player player: Bukkit.getOnlinePlayers()) {
+            if (!playerstats.contains("stats." + player.getName() + ".health")) {playerstats.set(player.getName() + ".health", playerstats.getDouble("config.defaults.health"));}
+            if (!playerstats.contains("stats." + player.getName() + ".maxhealth")) {playerstats.set(player.getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
+            if (!playerstats.contains("stats." + player.getName() + ".shield")) {playerstats.set(player.getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
+            if (!playerstats.contains("stats." + player.getName() + ".maxshield")) {playerstats.set(player.getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
+            if (!playerstats.contains("stats." + player.getName() + ".defense")) {playerstats.set(player.getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
+            try {playerstats.save(playerStatsFile);}
+            catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
+        }
+
+        for (Player player: Bukkit.getOnlinePlayers()) {
+            stats.put(player,new Double[]{
+                    playerstats.getDouble("stats." + player.getName() + ".health"),
+                    playerstats.getDouble("stats." + player.getName() + ".maxhealth"),
+                    playerstats.getDouble("stats." + player.getName() + ".shield"),
+                    playerstats.getDouble("stats." + player.getName() + ".maxshield"),
+                    playerstats.getDouble("stats." + player.getName() + ".defense"),
+                    0.0});
+        }
+
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (Player player: Bukkit.getOnlinePlayers()) {
+                    if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                        player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
+                                new TextComponent(
+                                        "§c❤ " + stats.get(player)[0] + " / " + stats.get(player)[1]
+                                                + "  §a❈ " + stats.get(player)[4]
+                                                + "  §b❤ " + stats.get(player)[2] + " / " + stats.get(player)[3]
+                                )
+                        );
+                        Double[] newstats = stats.get(player);
+                        if (stats.get(player)[5] <= 0) {
+                            newstats[5] = 30.0;
+                            if (stats.get(player)[0] < stats.get(player)[1]) {
+                                newstats[0] = stats.get(player)[0] + 1;
+                            }
+                            else {
+                                if (stats.get(player)[2] < stats.get(player)[3]) {
+                                    newstats[2] = stats.get(player)[0] + 1;
+                                }
+                            }
+                        }
+                        else {
+                            newstats[5] = stats.get(player)[5] - 1.0;
+                        }
+                        stats.put(player,newstats);
+                    }
+                }
+            }
+        }.runTaskTimer(Zombsio.plugin,0,1);
+
+        Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent e) {
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".health")) {playerstats.set(e.getPlayer().getName() + ".health", playerstats.getDouble("config.defaults.health"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxhealth")) {playerstats.set(e.getPlayer().getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".shield")) {playerstats.set(e.getPlayer().getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxshield")) {playerstats.set(e.getPlayer().getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".defense")) {playerstats.set(e.getPlayer().getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
+        try {playerstats.save(playerStatsFile);}
+        catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
+        stats.put(e.getPlayer(),new Double[]{
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".health"),
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxhealth"),
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".shield"),
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxshield"),
+                playerstats.getDouble("stats." + e.getPlayer().getName() + ".defense")});
+    }
+
+    @EventHandler
+    public void onPlayerDamage(EntityDamageEvent e) {
+        if (e.getEntity() instanceof Player) {
+            Player player = (Player) e.getEntity();
+            Double damage = e.getDamage() * 10;
+            Double[] oldstats = stats.get(player);
+            Double[] newstats = stats.get(player);
+            if (oldstats[2] > 0) {
+                if (oldstats[2] >= damage) {
+                    newstats[2] = oldstats[2] - damage;
+                }
+                else {
+                    newstats[2] = 0.0;
+                    newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
+                }
+            }
+            else {
+                newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
+            }
+            stats.put(player,newstats);
+            try {playerstats.save(playerStatsFile);}
+            catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
+            player.setHealth(stats.get(player)[0]);
+            e.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    public void onPlayerRegainHealth(EntityRegainHealthEvent e) {
+        if (e.getEntity() instanceof Player) {
+            e.setCancelled(true);
+        }
+    }
+}
