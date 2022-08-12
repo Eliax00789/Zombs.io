@@ -44,11 +44,11 @@ public class PlayerStats implements Listener {
         catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
 
         for (Player player: Bukkit.getOnlinePlayers()) {
-            if (!playerstats.contains("stats." + player.getName() + ".health")) {playerstats.set(player.getName() + ".health", playerstats.getDouble("config.defaults.health"));}
-            if (!playerstats.contains("stats." + player.getName() + ".maxhealth")) {playerstats.set(player.getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
-            if (!playerstats.contains("stats." + player.getName() + ".shield")) {playerstats.set(player.getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
-            if (!playerstats.contains("stats." + player.getName() + ".maxshield")) {playerstats.set(player.getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
-            if (!playerstats.contains("stats." + player.getName() + ".defense")) {playerstats.set(player.getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
+            if (!playerstats.contains("stats." + player.getName() + ".health")) {playerstats.set("stats." + player.getName() + ".health", playerstats.getDouble("config.defaults.health"));}
+            if (!playerstats.contains("stats." + player.getName() + ".maxhealth")) {playerstats.set("stats." + player.getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
+            if (!playerstats.contains("stats." + player.getName() + ".shield")) {playerstats.set("stats." + player.getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
+            if (!playerstats.contains("stats." + player.getName() + ".maxshield")) {playerstats.set("stats." + player.getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
+            if (!playerstats.contains("stats." + player.getName() + ".defense")) {playerstats.set("stats." + player.getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
         }
         try {playerstats.save(playerStatsFile);}
         catch (IOException e) {Bukkit.getLogger().log(Level.WARNING,e.toString());}
@@ -105,11 +105,11 @@ public class PlayerStats implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
-        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".health")) {playerstats.set(e.getPlayer().getName() + ".health", playerstats.getDouble("config.defaults.health"));}
-        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxhealth")) {playerstats.set(e.getPlayer().getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
-        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".shield")) {playerstats.set(e.getPlayer().getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
-        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxshield")) {playerstats.set(e.getPlayer().getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
-        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".defense")) {playerstats.set(e.getPlayer().getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".health")) {playerstats.set("stats." + e.getPlayer().getName() + ".health", playerstats.getDouble("config.defaults.health"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxhealth")) {playerstats.set("stats." + e.getPlayer().getName() + ".maxhealth", playerstats.getDouble("config.defaults.maxhealth"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".shield")) {playerstats.set("stats." + e.getPlayer().getName() + ".shield", playerstats.getDouble("config.defaults.shield"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".maxshield")) {playerstats.set("stats." + e.getPlayer().getName() + ".maxshield", playerstats.getDouble("config.defaults.maxshield"));}
+        if (!playerstats.contains("stats." + e.getPlayer().getName() + ".defense")) {playerstats.set("stats." + e.getPlayer().getName() + ".defense", playerstats.getDouble("config.defaults.defense"));}
         try {playerstats.save(playerStatsFile);}
         catch (IOException i) {Bukkit.getLogger().log(Level.WARNING,i.toString());}
         stats.put(e.getPlayer(),new Double[]{
