@@ -147,14 +147,19 @@ public class PlayerStats implements Listener {
                 }
                 else {
                     newstats[2] = 0.0;
-                    newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
+                    newstats[0] = oldstats[0] - (damage * (1/(oldstats[4]/25)));
                 }
             }
             else {
-                newstats[0] = oldstats[0] - (damage * (1-(oldstats[4]/25)));
+                newstats[0] = oldstats[0] - (damage * (1/(oldstats[4]/25)));
             }
             if (newstats[0] <= 0) {
                 newstats[0] = stats.get(player)[1];
+                for (Player p:Bukkit.getOnlinePlayers()) {
+                    if (p.getWorld().equals(player.getWorld())) {
+                        p.sendMessage(player.getName() + "fricking died");
+                    }
+                }
             }
             stats.put(player,newstats);
             save();
