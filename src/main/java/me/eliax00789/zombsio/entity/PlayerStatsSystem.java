@@ -39,7 +39,7 @@ public class PlayerStatsSystem implements Listener {
     private File playerstatsfile;
     private YamlConfiguration playerstats;
 
-    private BukkitTask statsupdate;
+    public BukkitTask statsupdate;
 
     public PlayerStatsSystem() {
         createplayerhealth();
@@ -130,7 +130,7 @@ public class PlayerStatsSystem implements Listener {
             }
         }
 
-        updatehealth();
+        updatestats();
     }
 
     public Boolean hasshield(Player player) {
@@ -243,7 +243,7 @@ public class PlayerStatsSystem implements Listener {
         return this;
     }
 
-    private PlayerStatsSystem updatehealth() {
+    public PlayerStatsSystem updatestats() {
         statsupdate = new BukkitRunnable() {
             @Override
             public void run() {
@@ -340,19 +340,19 @@ public class PlayerStatsSystem implements Listener {
         return this;
     }
 
-    public PlayerStatsSystem adddefence(Player player, Integer adddefence) {
+    public PlayerStatsSystem adddefense(Player player, Integer adddefence) {
         defense = getdefense(player) + adddefence;
         saveplayerdefense(player);
         return this;
     }
 
-    public PlayerStatsSystem removedefence(Player player, Integer removedefence) {
+    public PlayerStatsSystem removedefense(Player player, Integer removedefence) {
         defense = getdefense(player) - removedefence;
         saveplayerdefense(player);
         return this;
     }
 
-    public PlayerStatsSystem setdefence(Player player, Integer setdefence) {
+    public PlayerStatsSystem setdefense(Player player, Integer setdefence) {
         defense = setdefence;
         saveplayerdefense(player);
         return this;
@@ -413,8 +413,6 @@ public class PlayerStatsSystem implements Listener {
                 else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(8))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(8);}
                 else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(9))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(9);}
                 else if (name.equalsIgnoreCase(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(10))) {delay = Zombsio.plugin.getConfig().getIntegerList("Items.Shield.RechargeDelay").get(10);}
-
-
                 new BukkitRunnable() {
 
                     @Override
@@ -424,8 +422,6 @@ public class PlayerStatsSystem implements Listener {
                 }.runTaskLater(Zombsio.plugin, 20L*delay);
             }
         }
-
-
     }
 
     @EventHandler

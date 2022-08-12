@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.utility.Config;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -64,6 +65,7 @@ public class CustomBreakListener implements Listener {
                             else if (counter >= 80 && counter < 90) {packet = new PacketPlayOutBlockBreakAnimation(0, new BlockPosition(e.getBlock().getX(), e.getBlock().getY(), e.getBlock().getZ()), 9);}
                             else if (counter >= 90) {
                                 counter = 0.0;
+                                new PlayerStatsSystem().statsupdate.cancel();
                                 if (e.getBlock().getType().equals(Material.OAK_LOG)) {
                                     Config.getInstance().WOOD.put(e.getPlayer().getName(), Config.getInstance().WOOD.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Wood"));
@@ -71,6 +73,13 @@ public class CustomBreakListener implements Listener {
                                     Config.getInstance().STONE.put(e.getPlayer().getName(), Config.getInstance().STONE.get(e.getPlayer().getName()) + harvest);
                                     e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§a + " + harvest +  " Stone"));
                                 }
+                                new BukkitRunnable() {
+
+                                    @Override
+                                    public void run() {
+                                        new PlayerStatsSystem().updatestats();
+                                    }
+                                }.runTaskLater(Zombsio.plugin,  20);
                             }
                             ((CraftPlayer) e.getPlayer()).getHandle().b.a(packet);
                             counter += attackspeed;
