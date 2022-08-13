@@ -144,7 +144,7 @@ public class Stats implements TabExecutor {
                     }
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    if ((stats[2] + Double.valueOf(args[3])) < 1000 && (Double.valueOf(args[3])) > -1) {
+                    if ((Double.valueOf(args[3])) < 1000 && (Double.valueOf(args[3])) > -1) {
                         stats[4] = Double.valueOf(args[3]);
                         sender.sendMessage("§aDefense has been set to " + Integer.valueOf(args[3]));
                     }else sender.sendMessage( "§cYou can't set Defense over 1000 or under 0");
