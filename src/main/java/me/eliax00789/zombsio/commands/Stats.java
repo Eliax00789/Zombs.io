@@ -45,7 +45,7 @@ public class Stats implements TabExecutor {
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    stats[0] = stats[0] + Double.valueOf(args[3]);
+                    stats[0] = Double.valueOf(args[3]);
                     sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
                 }
                 else
