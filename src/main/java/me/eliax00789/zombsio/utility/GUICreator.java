@@ -61,7 +61,7 @@ public class GUICreator implements Listener {
     }
 
     public GUICreator addExitButton() {
-        ItemStack item = new ItemCreator(Material.BARRIER).setName("&4EXIT").getItem();
+        ItemStack item = new ItemCreator(Material.BARRIER).setName("§4EXIT").getItem();
         inventory.setItem(inventory.getSize() - 9,item);
         setClickAction(new BukkitRunnable() {
             @Override

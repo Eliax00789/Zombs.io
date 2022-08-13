@@ -119,12 +119,10 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onMove(PlayerMoveEvent e) {
 
-          for (int i = 0; i < 10; i++) {
+          for (int i = 0; i < 99; i++) {
                if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
                     if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
-                         //Todo: Check if Vector Negative set it to positive
-                         e.setTo(e.getFrom().subtract(e.getPlayer().getLocation().getDirection().setY(0)));
-                         Bukkit.broadcastMessage(String.valueOf(e.getPlayer().getLocation().getDirection().setY(0)));
+                         e.getPlayer().damage(e.getPlayer().getMaxHealth());
                     }
                }
           }
