@@ -38,7 +38,7 @@ public class Config {
         if (!(new File(Zombsio.plugin.getDataFolder() + File.separator).exists())) {
             new File(Zombsio.plugin.getDataFolder() + File.separator).mkdirs();
         }
-        configfile = new File(Zombsio.plugin.getDataFolder() + File.separator + "configandotherstuff.json");
+        configfile = new File(Zombsio.plugin.getDataFolder() + File.separator + "resources.json");
         if (!(configfile.exists())) {
             try {
                 configfile.createNewFile();
