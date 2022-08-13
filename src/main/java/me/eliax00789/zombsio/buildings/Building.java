@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
 import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
+import me.eliax00789.zombsio.buildings.resources.GoldMine;
 import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
@@ -40,6 +41,7 @@ public class Building implements Listener {
     private List<Integer>  gold;
     private Inventory inventory;
     private BukkitRunnable projectileLoop;
+    private BukkitRunnable goldLoop;
 
     public Building(@Nullable Player builder,String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
@@ -107,6 +109,22 @@ public class Building implements Listener {
             else {
                 build();
                 Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+            }
+
+            if (this instanceof GoldMine) {
+                goldLoop = new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        for (Player player: Bukkit.getOnlinePlayers()) {
+                            if (player.getWorld().equals(location.getWorld())) {
+                                Config.getInstance().GOLD.put(player.getName(),Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Goldgen").get(level));
+                            }
+                        }
+
+
+                    }
+                };
+                goldLoop.runTaskTimer(Zombsio.plugin, 0, 20);
             }
 
             if (projectile != null) {
