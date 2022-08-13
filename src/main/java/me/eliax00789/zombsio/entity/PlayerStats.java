@@ -81,7 +81,7 @@ public class PlayerStats implements Listener {
                                 stats.get(player)[7]});
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
-                        player.setAbsorptionAmount(stats.get(player)[3] / 10);
+                        player.setAbsorptionAmount(stats.get(player)[2] / 10);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
                                         "§c❤ " + Math.round(stats.get(player)[0]) + " / " + Math.round(stats.get(player)[1])
@@ -104,7 +104,9 @@ public class PlayerStats implements Listener {
                             newstats[6] = 10.0;
                             if (stats.get(player)[0].equals(stats.get(player)[1])) {
                                 if (stats.get(player)[2] < stats.get(player)[3]) {
-                                    newstats[2] = stats.get(player)[2] + stats.get(player)[3]/10;
+                                    newstats[2] = stats.get(player)[2] + stats.get(player)[3]/50;
+                                } else if((stats.get(player)[2] + stats.get(player)[3]/50) > stats.get(player)[3]) {
+                                    newstats[2] = stats.get(player)[3];
                                 }
                             }
                         } else {
