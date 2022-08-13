@@ -291,9 +291,9 @@ public class Building implements Listener {
             neededStashLvl = 0;
         }
 
-        Integer playerwood = Config.getInstance().WOOD.get(player);
-        Integer playerstone = Config.getInstance().STONE.get(player);
-        Integer playergold = Config.getInstance().GOLD.get(player);
+        Integer playerwood = Config.getInstance().WOOD.get(player.getName());
+        Integer playerstone = Config.getInstance().STONE.get(player.getName());
+        Integer playergold = Config.getInstance().GOLD.get(player.getName());
 
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
@@ -313,10 +313,9 @@ public class Building implements Listener {
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
-                                        "§4Mine for More Using your Pickaxe",
-                                        "§7" + (Integer.parseInt(nextWood) - playerwood) + "More Wood needed" ,
-                                        "§7" + (Integer.parseInt(nextStone) - playerstone) + "More Stone needed" ,
-                                        "§7" + (Integer.parseInt(nextGold) - playergold) + "More Gold needed"
+                                        "§7" + (Integer.parseInt(nextWood) - playerwood) + " More Wood needed" ,
+                                        "§7" + (Integer.parseInt(nextStone) - playerstone) + " More Stone needed" ,
+                                        "§7" + (Integer.parseInt(nextGold) - playergold) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -329,7 +328,7 @@ public class Building implements Listener {
                         , currentStashLvl
                         , neededStashLvl
                         , player)
-                .addItemSwitch(12, new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
+                .addItemSwitch(13, new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
                         .setLore("§7Tier " + level + " Building",
                                 "§7Current > Next level",
                                 "§7Health: " + health.get(level - 1) + " > " + nextHealth,
@@ -341,12 +340,6 @@ public class Building implements Listener {
                                 "§7Health: " + health.get(level - 1),
                                 "§7Damage: " + damage.get(level - 1),
                                 "§7Range: " + range.get(level - 1)).getItem(), level, maxLevel)
-                .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
-                        .setLore("§7Tier " + level + " Building",
-                                "§7Current > Next level",
-                                "§7Health: " + health.get(level - 1) + " > " + nextHealth,
-                                "§7Damage: " + damage.get(level - 1) + " > " + nextDamage,
-                                "§7Range: " + range.get(level - 1) + " > " + nextRange).getItem())
                 .setItem(15, new ItemCreator(Material.BARRIER).setName("Remove").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
