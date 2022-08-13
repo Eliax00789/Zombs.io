@@ -130,9 +130,9 @@ public class GUICreator implements Listener {
             , Integer level, Integer maxlevel
             , Player player) {
 
-            if(Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level < maxlevel) {
+            if(Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level <= maxlevel) {
                 setItem(index,item1,action1);
-            } else if (Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level == maxlevel) {
+            } else if (Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level >= maxlevel) {
                 setItem(index,item3);
             } else {
                 setItem(index,item2);
