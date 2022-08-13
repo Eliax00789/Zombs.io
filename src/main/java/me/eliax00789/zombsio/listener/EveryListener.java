@@ -21,6 +21,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.util.Vector;
 
 public class EveryListener implements Listener {
 
@@ -121,13 +122,11 @@ public class EveryListener implements Listener {
           for (int i = 0; i < 10; i++) {
                if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
                     if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
+                         //Todo: Check if Vector Negative set it to positive
                          e.setTo(e.getFrom().subtract(e.getPlayer().getLocation().getDirection().setY(0)));
+                         Bukkit.broadcastMessage(String.valueOf(e.getPlayer().getLocation().getDirection().setY(0)));
                     }
                }
-          }
-
-          if (e.getPlayer().isInWater()) {
-
           }
 
      }
