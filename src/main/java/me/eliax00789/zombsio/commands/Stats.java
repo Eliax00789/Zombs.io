@@ -6,6 +6,7 @@ import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
@@ -29,33 +30,39 @@ public class Stats implements TabExecutor {
                 return false;
             }
             if (!Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[0]))) {
-                sender.sendMessage("Player is not online");
+                sender.sendMessage("§cPlayer is not online");
                 return true;
             }
             Player player = Bukkit.getPlayer(args[0]);
+
+            if (!player.getGameMode().equals(GameMode.SURVIVAL)) {
+                sender.sendMessage("§cYou can use this comand only in Survival Mode");
+                return true;
+            }
+
             Double[] stats = PlayerStats.stats.get(player);
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     if ((stats[0] + Double.valueOf(args[3])) < stats[1]) {
                         stats[0] = stats[0] + Double.valueOf(args[3]);
-                        sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
-                    } else sender.sendMessage( "You can't add Health over your Max health");
+                        sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Health has been added");
+                    } else sender.sendMessage( "§cYou can't add Health over your Max health");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     if ((stats[0] - Double.valueOf(args[3])) > 0) {
                         stats[0] = stats[0] - Double.valueOf(args[3]);
-                        sender.sendMessage(Integer.valueOf(args[3]) + " Health has been removed");
-                    } else sender.sendMessage( "You can't remove Health under 0");
+                        sender.sendMessage("§a" + Integer.valueOf(args[3]) + " Health has been removed");
+                    } else sender.sendMessage( "§cYou can't remove Health under 0");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     if ((Double.valueOf(args[3])) > 0 && (Double.valueOf(args[3])) < stats[1]) {
                         stats[0] = Double.valueOf(args[3]);
-                        sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
-                    } else sender.sendMessage( "You can't set Health over Max health or under 0");
+                        sender.sendMessage("§aHealth has been set to " + Integer.valueOf(args[3]));
+                    } else sender.sendMessage( "§cYou can't set Health over Max health or under 0");
                 }
                 else
                 {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
             }
             else if (args[1].equalsIgnoreCase("maxhealth")) {
@@ -64,7 +71,7 @@ public class Stats implements TabExecutor {
                     if (stats[0] > (stats[1] + Double.valueOf(args[3]))) {
                         stats[0] = Double.valueOf(args[3]);
                     }
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been added");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxhealth has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     if (stats[1] + Double.valueOf(args[3]) > 0 ) {
@@ -73,7 +80,7 @@ public class Stats implements TabExecutor {
                     if (stats[0] > (stats[1] - Double.valueOf(args[3]))) {
                         stats[0] = Double.valueOf(args[3]);
                     }
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxhealth has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     stats[1] = Double.valueOf(args[3]);
@@ -81,80 +88,80 @@ public class Stats implements TabExecutor {
                     if (stats[0] > Double.valueOf(args[3])) {
                         stats[0] = Double.valueOf(args[3]);
                     }
-                    sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage( "§aMaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
             }
             else if (args[1].equalsIgnoreCase("shield")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     stats[2] = stats[2] + Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been added");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Shield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     stats[2] = stats[2] - Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been removed");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Shield has been removed");
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     stats[2] = Double.valueOf(args[3]);
-                    sender.sendMessage("Shield has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage("§aShield has been set to " + Integer.valueOf(args[3]));
                 }
                 else
                 {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
             }
             else if (args[1].equalsIgnoreCase("maxshield")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     stats[3] = stats[3] + Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been added");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxshield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     stats[3] = stats[3] - Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been removed");
+                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxshield has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     stats[3] = Double.valueOf(args[3]);
-                    sender.sendMessage( "Maxshield has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage( "§a" + "Maxshield has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
             }
             else if (args[1].equalsIgnoreCase("defense")) {
                     if (args[2].equalsIgnoreCase("add")) {
                         if ((stats[2] + Double.valueOf(args[3])) < 1000) {
                         stats[4] = stats[4] + Double.valueOf(args[3]);
-                        sender.sendMessage(Integer.valueOf(args[3]) + " Defense has been added");
-                        }else sender.sendMessage( "You can't add Defense over 1000");
+                        sender.sendMessage("§a" + Integer.valueOf(args[3]) + " Defense has been added");
+                        }else sender.sendMessage( "§cYou can't add Defense over 1000");
                     }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     if ((stats[4] - Double.valueOf(args[3])) > -1) {
                         stats[4] = stats[4] - Double.valueOf(args[3]);
-                        sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
+                        sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Defense has been removed");
                     }
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     if ((stats[2] + Double.valueOf(args[3])) < 1000 && (Double.valueOf(args[3])) > -1) {
                         stats[4] = Double.valueOf(args[3]);
-                        sender.sendMessage("Defense has been set to " + Integer.valueOf(args[3]));
-                    }else sender.sendMessage( "You can't set Defense over 1000");
+                        sender.sendMessage("§aDefense has been set to " + Integer.valueOf(args[3]));
+                    }else sender.sendMessage( "§cYou can't set Defense over 1000 or under 0");
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
             }
             else {
-                sender.sendMessage("Couldn't recognize resource type");
+                sender.sendMessage("§cCouldn't recognize resource type");
             }
             PlayerStats.stats.put(player,stats);
             PlayerStats.save();
             return true;
         }
         else {
-            sender.sendMessage("You do not have permission to execute this command");
+            sender.sendMessage("§cYou do not have permission to execute this command");
             return true;
         }
 

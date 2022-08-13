@@ -25,70 +25,70 @@ public class Resources implements TabExecutor {
                 return false;
             }
             if (!Bukkit.getOnlinePlayers().contains(Bukkit.getPlayer(args[0]))) {
-                sender.sendMessage("Player is not online");
+                sender.sendMessage("§cPlayer is not online");
                 return true;
             }
             if (args[1].equalsIgnoreCase("wood")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     Config.getInstance().WOOD.put(args[0], Config.getInstance().WOOD.get(args[0]) + Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Wood has been added");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Wood has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     Config.getInstance().WOOD.put(args[0], Config.getInstance().WOOD.get(args[0]) - Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Wood has been removed");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Wood has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     Config.getInstance().WOOD.put(args[0], Integer.valueOf(args[3]));
-                    sender.sendMessage( "Wood has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage( "§aWood has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
                 return true;
             }
             else if (args[1].equalsIgnoreCase("stone")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     Config.getInstance().STONE.put(args[0], Config.getInstance().STONE.get(args[0]) + Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Stone has been added");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Stone has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     Config.getInstance().STONE.put(args[0], Config.getInstance().STONE.get(args[0]) - Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Stone has been removed");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Stone has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     Config.getInstance().STONE.put(args[0], Integer.valueOf(args[3]));
-                    sender.sendMessage( "Stone has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage( "§aStone has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
                 return true;
             }
             else if (args[1].equalsIgnoreCase("gold")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     Config.getInstance().GOLD.put(args[0], Config.getInstance().GOLD.get(args[0]) + Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Gold has been added");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Gold has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     Config.getInstance().GOLD.put(args[0], Config.getInstance().GOLD.get(args[0]) - Integer.valueOf(args[3]));
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Gold has been removed");
+                    sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Gold has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     Config.getInstance().GOLD.put(args[0], Integer.valueOf(args[3]));
-                    sender.sendMessage( "Gold has been set to " + Integer.valueOf(args[3]));
+                    sender.sendMessage( "§aGold has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
-                    sender.sendMessage("Couldn't recognize operation");
+                    sender.sendMessage("§cCouldn't recognize operation");
                 }
                 return true;
             }
             else {
-                sender.sendMessage("Couldn't recognize resource type");
+                sender.sendMessage("§cCouldn't recognize resource type");
             }
             return true;
         }
         else {
-            sender.sendMessage("You do not have permission to execute this command");
+            sender.sendMessage("§cYou do not have permission to execute this command");
             return true;
         }
     }
