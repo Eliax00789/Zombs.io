@@ -60,7 +60,8 @@ public class PlayerStats implements Listener {
                     playerstats.getDouble("stats." + player.getName() + ".shield"),
                     playerstats.getDouble("stats." + player.getName() + ".maxshield"),
                     playerstats.getDouble("stats." + player.getName() + ".defense"),
-                    0.0});
+                    0.0,
+                    10.0});
         }
 
         new BukkitRunnable() {
@@ -101,7 +102,7 @@ public class PlayerStats implements Listener {
                         if (stats.get(player)[2] > (stats.get(player)[3] - 1) && stats.get(player)[2] < stats.get(player)[3]) {
                             newstats[2] = stats.get(player)[3];
                         }
-
+                        newstats[6] = stats.get(player)[6] - 1;
                         stats.put(player,newstats);
                         save();
                     }
@@ -141,7 +142,8 @@ public class PlayerStats implements Listener {
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".shield"),
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxshield"),
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".defense"),
-                0.0});
+                0.0,
+                10.0});
     }
 
     @EventHandler
@@ -149,45 +151,48 @@ public class PlayerStats implements Listener {
         if (e.getEntity() instanceof Player) {
             e.setCancelled(true);
             Player player = (Player) e.getEntity();
-            Double damage = e.getDamage() * 10;
-            Double[] oldstats = stats.get(player);
-            Double[] newstats = stats.get(player);
-            newstats[5] = 60.0;
-            if (oldstats[2] > 0) {
-                if (oldstats[2] >= damage) {
-                    newstats[2] = oldstats[2] - damage;
-                }
-                else {
-                    newstats[2] = 0.0;
-                    newstats[0] = oldstats[0] - (((damage / 100) * 4) * oldstats[4]);
-                }
-            }
-            else {
-                newstats[0] = oldstats[0] - (damage - (((damage / 100) * 4) * oldstats[4]));
-            }
-            if (newstats[0] <= 0) {
-                newstats[0] = stats.get(player)[1];
-                player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
-                player.teleport(player.getWorld().getSpawnLocation());
-                for (Player p:Bukkit.getOnlinePlayers()) {
-                    if (p.getWorld().equals(player.getWorld())) {
-                        Bukkit.broadcastMessage("§c " + player.getName() + " died");
+            if (stats.get(player)[6] < 0) {
+                Double damage = e.getDamage() * 10;
+                Double[] oldstats = stats.get(player);
+                Double[] newstats = stats.get(player);
+                newstats[5] = 60.0;
+                newstats[6] = 10.0;
+                if (oldstats[2] > 0) {
+                    if (oldstats[2] >= damage) {
+                        newstats[2] = oldstats[2] - damage;
+                    }
+                    else {
+                        newstats[2] = 0.0;
+                        newstats[0] = oldstats[0] - (((damage / 100) * 4) * oldstats[4]);
                     }
                 }
-            }
-            else {
-                if (!player.getGameMode().equals(GameMode.CREATIVE)) {
-                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
-                    PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((CraftPlayer) player).getHandle(),1);
+                else {
+                    newstats[0] = oldstats[0] - (damage - (((damage / 100) * 4) * oldstats[4]));
+                }
+                if (newstats[0] <= 0) {
+                    newstats[0] = stats.get(player)[1];
+                    player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
+                    player.teleport(player.getWorld().getSpawnLocation());
                     for (Player p:Bukkit.getOnlinePlayers()) {
                         if (p.getWorld().equals(player.getWorld())) {
-                            ((CraftPlayer) p).getHandle().b.a(packet);
+                            Bukkit.broadcastMessage("§c " + player.getName() + " died");
                         }
                     }
                 }
+                else {
+                    if (!player.getGameMode().equals(GameMode.CREATIVE)) {
+                        player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
+                        PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((CraftPlayer) player).getHandle(),1);
+                        for (Player p:Bukkit.getOnlinePlayers()) {
+                            if (p.getWorld().equals(player.getWorld())) {
+                                ((CraftPlayer) p).getHandle().b.a(packet);
+                            }
+                        }
+                    }
+                }
+                stats.put(player,newstats);
+                save();
             }
-            stats.put(player,newstats);
-            save();
         }
     }
 
