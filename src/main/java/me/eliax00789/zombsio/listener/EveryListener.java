@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.listener;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.ItemCreator;
 import net.md_5.bungee.api.ChatMessageType;
@@ -10,6 +11,7 @@ import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
@@ -118,11 +120,18 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onMove(PlayerMoveEvent e) {
-
+          Double[] stats = PlayerStats.stats.get(e.getPlayer());
           for (int i = e.getPlayer().getWorld().getMinHeight(); i < e.getPlayer().getWorld().getMaxHeight(); i++) {
                if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
                     if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
-                         e.getPlayer().damage(e.getPlayer().getMaxHealth());
+                         e.getPlayer().damage(stats[2]);
+                         new BukkitRunnable() {
+
+                              @Override
+                              public void run() {
+                                   e.getPlayer().damage(stats[0]);
+                              }
+                         }.runTaskLater(Zombsio.plugin, 11);
                     }
                }
           }
