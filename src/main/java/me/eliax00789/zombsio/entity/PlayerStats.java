@@ -183,7 +183,7 @@ public class PlayerStats implements Listener {
                     player.teleport(player.getWorld().getSpawnLocation());
                     for (Player p:Bukkit.getOnlinePlayers()) {
                         if (p.getWorld().equals(player.getWorld())) {
-                            Bukkit.broadcastMessage("§c " + player.getName() + " died");
+                            p.sendMessage("§c " + player.getName() + " died");
                         }
                     }
                 }

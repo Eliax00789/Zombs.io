@@ -36,10 +36,10 @@ public class Stats implements TabExecutor {
             Double[] stats = PlayerStats.stats.get(player);
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                        if ((stats[0] + Double.valueOf(args[3])) < stats[1]) {
-                            stats[0] = stats[0] + Double.valueOf(args[3]);
-                            sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
-                        } else sender.sendMessage( "You can't add Health over your Max health");
+                    if ((stats[0] + Double.valueOf(args[3])) < stats[1]) {
+                        stats[0] = stats[0] + Double.valueOf(args[3]);
+                        sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
+                    } else sender.sendMessage( "You can't add Health over your Max health");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
                     if ((stats[0] - Double.valueOf(args[3])) > 0) {
@@ -61,14 +61,26 @@ public class Stats implements TabExecutor {
             else if (args[1].equalsIgnoreCase("maxhealth")) {
                 if (args[2].equalsIgnoreCase("add")) {
                     stats[1] = stats[1] + Double.valueOf(args[3]);
+                    if (stats[0] > (stats[1] + Double.valueOf(args[3]))) {
+                        stats[0] = Double.valueOf(args[3]);
+                    }
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    stats[1] = stats[1] - Double.valueOf(args[3]);
+                    if (stats[1] + Double.valueOf(args[3]) > 0 ) {
+                        stats[1] = stats[1] - Double.valueOf(args[3]);
+                    }
+                    if (stats[0] > (stats[1] - Double.valueOf(args[3]))) {
+                        stats[0] = Double.valueOf(args[3]);
+                    }
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
                     stats[1] = Double.valueOf(args[3]);
+
+                    if (stats[0] > Double.valueOf(args[3])) {
+                        stats[0] = Double.valueOf(args[3]);
+                    }
                     sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
@@ -112,17 +124,23 @@ public class Stats implements TabExecutor {
                 }
             }
             else if (args[1].equalsIgnoreCase("defense")) {
-                if (args[2].equalsIgnoreCase("add")) {
-                    stats[4] = stats[4] + Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been added");
-                }
+                    if (args[2].equalsIgnoreCase("add")) {
+                        if ((stats[2] + Double.valueOf(args[3])) < 1000) {
+                        stats[4] = stats[4] + Double.valueOf(args[3]);
+                        sender.sendMessage(Integer.valueOf(args[3]) + " Defense has been added");
+                        }else sender.sendMessage( "You can't add Defense over 1000");
+                    }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    stats[4] = stats[4] - Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
+                    if ((stats[4] - Double.valueOf(args[3])) > -1) {
+                        stats[4] = stats[4] - Double.valueOf(args[3]);
+                        sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
+                    }
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    stats[4] = Double.valueOf(args[3]);
-                    sender.sendMessage( "Defense has been set to " + Integer.valueOf(args[3]));
+                    if ((stats[2] + Double.valueOf(args[3])) < 1000 && (Double.valueOf(args[3])) > -1) {
+                        stats[4] = Double.valueOf(args[3]);
+                        sender.sendMessage("Defense has been set to " + Integer.valueOf(args[3]));
+                    }else sender.sendMessage( "You can't set Defense over 1000");
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");

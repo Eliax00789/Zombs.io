@@ -129,7 +129,7 @@ public class EveryListener implements Listener {
 
                               @Override
                               public void run() {
-                                   e.getPlayer().damage(stats[0]);
+                                   e.getPlayer().damage(2147483647);
                               }
                          }.runTaskLater(Zombsio.plugin, 11);
                     }
