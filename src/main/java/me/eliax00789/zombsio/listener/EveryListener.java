@@ -15,10 +15,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerGameModeChangeEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -115,6 +112,24 @@ public class EveryListener implements Listener {
           if(!e.getView().getPlayer().hasPermission("zombs.bypass.inventoryclick") || e.getView().getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                e.setCancelled(true);
           }
+
+     }
+
+     @EventHandler
+     public void onMove(PlayerMoveEvent e) {
+
+          for (int i = 0; i < 10; i++) {
+               if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
+                    if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
+                         e.setTo(e.getFrom().subtract(e.getPlayer().getLocation().getDirection().setY(0)));
+                    }
+               }
+          }
+
+          if (e.getPlayer().isInWater()) {
+
+          }
+
      }
 
      @EventHandler
