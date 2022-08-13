@@ -117,11 +117,9 @@ public class Building implements Listener {
                     public void run() {
                         for (Player player: Bukkit.getOnlinePlayers()) {
                             if (player.getWorld().equals(location.getWorld())) {
-                                Config.getInstance().GOLD.put(player.getName(),Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Goldgen").get(level));
+                                Config.getInstance().GOLD.put(player.getName(),Config.getInstance().GOLD.get(player.getName()) + Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Goldgen").get(level - 1));
                             }
                         }
-
-
                     }
                 };
                 goldLoop.runTaskTimer(Zombsio.plugin, 0, 20);
@@ -227,6 +225,9 @@ public class Building implements Listener {
         PlayerInteractEvent.getHandlerList().unregister(this);
         if (projectileLoop != null) {
             projectileLoop.cancel();
+        }
+        if (goldLoop != null) {
+            goldLoop.cancel();
         }
         Location structOrigin;
         if(this instanceof Door || this instanceof Wall) {

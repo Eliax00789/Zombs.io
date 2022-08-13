@@ -24,7 +24,7 @@ public class ResourceScoreboard {
         }.runTaskTimer(Zombsio.plugin,5,10);
     }
 
-    public Scoreboard getScoreboard(Player player) {
+    private Scoreboard getScoreboard(Player player) {
         scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         objective = scoreboard.registerNewObjective("scoreboard", "Test Scoreboard");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -42,8 +42,6 @@ public class ResourceScoreboard {
 
         scoreboard.resetScores("Gold: " + Config.getInstance().GOLD.get(player.getName()));
         objective.getScore("Gold: " + Config.getInstance().GOLD.get(player.getName())).setScore(0);
-
-
         return scoreboard;
     }
 

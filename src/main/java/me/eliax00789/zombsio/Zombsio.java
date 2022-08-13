@@ -5,6 +5,7 @@ import me.eliax00789.zombsio.commands.Stats;
 import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.entity.PlayerStatsSystem;
+import me.eliax00789.zombsio.guis.ResourceScoreboard;
 import me.eliax00789.zombsio.guis.buildmenu.BuildMenu;
 import me.eliax00789.zombsio.guis.shop.Shop;
 import me.eliax00789.zombsio.listener.CustomBreakListener;
@@ -14,6 +15,7 @@ import me.eliax00789.zombsio.utility.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
@@ -116,6 +118,9 @@ public final class Zombsio extends JavaPlugin {
         new Stats();
         new Resources();
 
+        for (Player player:Bukkit.getOnlinePlayers()) {
+            new ResourceScoreboard(player);
+        }
 
     }
 }
