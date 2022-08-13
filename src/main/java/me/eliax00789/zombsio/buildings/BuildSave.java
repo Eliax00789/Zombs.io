@@ -16,6 +16,7 @@ public class BuildSave {
     public static HashMap<Integer,Building> buildingsMap;
 
     public BuildSave() {
+        buildingsMap = new HashMap<Integer,Building>();
         loadFromConfig();
     }
 
