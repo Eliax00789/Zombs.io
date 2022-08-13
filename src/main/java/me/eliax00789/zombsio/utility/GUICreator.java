@@ -15,6 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class GUICreator implements Listener {
@@ -66,7 +67,7 @@ public class GUICreator implements Listener {
         setClickAction(new BukkitRunnable() {
             @Override
             public void run() {
-                for (HumanEntity i: inventory.getViewers()) {
+                for (HumanEntity i: new ArrayList<HumanEntity>(inventory.getViewers())) {
                     i.closeInventory();
                 }
             }
