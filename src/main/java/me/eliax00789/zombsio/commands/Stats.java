@@ -36,17 +36,22 @@ public class Stats implements TabExecutor {
             Double[] stats = PlayerStats.stats.get(player);
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    stats[0] = stats[0] + Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
+                        if ((stats[0] + Double.valueOf(args[3])) < stats[1]) {
+                            stats[0] = stats[0] + Double.valueOf(args[3]);
+                            sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
+                        } else sender.sendMessage( "You can't add Health over your Max health");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    stats[0] = stats[0] - Double.valueOf(args[3]);
-                    sender.sendMessage( Integer.valueOf(args[3]) + " Health has been removed");
-
+                    if ((stats[0] - Double.valueOf(args[3])) > 0) {
+                        stats[0] = stats[0] - Double.valueOf(args[3]);
+                        sender.sendMessage(Integer.valueOf(args[3]) + " Health has been removed");
+                    } else sender.sendMessage( "You can't remove Health under 0");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    stats[0] = Double.valueOf(args[3]);
-                    sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
+                    if ((Double.valueOf(args[3])) > 0 && (Double.valueOf(args[3])) < stats[1]) {
+                        stats[0] = Double.valueOf(args[3]);
+                        sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
+                    } else sender.sendMessage( "You can't set Health over Max health or under 0");
                 }
                 else
                 {
