@@ -2,11 +2,13 @@ package me.eliax00789.zombsio.buildings;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
+import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,10 +25,10 @@ import java.util.List;
 
 public class Building implements Listener {
     public Integer id;
-    private String name;
-    private Integer level;
+    public String name;
+    public Integer level;
     private Integer maxLevel;
-    private Location location;
+    public Location location;
     private Material [][][][] structure;
     private Integer currentHealth;
     private List<Integer>  health;
@@ -44,8 +46,8 @@ public class Building implements Listener {
                     @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,
                     @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
         if (locationSuits(location,structure)) {
-            this.id = (Integer) Zombsio.buildings.get("nextid");
-            Zombsio.buildings.set("nextid",id + 1);
+            this.id = Zombsio.buildings.getInt("nextid");
+            BuildSave.buildingsMap.put(this.id,this);
             this.name = name;
             this.level = level;
             this.maxLevel = maxLevel;
@@ -95,8 +97,14 @@ public class Building implements Listener {
                 }
             }
 
-            if (hasResources(builder)) {
-                removeResources(builder);
+            if (builder != null) {
+                if (hasResources(builder)) {
+                    removeResources(builder);
+                    build();
+                    Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+                }
+            }
+            else {
                 build();
                 Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
             }
@@ -110,9 +118,15 @@ public class Building implements Listener {
                 };
                 projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
             }
+
         }
         else {
-            builder.sendMessage("Not enough space for " + name);
+            if (builder != null) {
+                builder.sendMessage("Not enough space for " + name);
+            }
+            else {
+                Bukkit.broadcastMessage("WTF DID JUST HAPPEN");
+            }
         }
     }
 
@@ -130,6 +144,8 @@ public class Building implements Listener {
         Location structOrigin;
         if(this instanceof Door || this instanceof Wall) {
             structOrigin = location.clone();
+        } else if (this instanceof SlowTrap) {
+            structOrigin = location.clone().add(0,-1,0);
         } else {
             structOrigin = location.clone().add(-1, 0, -1);
         }
@@ -141,6 +157,7 @@ public class Building implements Listener {
                 }
             }
         }
+        BuildSave.save();
     }
 
     private void upgrade(Player player) {
@@ -172,7 +189,9 @@ public class Building implements Listener {
         Location structOrigin;
         if(this instanceof Door || this instanceof Wall) {
             structOrigin = location.clone();
-        } else {
+        } else if (this instanceof SlowTrap) {
+            structOrigin = location.clone().add(0,-1,0);
+        }  else {
             structOrigin = location.clone().add(-1, 0, -1);
         }
         for ( int x = 0; x < temp.length; x ++) {
@@ -196,7 +215,9 @@ public class Building implements Listener {
         Location structOrigin;
         if(this instanceof Door || this instanceof Wall) {
             structOrigin = location.clone();
-        } else {
+        } else if (this instanceof SlowTrap) {
+            structOrigin = location.clone().add(0,-1,0);
+        }  else {
             structOrigin = location.clone().add(-1, 0, -1);
         }
         for ( int x = 0; x < structure[0].length; x ++) {
@@ -215,7 +236,9 @@ public class Building implements Listener {
             Location structOrigin;
             if(this instanceof Door || this instanceof Wall) {
                 structOrigin = location.clone();
-            } else {
+            } else if (this instanceof SlowTrap) {
+                structOrigin = location.clone().add(0,-1,0);
+            }  else {
                 structOrigin = location.clone().add(-1, 0, -1);
             }
             for ( int x = 0; x < structure[level - 1].length; x ++) {

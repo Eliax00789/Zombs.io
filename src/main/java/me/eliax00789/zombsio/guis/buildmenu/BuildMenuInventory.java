@@ -33,7 +33,7 @@ class BuildMenuInventory {
                         ).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
-                        new GoldStash(player,location);
+                        new GoldStash(player,location, 1);
                         player.closeInventory();
                     }
                 })
@@ -47,7 +47,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new GoldMine(player, location);
+                                new GoldMine(player, location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Gold Mine (Can't Be Build)")
@@ -72,7 +72,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new ResourceHarvester(player, location);
+                                new ResourceHarvester(player, location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Resource Harvester (Can't Be Build)")
@@ -96,7 +96,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new Wall(player,location);
+                                new Wall(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Wall (Can't Be Build)")
@@ -120,7 +120,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new Door(player,location);
+                                new Door(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Door (Can't Be Build)")
@@ -144,7 +144,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new SlowTrap(player, location);
+                                new SlowTrap(player, location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Can't Be Build)")
@@ -170,7 +170,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new ArrowTower(player,location);
+                                new ArrowTower(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Arrow Tower (Can't Be Build)")
@@ -198,7 +198,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new CannonTower(player, location);
+                                new CannonTower(player, location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Cannon Tower (Can't Be Build)")
@@ -226,7 +226,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new BombTower(player,location);
+                                new BombTower(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Bomb Tower (Can't Be Build)")
@@ -254,7 +254,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new MageTower(player,location);
+                                new MageTower(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Mage Tower (Can't Be Build)")
@@ -282,7 +282,7 @@ class BuildMenuInventory {
                         , new BukkitRunnable() {
                             @Override
                             public void run() {
-                                new MeleeTower(player,location);
+                                new MeleeTower(player,location, 1);
                                 player.closeInventory();
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Melee Tower (Can't Be Build)")
