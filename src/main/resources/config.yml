@@ -108,7 +108,7 @@ Items:
   Shield:
     Name: ["Shield MK.1","Shield MK.2","Shield MK.3","Shield MK.4" ,"Shield MK.5","Shield MK.6","Shield MK.7","Shield MK.8", "Shield MK.9", "Shield MK.10"]
     Gold: [1000, 3000,7000,14000,18000,22000,24000,30000,45000,70000]
-    Health: [500,1000,1800,4000,10000,20000,35000,50000,65000,85000]
+    Shield: [500,1000,1800,4000,10000,20000,35000,50000,65000,85000]
     RechargeDelay: [10,9,8,7,6,6,6,6,6,6]
 Limits:
   GoldStash:

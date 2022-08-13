@@ -78,7 +78,7 @@ class ShopArmorInventory {
                 })
                 .setItem(14, new ItemCreator(Material.LIGHT_BLUE_STAINED_GLASS_PANE).setName(Zombsio.plugin.getConfig().getStringList("Items.Shield.Name").get(0))
                         .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Shield.Gold").get(0)
-                                ,"§7Health: " + Zombsio.plugin.getConfig().getList("Items.Shield.Health").get(0)
+                                ,"§7Health: " + Zombsio.plugin.getConfig().getList("Items.Shield.Shield").get(0)
                                 ,"§7RechargeDelay: " + Zombsio.plugin.getConfig().getList("Items.Shield.RechargeDelay").get(0)
                         ).getItem(), new BukkitRunnable() {
                     @Override
