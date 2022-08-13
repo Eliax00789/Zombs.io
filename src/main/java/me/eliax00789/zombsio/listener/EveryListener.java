@@ -9,6 +9,7 @@ import net.minecraft.core.BlockPosition;
 import net.minecraft.network.protocol.game.PacketPlayOutBlockBreakAnimation;
 import org.bukkit.*;
 import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
@@ -120,6 +121,11 @@ public class EveryListener implements Listener {
      public void onRightClickAir(PlayerInteractEvent e) {
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BOW)) {
                e.getPlayer().getWorld().spawnArrow(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)),e.getPlayer().getLocation().getDirection(),4, 0);
+
+          }
+
+          if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.FIRE_CHARGE)) {
+               e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)), EntityType.FIREBALL);
 
           }
      }
