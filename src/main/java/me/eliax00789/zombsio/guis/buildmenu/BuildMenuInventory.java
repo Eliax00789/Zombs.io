@@ -31,8 +31,6 @@ class BuildMenuInventory {
                currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
             }
         }
-        Bukkit.broadcastMessage(String.valueOf(currentStashLvl));
-
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -65,15 +63,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Gold Mine (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)
@@ -97,14 +91,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Health").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Resource Harvester (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)
@@ -128,14 +119,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Health").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Wall (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Stone").get(0)
@@ -147,7 +135,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Health").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -159,14 +146,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Health").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Door (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Stone").get(0)
@@ -178,7 +162,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Health").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -190,14 +173,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Health").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)
@@ -209,9 +189,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Range").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -223,16 +200,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Range").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Arrow Tower (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").get(0)
@@ -244,9 +216,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Range").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -258,16 +227,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Range").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Cannon Tower (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").get(0)
@@ -279,9 +243,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -293,9 +254,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Bomb Tower (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
@@ -314,9 +272,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
                                 ).addEnchant(Enchantment.MULTISHOT, 69420, true).addFlag(ItemFlag.HIDE_ENCHANTS).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -328,16 +283,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MageTower.Range").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Mage Tower (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").get(0)
@@ -349,9 +299,6 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Range").get(0)
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -363,16 +310,11 @@ class BuildMenuInventory {
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Health").get(0)
-                                        ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Damage").get(0)
-                                        ,"§7Range: " + Zombsio.plugin.getConfig().getList("Buildings.MeleeTower.Range").get(0)
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Melee Tower (Higher Stash Level Needed)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Gold").get(0)
-                                        ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Health").get(0)
-                                        ,"§7Production: " + Zombsio.plugin.getConfig().getList("Buildings.GoldMine.Goldgen").get(0) + " gold/sec"
                                 ).getItem()
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").get(0)

@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
 import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
+import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
@@ -280,12 +281,16 @@ public class Building implements Listener {
         }
 
         Integer currentStashLvl = 0;
+        Integer neededStashLvl = level + 1;
         for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
             if (Zombsio.buildings.contains("buildings." + i + ".name") && Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
                 currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
             }
         }
 
+        if (this instanceof GoldStash) {
+            neededStashLvl = 0;
+        }
 
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
@@ -311,17 +316,12 @@ public class Building implements Listener {
                                         "§4You can afford this upgrade"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Higher Stash Level Needed)")
-                                .setLore("§7Cost for Tier " + (level + 1),
-                                        "§7Wood: " + nextWood,
-                                        "§7Stone: " + nextStone,
-                                        "§7Gold: " + nextGold,
-                                        "§4Upgrade Your Stash"
-                                ).getItem()
+                                .setLore("§4Upgrade Your Stash").getItem()
                         , Integer.valueOf(nextWood)
                         , Integer.valueOf(nextStone)
                         , Integer.valueOf(nextGold)
                         , currentStashLvl
-                        , level + 1
+                        , neededStashLvl
                         , player)
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
                         .setLore("§7Tier " + level + " Building",
