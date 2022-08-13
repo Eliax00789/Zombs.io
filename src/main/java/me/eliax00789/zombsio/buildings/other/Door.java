@@ -6,6 +6,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
+
 public class Door extends Building {
 
     private static Material[][][] mk1 = new Material[][][]{
@@ -97,7 +99,7 @@ public class Door extends Building {
     };
 
 
-    public Door(Player player, Location location, Integer level) {
+    public Door(@Nullable Player player, Location location, Integer level) {
         super(player,"Door",level,8,location,
                 null,null,null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},

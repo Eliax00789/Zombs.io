@@ -6,6 +6,8 @@ import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
+
 public class ArrowTower extends Building {
 
     public static Material[][][] mk1 = new Material[][][] {
@@ -199,7 +201,7 @@ public class ArrowTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             }
     };
-    public ArrowTower(Player player, Location location, Integer level) {
+    public ArrowTower(@Nullable Player player, Location location, Integer level) {
         super(player,"ArrowTower",level,8,location,
                 new CustomProjectile(player.getWorld(),location.clone().add(0.5,5,0.5),20, Particle.CRIT,0.5,5.0), null, 1,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},

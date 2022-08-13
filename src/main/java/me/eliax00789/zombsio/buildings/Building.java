@@ -40,7 +40,7 @@ public class Building implements Listener {
     private Inventory inventory;
     private BukkitRunnable projectileLoop;
 
-    public Building(Player builder,String name, Integer level, Integer maxLevel, Location location,
+    public Building(@Nullable Player builder,String name, Integer level, Integer maxLevel, Location location,
                     @Nullable CustomProjectile projectile, @Nullable Location projectileShootOffset, @Nullable Integer shootCoolDown,
                     Material[][][][] structure,
                     @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,

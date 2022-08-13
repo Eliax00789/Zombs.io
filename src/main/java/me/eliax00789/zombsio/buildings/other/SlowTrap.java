@@ -6,6 +6,8 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
+import javax.annotation.Nullable;
+
 public class SlowTrap extends Building {
 
     //TODO: NIFFLER SLOW TRAP INTO MK THINGS
@@ -203,7 +205,7 @@ public class SlowTrap extends Building {
     };
 
 
-    public SlowTrap(Player player, Location location, Integer level) {
+    public SlowTrap(@Nullable Player player, Location location, Integer level) {
         super(player,"SlowTrap",level,8,location,
                 null,null,null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
