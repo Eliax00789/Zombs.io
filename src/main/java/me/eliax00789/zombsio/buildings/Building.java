@@ -206,6 +206,8 @@ public class Building implements Listener {
 
     private void remove() {
         PlayerInteractEvent.getHandlerList().unregister(this);
+        BuildSave.buildingsMap.remove(this.id);
+        BuildSave.save();
         if (projectileLoop != null) {
             projectileLoop.cancel();
         }
