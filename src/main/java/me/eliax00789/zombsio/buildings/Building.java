@@ -281,7 +281,7 @@ public class Building implements Listener {
 
         Integer currentStashLvl = 0;
         for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
-            if (Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
+            if (Zombsio.buildings.contains("buildings." + i + ".name") && Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
                 currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
             }
         }
@@ -303,12 +303,19 @@ public class Building implements Listener {
                                 upgrade(player);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Not Enough Resources)")
                                 .setLore("§7Cost for Tier " + (level + 1),
                                         "§7Wood: " + nextWood,
                                         "§7Stone: " + nextStone,
                                         "§7Gold: " + nextGold,
                                         "§4You can afford this upgrade"
+                                ).getItem()
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Higher Stash Level Needed)")
+                                .setLore("§7Cost for Tier " + (level + 1),
+                                        "§7Wood: " + nextWood,
+                                        "§7Stone: " + nextStone,
+                                        "§7Gold: " + nextGold,
+                                        "§4Upgrade Your Stash"
                                 ).getItem()
                         , Integer.valueOf(nextWood)
                         , Integer.valueOf(nextStone)
