@@ -41,13 +41,13 @@ class ShopPotionsInventory {
                     }
                 })
                 .setItem(4, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("§aPotions").getItem())
-                .setItem(10, new ItemCreator(Material.POTION).setName("§7Health Potion").getItem(), new BukkitRunnable() {
+                .setItem(10, new ItemCreator(Material.POTION).setName("§7Health Potion").setPotion(new PotionEffect(PotionEffectType.HEAL,0,2), false).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
                     }
                 })
-                .setItem(11, new ItemCreator(Material.POTION).setName("§7Pet Health Potion").getItem(), new BukkitRunnable() {
+                .setItem(11, new ItemCreator(Material.POTION).setName("§7Pet Health Potion").setPotion(new PotionEffect(PotionEffectType.REGENERATION,0,2), false).getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
 
