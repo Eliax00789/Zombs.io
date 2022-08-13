@@ -124,12 +124,16 @@ public class EveryListener implements Listener {
           for (int i = e.getPlayer().getWorld().getMinHeight(); i < e.getPlayer().getWorld().getMaxHeight(); i++) {
                if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
                     if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
-                         e.getPlayer().damage(stats[2]);
+                         if (PlayerStats.stats.get(e.getPlayer())[2] > 0) {
+                              e.getPlayer().damage(stats[2]);
+                         }
                          new BukkitRunnable() {
 
                               @Override
                               public void run() {
-                                   e.getPlayer().damage(2147483647);
+                                   if (PlayerStats.stats.get(e.getPlayer())[0] > 0) {
+                                        e.getPlayer().damage(2147483647);
+                                   }
                               }
                          }.runTaskLater(Zombsio.plugin, 11);
                     }
