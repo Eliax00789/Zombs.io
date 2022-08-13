@@ -14,13 +14,13 @@ import org.bukkit.scheduler.BukkitRunnable;
 class ShopToolsInventory {
 
     private Inventory inventory;
-    private Integer[] IntegerPickaxe, IntegerSpear, IntegerBow, IntegerBomb;
+    private Integer[] Pickaxe, Spear, Bow, Bomb;
     public ShopToolsInventory(Player player) {
         Integer playergold = Config.getInstance().GOLD.get(player.getName());
 
         if (player.getInventory().getItem(0) != null) {
             if (player.getInventory().getItem(0).hasItemMeta()) {
-                this.IntegerPickaxe = new Integer[]{
+                Pickaxe = new Integer[]{
                         Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                         ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Gold")
@@ -33,28 +33,46 @@ class ShopToolsInventory {
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                 };
             }
+        } else {
+            Pickaxe = new Integer[]{
+                    Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Gold").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Damage").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Attackspeed").get(0)
+            };
         }
+
 
         if (player.getInventory().getItem(1) != null) {
             if (player.getInventory().getItem(1).hasItemMeta()) {
-                this.IntegerSpear = new Integer[]{
-                        Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name")
+                Spear = new Integer[]{
+                        Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold")
+                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Gold")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Damage")
+                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Damage")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Range")
+                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Range")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed")
+                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Attackspeed")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                 };
             }
+        } else {
+            Spear = new Integer[]{
+                    Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Gold").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Damage").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Range").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Attackspeed").get(0)
+            };
         }
+
 
         if (player.getInventory().getItem(2) != null) {
             if (player.getInventory().getItem(2).hasItemMeta()) {
-                this.IntegerBow = new Integer[]{
+                Bow = new Integer[]{
                         Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                         ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold")
@@ -65,11 +83,19 @@ class ShopToolsInventory {
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                 };
             }
+        } else {
+            Bow = new Integer[]{
+                    Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Damage").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed").get(0)
+            };
         }
+
 
         if (player.getInventory().getItem(3) != null) {
             if (player.getInventory().getItem(3).hasItemMeta()) {
-                this.IntegerBomb = new Integer[]{
+                Bomb = new Integer[]{
                         Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name")
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                         ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Gold")
@@ -82,6 +108,14 @@ class ShopToolsInventory {
                         .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
                 };
             }
+        } else {
+            Bomb = new Integer[]{
+                    Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Gold").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Damage").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Range").get(0)
+                    ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed").get(0)
+            };
         }
 
 
@@ -113,11 +147,11 @@ class ShopToolsInventory {
                     }
                 })
                 .addItemSwitch(10
-                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + IntegerPickaxe[0])
-                                .setLore("§7Cost:  Gold: " + IntegerPickaxe[1]
-                                        , "§7Damage: " + IntegerPickaxe[2]
-                                        , "§7Resource Amount: " + IntegerPickaxe[3]
-                                        , "§7Attackspeed: " +IntegerPickaxe[4]
+                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + Pickaxe[0])
+                                .setLore("§7Cost:  Gold: " + Pickaxe[1]
+                                        , "§7Damage: " + Pickaxe[2]
+                                        , "§7Resource Amount: " + Pickaxe[3]
+                                        , "§7Attackspeed: " + Pickaxe[4]
                                 ).getItem()
                         , new BukkitRunnable() {
                             @Override
@@ -125,59 +159,88 @@ class ShopToolsInventory {
 
                             }
                         }
-                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + Pickaxe[0])
                                 .setLore("§4You can afford this upgrade"
-                                        ,"§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").get(0)) - playergold) + " More Gold needed"
+                                        ,"§7" + (Pickaxe[1] - playergold) + " More Gold needed"
                                 ).getItem()
                         , null
                         , 0
                         , 0
-                        , Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Gold").get(0)
+                        , Pickaxe[1]
                         , null
-                        , null, player)
-                .setItem(10, new ItemCreator(Material.WOODEN_AXE).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
-                        .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Gold").get(0)
-                                ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Damage").get(0)
-                                ,"§7Resource Amount: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Harvest").get(0)
-                                ,"§7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Pickaxe.Attackspeed").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
+                        , null
+                        , player)
+                .addItemSwitch(11
+                        , new ItemCreator(Material.WOODEN_SWORD).setName("§7" + Spear[0])
+                                .setLore("§7Cost:  Gold: " + Spear[1]
+                                        , "§7Damage: " + Spear[2]
+                                        , "§7Range: " + Spear[3]
+                                        , "§7Attackspeed: " + Spear[4]
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
 
-                    }
-                })
-                .setItem(11, new ItemCreator(Material.WOODEN_SWORD).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0))
-                        .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Spear.Gold").get(0)
-                                ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Items.Spear.Damage").get(0)
-                                ,"§7Range: " + Zombsio.plugin.getConfig().getList("Items.Spear.Range").get(0)
-                                ,"§7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Spear.Attackspeed").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
+                            }
+                        }
+                        , new ItemCreator(Material.WOODEN_SWORD).setName("§7" + Spear[0])
+                                .setLore("§4You can afford this upgrade"
+                                        ,"§7" + (Spear[1] - playergold) + " More Gold needed"
+                                ).getItem()
+                        , null
+                        , 0
+                        , 0
+                        , Spear[1]
+                        , null
+                        , null
+                        , player)
+                .addItemSwitch(12
+                        , new ItemCreator(Material.BOW).setName("§7" + Bow[0])
+                                .setLore("§7Cost:  Gold: " + Bow[1]
+                                        , "§7Damage: " + Bow[2]
+                                        , "§7Attackspeed: " + Bow[3]
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
 
-                    }
-                })
-                .setItem(12, new ItemCreator(Material.BOW).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0))
-                        .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Bow.Gold").get(0)
-                                ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Items.Bow.Damage").get(0)
-                                ,"§7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Bow.Attackspeed").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
+                            }
+                        }
+                        , new ItemCreator(Material.BOW).setName("§7" + Bow[0])
+                                .setLore("§4You can afford this upgrade"
+                                        ,"§7" + (Bow[1] - playergold) + " More Gold needed"
+                                ).getItem()
+                        , null
+                        , 0
+                        , 0
+                        , Bow[1]
+                        , null
+                        , null
+                        , player)
+                .addItemSwitch(13
+                        , new ItemCreator(Material.FIRE_CHARGE).setName("§7" + Bomb[0])
+                                .setLore("§7Cost:  Gold: " + Bomb[1]
+                                        , "§7Damage: " + Bomb[2]
+                                        , "§7Range: " + Bomb[3]
+                                        , "§7Attackspeed: " + Bomb[4]
+                                ).getItem()
+                        , new BukkitRunnable() {
+                            @Override
+                            public void run() {
 
-                    }
-                })
-                .setItem(13, new ItemCreator(Material.FIRE_CHARGE).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0))
-                        .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Gold").get(0)
-                                ,"§7Damage: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Damage").get(0)
-                                ,"§7Range: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Range").get(0)
-                                ,"§7Attackspeed: " + Zombsio.plugin.getConfig().getList("Items.Bomb.Attackspeed").get(0)
-                        ).getItem(), new BukkitRunnable() {
-                    @Override
-                    public void run() {
-
-                    }
-                })
+                            }
+                        }
+                        , new ItemCreator(Material.FIRE_CHARGE).setName("§7" + Bomb[0])
+                                .setLore("§4You can afford this upgrade"
+                                        ,"§7" + (Bomb[1] - playergold) + " More Gold needed"
+                                ).getItem()
+                        , null
+                        , 0
+                        , 0
+                        , Bomb[1]
+                        , null
+                        , null
+                        , player)
                 .getInventory();
     }
 
