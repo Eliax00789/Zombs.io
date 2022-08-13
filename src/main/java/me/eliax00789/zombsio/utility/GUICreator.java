@@ -125,7 +125,8 @@ public class GUICreator implements Listener {
         } else {
             if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
                     && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
-                    && Config.getInstance().GOLD.get(player.getName().toString()) >= gold) {
+                    && Config.getInstance().GOLD.get(player.getName().toString()) >= gold
+                    && currentstashlevel >= neededstashlevel) {
                 setItem(index,item1);
             } else if (currentstashlevel < neededstashlevel) {
                 setItem(index,item3);
