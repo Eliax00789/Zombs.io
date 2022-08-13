@@ -81,7 +81,7 @@ public class PlayerStats implements Listener {
                                 stats.get(player)[7]});
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
-                        player.setAbsorptionAmount(stats.get(player)[2] / 100);
+                        player.setAbsorptionAmount(stats.get(player)[2] / 200);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
                                         "§c❤ " + Math.round(stats.get(player)[0]) + " / " + Math.round(stats.get(player)[1])
@@ -176,6 +176,7 @@ public class PlayerStats implements Listener {
                 Double[] oldstats = stats.get(player);
                 Double[] newstats = stats.get(player);
                 newstats[5] = 60.0;
+                newstats[6] = 20.0*10;
                 newstats[7] = 10.0;
                 if (oldstats[2] > 0) {
                     if (oldstats[2] >= damage) {
@@ -191,6 +192,7 @@ public class PlayerStats implements Listener {
                 }
                 if (newstats[0] <= 0) {
                     newstats[0] = stats.get(player)[1];
+                    newstats[2] = stats.get(player)[3];
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
                     player.teleport(player.getWorld().getSpawnLocation());
                     for (Player p:Bukkit.getOnlinePlayers()) {
