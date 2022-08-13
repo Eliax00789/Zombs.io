@@ -61,6 +61,7 @@ public class PlayerStats implements Listener {
                     playerstats.getDouble("stats." + player.getName() + ".maxshield"),
                     playerstats.getDouble("stats." + player.getName() + ".defense"),
                     0.0,
+                    0.0,
                     10.0});
         }
 
@@ -76,7 +77,8 @@ public class PlayerStats implements Listener {
                                 playerstats.getDouble("stats." + player.getName() + ".maxshield"),
                                 playerstats.getDouble("stats." + player.getName() + ".defense"),
                                 stats.get(player)[5],
-                                stats.get(player)[6]});
+                                stats.get(player)[6],
+                                stats.get(player)[7]});
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
                         player.setAbsorptionAmount(stats.get(player)[3] / 10);
@@ -94,14 +96,19 @@ public class PlayerStats implements Listener {
                             if (stats.get(player)[0] < stats.get(player)[1]) {
                                 newstats[0] = stats.get(player)[0] + stats.get(player)[1]/100;
                             }
-                            else {
+                        }
+                        else {
+                            newstats[5] = stats.get(player)[5] - 1.0;
+                        }
+                        if (stats.get(player)[6] <= 0) {
+                            newstats[6] = 10.0;
+                            if (stats.get(player)[0].equals(stats.get(player)[1])) {
                                 if (stats.get(player)[2] < stats.get(player)[3]) {
                                     newstats[2] = stats.get(player)[2] + stats.get(player)[3]/10;
                                 }
                             }
-                        }
-                        else {
-                            newstats[5] = stats.get(player)[5] - 1.0;
+                        } else {
+                            newstats[6] = stats.get(player)[6] - 1.0;
                         }
 
                         if (stats.get(player)[0] > (stats.get(player)[1] - 1) && stats.get(player)[0] < stats.get(player)[1]) {
@@ -110,7 +117,7 @@ public class PlayerStats implements Listener {
                         if (stats.get(player)[2] > (stats.get(player)[3] - 1) && stats.get(player)[2] < stats.get(player)[3]) {
                             newstats[2] = stats.get(player)[3];
                         }
-                        newstats[6] = stats.get(player)[6] - 1;
+                        newstats[7] = stats.get(player)[7] - 1;
                         stats.put(player,newstats);
                         save();
                     }
@@ -151,6 +158,7 @@ public class PlayerStats implements Listener {
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".maxshield"),
                 playerstats.getDouble("stats." + e.getPlayer().getName() + ".defense"),
                 0.0,
+                0.0,
                 10.0});
     }
 
@@ -159,12 +167,12 @@ public class PlayerStats implements Listener {
         if (e.getEntity() instanceof Player) {
             e.setCancelled(true);
             Player player = (Player) e.getEntity();
-            if (stats.get(player)[6] < 0) {
+            if (stats.get(player)[7] < 0) {
                 Double damage = e.getDamage() * 10;
                 Double[] oldstats = stats.get(player);
                 Double[] newstats = stats.get(player);
                 newstats[5] = 60.0;
-                newstats[6] = 10.0;
+                newstats[7] = 10.0;
                 if (oldstats[2] > 0) {
                     if (oldstats[2] >= damage) {
                         newstats[2] = oldstats[2] - damage;
