@@ -73,11 +73,12 @@ public class PlayerStats implements Listener {
                         player.setAbsorptionAmount(stats.get(player)[3] / 10);
                         player.spigot().sendMessage(ChatMessageType.ACTION_BAR,
                                 new TextComponent(
-                                        "§c❤ " + stats.get(player)[0] + " / " + stats.get(player)[1]
-                                                + "  §a❈ " + stats.get(player)[4]
-                                                + "  §b❤ " + stats.get(player)[2] + " / " + stats.get(player)[3]
+                                        "§c❤ " + Math.round(stats.get(player)[0]) + " / " + Math.round(stats.get(player)[1])
+                                                + "  §a❈ " + Math.round(stats.get(player)[4])
+                                                + "  §b❤ " + Math.round(stats.get(player)[2]) + " / " + Math.round(stats.get(player)[3])
                                 )
                         );
+
                         Double[] newstats = stats.get(player);
                         if (stats.get(player)[5] <= 0) {
                             newstats[5] = 30.0;
@@ -93,6 +94,14 @@ public class PlayerStats implements Listener {
                         else {
                             newstats[5] = stats.get(player)[5] - 1.0;
                         }
+
+                        if (stats.get(player)[0] > (stats.get(player)[1] - 1) && stats.get(player)[0] < stats.get(player)[1]) {
+                            newstats[0] = stats.get(player)[1];
+                        }
+                        if (stats.get(player)[2] > (stats.get(player)[3] - 1) && stats.get(player)[2] < stats.get(player)[3]) {
+                            newstats[2] = stats.get(player)[3];
+                        }
+
                         stats.put(player,newstats);
                         save();
                     }
@@ -171,7 +180,7 @@ public class PlayerStats implements Listener {
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_HURT, 100, 1.0F);
                     PacketPlayOutAnimation packet = new PacketPlayOutAnimation(((CraftPlayer) player).getHandle(),1);
                     for (Player p:Bukkit.getOnlinePlayers()) {
-                        if (p.getWorld().equals(player)) {
+                        if (p.getWorld().equals(player.getWorld())) {
                             ((CraftPlayer) p).getHandle().b.a(packet);
                         }
                     }
