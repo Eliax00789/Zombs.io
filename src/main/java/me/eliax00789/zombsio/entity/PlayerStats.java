@@ -92,11 +92,11 @@ public class PlayerStats implements Listener {
                         if (stats.get(player)[5] <= 0) {
                             newstats[5] = 30.0;
                             if (stats.get(player)[0] < stats.get(player)[1]) {
-                                newstats[0] = stats.get(player)[0] + 1;
+                                newstats[0] = stats.get(player)[0] + stats.get(player)[1]/100;
                             }
                             else {
                                 if (stats.get(player)[2] < stats.get(player)[3]) {
-                                    newstats[2] = stats.get(player)[2] + 1;
+                                    newstats[2] = stats.get(player)[2] + stats.get(player)[3]/10;
                                 }
                             }
                         }
