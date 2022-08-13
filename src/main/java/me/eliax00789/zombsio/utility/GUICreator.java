@@ -111,6 +111,16 @@ public class GUICreator implements Listener {
         return this;
     }
 
+    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Integer level, Integer maxlevel) {
+
+        if (level < maxlevel) {
+            setItem(index, item1);
+        } else {
+            setItem(index, item2);
+        }
+        return this;
+    }
+
     public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2 , ItemStack item3, Integer wood, Integer stone, Integer gold, Integer currentstashlevel, Integer neededstashlevel, Player player) {
 
         if (item3 == null && currentstashlevel == null && neededstashlevel == null) {
