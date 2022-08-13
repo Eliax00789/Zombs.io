@@ -149,7 +149,7 @@ public class Stats implements TabExecutor {
                     Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[4] = stats[4] + Double.valueOf(args[3]);
                     PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
+                    PlayerStats.save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
@@ -159,10 +159,11 @@ public class Stats implements TabExecutor {
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
+                    Bukkit.broadcastMessage(Bukkit.getPlayer(args[1]).getName());
                     Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[4] = Double.valueOf(args[3]);
                     PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
+                    PlayerStats.save();
                     sender.sendMessage( "Defense has been set to " + Integer.valueOf(args[3]));
                 }
                 else {

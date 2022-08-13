@@ -24,8 +24,8 @@ import java.util.logging.Level;
 
 public class PlayerStats implements Listener {
 
-    private File playerStatsFile;
-    private YamlConfiguration playerstats;
+    private static File playerStatsFile;
+    private static YamlConfiguration playerstats;
     public static HashMap<Player,Double[]> stats;
 
     public PlayerStats() {
@@ -69,6 +69,14 @@ public class PlayerStats implements Listener {
             public void run() {
                 for (Player player: Bukkit.getOnlinePlayers()) {
                     if (player.getGameMode().equals(GameMode.SURVIVAL)) {
+                        stats.put(player,new Double[]{
+                                playerstats.getDouble("stats." + player.getName() + ".health"),
+                                playerstats.getDouble("stats." + player.getName() + ".maxhealth"),
+                                playerstats.getDouble("stats." + player.getName() + ".shield"),
+                                playerstats.getDouble("stats." + player.getName() + ".maxshield"),
+                                playerstats.getDouble("stats." + player.getName() + ".defense"),
+                                stats.get(player)[5],
+                                stats.get(player)[6]});
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
                         player.setAbsorptionAmount(stats.get(player)[3] / 10);
@@ -113,7 +121,7 @@ public class PlayerStats implements Listener {
         Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
     }
 
-    public void save() {
+    public static void save() {
         for (Player player: stats.keySet()) {
             playerstats.set("stats." + player.getName() + ".health", stats.get(player)[0]);
             playerstats.set("stats." + player.getName() + ".maxhealth", stats.get(player)[1]);
