@@ -26,40 +26,40 @@ public class BuildSave {
             if (Zombsio.buildings.contains("buildings." + i)) {
                 Building toAdd;
                 if (Zombsio.buildings.getString("buildings." + i + ".name").equals("Door")) {
-                    toAdd = new Door(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new Door(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("SlowTrap")) {
-                    toAdd = new SlowTrap(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new SlowTrap(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("Wall")) {
-                    toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldMine")) {
-                    toAdd = new GoldMine(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new GoldMine(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
-                    toAdd = new GoldStash(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new GoldStash(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("ResourceHarvester")) {
-                    toAdd = new ResourceHarvester(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new ResourceHarvester(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("ArrowTower")) {
-                    toAdd = new ArrowTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new ArrowTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("BombTower")) {
-                    toAdd = new BombTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new BombTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("CannonTower")) {
-                    toAdd = new CannonTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new CannonTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("MageTower")) {
-                    toAdd = new MageTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new MageTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else if (Zombsio.buildings.getString("buildings." + i + ".name").equals("MeleeTower")) {
-                    toAdd = new MeleeTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new MeleeTower(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 else {
-                    toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt(i + ".level"));
+                    toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 buildingsMap.put(counter,toAdd);
             }
