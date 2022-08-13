@@ -1,5 +1,6 @@
 package me.eliax00789.zombsio;
 
+import me.eliax00789.zombsio.buildings.BuildSave;
 import me.eliax00789.zombsio.commands.Stats;
 import me.eliax00789.zombsio.commands.Resources;
 import me.eliax00789.zombsio.entity.PlayerStats;
@@ -101,6 +102,8 @@ public final class Zombsio extends JavaPlugin {
     }
 
     private void init() {
+        //INPORTANT:
+        new BuildSave();
         //GUIS:
         new BuildMenu();
         new Shop();
