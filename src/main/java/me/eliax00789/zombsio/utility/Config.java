@@ -16,7 +16,6 @@ public class Config {
     public HashMap<String,Integer> WOOD;
     public HashMap<String,Integer> STONE;
     public HashMap<String,Integer> GOLD;
-    public HashMap<Integer[], String> TOWERS;
 
     public Config() {
         this.LASTSHOPPAGE = new HashMap<String,String>();

@@ -112,7 +112,6 @@ public class GUICreator implements Listener {
     }
 
     public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2, Integer level, Integer maxlevel) {
-
         if (level < maxlevel) {
             setItem(index, item1);
         } else {

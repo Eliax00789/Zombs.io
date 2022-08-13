@@ -31,9 +31,6 @@ class BuildMenuInventory {
                currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
             }
         }
-        Integer playerwood = Config.getInstance().WOOD.get(player);
-        Integer playerstone = Config.getInstance().STONE.get(player);
-        Integer playergold = Config.getInstance().GOLD.get(player);
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -65,9 +62,9 @@ class BuildMenuInventory {
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Gold Mine (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)) - playerwood) + "More Wood needed",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed",
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)) - playergold) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Gold Mine (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -95,9 +92,9 @@ class BuildMenuInventory {
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Resource Harvester (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Resource Harvester (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -125,9 +122,9 @@ class BuildMenuInventory {
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Wall (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Wall (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -154,9 +151,9 @@ class BuildMenuInventory {
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Door (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Door (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -180,12 +177,13 @@ class BuildMenuInventory {
                                 new SlowTrap(player, location, 1);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Not Enough Resources)")
+                        }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -209,12 +207,13 @@ class BuildMenuInventory {
                                 new ArrowTower(player,location, 1);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Arrow Tower (Not Enough Resources)")
+                        }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Arrow Tower (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Arrow Tower (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -238,12 +237,13 @@ class BuildMenuInventory {
                                 new CannonTower(player, location, 1);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Cannon Tower (Not Enough Resources)")
+                        }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Cannon Tower (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Cannon Tower (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -256,7 +256,8 @@ class BuildMenuInventory {
                         , currentStashLvl
                         , neededStashLvl
                         , player)
-                .addItemSwitch(22, new ItemCreator(Material.TNT).setName("§7Bomb Tower")
+                .addItemSwitch(22
+                , new ItemCreator(Material.TNT).setName("§7Bomb Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Gold").get(0)
@@ -267,12 +268,13 @@ class BuildMenuInventory {
                                 new BombTower(player,location, 1);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Bomb Tower (Not Enough Resources)")
+                        }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Bomb Tower (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").get(0)) - Config.getInstance().STONE.get(player))) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Bomb Tower (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -296,12 +298,13 @@ class BuildMenuInventory {
                                 new MageTower(player,location, 1);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Mage Tower (Not Enough Resources)")
+                        }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Mage Tower (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + " More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").get(0)) - Config.getInstance().STONE.get(player)) + " More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Mage Tower (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
@@ -328,9 +331,9 @@ class BuildMenuInventory {
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Melee Tower (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
                                         "§4Mine for More Using your Pickaxe",
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").get(0)) - playerwood) + "More Wood needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").get(0)) - playerstone) + "More Stone needed" ,
-                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold").get(0)) - playergold) + "More Gold needed"
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").get(0)) - Config.getInstance().WOOD.get(player)) + "More Wood needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").get(0)) - Config.getInstance().STONE.get(player)) + "More Stone needed" ,
+                                        "§7" + ((Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold").get(0)) - Config.getInstance().GOLD.get(player)) + "More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Melee Tower (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
