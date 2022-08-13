@@ -176,6 +176,7 @@ public class PlayerStats implements Listener {
                 Double[] oldstats = stats.get(player);
                 Double[] newstats = stats.get(player);
                 newstats[5] = 60.0;
+                newstats[6] = 20.0*10;
                 newstats[7] = 10.0;
                 if (oldstats[2] > 0) {
                     if (oldstats[2] >= damage) {
@@ -191,6 +192,7 @@ public class PlayerStats implements Listener {
                 }
                 if (newstats[0] <= 0) {
                     newstats[0] = stats.get(player)[1];
+                    newstats[2] = stats.get(player)[3];
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
                     player.teleport(player.getWorld().getSpawnLocation());
                     for (Player p:Bukkit.getOnlinePlayers()) {
