@@ -279,6 +279,13 @@ public class Building implements Listener {
             nextGold = String.valueOf(gold.get(level));
         }
 
+        Integer currentStashLvl = 0;
+        for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
+            if (Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
+                currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
+            }
+        }
+
 
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
@@ -306,8 +313,8 @@ public class Building implements Listener {
                         , Integer.valueOf(nextWood)
                         , Integer.valueOf(nextStone)
                         , Integer.valueOf(nextGold)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , level + 1
                         , player)
                 .setItem(13,new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
                         .setLore("§7Tier " + level + " Building",
