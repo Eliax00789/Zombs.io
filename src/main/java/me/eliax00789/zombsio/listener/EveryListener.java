@@ -119,7 +119,7 @@ public class EveryListener implements Listener {
      @EventHandler
      public void onMove(PlayerMoveEvent e) {
 
-          for (int i = 0; i < 99; i++) {
+          for (int i = e.getPlayer().getWorld().getMinHeight(); i < e.getPlayer().getWorld().getMaxHeight(); i++) {
                if (e.getPlayer().getLocation().subtract( 0, i,0).getBlock().getType().equals(Material.WATER)) {
                     if (e.getPlayer().getGameMode().equals(GameMode.SURVIVAL)) {
                          e.getPlayer().damage(e.getPlayer().getMaxHealth());
