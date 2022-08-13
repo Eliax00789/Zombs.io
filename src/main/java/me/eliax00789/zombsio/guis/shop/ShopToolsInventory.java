@@ -16,23 +16,41 @@ class ShopToolsInventory {
     private Inventory inventory;
     private Integer[] pickaxe, spear, bow, bomb;
     private String pickaxeName, spearName, bowName, bombName;
+    private Integer pickLvl, spearLvl, bowLvl, bombLvl;
+    private Integer pickMaxLvl, spearMaxLvl, bowMaxLvl, bombMaxLvl;
     public ShopToolsInventory(Player player) {
         Integer playergold = Config.getInstance().GOLD.get(player.getName());
 
+        pickMaxLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").size();
+        spearMaxLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name").size();
+        bowMaxLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name").size();
+        bombMaxLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name").size();
+
         if (player.getInventory().getItem(0) != null) {
             if (player.getInventory().getItem(0).hasItemMeta()) {
-                pickaxe = new Integer[]{
-                        Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Gold")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Damage")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Attackspeed")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                };
-                pickaxeName =  Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1);
+
+                if (Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").size() ==
+                    Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name")
+                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                ) {
+                    pickaxeName =  Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(7);
+                    pickLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(7);
+                } else {
+                    pickaxe = new Integer[]{
+                            Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Gold")
+                                    .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Damage")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Attackspeed")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                    };
+                    pickaxeName = Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                    pickLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                }
             }
         } else {
             pickaxe = new Integer[]{
@@ -42,23 +60,34 @@ class ShopToolsInventory {
                     ,Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Attackspeed").get(0)
             };
             pickaxeName =  Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0);
+            pickLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(0);
         }
 
 
         if (player.getInventory().getItem(1) != null) {
             if (player.getInventory().getItem(1).hasItemMeta()) {
-                spear = new Integer[]{
-                        Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Gold")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Damage")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Range")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Attackspeed")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                };
-                spearName =  Zombsio.plugin.getConfig().getStringList("Items.Spear.Name")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1);
+                if (Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name").size() ==
+                        Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name")
+                                .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                ) {
+                    spearName =  Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(7);
+                    spearLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name").get(7);
+                } else {
+                    spear = new Integer[]{
+                            Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Gold")
+                                    .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Damage")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Range")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Attackspeed")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                    };
+                    spearName = Zombsio.plugin.getConfig().getStringList("Items.Spear.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                    spearLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                }
             }
         } else {
             spear = new Integer[]{
@@ -68,21 +97,33 @@ class ShopToolsInventory {
                     ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Attackspeed").get(0)
             };
             spearName =  Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0);
+            spearLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(0);
         }
 
 
         if (player.getInventory().getItem(2) != null) {
             if (player.getInventory().getItem(2).hasItemMeta()) {
-                bow = new Integer[]{
-                        Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Damage")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                };
-                bowName =  Zombsio.plugin.getConfig().getStringList("Items.Bow.Name")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1);
+                if (Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name").size() ==
+                        Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name")
+                                .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                ) {
+                    bowName =  Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(7);
+                    bowLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name").get(7);
+                } else {
+
+                    bow = new Integer[]{
+                            Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold")
+                                    .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Damage")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                    };
+                    bowName = Zombsio.plugin.getConfig().getStringList("Items.Bow.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                    bowLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                }
             }
         } else {
             bow = new Integer[]{
@@ -91,23 +132,34 @@ class ShopToolsInventory {
                     ,Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed").get(0)
             };
             bowName =  Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0);
+            bowLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Name").get(0);
         }
 
 
         if (player.getInventory().getItem(3) != null) {
             if (player.getInventory().getItem(3).hasItemMeta()) {
-                bomb = new Integer[]{
-                        Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Gold")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Damage")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Range")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                        ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1)
-                };
-                bombName =  Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name")
-                        .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1);
+                if (Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name").size() ==
+                        Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name")
+                                .get(java.lang.Integer.parseInt(player.getInventory().getItem(1).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                ) {
+                    bombName =  Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(7);
+                    bombLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(7);
+                } else {
+                    bomb = new Integer[]{
+                            Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Gold")
+                                    .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Damage")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Range")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                            , Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")))
+                    };
+                    bombName = Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(3).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                    bombLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Name")
+                            .get(java.lang.Integer.parseInt(player.getInventory().getItem(0).getItemMeta().getDisplayName().replaceAll("[^0-9]+", "")));
+                }
             }
         } else {
             bomb = new Integer[]{
@@ -117,6 +169,7 @@ class ShopToolsInventory {
                     ,Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed").get(0)
             };
             bombName =  Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0);
+            bombLvl = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Name").get(0);
         }
 
 
@@ -148,7 +201,7 @@ class ShopToolsInventory {
                     }
                 })
                 .addItemSwitch(10
-                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + pickaxeName)
+                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + pickaxeName )
                                 .setLore("§7Cost:  Gold: " + pickaxe[0]
                                         , "§7Damage: " + pickaxe[1]
                                         , "§7Resource Amount: " + pickaxe[2]
@@ -160,16 +213,15 @@ class ShopToolsInventory {
 
                             }
                         }
-                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + pickaxeName)
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + pickaxeName + " (Max Level)")
+                                .setLore("§4You can't Upgrade This Tool any more").getItem()
+                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + pickaxeName + "(Not Enough Gold)")
                                 .setLore("§4You can afford this upgrade"
                                         ,"§7" + (pickaxe[0] - playergold) + " More Gold needed"
                                 ).getItem()
-                        , null
-                        , 0
-                        , 0
                         , pickaxe[0]
-                        , null
-                        , null
+                        , pickLvl
+                        , pickMaxLvl
                         , player)
                 .addItemSwitch(11
                         , new ItemCreator(Material.WOODEN_SWORD).setName("§7" + spearName)
@@ -184,16 +236,15 @@ class ShopToolsInventory {
 
                             }
                         }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + spearName + " (Max Level)")
+                                .setLore("§4You can't Upgrade This Tool any more").getItem()
                         , new ItemCreator(Material.WOODEN_SWORD).setName("§7" + spearName)
                                 .setLore("§4You can afford this upgrade"
                                         ,"§7" + (spear[0] - playergold) + " More Gold needed"
                                 ).getItem()
-                        , null
-                        , 0
-                        , 0
                         , spear[0]
-                        , null
-                        , null
+                        , spearLvl
+                        , spearMaxLvl
                         , player)
                 .addItemSwitch(12
                         , new ItemCreator(Material.BOW).setName("§7" + bowName)
@@ -207,16 +258,15 @@ class ShopToolsInventory {
 
                             }
                         }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bowName + " (Max Level)")
+                                .setLore("§4You can't Upgrade This Tool any more").getItem()
                         , new ItemCreator(Material.BOW).setName("§7" + bowName)
                                 .setLore("§4You can afford this upgrade"
                                         ,"§7" + (bow[0] - playergold) + " More Gold needed"
                                 ).getItem()
-                        , null
-                        , 0
-                        , 0
                         , bow[0]
-                        , null
-                        , null
+                        , bowLvl
+                        , bowMaxLvl
                         , player)
                 .addItemSwitch(13
                         , new ItemCreator(Material.FIRE_CHARGE).setName("§7" + bombName)
@@ -231,16 +281,15 @@ class ShopToolsInventory {
 
                             }
                         }
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bombName + " (Max Level)")
+                                .setLore("§4You can't Upgrade This Tool any more").getItem()
                         , new ItemCreator(Material.FIRE_CHARGE).setName("§7" + bombName)
                                 .setLore("§4You can afford this upgrade"
                                         ,"§7" + (bomb[0] - playergold) + " More Gold needed"
                                 ).getItem()
-                        , null
-                        , 0
-                        , 0
                         , bomb[0]
-                        , null
-                        , null
+                        , bombLvl
+                        , bombMaxLvl
                         , player)
                 .getInventory();
     }

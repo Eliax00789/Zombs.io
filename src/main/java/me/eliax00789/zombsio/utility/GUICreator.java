@@ -76,7 +76,8 @@ public class GUICreator implements Listener {
         return this;
     }
 
-    public GUICreator addItemSwitch(Integer index,ItemStack item1
+    public GUICreator addItemSwitch(Integer index
+            ,ItemStack item1
             ,BukkitRunnable action1
             ,ItemStack item2
             ,@Nullable ItemStack item3
@@ -120,32 +121,27 @@ public class GUICreator implements Listener {
         return this;
     }
 
-    public GUICreator addItemSwitch(Integer index,ItemStack item1,ItemStack item2 , ItemStack item3, Integer wood, Integer stone, Integer gold, Integer currentstashlevel, Integer neededstashlevel, Player player) {
+    public GUICreator addItemSwitch(
+            Integer index,ItemStack item1
+            ,BukkitRunnable action1
+            ,ItemStack item2
+            ,ItemStack item3
+            , Integer gold
+            , Integer level, Integer maxlevel
+            , Player player) {
 
-        if (item3 == null && currentstashlevel == null && neededstashlevel == null) {
-            if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
-                    && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
-                    && Config.getInstance().GOLD.get(player.getName().toString()) >= gold) {
-                setItem(index,item1);
-            }
-            else {
-                setItem(index,item2);
-            }
-        } else {
-            if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
-                    && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
-                    && Config.getInstance().GOLD.get(player.getName().toString()) >= gold
-                    && currentstashlevel >= neededstashlevel) {
-                setItem(index,item1);
-            } else if (currentstashlevel < neededstashlevel) {
+            if(Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level < maxlevel) {
+                setItem(index,item1,action1);
+            } else if (Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level == maxlevel) {
                 setItem(index,item3);
-            }
-            else {
+            } else {
                 setItem(index,item2);
             }
-        }
+
+
         return this;
     }
+
 
     public Inventory getInventory() {
         return inventory;
