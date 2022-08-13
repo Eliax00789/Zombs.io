@@ -355,7 +355,6 @@ public class Building implements Listener {
                                 "§7Range: " + range.get(level - 1) + " > " + nextRange).getItem()
                         , new ItemCreator(Material.OAK_SIGN).setName("§7Stats")
                         .setLore("§7Tier " + level + " Building",
-                                "§7Current",
                                 "§7Health: " + health.get(level - 1),
                                 "§7Damage: " + damage.get(level - 1),
                                 "§7Range: " + range.get(level - 1)).getItem(), level, maxLevel)

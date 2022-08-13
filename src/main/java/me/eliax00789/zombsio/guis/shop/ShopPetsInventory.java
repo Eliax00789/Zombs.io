@@ -6,13 +6,14 @@ import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class ShopPetsInventory {
 
     private Inventory inventory;
-    public ShopPetsInventory() {
+    public ShopPetsInventory(Player player) {
         inventory = new GUICreator(9 * 3,"Shop: Tools")
                 .fillPlaceHolder()
                 .addExitButton()
@@ -21,14 +22,14 @@ class ShopPetsInventory {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"tools");
-                        inventory.getViewers().get(0).openInventory(new ShopToolsInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopToolsInventory(player).getInventory());
                     }
                 })
                 .setItem(2, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("§7Armor").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"armor");
-                        inventory.getViewers().get(0).openInventory(new ShopArmorInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopArmorInventory(player).getInventory());
                     }
                 })
                 .setItem(3, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("§aPets").getItem())
@@ -36,7 +37,7 @@ class ShopPetsInventory {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"potions");
-                        inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopPotionsInventory(player).getInventory());
                     }
                 })
                 .setItem(10, new ItemCreator(Material.RAVAGER_SPAWN_EGG).setName("§7Carl").getItem(), new BukkitRunnable() {

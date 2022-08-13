@@ -16,16 +16,16 @@ public class Shop implements Listener {
     public void onEnderChestPlace(PlayerInteractEvent e) {
         if (e.getMaterial().equals(Material.ENDER_CHEST)) {
             if (Config.getInstance().LASTSHOPPAGE.get(e.getPlayer().getName()).equalsIgnoreCase("tools")) {
-                e.getPlayer().openInventory(new ShopToolsInventory().getInventory());
+                e.getPlayer().openInventory(new ShopToolsInventory(e.getPlayer()).getInventory());
             }
             else if (Config.getInstance().LASTSHOPPAGE.get(e.getPlayer().getName()).equalsIgnoreCase("armor")) {
-                e.getPlayer().openInventory(new ShopArmorInventory().getInventory());
+                e.getPlayer().openInventory(new ShopArmorInventory(e.getPlayer()).getInventory());
             }
             else if (Config.getInstance().LASTSHOPPAGE.get(e.getPlayer().getName()).equalsIgnoreCase("pets")) {
-                e.getPlayer().openInventory(new ShopPetsInventory().getInventory());
+                e.getPlayer().openInventory(new ShopPetsInventory(e.getPlayer()).getInventory());
             }
             else if (Config.getInstance().LASTSHOPPAGE.get(e.getPlayer().getName()).equalsIgnoreCase("potions")) {
-                e.getPlayer().openInventory(new ShopPotionsInventory().getInventory());
+                e.getPlayer().openInventory(new ShopPotionsInventory(e.getPlayer()).getInventory());
             }
             else {
                 e.getPlayer().sendMessage("something just went very wrong whilst trying to open the shop");

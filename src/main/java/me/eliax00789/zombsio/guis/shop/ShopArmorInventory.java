@@ -7,13 +7,14 @@ import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.scheduler.BukkitRunnable;
 
 class ShopArmorInventory {
 
     private Inventory inventory;
-    public ShopArmorInventory() {
+    public ShopArmorInventory(Player player) {
         inventory = new GUICreator(9 * 3,"Shop: Tools")
                 .fillPlaceHolder()
                 .addExitButton()
@@ -22,7 +23,7 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"tools");
-                        inventory.getViewers().get(0).openInventory(new ShopToolsInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopToolsInventory(player).getInventory());
                     }
                 })
                 .setItem(2, new ItemCreator(Material.GREEN_STAINED_GLASS_PANE).setName("§aArmor").getItem())
@@ -30,14 +31,14 @@ class ShopArmorInventory {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"pets");
-                        inventory.getViewers().get(0).openInventory(new ShopPetsInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopPetsInventory(player).getInventory());
                     }
                 })
                 .setItem(4, new ItemCreator(Material.GRAY_STAINED_GLASS_PANE).setName("§7Potions").getItem(), new BukkitRunnable() {
                     @Override
                     public void run() {
                         Config.getInstance().LASTSHOPPAGE.put(inventory.getViewers().get(0).getName(),"potions");
-                        inventory.getViewers().get(0).openInventory(new ShopPotionsInventory().getInventory());
+                        inventory.getViewers().get(0).openInventory(new ShopPotionsInventory(player).getInventory());
                     }
                 })
                 .setItem(10, new ItemCreator(Material.LEATHER_HELMET).setName(Zombsio.plugin.getConfig().getStringList("Items.Helmet.Name").get(0))

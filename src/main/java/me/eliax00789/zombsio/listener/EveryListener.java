@@ -25,6 +25,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.util.Vector;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EveryListener implements Listener {
 
      public EveryListener() {
@@ -141,15 +144,51 @@ public class EveryListener implements Listener {
 
      }
 
+     private HashMap<Player, Integer> bowcount, bombcount;
+
      @EventHandler
      public void onRightClickAir(PlayerInteractEvent e) {
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BOW)) {
-               e.getPlayer().getWorld().spawnArrow(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)),e.getPlayer().getLocation().getDirection(),4, 0);
+               new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                         if (bowcount == null) {
+                              bowcount = new HashMap<>();
+                         }
 
-          }
+                         if (bowcount.get(e.getPlayer()) == null) {
+                              bowcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1));
+                         }
+                         if (bowcount.get(e.getPlayer()) < 0) {
+                              e.getPlayer().getWorld().spawnArrow(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)),e.getPlayer().getLocation().getDirection(),4, 0);
+                              this.cancel();
+                         }
+                         bowcount.put(e.getPlayer(), bowcount.get(e.getPlayer()) - 1);
+                    }
+               }.runTaskTimer(Zombsio.plugin, 0 , 1);
+               e.setCancelled(true);
+         }
 
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.FIRE_CHARGE)) {
-               e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)), EntityType.FIREBALL);
+               new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                         if (bombcount == null) {
+                              bombcount = new HashMap<>();
+                         }
+
+                         if (bombcount.get(e.getPlayer()) == null) {
+                              bombcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1));
+                         }
+                         if (bombcount.get(e.getPlayer()) < 0) {
+                              e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)), EntityType.FIREBALL);
+                              this.cancel();
+                         }
+                         bombcount.put(e.getPlayer(), bombcount.get(e.getPlayer()) - 1);
+                    }
+               }.runTaskTimer(Zombsio.plugin, 0 , 1);
+               e.setCancelled(true);
+
 
           }
      }
