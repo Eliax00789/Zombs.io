@@ -32,148 +32,102 @@ public class Stats implements TabExecutor {
                 sender.sendMessage("Player is not online");
                 return true;
             }
+            Player player = Bukkit.getPlayer(args[0]);
+            Double[] stats = PlayerStats.stats.get(player);
             if (args[1].equalsIgnoreCase("health")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
                     stats[0] = stats[0] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
                     stats[0] = stats[0] - Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Health has been removed");
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[0]));
                     stats[0] = stats[0] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage("Health has been set to " + Integer.valueOf(args[3]));
                 }
                 else
                 {
                     sender.sendMessage("Couldn't recognize operation");
                 }
-                return true;
             }
             else if (args[1].equalsIgnoreCase("maxhealth")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[1] = stats[1] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[1] = stats[1] - Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[1]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxhealth has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[1] = Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[1]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( "MaxHealth has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
-                return true;
             }
             else if (args[1].equalsIgnoreCase("shield")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[2] = stats[2] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[2] = stats[2] - Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Shield has been removed");
 
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[2]));
                     stats[2] = Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage("Shield has been set to " + Integer.valueOf(args[3]));
                 }
                 else
                 {
                     sender.sendMessage("Couldn't recognize operation");
                 }
-                return true;
             }
             else if (args[1].equalsIgnoreCase("maxshield")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[3] = stats[3] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[3] = stats[3] - Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Maxshield has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[3] = Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    new PlayerStats().save();
                     sender.sendMessage( "Maxshield has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
-                return true;
             }
             else if (args[1].equalsIgnoreCase("defense")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[4] = stats[4] + Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    PlayerStats.save();
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been added");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[4] = stats[4] - Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
                     sender.sendMessage( Integer.valueOf(args[3]) + " Defense has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    Bukkit.broadcastMessage(Bukkit.getPlayer(args[1]).getName());
-                    Double[] stats = PlayerStats.stats.get(Bukkit.getPlayer(args[1]));
                     stats[4] = Double.valueOf(args[3]);
-                    PlayerStats.stats.put(Bukkit.getPlayer(args[0]),stats);
-                    PlayerStats.save();
                     sender.sendMessage( "Defense has been set to " + Integer.valueOf(args[3]));
                 }
                 else {
                     sender.sendMessage("Couldn't recognize operation");
                 }
-                return true;
             }
             else {
                 sender.sendMessage("Couldn't recognize resource type");
             }
+            PlayerStats.stats.put(player,stats);
+            PlayerStats.save();
             return true;
         }
         else {
