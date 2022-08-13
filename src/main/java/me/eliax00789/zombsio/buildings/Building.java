@@ -45,7 +45,7 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,
                     @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
-        if (locationSuits(location,structure)) {
+        if (locationSuits(location,structure) || builder == null) {
             this.id = Zombsio.buildings.getInt("nextid");
             BuildSave.buildingsMap.put(this.id,this);
             this.name = name;
@@ -123,9 +123,6 @@ public class Building implements Listener {
         else {
             if (builder != null) {
                 builder.sendMessage("Not enough space for " + name);
-            }
-            else {
-                Bukkit.broadcastMessage("WTF DID JUST HAPPEN");
             }
         }
     }
