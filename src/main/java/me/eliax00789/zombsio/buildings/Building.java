@@ -2,17 +2,13 @@ package me.eliax00789.zombsio.buildings;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.other.Door;
-import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
-import me.eliax00789.zombsio.buildings.towers.MeleeTower;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,71 +43,76 @@ public class Building implements Listener {
                     Material[][][][] structure,
                     @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,
                     @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
-        this.id = (Integer) Zombsio.buildings.get("nextid");
-        Zombsio.buildings.set("nextid",id + 1);
-        this.name = name;
-        this.level = level;
-        this.maxLevel = maxLevel;
-        this.location = location;
-        this.structure = structure;
-        this.currentHealth = health.get(0);
-        this.health = health;
-        this.damage = damage;
-        this.range = range;
-        this.wood = wood;
-        this.stone = stone;
-        this.gold = gold;
-        if (health == null) {
-            this.health = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.health.add(0);
-            }
-        }
-        if (damage == null) {
-            this.damage = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.damage.add(0);
-            }
-        }
-        if (range == null) {
-            this.range = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.range.add(0);
-            }
-        }
-        if (wood == null) {
-            this.wood = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.wood.add(0);
-            }
-        }
-        if (stone == null) {
-            this.stone = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.stone.add(0);
-            }
-        }
-        if (gold == null) {
-            this.gold = new ArrayList<Integer>();
-            for (Integer i = 0;i <= maxLevel;i++) {
-                this.gold.add(0);
-            }
-        }
-
-        if (hasResources(builder)) {
-            removeResources(builder);
-            build();
-            Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
-        }
-
-        if (projectile != null) {
-            projectileLoop = new BukkitRunnable() {
-                @Override
-                public void run() {
-                    projectile.shoot();
+        if (locationSuits(location,structure)) {
+            this.id = (Integer) Zombsio.buildings.get("nextid");
+            Zombsio.buildings.set("nextid",id + 1);
+            this.name = name;
+            this.level = level;
+            this.maxLevel = maxLevel;
+            this.location = location;
+            this.structure = structure;
+            this.currentHealth = health.get(0);
+            this.health = health;
+            this.damage = damage;
+            this.range = range;
+            this.wood = wood;
+            this.stone = stone;
+            this.gold = gold;
+            if (health == null) {
+                this.health = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.health.add(0);
                 }
-            };
-            projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
+            }
+            if (damage == null) {
+                this.damage = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.damage.add(0);
+                }
+            }
+            if (range == null) {
+                this.range = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.range.add(0);
+                }
+            }
+            if (wood == null) {
+                this.wood = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.wood.add(0);
+                }
+            }
+            if (stone == null) {
+                this.stone = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.stone.add(0);
+                }
+            }
+            if (gold == null) {
+                this.gold = new ArrayList<Integer>();
+                for (Integer i = 0;i <= maxLevel;i++) {
+                    this.gold.add(0);
+                }
+            }
+
+            if (hasResources(builder)) {
+                removeResources(builder);
+                build();
+                Zombsio.plugin.getServer().getPluginManager().registerEvents(this,Zombsio.plugin);
+            }
+
+            if (projectile != null) {
+                projectileLoop = new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        projectile.shoot();
+                    }
+                };
+                projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
+            }
+        }
+        else {
+            builder.sendMessage("Not enough space for " + name);
         }
     }
 
@@ -163,6 +164,28 @@ public class Building implements Listener {
         Config.getInstance().WOOD.put(player.getName(),Config.getInstance().WOOD.get(player.getName()) - wood.get(level - 1 ));
         Config.getInstance().STONE.put(player.getName(),Config.getInstance().STONE.get(player.getName()) - stone.get(level - 1));
         Config.getInstance().GOLD.put(player.getName(),Config.getInstance().GOLD.get(player.getName()) - gold.get(level - 1));
+    }
+
+    private Boolean locationSuits(Location location, Material[][][][] structure) {
+        Boolean locationTrue = true;
+        Material[][][] temp = structure[0];
+        Location structOrigin;
+        if(this instanceof Door || this instanceof Wall) {
+            structOrigin = location.clone();
+        } else {
+            structOrigin = location.clone().add(-1, 0, -1);
+        }
+        for ( int x = 0; x < temp.length; x ++) {
+            for (int y = 0; y < temp[x].length; y++) {
+                for (int z = 0; z < temp[x][y].length; z++) {
+                    Location tmp = structOrigin.clone();
+                    if (!tmp.add(x,y,z).getBlock().getType().equals(Material.AIR)){
+                        locationTrue = false;
+                    }
+                }
+            }
+        }
+        return locationTrue;
     }
 
     private void remove() {
