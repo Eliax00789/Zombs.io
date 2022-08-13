@@ -11,6 +11,7 @@ Buildings:
     Gold: [0,5,30,60,80,100,250,800]
   SlowTrap:
     Health: [150,200,400,800,1200,1600,2200,3000]
+    Slow: [20,25,30,35,40,45,50,55]
     Stone: [5,25,30,40,50,70,300,800]
     Wood: [5,25,30,40,50,70,300,800]
     Gold: [0,100,200,400,600,800,1000,1500]
@@ -109,3 +110,26 @@ Items:
     Gold: [1000, 3000,7000,14000,18000,22000,24000,30000,45000,70000]
     Health: [500,1000,1800,4000,10000,20000,35000,50000,65000,85000]
     RechargeDelay: [10,9,8,7,6,6,6,6,6,6]
+Limits:
+  GoldStash:
+    Limit: 1
+  Door:
+    Limit: 40
+  Wall:
+    Limit: 250
+  SlowTrap:
+    Limit: 12
+  GoldMine:
+    Limit: 8
+  ResourceHarvester:
+    Limit: 2
+  ArrowTower:
+    Limit: 6
+  BombTower:
+    Limit: 6
+  CannonTower:
+    Limit: 6
+  MeleeTower:
+    Limit: 6
+  MageTower:
+    Limit: 6

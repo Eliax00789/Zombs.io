@@ -147,7 +147,7 @@ class BuildMenuInventory {
                                 new SlowTrap(player, location);
                                 player.closeInventory();
                             }
-                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Not Implemented")
+                        }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Slow Trap (Can't Be Build)")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
                                         ,"§7      Stone: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Stone").get(0)
                                         ,"§7      Gold: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Gold").get(0)
@@ -157,7 +157,7 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Gold").get(0)
                         , 0
-                        , 69420
+                        , 0
                         , player)
                 .addItemSwitch(20, new ItemCreator(Material.ARROW).setName("§7Arrow Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)

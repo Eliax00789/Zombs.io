@@ -154,5 +154,4 @@ public class EveryListener implements Listener {
 
           }
      }
-
 }
