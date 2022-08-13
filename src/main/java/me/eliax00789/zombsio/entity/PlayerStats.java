@@ -96,7 +96,7 @@ public class PlayerStats implements Listener {
                             }
                             else {
                                 if (stats.get(player)[2] < stats.get(player)[3]) {
-                                    newstats[2] = stats.get(player)[0] + 1;
+                                    newstats[2] = stats.get(player)[2] + 1;
                                 }
                             }
                         }
