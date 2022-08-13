@@ -1,6 +1,7 @@
 package me.eliax00789.zombsio.guis.buildmenu;
 
 import me.eliax00789.zombsio.Zombsio;
+import me.eliax00789.zombsio.buildings.Building;
 import me.eliax00789.zombsio.buildings.other.Door;
 import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
@@ -22,6 +23,14 @@ import org.bukkit.scheduler.BukkitRunnable;
 class BuildMenuInventory {
     private Inventory inventory;
     public BuildMenuInventory(Location location, Player player) {
+        Integer currentStashLvl = 0;
+        Integer neededStashLvl = 1;
+        for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
+            if (Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
+               currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
+            }
+        }
+
         inventory = new GUICreator(9 * 4,"Build Menu")
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
@@ -60,8 +69,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldMine.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(12, new ItemCreator(Material.DIAMOND_PICKAXE).setName("§7Resource Harvester")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ResourceHarvester.Wood").get(0)
@@ -84,8 +93,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ResourceHarvester.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(14, new ItemCreator(Material.IRON_BARS).setName("§7Wall")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Wall.Wood").get(0)
@@ -108,8 +117,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Wall.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(15, new ItemCreator(Material.IRON_DOOR).setName("§7Door")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.Door.Wood").get(0)
@@ -132,8 +141,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.Door.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(16, new ItemCreator(Material.HONEYCOMB).setName("§7Slow Trap")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.SlowTrap.Wood").get(0)
@@ -156,8 +165,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.SlowTrap.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(20, new ItemCreator(Material.ARROW).setName("§7Arrow Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.ArrowTower.Wood").get(0)
@@ -184,8 +193,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(21, new ItemCreator(Material.FIRE_CHARGE).setName("§7Cannon Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.CannonTower.Wood").get(0)
@@ -212,8 +221,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(22, new ItemCreator(Material.TNT).setName("§7Bomb Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
@@ -240,8 +249,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(23, new ItemCreator(Material.ENCHANTED_BOOK).setName("§7Mage Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
@@ -268,8 +277,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MageTower.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .addItemSwitch(24, new ItemCreator(Material.STONE_SWORD).setName("§7Melee Tower")
                                 .setLore("§7Cost:  Wood: " + Zombsio.plugin.getConfig().getList("Buildings.BombTower.Wood").get(0)
@@ -296,8 +305,8 @@ class BuildMenuInventory {
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Wood").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Stone").get(0)
                         , Zombsio.plugin.getConfig().getIntegerList("Buildings.MeleeTower.Gold").get(0)
-                        , 0
-                        , 0
+                        , currentStashLvl
+                        , neededStashLvl
                         , player)
                 .getInventory();
     }
