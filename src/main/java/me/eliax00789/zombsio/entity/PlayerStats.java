@@ -171,11 +171,11 @@ public class PlayerStats implements Listener {
                     }
                     else {
                         newstats[2] = 0.0;
-                        newstats[0] = oldstats[0] - (damage - (((damage / 100) * 4) * oldstats[4]));
+                        newstats[0] = oldstats[0] - (damage - ((damage/100) * (0.1 * oldstats[4])));
                     }
                 }
                 else {
-                    newstats[0] = oldstats[0] - (damage - (((damage / 100) * 4) * oldstats[4]));
+                    newstats[0] = oldstats[0] - (damage - ((damage/100) * (0.1 * oldstats[4])));
                 }
                 if (newstats[0] <= 0) {
                     newstats[0] = stats.get(player)[1];
