@@ -95,7 +95,7 @@ public class PlayerStats implements Listener {
                             newstats[5] = 30.0;
                             if (stats.get(player)[0] < stats.get(player)[1]) {
                                 newstats[0] = stats.get(player)[0] + stats.get(player)[1]/100;
-                            } else if((stats.get(player)[0] + stats.get(player)[1]/100) > stats.get(player)[1]) {
+                            } else if((stats.get(player)[0] + stats.get(player)[1]/100) >= stats.get(player)[1]) {
                                 newstats[0] = stats.get(player)[1];
                             }
                         }
@@ -107,7 +107,7 @@ public class PlayerStats implements Listener {
                             if (stats.get(player)[0].equals(stats.get(player)[1])) {
                                 if (stats.get(player)[2] < stats.get(player)[3]) {
                                     newstats[2] = stats.get(player)[2] + stats.get(player)[3]/50;
-                                } else if((stats.get(player)[2] + stats.get(player)[3]/50) > stats.get(player)[3]) {
+                                } else if((stats.get(player)[2] + stats.get(player)[3]/50) >= stats.get(player)[3]) {
                                     newstats[2] = stats.get(player)[3];
                                 }
                             }

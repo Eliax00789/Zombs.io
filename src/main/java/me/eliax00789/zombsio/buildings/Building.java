@@ -97,7 +97,6 @@ public class Building implements Listener {
                     this.gold.add(0);
                 }
             }
-
             if (builder != null) {
                 if (hasResources(builder)) {
                     removeResources(builder);

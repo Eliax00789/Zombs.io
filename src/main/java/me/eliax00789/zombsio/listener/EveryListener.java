@@ -128,7 +128,6 @@ public class EveryListener implements Listener {
                               e.getPlayer().damage(stats[2]);
                          }
                          new BukkitRunnable() {
-
                               @Override
                               public void run() {
                                    if (PlayerStats.stats.get(e.getPlayer())[0] > 0) {
