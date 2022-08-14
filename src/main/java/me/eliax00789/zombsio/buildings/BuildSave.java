@@ -43,10 +43,19 @@ public class BuildSave {
         if (!buildings.contains("nextid")) {
             buildings.set("nextid",0);
         }
+        try {
+            buildings.load(filebuildings);
+        } catch (IOException | InvalidConfigurationException e) {
+            Bukkit.getLogger().log(Level.WARNING,e.toString());
+        }
         final Integer nextid = buildings.getInt("nextid");
         for (Integer i = 0; i <= nextid; i++) {
             if (buildings.contains("buildings." + i + ".name")) {
+                Bukkit.broadcastMessage("DEBUG:");
+                Bukkit.broadcastMessage(buildings.saveToString());
+                Bukkit.broadcastMessage(" ");
                 Bukkit.broadcastMessage(i + " " + buildings.getString("buildings. " + i + ".name") + " " + buildings.getLocation("buildings." + i + ".location") + " " + buildings.getInt("buildings." + i + ".level"));
+                Bukkit.broadcastMessage(" ");
                 if (buildings.getString("buildings." + i + ".name").equals("Door")) {
                     new Door(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
                 }
