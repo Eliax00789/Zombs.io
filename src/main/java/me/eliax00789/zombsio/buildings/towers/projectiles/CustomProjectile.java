@@ -42,17 +42,19 @@ public class CustomProjectile {
             }
         }
         Entity finalNearest = nearest;
-        if (finalNearest.getLocation().distance(startLocation) <= range) {
-            Vector direction = finalNearest.getLocation().toVector().subtract(startLocation.toVector()).normalize();
-            world.spawnParticle(particle, startLocation.getX(), startLocation.getY(), startLocation.getZ(), 0, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, null);
-            new BukkitRunnable() {
-                @Override
-                public void run() {
-                    if (finalNearest instanceof LivingEntity) {
-                        ((LivingEntity) finalNearest).damage(damage);
+        if (finalNearest != null) {
+            if (finalNearest.getLocation().distance(startLocation) <= range) {
+                Vector direction = finalNearest.getLocation().toVector().subtract(startLocation.toVector()).normalize();
+                world.spawnParticle(particle, startLocation.getX(), startLocation.getY(), startLocation.getZ(), 0, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, null);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        if (finalNearest instanceof LivingEntity) {
+                            ((LivingEntity) finalNearest).damage(damage);
+                        }
                     }
-                }
-            }.runTaskLater(Zombsio.plugin, (long) (finalNearest.getLocation().distance(startLocation) / speed));
+                }.runTaskLater(Zombsio.plugin, (long) (finalNearest.getLocation().distance(startLocation) / speed));
+            }
         }
     }
 }
