@@ -49,7 +49,8 @@ public class BuildSave {
             Bukkit.getLogger().log(Level.WARNING,e.toString());
         }
         final Integer nextid = buildings.getInt("nextid");
-        for (Integer i = 0; i <= nextid; i++) {
+        for (Integer i = 1; i <= nextid; i++) {
+            Bukkit.broadcastMessage("Id:" + i);
             if (buildings.contains("buildings." + i + ".name")) {
                 Bukkit.broadcastMessage("DEBUG:");
                 Bukkit.broadcastMessage(buildings.saveToString());
