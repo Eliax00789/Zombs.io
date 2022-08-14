@@ -27,8 +27,6 @@ import java.util.logging.Level;
 
 public final class Zombsio extends JavaPlugin {
     public static JavaPlugin plugin;
-    public static FileConfiguration buildings;
-    private File filebuildings;
     public String prefix;
 
     @Override
@@ -67,42 +65,20 @@ public final class Zombsio extends JavaPlugin {
 
     private void enableConfig() {
         Config.setup();
-        filebuildings = new File(getDataFolder(), "buildings.yml");
         getConfig().options().copyDefaults(true);
         saveResource("config.yml", false);
         saveConfig();
-        if (!filebuildings.exists()){
-            try {
-                filebuildings.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        buildings = YamlConfiguration.loadConfiguration(filebuildings);
-        if (!buildings.contains("nextid")) {
-            buildings.set("nextid",0);
-        }
         new BukkitRunnable() {
             @Override
             public void run() {
                 Config.getInstance().save();
-                try {
-                    buildings.save(filebuildings);
-                } catch (IOException e) {
-                    Bukkit.getLogger().log(Level.WARNING,e.toString());
-                }
             }
         }.runTaskTimer(this,5,30);
     }
 
     private void disableConfig() {
         Config.getInstance().save();
-        try {
-            buildings.save(filebuildings);
-        } catch (IOException e) {
-            Bukkit.getLogger().log(Level.WARNING,e.toString());
-        }
+        BuildSave.save();
     }
 
     private void init() {
