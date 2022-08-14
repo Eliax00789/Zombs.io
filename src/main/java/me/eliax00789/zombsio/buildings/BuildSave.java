@@ -24,7 +24,7 @@ public class BuildSave {
     private void loadFromConfig() {
         Integer counter = 0;
         for (Integer i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
-            if (Zombsio.buildings.contains("buildings." + i)) {
+            if (Zombsio.buildings.contains("buildings." + i + ".name")) {
                 counter++;
                 Building toAdd;
                 if (Zombsio.buildings.getString("buildings." + i + ".name").equals("Door")) {
