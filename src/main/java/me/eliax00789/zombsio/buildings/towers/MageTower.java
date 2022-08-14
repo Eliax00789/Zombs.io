@@ -16,8 +16,8 @@ public class MageTower extends Building {
                     {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 1
                     {Material.OAK_PLANKS, Material.OAK_PLANKS, Material.OAK_PLANKS},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -32,7 +32,7 @@ public class MageTower extends Building {
                     {Material.OAK_LOG, Material.AIR, Material.OAK_LOG}, // y = 1
                     {Material.OAK_PLANKS, Material.OAK_PLANKS, Material.OAK_PLANKS},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.AIR}, // y = 4
+                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 5
             }
     };
@@ -43,8 +43,8 @@ public class MageTower extends Building {
                     {Material.STONE_BRICK_WALL, Material.AIR, Material.STONE_BRICK_WALL}, // y = 1
                     {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.STONE_BRICKS},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -59,7 +59,7 @@ public class MageTower extends Building {
                     {Material.STONE_BRICK_WALL, Material.AIR, Material.STONE_BRICK_WALL}, // y = 1
                     {Material.STONE_BRICKS, Material.STONE_BRICKS, Material.STONE_BRICKS},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.AIR}, // y = 4
+                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 5
             }
     };
@@ -70,8 +70,8 @@ public class MageTower extends Building {
                     {Material.CHAIN, Material.AIR, Material.CHAIN}, // y = 1
                     {Material.SMOOTH_STONE, Material.SMOOTH_STONE, Material.SMOOTH_STONE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -86,7 +86,7 @@ public class MageTower extends Building {
                     {Material.CHAIN, Material.AIR, Material.CHAIN}, // y = 1
                     {Material.SMOOTH_STONE, Material.SMOOTH_STONE, Material.SMOOTH_STONE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.AIR}, // y = 4
+                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 5
             }
     };
@@ -97,8 +97,8 @@ public class MageTower extends Building {
                     {Material.NETHER_BRICK_FENCE, Material.AIR, Material.NETHER_BRICK_FENCE}, // y =
                     {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -113,7 +113,7 @@ public class MageTower extends Building {
                     {Material.NETHER_BRICK_FENCE, Material.AIR, Material.NETHER_BRICK_FENCE}, // y = 1
                     {Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE, Material.GILDED_BLACKSTONE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.AIR}, // y = 4
+                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 5
             }
     };
@@ -124,8 +124,8 @@ public class MageTower extends Building {
                     {Material.POLISHED_BLACKSTONE_WALL, Material.AIR, Material.POLISHED_BLACKSTONE_WALL}, // y =
                     {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -140,7 +140,7 @@ public class MageTower extends Building {
                     {Material.POLISHED_BLACKSTONE_WALL, Material.AIR, Material.POLISHED_BLACKSTONE_WALL}, // y = 1
                     {Material.SCULK, Material.SCULK, Material.SCULK},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.AIR}, // y = 4
+                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
                     {Material.AIR, Material.AIR, Material.AIR} // y = 5
             }
     };
@@ -151,8 +151,8 @@ public class MageTower extends Building {
                     {Material.WARPED_FENCE, Material.AIR, Material.WARPED_FENCE}, // y =
                     {Material.GREEN_CONCRETE, Material.GREEN_CONCRETE, Material.GREEN_CONCRETE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -178,8 +178,8 @@ public class MageTower extends Building {
                     {Material.PRISMARINE_WALL, Material.AIR, Material.PRISMARINE_WALL}, // y =
                     {Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER, Material.WAXED_OXIDIZED_COPPER},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
@@ -205,8 +205,8 @@ public class MageTower extends Building {
                     {Material.POLISHED_DEEPSLATE_WALL, Material.AIR, Material.POLISHED_DEEPSLATE_WALL}, // y =
                     {Material.DEEPSLATE, Material.DEEPSLATE, Material.DEEPSLATE},  // y = 2
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 3
-                    {Material.PURPLE_STAINED_GLASS_PANE, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
-                    {Material.AIR, Material.AIR, Material.AIR} // y = 5
+                    {Material.AIR, Material.AIR, Material.PURPLE_STAINED_GLASS_PANE}, // y = 4
+                    {Material.AIR, Material.PURPLE_STAINED_GLASS_PANE, Material.AIR} // y = 5
             },
             { // x = 1
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0

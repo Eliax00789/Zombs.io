@@ -78,37 +78,31 @@ public class GUICreator implements Listener {
     }
 
     public GUICreator addItemSwitch(Integer index
-            ,ItemStack item1
-            ,BukkitRunnable action1
-            ,ItemStack item2
-            ,@Nullable ItemStack item3
+            , ItemStack item1
+            , BukkitRunnable action1
+            , ItemStack item2
+            , ItemStack item3
+            , ItemStack item4
             , Integer wood, Integer stone, Integer gold
-            ,@Nullable Integer currentstashlevel, @Nullable Integer neededstashlevel
-            , Integer current, Integer limit
+            , Integer currentstashlevel, Integer neededstashlevel
+            , Integer currenttowers, Integer limit
             , Player player) {
 
-        if (item3 == null && currentstashlevel == null && neededstashlevel == null) {
-            if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
-                    && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
-                    && Config.getInstance().GOLD.get(player.getName().toString()) >= gold) {
-                setItem(index,item1,action1);
-            }
-            else {
-                setItem(index,item2);
-            }
-        } else {
             if(Config.getInstance().STONE.get(player.getName().toString()) >= stone
                     && Config.getInstance().WOOD.get(player.getName().toString()) >= wood
                     && Config.getInstance().GOLD.get(player.getName().toString()) >= gold
-                    && currentstashlevel >= neededstashlevel) {
+                    && currentstashlevel >= neededstashlevel
+                    && currenttowers < limit) {
                 setItem(index,item1,action1);
+            } else if (currenttowers >= limit) {
+                setItem(index, item4);
             } else if (currentstashlevel < neededstashlevel) {
                 setItem(index,item3);
             }
             else {
                 setItem(index,item2);
             }
-        }
+
         return this;
     }
 
