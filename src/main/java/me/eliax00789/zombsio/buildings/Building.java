@@ -147,6 +147,7 @@ public class Building implements Listener {
                 };
                 projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
             }
+            BuildSave.save();
 
         }
         else {
