@@ -22,7 +22,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.OAK_PLANKS, Material.DIRT, Material.OAK_PLANKS},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -46,7 +46,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.STONE_BRICKS, Material.STONE, Material.STONE_BRICKS},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -70,7 +70,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.SMOOTH_STONE, Material.IRON_BLOCK, Material.SMOOTH_STONE},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -94,7 +94,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.GILDED_BLACKSTONE, Material.GOLD_BLOCK, Material.GILDED_BLACKSTONE},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -118,7 +118,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.SCULK, Material.OBSIDIAN, Material.SCULK},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -142,7 +142,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.GREEN_CONCRETE, Material.EMERALD_BLOCK, Material.GREEN_CONCRETE},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -166,7 +166,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.WAXED_OXIDIZED_COPPER, Material.DIAMOND_BLOCK, Material.WAXED_OXIDIZED_COPPER},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2
@@ -190,7 +190,7 @@ public class BombTower extends Building {
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 0
                     {Material.AIR, Material.AIR, Material.AIR}, // y = 1
                     {Material.DEEPSLATE, Material.NETHERITE_BLOCK, Material.DEEPSLATE},  // y = 2
-                    {Material.RAIL, Material.DROPPER, Material.RAIL}, // y = 3
+                    {Material.RAIL, Material.DISPENSER, Material.RAIL}, // y = 3
                     {Material.AIR, Material.AIR, Material.AIR} // y = 4
             },
             { // x = 2

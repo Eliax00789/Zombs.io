@@ -6,11 +6,13 @@ import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.resources.GoldMine;
 import me.eliax00789.zombsio.buildings.resources.GoldStash;
+import me.eliax00789.zombsio.buildings.towers.BombTower;
 import me.eliax00789.zombsio.buildings.towers.CannonTower;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import net.minecraft.core.BlockPosition;
 import net.minecraft.world.level.block.BlockEndRod;
 import net.minecraft.world.level.block.state.properties.BlockPropertyHalf;
 import org.bukkit.Bukkit;
@@ -19,12 +21,16 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.BlockState;
+import org.bukkit.block.Dropper;
 import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.Openable;
+import org.bukkit.block.data.Rail;
 import org.bukkit.block.data.type.Ladder;
 import org.bukkit.block.data.type.Slab;
 import org.bukkit.block.data.type.TrapDoor;
+import org.bukkit.craftbukkit.v1_19_R1.CraftWorld;
+import org.bukkit.craftbukkit.v1_19_R1.util.CraftMagicNumbers;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -181,8 +187,8 @@ public class Building implements Listener {
                 for (int z = 0; z < temp[x][y].length; z++) {
                     Location tmp = structOrigin.clone();
                     tmp.add(x,y,z).getBlock().setType(temp[x][y][z]);
+                    Block block = tmp.getBlock();
                     if (this instanceof CannonTower) {
-                        Block block = tmp.getBlock();
                         if (block.getBlockData() instanceof TrapDoor) {
                             Openable openable = (Openable) block.getBlockData();
                             openable.setOpen(true);
@@ -206,11 +212,23 @@ public class Building implements Listener {
                     }
 
                     if (this instanceof GoldMine) {
-                        Block block = tmp.getBlock();
                         if (block.getType().equals(Material.END_ROD)) {
                             Directional directional = (Directional) block.getBlockData();
                             directional.setFacing(BlockFace.DOWN);
                             block.setBlockData(directional);
+                        }
+                    }
+
+                    if (this instanceof BombTower) {
+                        if (block.getType().equals(Material.DISPENSER)) {
+                            Directional directional = (Directional) block.getBlockData();
+                            directional.setFacing(BlockFace.UP);
+                            block.setBlockData(directional);
+                        }
+
+                        if (block.getType().equals(Material.RAIL)) {
+                            block.setType(Material.AIR);
+                            block.setType(Material.RAIL);
                         }
                     }
                 }
