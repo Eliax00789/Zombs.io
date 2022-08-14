@@ -50,23 +50,34 @@ public class EveryListener implements Listener {
                     e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
                }
 
-               e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
-                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+               e.getPlayer().getInventory().setItem(0,new ItemCreator(Material.WOODEN_AXE)
+                       .setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                       .setLore("§7Damage: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Damage").get(0))
+                               , "§7Resource Amount: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Harvest").get(0))
+                               , "§7Attackspeed: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Attackspeed").get(0)))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
                        .getItem());
-               e.getPlayer().getInventory().setItem(1, new ItemCreator(Material.WOODEN_SWORD)
-                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0))
+               e.getPlayer().getInventory().setItem(1,new ItemCreator(Material.WOODEN_SWORD)
+                       .setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Spear.Name").get(0))
+                       .setLore("§7Damage: " + (Zombsio.plugin.getConfig().getStringList("Items.Spear.Damage").get(0))
+                               , "§7Range: " + (Zombsio.plugin.getConfig().getStringList("Items.Spear.Range").get(0))
+                               , "§7Attackspeed: " + (Zombsio.plugin.getConfig().getStringList("Items.Spear.Attackspeed").get(0)))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
                        .getItem());
                e.getPlayer().getInventory().setItem(2, new ItemCreator(Material.BOW)
-                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0))
+                       .setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(0))
+                       .setLore("§7Damage: " + (Zombsio.plugin.getConfig().getStringList("Items.Bow.Damage").get(0))
+                               , "§7Attackspeed: " + (Zombsio.plugin.getConfig().getStringList("Items.Bow.Attackspeed").get(0)))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
                        .getItem());
                e.getPlayer().getInventory().setItem(3, new ItemCreator(Material.FIRE_CHARGE)
-                       .setName(Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0))
+                       .setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Bomb.Name").get(0))
+                       .setLore("§7Damage: " + (Zombsio.plugin.getConfig().getStringList("Items.Bomb.Damage").get(0))
+                               , "§7Range: " + (Zombsio.plugin.getConfig().getStringList("Items.Bomb.Range").get(0))
+                               , "§7Attackspeed: " + (Zombsio.plugin.getConfig().getStringList("Items.Bomb.Attackspeed").get(0)))
                        .setUnbreakable(true)
                        .addFlag(ItemFlag.HIDE_UNBREAKABLE)
                        .getItem());

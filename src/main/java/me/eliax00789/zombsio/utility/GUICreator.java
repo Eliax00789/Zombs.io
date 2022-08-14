@@ -18,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class GUICreator implements Listener {
     private Inventory inventory;
@@ -130,12 +131,12 @@ public class GUICreator implements Listener {
             , Integer level, Integer maxlevel
             , Player player) {
 
-            if(Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level <= maxlevel) {
+            if(Config.getInstance().GOLD.get(player.getName().toString()) >= gold && (level + 1) <= maxlevel) {
                 setItem(index,item1,action1);
-            } else if (Config.getInstance().GOLD.get(player.getName().toString()) >= gold && level >= maxlevel) {
-                setItem(index,item3);
-            } else {
+            } else if (level >= maxlevel) {
                 setItem(index,item2);
+            } else {
+                setItem(index,item3);
             }
 
 

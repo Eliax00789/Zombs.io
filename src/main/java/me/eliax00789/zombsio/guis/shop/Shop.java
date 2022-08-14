@@ -2,10 +2,16 @@ package me.eliax00789.zombsio.guis.shop;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.utility.Config;
+import me.eliax00789.zombsio.utility.ItemCreator;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+
+import javax.annotation.Nullable;
 
 public class Shop implements Listener {
 
@@ -32,6 +38,16 @@ public class Shop implements Listener {
             }
             e.setCancelled(true);
         }
+    }
+
+    public void setItemPlayer(ItemStack itemStack, Integer slot, Inventory inventory, Integer gold, Player player) {
+        if (Config.getInstance().GOLD.get(player.getName()) > gold) {
+            Config.getInstance().GOLD.put(player.getName(), Config.getInstance().GOLD.get(player.getName()) - gold);
+            player.getInventory().setItem(slot, itemStack);
+            player.closeInventory();
+            new Config().save();
+        }
+
     }
 }
 

@@ -31,13 +31,11 @@ public class PlayerJoinListener implements Listener {
         for (Integer i = 8; i <= 35; i++) {
             e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
         }
-
-        e.getPlayer().getInventory().setItem(0, new ItemCreator(Material.WOODEN_AXE)
-                .setName(Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
-                .setUnbreakable(true)
-                .addFlag(ItemFlag.HIDE_UNBREAKABLE)
-                .getItem());
-
+        e.getPlayer().getInventory().setItem(0,new ItemCreator(Material.WOODEN_AXE).setName("§7" + Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name").get(0))
+                .setLore("§7Damage: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Damage").get(0))
+                        , "§7Resource Amount: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Harvest").get(0))
+                        , "§7Attackspeed: " + (Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Attackspeed").get(0))
+                ).setUnbreakable(true).addFlag(ItemFlag.HIDE_UNBREAKABLE).getItem());
 
         e.getPlayer().getInventory().setItem(7, new ItemCreator(Material.CRAFTING_TABLE).setName("Build Menu").getItem());
         e.getPlayer().getInventory().setItem(8, new ItemCreator(Material.ENDER_CHEST).setName("Shop").getItem());
