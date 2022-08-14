@@ -48,8 +48,9 @@ public class CustomBreakListener implements Listener {
         if ((e.getBlock().getType().equals(Material.OAK_LOG) || e.getBlock().getType().equals(Material.STONE)) && e.getPlayer().getInventory().getItemInMainHand().hasItemMeta()) {
             for (String name:Zombsio.plugin.getConfig().getStringList("Items.Pickaxe.Name")) {
                 if (e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().equalsIgnoreCase(name)) {
-                    Integer harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(Integer.parseInt(name.replaceAll("[^0-9]+", ""))-1);
-                    Double attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.Attackspeed").get(Integer.parseInt(name.replaceAll("[^0-9]+", ""))-1);
+                    Integer namenumber = Integer.parseInt(name.replaceAll("[^0-9]+", ""))-71;
+                    Integer harvest = Zombsio.plugin.getConfig().getIntegerList("Items.Pickaxe.Harvest").get(namenumber);
+                    Double attackspeed = Zombsio.plugin.getConfig().getDoubleList("Items.Pickaxe.Attackspeed").get(namenumber);
                     counter.put(e.getPlayer(),0.0);
                     mining.put(e.getPlayer(), new BukkitRunnable() {
                         @Override

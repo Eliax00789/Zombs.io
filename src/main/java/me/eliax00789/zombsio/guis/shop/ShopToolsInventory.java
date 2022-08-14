@@ -123,7 +123,6 @@ class ShopToolsInventory {
                     bowName =  Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").get(6);
                     bowLvl = Zombsio.plugin.getConfig().getStringList("Items.Bow.Name").toArray().length;
                 } else {
-
                     bow = new Integer[]{
                             Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Gold")
                                     .get(java.lang.Integer.parseInt(player.getInventory().getItem(2).getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-70)
