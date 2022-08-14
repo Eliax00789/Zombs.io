@@ -8,10 +8,14 @@ authors: [ Eliax00789 , Niffler77, Dario_LP ]
 description: Minecraft Zombs.io
 commands:
   zresources:
-    description: add or remove resources
+    description: add, remove, set resources
     usage: /<command> <player> [wood|stone|gold] [add|remove|set] <amount>
     permission: zombs.commands.zresources
   zstats:
-    description: yeet
-    usage: /<command>
+    description: add, remove, set stast
+    usage: /<command> <player> [health|maxhealth|shield|maxshield|defese] [add|remove|set] <amount>
     permission: zombs.commands.zstats
+  zbuild:
+    description: build buildings
+    usage: /<command>
+    permission: zombs.commands.zbuild
