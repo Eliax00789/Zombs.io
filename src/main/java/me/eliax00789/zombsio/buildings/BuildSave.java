@@ -50,7 +50,6 @@ public class BuildSave {
             Bukkit.getLogger().log(Level.WARNING,e.toString());
         }
         final Integer nextid = buildings.getInt("nextid");
-        buildings.set("nextid",0);
         for (Integer i = 0; i <= nextid; i++) {
             if (buildings.contains("buildings." + i + ".name")) {
                 String name = buildings.getString("buildings." + i + ".name");
