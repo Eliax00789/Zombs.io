@@ -76,6 +76,7 @@ public class Building implements Listener {
             this.wood = wood;
             this.stone = stone;
             this.gold = gold;
+            BuildSave.save();
             if (health == null) {
                 this.health = new ArrayList<Integer>();
                 for (Integer i = 0;i <= maxLevel;i++) {
@@ -147,7 +148,6 @@ public class Building implements Listener {
                 };
                 projectileLoop.runTaskTimer(Zombsio.plugin,0,shootCoolDown);
             }
-            BuildSave.save();
 
         }
         else {
@@ -216,7 +216,6 @@ public class Building implements Listener {
                 }
             }
         }
-        BuildSave.save();
     }
 
     private void upgrade(Player player) {
@@ -225,6 +224,7 @@ public class Building implements Listener {
                 removeResources(player);
                 level++;
                 build();
+                BuildSave.save();
             }
         }
     }
