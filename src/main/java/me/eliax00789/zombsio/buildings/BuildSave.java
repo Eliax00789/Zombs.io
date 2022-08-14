@@ -19,7 +19,7 @@ import java.util.logging.Level;
 public class BuildSave {
 
     private static File filebuildings;
-    private static YamlConfiguration buildings;
+    public static YamlConfiguration buildings;
     public static HashMap<Integer,Building> buildingsMap;
 
     public BuildSave() {

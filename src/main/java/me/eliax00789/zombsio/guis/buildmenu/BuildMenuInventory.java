@@ -21,14 +21,16 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import static me.eliax00789.zombsio.buildings.BuildSave.buildings;
+
 class BuildMenuInventory {
     private Inventory inventory;
     public BuildMenuInventory(Location location, Player player) {
         Integer currentStashLvl = 0;
         Integer neededStashLvl = 1;
-        for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
-            if (Zombsio.buildings.contains("buildings." + i + ".name") && Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
-               currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
+        for (int i = 0; i < buildings.getInt("nextid"); i++) {
+            if (buildings.contains("buildings." + i + ".name") && buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
+               currentStashLvl = buildings.getInt("buildings." + i + ".level");
             }
         }
         Integer playerwood = Config.getInstance().WOOD.get(player.getName());

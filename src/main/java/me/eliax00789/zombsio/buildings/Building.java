@@ -11,14 +11,18 @@ import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import net.minecraft.world.level.block.BlockEndRod;
 import net.minecraft.world.level.block.state.properties.BlockPropertyHalf;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
+import org.bukkit.block.BlockState;
 import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.Openable;
+import org.bukkit.block.data.type.Ladder;
 import org.bukkit.block.data.type.Slab;
 import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.entity.Player;
@@ -57,8 +61,8 @@ public class Building implements Listener {
                     @Nullable List<Integer> health,@Nullable List<Integer> damage,@Nullable List<Integer> range,
                     @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
         if (locationSuits(location,structure) || builder == null) {
-            this.id = Zombsio.buildings.getInt("nextid");
-            Zombsio.buildings.set("nextid",this.id + 1);
+            this.id = BuildSave.buildings.getInt("nextid");
+            BuildSave.buildings.set("nextid",this.id + 1);
             BuildSave.buildingsMap.put(this.id,this);
             this.name = name;
             this.level = level;
@@ -182,21 +186,30 @@ public class Building implements Listener {
                             Openable openable = (Openable) block.getBlockData();
                             openable.setOpen(true);
                             block.setBlockData(openable);
-
-                            TrapDoor trapDoor = (TrapDoor) block.getState();
                             if (x == 0) {
+                                TrapDoor trapDoor = (TrapDoor) block.getBlockData();
                                 trapDoor.setFacing(BlockFace.WEST);
                                 block.setBlockData(trapDoor);
-                            } else if (x == 3) {
+                            } else if (x == 2) {
+                                TrapDoor trapDoor = (TrapDoor) block.getBlockData();
                                 trapDoor.setFacing(BlockFace.EAST);
                                 block.setBlockData(trapDoor);
                             }
                         } else if (block.getBlockData() instanceof Slab) {
-                            if (y == 3) {
-                                Slab slab = (Slab) block.getState();
+                            if (y == 2) {
+                                Slab slab = (Slab) block.getBlockData();
                                 slab.setType(Slab.Type.TOP);
                                 block.setBlockData(slab);
                             }
+                        }
+                    }
+
+                    if (this instanceof GoldMine) {
+                        Block block = tmp.getBlock();
+                        if (block.getType().equals(Material.END_ROD)) {
+                            Directional directional = (Directional) block.getBlockData();
+                            directional.setFacing(BlockFace.DOWN);
+                            block.setBlockData(directional);
                         }
                     }
                 }
@@ -352,9 +365,9 @@ public class Building implements Listener {
 
         Integer currentStashLvl = 0;
         Integer neededStashLvl = level + 1;
-        for (int i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
-            if (Zombsio.buildings.contains("buildings." + i + ".name") && Zombsio.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
-                currentStashLvl = Zombsio.buildings.getInt("buildings." + i + ".level");
+        for (int i = 0; i < BuildSave.buildings.getInt("nextid"); i++) {
+            if (BuildSave.buildings.contains("buildings." + i + ".name") && BuildSave.buildings.getString("buildings." + i + ".name").equals("GoldStash")) {
+                currentStashLvl = BuildSave.buildings.getInt("buildings." + i + ".level");
             }
         }
 

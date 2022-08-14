@@ -158,7 +158,7 @@ public class ResourceHarvester extends Building {
 
 
     public ResourceHarvester(@Nullable Player player, Location location, Integer level) {
-        super(player,"GoldStash",level,8,location,
+        super(player,"ResourceHarvester",level,8,location,
                 null,null,null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.GoldStash.Health"),
