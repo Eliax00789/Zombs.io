@@ -24,6 +24,7 @@ public class BuildSave {
         Integer counter = 0;
         for (Integer i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
             if (Zombsio.buildings.contains("buildings." + i)) {
+                counter++;
                 Building toAdd;
                 if (Zombsio.buildings.getString("buildings." + i + ".name").equals("Door")) {
                     toAdd = new Door(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
@@ -62,6 +63,7 @@ public class BuildSave {
                     toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
                 buildingsMap.put(counter,toAdd);
+                Zombsio.buildings.set("nextid",counter + 1);
             }
         }
     }
