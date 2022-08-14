@@ -34,7 +34,7 @@ public class Shop implements Listener {
                 e.getPlayer().openInventory(new ShopPotionsInventory(e.getPlayer()).getInventory());
             }
             else {
-                e.getPlayer().sendMessage("something just went very wrong whilst trying to open the shop");
+                Config.getInstance().LASTSHOPPAGE.put(e.getPlayer().getName(),"tools");
             }
             e.setCancelled(true);
         }
@@ -47,7 +47,6 @@ public class Shop implements Listener {
             player.closeInventory();
             new Config().save();
         }
-
     }
 }
 

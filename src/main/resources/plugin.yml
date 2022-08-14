@@ -19,3 +19,7 @@ commands:
     description: build buildings
     usage: /<command>
     permission: zombs.commands.zbuild
+  ztest:
+    description: testing
+    usage: /<command>
+    permission: zombs.commands.ztest

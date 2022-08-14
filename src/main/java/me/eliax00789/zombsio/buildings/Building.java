@@ -6,13 +6,20 @@ import me.eliax00789.zombsio.buildings.other.SlowTrap;
 import me.eliax00789.zombsio.buildings.other.Wall;
 import me.eliax00789.zombsio.buildings.resources.GoldMine;
 import me.eliax00789.zombsio.buildings.resources.GoldStash;
+import me.eliax00789.zombsio.buildings.towers.CannonTower;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import me.eliax00789.zombsio.utility.Config;
 import me.eliax00789.zombsio.utility.GUICreator;
 import me.eliax00789.zombsio.utility.ItemCreator;
+import net.minecraft.world.level.block.state.properties.BlockPropertyHalf;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.Openable;
+import org.bukkit.block.data.type.Slab;
+import org.bukkit.block.data.type.TrapDoor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -167,6 +174,20 @@ public class Building implements Listener {
                 for (int z = 0; z < temp[x][y].length; z++) {
                     Location tmp = structOrigin.clone();
                     tmp.add(x,y,z).getBlock().setType(temp[x][y][z]);
+                    if (this instanceof CannonTower) {
+                        Block block = tmp.getBlock();
+
+                        if (block instanceof TrapDoor) {
+                            Openable openable = (Openable) block.getBlockData();
+                            openable.setOpen(true);
+                            block.setBlockData(openable);
+                        } else if (block instanceof Slab) {
+                            if (y == 3) {
+                                Slab slab = (Slab) block;
+                                slab.setType(Slab.Type.TOP);
+                            }
+                        }
+                    }
                 }
             }
         }

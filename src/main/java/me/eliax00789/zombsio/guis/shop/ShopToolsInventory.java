@@ -101,7 +101,6 @@ class ShopToolsInventory {
                 }
             }
         } else {
-            Bukkit.broadcastMessage("spear init");
             spear = new Integer[]{
                     Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Gold").get(0)
                     ,Zombsio.plugin.getConfig().getIntegerList("Items.Spear.Damage").get(0)
