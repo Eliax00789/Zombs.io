@@ -40,7 +40,8 @@ public class BuildSave {
         if (!buildings.contains("nextid")) {
             buildings.set("nextid",0);
         }
-        for (Integer i = 0; i <= buildings.getInt("nextid"); i++) {
+        final Integer nextid = buildings.getInt("nextid");
+        for (Integer i = 0; i <= nextid; i++) {
             if (buildings.contains("buildings." + i + ".name")) {
                 if (buildings.getString("buildings." + i + ".name").equals("Door")) {
                     new Door(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
