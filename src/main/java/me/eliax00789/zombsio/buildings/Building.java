@@ -176,7 +176,6 @@ public class Building implements Listener {
                     tmp.add(x,y,z).getBlock().setType(temp[x][y][z]);
                     if (this instanceof CannonTower) {
                         Block block = tmp.getBlock();
-
                         if (block instanceof TrapDoor) {
                             Openable openable = (Openable) block.getBlockData();
                             openable.setOpen(true);
@@ -185,6 +184,7 @@ public class Building implements Listener {
                             if (y == 3) {
                                 Slab slab = (Slab) block;
                                 slab.setType(Slab.Type.TOP);
+                                block.setBlockData(slab);
                             }
                         }
                     }
