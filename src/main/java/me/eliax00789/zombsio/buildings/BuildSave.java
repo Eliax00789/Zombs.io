@@ -51,7 +51,6 @@ public class BuildSave {
         }
         final Integer nextid = buildings.getInt("nextid");
         for (Integer i = 0; i <= nextid; i++) {
-            Bukkit.broadcastMessage("Id:" + i);
             if (buildings.contains("buildings." + i + ".name")) {
                 String name = buildings.getString("buildings." + i + ".name");
                 Location location = buildings.getLocation("buildings." + i + ".location");
