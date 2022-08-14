@@ -22,10 +22,10 @@ public class BuildSave {
     }
 
     private void loadFromConfig() {
-        Integer counter = 0;
-        for (Integer i = 0; i < Zombsio.buildings.getInt("nextid"); i++) {
+        Integer nextid = Zombsio.buildings.getInt("nextid");
+        Zombsio.buildings.set("nextid",0);
+        for (Integer i = 0; i < nextid; i++) {
             if (Zombsio.buildings.contains("buildings." + i + ".name")) {
-                counter++;
                 if (Zombsio.buildings.getString("buildings." + i + ".name").equals("Door")) {
                     new Door(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
@@ -64,7 +64,6 @@ public class BuildSave {
                 }
             }
         }
-        Zombsio.buildings.set("nextid",counter + 1);
     }
 
     public static void save() {
@@ -77,6 +76,5 @@ public class BuildSave {
             Zombsio.buildings.set("buildings." + counter + ".level",buildingsMap.get(i).level);
             Zombsio.buildings.set("buildings." + counter + ".location",buildingsMap.get(i).location);
         }
-        Zombsio.buildings.set("nextid",counter + 1);
     }
 }

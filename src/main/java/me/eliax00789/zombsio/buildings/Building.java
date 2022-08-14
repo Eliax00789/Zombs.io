@@ -58,6 +58,7 @@ public class Building implements Listener {
                     @Nullable List<Integer> wood,@Nullable List<Integer> stone,@Nullable List<Integer> gold) {
         if (locationSuits(location,structure) || builder == null) {
             this.id = Zombsio.buildings.getInt("nextid");
+            Zombsio.buildings.set("nextid",this.id + 1);
             BuildSave.buildingsMap.put(this.id,this);
             this.name = name;
             this.level = level;
