@@ -119,6 +119,9 @@ public class PlayerStats implements Listener {
                             newstats[2] = stats.get(player)[3];
                         }
                         newstats[7] = stats.get(player)[7] - 1;
+                        if (stats.get(player)[0] > stats.get(player)[1]) {
+                            newstats[0] = stats.get(player)[1];
+                        }
                         stats.put(player,newstats);
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
