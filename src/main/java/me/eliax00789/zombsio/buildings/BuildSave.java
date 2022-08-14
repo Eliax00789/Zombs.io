@@ -42,9 +42,9 @@ public class BuildSave {
             buildings.set("nextid",0);
         }
         final Integer nextid = buildings.getInt("nextid");
-        for (Integer i:buildings.getIntegerList("buildings")) {
+        for (Integer i = 0; i <= nextid; i++) {
             if (buildings.contains("buildings." + i + ".name")) {
-                Bukkit.broadcastMessage(buildings.getString("buildings. " + i + ".name") + " " + buildings.getLocation("buildings." + i + ".location") + " " + buildings.getInt("buildings." + i + ".level"));
+                Bukkit.broadcastMessage(i + " " + buildings.getString("buildings. " + i + ".name") + " " + buildings.getLocation("buildings." + i + ".location") + " " + buildings.getInt("buildings." + i + ".level"));
                 if (buildings.getString("buildings." + i + ".name").equals("Door")) {
                     new Door(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
                 }
