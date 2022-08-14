@@ -57,7 +57,6 @@ public class BuildSave {
                 Location location = buildings.getLocation("buildings." + i + ".location");
                 Integer level = buildings.getInt("buildings." + i + ".level");
                 Bukkit.broadcastMessage("DEBUG:");
-                Bukkit.broadcastMessage(buildings.saveToString());
                 Bukkit.broadcastMessage(" ");
                 Bukkit.broadcastMessage(i + " " + name + " " + location + " " + level);
                 Bukkit.broadcastMessage(" ");
