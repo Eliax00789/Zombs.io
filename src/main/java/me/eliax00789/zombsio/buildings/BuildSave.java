@@ -40,9 +40,7 @@ public class BuildSave {
         if (!buildings.contains("nextid")) {
             buildings.set("nextid",0);
         }
-        Integer nextid = buildings.getInt("nextid");
-        buildings.set("nextid",0);
-        for (Integer i = 0; i < nextid; i++) {
+        for (Integer i = 0; i <= buildings.getInt("nextid"); i++) {
             if (buildings.contains("buildings." + i + ".name")) {
                 if (buildings.getString("buildings." + i + ".name").equals("Door")) {
                     new Door(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
@@ -87,13 +85,10 @@ public class BuildSave {
 
     public static void save() {
         buildings.set("buildings",null);
-        Integer counter = 0;
         for (Integer i: buildingsMap.keySet()) {
-            Bukkit.broadcastMessage(counter + ". " + buildingsMap.get(i).name);
-            counter++;
-            buildings.set("buildings." + counter + ".name",buildingsMap.get(i).name);
-            buildings.set("buildings." + counter + ".level",buildingsMap.get(i).level);
-            buildings.set("buildings." + counter + ".location",buildingsMap.get(i).location);
+            buildings.set("buildings." + i + ".name",buildingsMap.get(i).name);
+            buildings.set("buildings." + i + ".level",buildingsMap.get(i).level);
+            buildings.set("buildings." + i + ".location",buildingsMap.get(i).location);
         }
         saveToFile();
     }
