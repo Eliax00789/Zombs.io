@@ -110,7 +110,7 @@ public class BuildSave {
     public static void remove(Integer id) {
         BuildSave.buildingsMap.remove(id);
         buildings.set("buildings." + id,null);
-        saveToFile();
+        save();
     }
 
     private static void saveToFile() {
