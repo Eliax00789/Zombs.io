@@ -16,6 +16,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.Openable;
 import org.bukkit.block.data.type.Slab;
@@ -176,13 +177,22 @@ public class Building implements Listener {
                     tmp.add(x,y,z).getBlock().setType(temp[x][y][z]);
                     if (this instanceof CannonTower) {
                         Block block = tmp.getBlock();
-                        if (block instanceof TrapDoor) {
+                        if (block.getBlockData() instanceof TrapDoor) {
                             Openable openable = (Openable) block.getBlockData();
                             openable.setOpen(true);
                             block.setBlockData(openable);
-                        } else if (block instanceof Slab) {
+
+                            TrapDoor trapDoor = (TrapDoor) block.getState();
+                            if (x == 0) {
+                                trapDoor.setFacing(BlockFace.WEST);
+                                block.setBlockData(trapDoor);
+                            } else if (x == 3) {
+                                trapDoor.setFacing(BlockFace.EAST);
+                                block.setBlockData(trapDoor);
+                            }
+                        } else if (block.getBlockData() instanceof Slab) {
                             if (y == 3) {
-                                Slab slab = (Slab) block;
+                                Slab slab = (Slab) block.getState();
                                 slab.setType(Slab.Type.TOP);
                                 block.setBlockData(slab);
                             }
