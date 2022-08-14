@@ -8,6 +8,7 @@ import me.eliax00789.zombsio.buildings.resources.GoldMine;
 import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.resources.ResourceHarvester;
 import me.eliax00789.zombsio.buildings.towers.*;
+import org.bukkit.Bukkit;
 
 import java.util.HashMap;
 
@@ -62,16 +63,18 @@ public class BuildSave {
                 else {
                     toAdd = new Wall(null,Zombsio.buildings.getLocation("buildings." + i + ".location"),Zombsio.buildings.getInt("buildings." + i + ".level"));
                 }
+                Bukkit.broadcastMessage(counter + ". " + toAdd.name);
                 buildingsMap.put(counter,toAdd);
-                Zombsio.buildings.set("nextid",counter + 1);
             }
         }
+        Zombsio.buildings.set("nextid",counter + 1);
     }
 
     public static void save() {
         Zombsio.buildings.set("buildings",null);
         Integer counter = 0;
         for (Integer i: buildingsMap.keySet()) {
+            Bukkit.broadcastMessage(counter + ". " + buildingsMap.get(i).name);
             counter++;
             Zombsio.buildings.set("buildings." + counter + ".name",buildingsMap.get(i).name);
             Zombsio.buildings.set("buildings." + counter + ".level",buildingsMap.get(i).level);
