@@ -38,6 +38,8 @@ public class Test implements TabExecutor {
                 block.setBlockData(openable);
             }
 
+            Zombsio.plugin.saveConfig();
+
 
         }
 
