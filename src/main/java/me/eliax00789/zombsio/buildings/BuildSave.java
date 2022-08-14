@@ -56,9 +56,6 @@ public class BuildSave {
                 String name = buildings.getString("buildings." + i + ".name");
                 Location location = buildings.getLocation("buildings." + i + ".location");
                 Integer level = buildings.getInt("buildings." + i + ".level");
-                Bukkit.broadcastMessage("DEBUG:");
-                Bukkit.broadcastMessage(i + " " + name + " " + location + " " + level);
-                Bukkit.broadcastMessage(" ");
                 if (name.contains("Door")) {
                     new Door(null,location,level);
                 }
@@ -95,6 +92,7 @@ public class BuildSave {
                 else {
                     new Wall(null,location,level);
                 }
+                remove(i);
             }
         }
         save();
