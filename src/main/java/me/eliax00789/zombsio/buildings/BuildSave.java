@@ -104,8 +104,6 @@ public class BuildSave {
     }
 
     public static void save() {
-        buildings.set("buildings",null);
-        saveToFile();
         for (Integer i: buildingsMap.keySet()) {
             buildings.set("buildings." + i + ".name",buildingsMap.get(i).name);
             buildings.set("buildings." + i + ".level",buildingsMap.get(i).level);
