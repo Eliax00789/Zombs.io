@@ -9,6 +9,7 @@ import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.resources.ResourceHarvester;
 import me.eliax00789.zombsio.buildings.towers.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -41,7 +42,7 @@ public class BuildSave {
         }
         buildings = YamlConfiguration.loadConfiguration(filebuildings);
         if (!buildings.contains("nextid")) {
-            buildings.set("nextid",0);
+            buildings.set("nextid",1);
         }
         try {
             buildings.load(filebuildings);
@@ -49,49 +50,52 @@ public class BuildSave {
             Bukkit.getLogger().log(Level.WARNING,e.toString());
         }
         final Integer nextid = buildings.getInt("nextid");
-        for (Integer i = 1; i <= nextid; i++) {
+        for (Integer i = 0; i <= nextid; i++) {
             Bukkit.broadcastMessage("Id:" + i);
             if (buildings.contains("buildings." + i + ".name")) {
+                String name = buildings.getString("buildings." + i + ".name");
+                Location location = buildings.getLocation("buildings." + i + ".location");
+                Integer level = buildings.getInt("buildings." + i + ".level");
                 Bukkit.broadcastMessage("DEBUG:");
                 Bukkit.broadcastMessage(buildings.saveToString());
                 Bukkit.broadcastMessage(" ");
-                Bukkit.broadcastMessage(i + " " + buildings.getString("buildings. " + i + ".name") + " " + buildings.getLocation("buildings." + i + ".location") + " " + buildings.getInt("buildings." + i + ".level"));
+                Bukkit.broadcastMessage(i + " " + name + " " + location + " " + level);
                 Bukkit.broadcastMessage(" ");
-                if (buildings.getString("buildings." + i + ".name").equals("Door")) {
-                    new Door(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                if (name.contains("Door")) {
+                    new Door(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("SlowTrap")) {
-                    new SlowTrap(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("SlowTrap")) {
+                    new SlowTrap(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("Wall")) {
-                    new Wall(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("Wall")) {
+                    new Wall(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("GoldMine")) {
-                    new GoldMine(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("GoldMine")) {
+                    new GoldMine(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("GoldStash")) {
-                    new GoldStash(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("GoldStash")) {
+                    new GoldStash(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("ResourceHarvester")) {
-                    new ResourceHarvester(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("ResourceHarvester")) {
+                    new ResourceHarvester(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("ArrowTower")) {
-                    new ArrowTower(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("ArrowTower")) {
+                    new ArrowTower(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("BombTower")) {
-                    new BombTower(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("BombTower")) {
+                    new BombTower(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("CannonTower")) {
-                    new CannonTower(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("CannonTower")) {
+                    new CannonTower(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("MageTower")) {
-                    new MageTower(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("MageTower")) {
+                    new MageTower(null,location,level);
                 }
-                else if (buildings.getString("buildings." + i + ".name").contains("MeleeTower")) {
-                    new MeleeTower(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                else if (name.contains("MeleeTower")) {
+                    new MeleeTower(null,location,level);
                 }
                 else {
-                    new Wall(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
+                    new Wall(null,location,level);
                 }
                 buildings.set("buildings." + i,null);
             }
@@ -100,6 +104,7 @@ public class BuildSave {
     }
 
     public static void save() {
+        buildings.set("buildings",null);
         saveToFile();
         for (Integer i: buildingsMap.keySet()) {
             buildings.set("buildings." + i + ".name",buildingsMap.get(i).name);
