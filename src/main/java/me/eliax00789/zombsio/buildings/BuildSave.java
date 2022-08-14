@@ -42,7 +42,6 @@ public class BuildSave {
             buildings.set("nextid",0);
         }
         final Integer nextid = buildings.getInt("nextid");
-        buildings.set("nextid",0);
         for (Integer i:buildings.getIntegerList("buildings")) {
             if (buildings.contains("buildings." + i + ".name")) {
                 if (buildings.getString("buildings." + i + ".name").equals("Door")) {
