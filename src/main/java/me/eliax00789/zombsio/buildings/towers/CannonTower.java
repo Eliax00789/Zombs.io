@@ -203,7 +203,7 @@ public class CannonTower extends Building {
     };
 
     public CannonTower(@Nullable Player player, Location location, Integer level) {
-        super(player,"Cannon Tower",level,8,location,
+        super(player,"CannonTower",level,8,location,
                 null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.CannonTower.Health"),
