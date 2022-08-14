@@ -20,6 +20,8 @@ class ShopToolsInventory {
     private String pickaxeName, spearName, bowName, bombName;
     private Integer pickLvl, spearLvl, bowLvl, bombLvl;
     private Integer pickMaxLvl, spearMaxLvl, bowMaxLvl, bombMaxLvl;
+    private Integer morepickgoldamount, morespeargoldamount, morebowgoldamount, morebombgoldamount;
+
     public ShopToolsInventory(Player player) {
         Integer playergold = Config.getInstance().GOLD.get(player.getName());
 
@@ -190,6 +192,27 @@ class ShopToolsInventory {
         Zombsio.plugin.getConfig().set("Items.Bomb.Material", Material.FIRE_CHARGE);
         Zombsio.plugin.saveConfig();
 
+
+        morepickgoldamount = pickaxe[0] - playergold;
+        morespeargoldamount = spear[0] - playergold;
+        morebowgoldamount = bow[0] - playergold;
+        morebombgoldamount = bomb[0] - playergold;
+
+        if (morepickgoldamount < 0) {
+            morepickgoldamount = 0;
+        }
+
+        if (morespeargoldamount < 0) {
+            morespeargoldamount = 0;
+        }
+
+        if (morebowgoldamount < 0) {
+            morebowgoldamount = 0;
+        }
+
+        if (morebombgoldamount < 0) {
+            morebombgoldamount = 0;
+        }
         inventory = new GUICreator(9 * 3,"Shop: Tools")
                 .fillPlaceHolder()
                 .addExitButton()
@@ -235,9 +258,9 @@ class ShopToolsInventory {
                         }
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + pickaxeName + " (Max Level)")
                                 .setLore("§4You can't Upgrade This Tool any more").getItem()
-                        , new ItemCreator(Material.WOODEN_AXE).setName("§7" + pickaxeName + " (Not Enough Gold)")
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + pickaxeName + " (Not Enough Gold)")
                                 .setLore("§4You can afford this upgrade"
-                                        ,"§7" + (pickaxe[0] - playergold) + " More Gold needed"
+                                        ,"§7" + morepickgoldamount + " More Gold needed"
                                 ).getItem()
                         , pickaxe[0]
                         , pickLvl
@@ -262,9 +285,9 @@ class ShopToolsInventory {
                         }
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + spearName + " (Max Level)")
                                 .setLore("§4You can't Upgrade This Tool any more").getItem()
-                        , new ItemCreator(Material.WOODEN_SWORD).setName("§7" + spearName + " (Not Enough Gold)")
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + spearName + " (Not Enough Gold)")
                                 .setLore("§4You can afford this upgrade"
-                                        ,"§7" + (spear[0] - playergold) + " More Gold needed"
+                                        ,"§7" + morespeargoldamount + " More Gold needed"
                                 ).getItem()
                         , spear[0]
                         , spearLvl
@@ -287,9 +310,9 @@ class ShopToolsInventory {
                         }
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bowName + " (Max Level)")
                                 .setLore("§4You can't Upgrade This Tool any more").getItem()
-                        , new ItemCreator(Material.BOW).setName("§7" + bowName + " (Not Enough Gold)")
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bowName + " (Not Enough Gold)")
                                 .setLore("§4You can afford this upgrade"
-                                        ,"§7" + (bow[0] - playergold) + " More Gold needed"
+                                        ,"§7" + morebowgoldamount + " More Gold needed"
                                 ).getItem()
                         , bow[0]
                         , bowLvl
@@ -314,9 +337,9 @@ class ShopToolsInventory {
                         }
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bombName + " (Max Level)")
                                 .setLore("§4You can't Upgrade This Tool any more").getItem()
-                        , new ItemCreator(Material.FIRE_CHARGE).setName("§7" + bombName + " (Not Enough Gold)")
+                        , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§7" + bombName + " (Not Enough Gold)")
                                 .setLore("§4You can afford this upgrade"
-                                        ,"§7" + (bomb[0] - playergold) + " More Gold needed"
+                                        ,"§7" + morebombgoldamount + " More Gold needed"
                                 ).getItem()
                         , bomb[0]
                         , bombLvl

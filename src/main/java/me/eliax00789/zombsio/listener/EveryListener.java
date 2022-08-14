@@ -168,7 +168,7 @@ public class EveryListener implements Listener {
                          }
 
                          if (bowcount.get(e.getPlayer()) == null) {
-                              bowcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1));
+                              bowcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bow.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-71));
                          }
                          if (bowcount.get(e.getPlayer()) < 0) {
                               e.getPlayer().getWorld().spawnArrow(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)),e.getPlayer().getLocation().getDirection(),4, 0);
@@ -189,7 +189,7 @@ public class EveryListener implements Listener {
                          }
 
                          if (bombcount.get(e.getPlayer()) == null) {
-                              bombcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-1));
+                              bombcount.put(e.getPlayer(), 20/Zombsio.plugin.getConfig().getIntegerList("Items.Bomb.Attackspeed").get(Integer.parseInt(e.getPlayer().getInventory().getItemInMainHand().getItemMeta().getDisplayName().replaceAll("[^0-9]+", ""))-71));
                          }
                          if (bombcount.get(e.getPlayer()) < 0) {
                               e.getPlayer().getWorld().spawnEntity(e.getPlayer().getEyeLocation().add(e.getPlayer().getLocation().getDirection().multiply(2)), EntityType.FIREBALL);

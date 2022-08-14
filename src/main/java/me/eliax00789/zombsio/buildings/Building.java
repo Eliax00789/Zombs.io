@@ -310,9 +310,21 @@ public class Building implements Listener {
             neededStashLvl = 0;
         }
 
-        Integer playerwood = Config.getInstance().WOOD.get(player.getName());
-        Integer playerstone = Config.getInstance().STONE.get(player.getName());
-        Integer playergold = Config.getInstance().GOLD.get(player.getName());
+        Integer morewoodamount = Integer.parseInt(nextWood) - Config.getInstance().WOOD.get(player.getName());
+        Integer morestoneamount = Integer.parseInt(nextStone) - Config.getInstance().STONE.get(player.getName());
+        Integer moregoldamount = Integer.parseInt(nextGold) - Config.getInstance().GOLD.get(player.getName());
+
+        if (morewoodamount < 0) {
+            morewoodamount = 0;
+        }
+
+        if (morestoneamount < 0) {
+            morestoneamount = 0;
+        }
+
+        if (moregoldamount < 0) {
+            moregoldamount = 0;
+        }
 
         inventory = new GUICreator(9*3,name)
                 .setCancelAllClicks(true)
@@ -332,9 +344,9 @@ public class Building implements Listener {
                             }
                         }, new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Not Enough Resources)")
                                 .setLore("§4You can afford this upgrade",
-                                        "§7" + (Integer.parseInt(nextWood) - playerwood) + " More Wood needed" ,
-                                        "§7" + (Integer.parseInt(nextStone) - playerstone) + " More Stone needed" ,
-                                        "§7" + (Integer.parseInt(nextGold) - playergold) + " More Gold needed"
+                                        "§7" + morewoodamount + " More Wood needed" ,
+                                        "§7" + morestoneamount + " More Stone needed" ,
+                                        "§7" + moregoldamount + " More Gold needed"
                                 ).getItem()
                         , new ItemCreator(Material.RED_STAINED_GLASS_PANE).setName("§4Can't be Upgraded (Higher Stash Level Needed)")
                                 .setLore("§4Upgrade Your Stash"
