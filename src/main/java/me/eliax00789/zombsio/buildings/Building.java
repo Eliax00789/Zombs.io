@@ -213,7 +213,7 @@ public class Building implements Listener {
                     Location tmp = structOrigin.clone();
                     if(this instanceof SlowTrap) {
                         if (y == 0) {
-                            if (!tmp.add(x, y, z).getBlock().getType().equals(Material.GRASS_BLOCK)) {
+                            if (!tmp.add(x, y, z).getBlock().getType().equals(Material.GRASS_BLOCK) || !tmp.add(x, y, z).getBlock().getType().equals(Material.DIRT) ) {
                                 locationTrue = false;
                             }
                         } else {
