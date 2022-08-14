@@ -172,7 +172,8 @@ public class PlayerStats implements Listener {
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent e) {
         if (e.getEntity() instanceof Player) {
-            ((Player) e.getEntity()).setHealth(((Player) e.getEntity()).getHealth() + e.getDamage());
+            e.setCancelled(true);
+            e.getEntity().setVelocity(e.getEntity().getVelocity().multiply(100));
             Player player = (Player) e.getEntity();
             if (stats.get(player)[7] < 0) {
                 Double damage = e.getDamage() * 10;
