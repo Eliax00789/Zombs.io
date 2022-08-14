@@ -123,10 +123,10 @@ public class PlayerStats implements Listener {
                             newstats[0] = stats.get(player)[1];
                         }
                         stats.put(player,newstats);
+                        save();
                         player.setMaxHealth(stats.get(player)[1] / 10);
                         player.setHealth(stats.get(player)[0] / 10);
-                        player.setAbsorptionAmount(stats.get(player)[2] / 100);
-                        save();
+                        player.setAbsorptionAmount(stats.get(player)[2] / 500);
                     }
                 }
             }
@@ -195,7 +195,7 @@ public class PlayerStats implements Listener {
                 }
                 if (newstats[0] <= 0) {
                     newstats[0] = stats.get(player)[1];
-                    newstats[2] = stats.get(player)[3];
+                    newstats[2] = stats.get(player)[3]  ;
                     player.getWorld().playSound(player.getLocation(), Sound.ENTITY_PLAYER_DEATH, 100, 1.0F);
                     player.teleport(player.getWorld().getSpawnLocation());
                     for (Player p:Bukkit.getOnlinePlayers()) {

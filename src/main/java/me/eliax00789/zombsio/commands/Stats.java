@@ -67,28 +67,34 @@ public class Stats implements TabExecutor {
             }
             else if (args[1].equalsIgnoreCase("maxhealth")) {
                 if (args[2].equalsIgnoreCase("add")) {
-                    stats[1] = stats[1] + Double.valueOf(args[3]);
-                    if (stats[0] > (stats[1] + Double.valueOf(args[3]))) {
-                        stats[0] = Double.valueOf(args[3]);
-                    }
-                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxhealth has been added");
+                    if (stats[1] + Double.valueOf(args[3]) <= 20000 ) {
+                        stats[1] = stats[1] + Double.valueOf(args[3]);
+                        if (stats[0] > (stats[1] + Double.valueOf(args[3]))) {
+                            stats[0] = Double.valueOf(args[3]);
+                        }
+                        sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxhealth has been added");
+                    } else sender.sendMessage( "§cYou can't add Maxhealth over 20000");
                 }
                 else if (args[2].equalsIgnoreCase("remove")) {
-                    if (stats[1] + Double.valueOf(args[3]) > 0 ) {
-                        stats[1] = stats[1] - Double.valueOf(args[3]);
-                    }
-                    if (stats[0] > (stats[1] - Double.valueOf(args[3]))) {
-                        stats[0] = Double.valueOf(args[3]);
-                    }
-                    sender.sendMessage( "§a" + Integer.valueOf(args[3]) + " Maxhealth has been removed");
+                    if (stats[1] - Double.valueOf(args[3]) > 0 ) {
+                        if (stats[1] + Double.valueOf(args[3]) > 0) {
+                            stats[1] = stats[1] - Double.valueOf(args[3]);
+                        }
+                        if (stats[0] > (stats[1] - Double.valueOf(args[3]))) {
+                            stats[0] = Double.valueOf(args[3]);
+                        }
+                        sender.sendMessage("§a" + Integer.valueOf(args[3]) + " Maxhealth has been removed");
+                    } else sender.sendMessage( "§cYou can't remove Maxhealth under 0");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    stats[1] = Double.valueOf(args[3]);
+                    if ((Double.valueOf(args[3])) > 0 && (Double.valueOf(args[3])) <= 20000) {
+                        stats[1] = Double.valueOf(args[3]);
 
-                    if (stats[0] > Double.valueOf(args[3])) {
-                        stats[0] = Double.valueOf(args[3]);
-                    }
-                    sender.sendMessage( "§aMaxHealth has been set to " + Integer.valueOf(args[3]));
+                        if (stats[0] > Double.valueOf(args[3])) {
+                            stats[0] = Double.valueOf(args[3]);
+                        }
+                        sender.sendMessage( "§aMaxHealth has been set to " + Integer.valueOf(args[3]));
+                    } else sender.sendMessage( "§cYou can't set Maxhealth over 20000 or under 0");
                 }
                 else {
                     sender.sendMessage("§cCouldn't recognize operation");

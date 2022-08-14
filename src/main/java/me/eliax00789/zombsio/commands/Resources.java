@@ -86,7 +86,7 @@ public class Resources implements TabExecutor {
                     } else sender.sendMessage( "§cYou can't remove Gold under 0");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    if ((Double.valueOf(args[3])) > 0) {
+                    if ((Double.valueOf(args[3])) > -1) {
                         Config.getInstance().GOLD.put(args[0], Integer.valueOf(args[3]));
                         sender.sendMessage( "§aGold has been set to " + Integer.valueOf(args[3]));
                     } else sender.sendMessage( "§cYou can't set Gold under 0");

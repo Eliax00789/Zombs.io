@@ -28,7 +28,7 @@ public class PlayerJoinListener implements Listener {
         }
         e.getPlayer().getInventory().clear();
         e.getPlayer().setGameMode(GameMode.SURVIVAL);
-        for (Integer i = 8; i <= 35; i++) {
+        for (Integer i = 9; i <= 35; i++) {
             if (e.getPlayer().getInventory().getItem(i) == null) {
                 e.getPlayer().getInventory().setItem(i,new ItemCreator(Material.LIGHT_GRAY_STAINED_GLASS_PANE).setName(" ").getItem());
             }

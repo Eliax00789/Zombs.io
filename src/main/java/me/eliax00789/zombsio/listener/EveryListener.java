@@ -145,8 +145,16 @@ public class EveryListener implements Listener {
                               @Override
                               public void run() {
                                    if (PlayerStats.stats.get(e.getPlayer())[0] > 0) {
-                                        e.getPlayer().damage(2147483647);
+                                        e.getPlayer().damage(stats[1]/2);
                                    }
+
+                                   new BukkitRunnable() {
+
+                                        @Override
+                                        public void run() {
+                                             e.getPlayer().damage(stats[1]/2);
+                                        }
+                                   }.runTaskLater(Zombsio.plugin, 11);
                               }
                          }.runTaskLater(Zombsio.plugin, 11);
                     }
@@ -156,6 +164,11 @@ public class EveryListener implements Listener {
      }
 
      private HashMap<Player, Integer> bowcount, bombcount;
+
+     @EventHandler
+     public void onItemSpawn(ItemSpawnEvent e) {
+          e.setCancelled(true);
+     }
 
      @EventHandler
      public void onRightClickAir(PlayerInteractEvent e) {
