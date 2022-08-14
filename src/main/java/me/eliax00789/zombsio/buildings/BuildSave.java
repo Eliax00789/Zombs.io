@@ -57,7 +57,6 @@ public class BuildSave {
                 Location location = buildings.getLocation("buildings." + i + ".location");
                 Integer level = buildings.getInt("buildings." + i + ".level");
                 Bukkit.broadcastMessage("DEBUG:");
-                Bukkit.broadcastMessage(" ");
                 Bukkit.broadcastMessage(i + " " + name + " " + location + " " + level);
                 Bukkit.broadcastMessage(" ");
                 if (name.contains("Door")) {
@@ -96,10 +95,9 @@ public class BuildSave {
                 else {
                     new Wall(null,location,level);
                 }
-                buildings.set("buildings." + i,null);
             }
         }
-        saveToFile();
+        save();
     }
 
     public static void save() {
@@ -111,11 +109,16 @@ public class BuildSave {
         saveToFile();
     }
 
+    public static void remove(Integer id) {
+        BuildSave.buildingsMap.remove(id);
+        buildings.set("buildings." + id,null);
+        saveToFile();
+    }
+
     private static void saveToFile() {
         try {
             buildings.save(filebuildings);
-            buildings.load(filebuildings);
-        } catch (IOException | InvalidConfigurationException e) {
+        } catch (IOException e) {
             Bukkit.getLogger().log(Level.WARNING,e.toString());
         }
     }

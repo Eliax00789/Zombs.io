@@ -297,9 +297,7 @@ public class Building implements Listener {
     }
 
     private void remove() {
-        BuildSave.buildingsMap.remove(this.id);
-        BuildSave.save();
-        Bukkit.broadcastMessage(BuildSave.buildingsMap.toString());
+        BuildSave.remove(id);
         PlayerInteractEvent.getHandlerList().unregister(this);
         if (projectileLoop != null) {
             projectileLoop.cancel();
