@@ -138,8 +138,6 @@ public class GUICreator implements Listener {
             } else {
                 setItem(index,item3);
             }
-
-
         return this;
     }
 

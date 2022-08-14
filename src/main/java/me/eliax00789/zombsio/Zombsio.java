@@ -4,6 +4,7 @@ import me.eliax00789.zombsio.buildings.BuildSave;
 import me.eliax00789.zombsio.commands.Build;
 import me.eliax00789.zombsio.commands.Stats;
 import me.eliax00789.zombsio.commands.Resources;
+import me.eliax00789.zombsio.commands.Test;
 import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.entity.PlayerStatsSystem;
 import me.eliax00789.zombsio.guis.ResourceScoreboard;
@@ -118,6 +119,7 @@ public final class Zombsio extends JavaPlugin {
         //COMMANDS:
         new Stats();
         new Resources();
+        new Test();
 
         for (Player player:Bukkit.getOnlinePlayers()) {
             new ResourceScoreboard(player);
