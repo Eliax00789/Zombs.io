@@ -212,10 +212,14 @@ public class Building implements Listener {
                 for (int z = 0; z < temp[x][y].length; z++) {
                     Location tmp = structOrigin.clone();
                     if(this instanceof SlowTrap) {
-                        if (tmp.add(x,0,z).getBlock().getType().equals(Material.GRASS_BLOCK)){
-                            locationTrue = true;
-                        } else if (!tmp.add(x,y,z).getBlock().getType().equals(Material.AIR)){
-                            locationTrue = false;
+                        if (y == 0) {
+                            if (!tmp.add(x, y, z).getBlock().getType().equals(Material.GRASS_BLOCK)) {
+                                locationTrue = false;
+                            }
+                        } else {
+                            if (!tmp.add(x, y, z).getBlock().getType().equals(Material.AIR)) {
+                                locationTrue = false;
+                            }
                         }
                     } else {
                         if (!tmp.add(x,y,z).getBlock().getType().equals(Material.AIR)){
@@ -271,7 +275,7 @@ public class Building implements Listener {
             if(this instanceof Door || this instanceof Wall) {
                 structOrigin = location.clone();
             } else if (this instanceof SlowTrap) {
-                structOrigin = location.clone().add(0,-1,0);
+                structOrigin = location.clone().add(-1,-1,-1);
             }  else {
                 structOrigin = location.clone().add(-1, 0, -1);
             }
