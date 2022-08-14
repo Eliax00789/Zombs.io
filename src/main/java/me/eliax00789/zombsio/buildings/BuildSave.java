@@ -9,8 +9,10 @@ import me.eliax00789.zombsio.buildings.resources.GoldStash;
 import me.eliax00789.zombsio.buildings.resources.ResourceHarvester;
 import me.eliax00789.zombsio.buildings.towers.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.v1_19_R1.util.CraftMagicNumbers;
 
 import java.io.File;
 import java.io.IOException;
@@ -81,13 +83,13 @@ public class BuildSave {
                 else {
                     new Wall(null,buildings.getLocation("buildings." + i + ".location"),buildings.getInt("buildings." + i + ".level"));
                 }
+                buildings.set("buildings." + i,null);
             }
         }
         saveToFile();
     }
 
     public static void save() {
-        buildings.set("buildings",null);
         saveToFile();
         for (Integer i: buildingsMap.keySet()) {
             buildings.set("buildings." + i + ".name",buildingsMap.get(i).name);
