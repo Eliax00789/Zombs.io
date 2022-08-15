@@ -22,6 +22,7 @@ public class CustomProjectile {
     private Double knockBack;
 
     private Entity nearest;
+    private Integer counter;
 
     public CustomProjectile(Location startLocation, Location locationOffset, Double range, Double aoeRange, Double damage, Double aoeDamage, Double speed, Double knockBack) {
         this.startLocation = startLocation.add(locationOffset);
@@ -67,7 +68,8 @@ public class CustomProjectile {
                         }
                         this.cancel();
                     }
-                    startLocation.add(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(speed));
+                    counter++;
+                    startLocation.clone().add(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(0.005).multiply(speed * counter));
                 }
                 else {
                     this.cancel();
