@@ -203,7 +203,7 @@ public class ArrowTower extends Building {
     };
     public ArrowTower(@Nullable Player player, Location location, Integer level) {
         super(player,"ArrowTower",level,8,location,
-                new CustomProjectile(Bukkit.getWorld("Zombs"),location.clone().add(0.5,5,0.5),20, Particle.CRIT,0.5,5.0), null, 1,
+                new CustomProjectile(location.clone(),location.clone().add(0.5,5,0.5),20.0, 0.5,1.0,0.25,1.0,0.0), null, 2,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage"),

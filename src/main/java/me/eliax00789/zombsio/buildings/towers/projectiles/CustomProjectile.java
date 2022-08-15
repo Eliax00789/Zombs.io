@@ -13,25 +13,29 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
 
 public class CustomProjectile {
-
-    private World world;
     private Location startLocation;
-    private Integer range;
-    private Particle particle;
-    private Double speed;
+    private Double range;
+    private Double aoeRange;
     private Double damage;
-    public CustomProjectile(World world, Location startLocation, Integer range, Particle particle, Double damage, Double speed) {
-        this.world = world;
-        this.startLocation = startLocation;
+    private Double aoeDamage;
+    private Double speed;
+    private Double knockBack;
+
+    private Entity nearest;
+
+    public CustomProjectile(Location startLocation, Location locationOffset, Double range, Double aoeRange, Double damage, Double aoeDamage, Double speed, Double knockBack) {
+        this.startLocation = startLocation.add(locationOffset);
         this.range = range;
-        this.particle = particle;
-        this.speed = speed;
+        this.aoeRange = aoeRange;
         this.damage = damage;
+        this.aoeDamage = aoeDamage;
+        this.speed = speed;
+        this.knockBack = knockBack;
     }
 
     public void shoot() {
-        Entity nearest = null;
-        for (Entity e:world.getEntities()) {
+        nearest = null;
+        for (Entity e:startLocation.getWorld().getEntities()) {
             if (e instanceof Monster) {
                 if (nearest == null) {
                     nearest = e;
@@ -41,20 +45,38 @@ public class CustomProjectile {
                 }
             }
         }
-        Entity finalNearest = nearest;
-        if (finalNearest != null) {
-            if (finalNearest.getLocation().distance(startLocation) <= range) {
-                Vector direction = finalNearest.getLocation().toVector().subtract(startLocation.toVector()).normalize();
-                world.spawnParticle(particle, startLocation.getX(), startLocation.getY(), startLocation.getZ(), 0, (float) direction.getX(), (float) direction.getY(), (float) direction.getZ(), speed, null);
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        if (finalNearest instanceof LivingEntity) {
-                            ((LivingEntity) finalNearest).damage(damage);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if (nearest != null) {
+                    projectile(startLocation);
+                    if (nearest.getLocation().distance(startLocation) < 1.5) {
+                        if (nearest instanceof LivingEntity) {
+                            if (knockBack != 0.0) {
+                                nearest.setVelocity(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(knockBack));
+                            }
+                            ((LivingEntity) nearest).damage(damage);
                         }
+                        for (Entity e : nearest.getNearbyEntities(aoeRange, aoeRange, aoeRange)) {
+                            if (e instanceof LivingEntity) {
+                                if (knockBack != 0.0) {
+                                    e.setVelocity(e.getLocation().toVector().subtract(startLocation.toVector()).multiply(knockBack));
+                                }
+                                ((LivingEntity) e).damage(aoeDamage);
+                            }
+                        }
+                        this.cancel();
                     }
-                }.runTaskLater(Zombsio.plugin, (long) (finalNearest.getLocation().distance(startLocation) / speed));
+                    startLocation.add(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(speed));
+                }
+                else {
+                    this.cancel();
+                }
             }
-        }
+        }.runTaskTimer(Zombsio.plugin,0,1);
+    }
+
+    private void projectile(Location location) {
+        location.getWorld().spawnParticle(Particle.CRIT,location,1);
     }
 }
