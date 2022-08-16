@@ -4,34 +4,38 @@ import me.eliax00789.zombsio.Zombsio;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Particle;
-import org.bukkit.World;
+import org.bukkit.block.data.type.Bed;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Mob;
 import org.bukkit.entity.Monster;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.util.Vector;
+import org.checkerframework.checker.units.qual.Luminance;
+
+import java.util.ArrayList;
 
 public class CustomProjectile {
+    public ArrayList<BukkitRunnable> shootRuns;
     private Location startLocation;
+    private Location currLocation;
+    private Entity nearest;
+    private Vector nearestEntityDirection;
     private Double range;
     private Double aoeRange;
     private Double damage;
     private Double aoeDamage;
     private Double speed;
-    private Double knockBack;
-
-    private Entity nearest;
+    private Integer particleLifetime;
     private Integer counter;
-
-    public CustomProjectile(Location startLocation, Location locationOffset, Double range, Double aoeRange, Double damage, Double aoeDamage, Double speed, Double knockBack) {
-        this.startLocation = startLocation.add(locationOffset);
+    public CustomProjectile(Location startLocation, Double range, Double aoeRange, Double damage, Double aoeDamage, Double speed, Integer particleLifetime) {
+        this.shootRuns = new ArrayList<BukkitRunnable>();
+        this.startLocation = startLocation.add(0.5,0,0.5);
         this.range = range;
         this.aoeRange = aoeRange;
         this.damage = damage;
         this.aoeDamage = aoeDamage;
+        this.particleLifetime = particleLifetime;
         this.speed = speed;
-        this.knockBack = knockBack;
     }
 
     public void shoot() {
@@ -46,39 +50,41 @@ public class CustomProjectile {
                 }
             }
         }
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                if (nearest != null) {
-                    projectile(startLocation);
-                    if (nearest.getLocation().distance(startLocation) < 1.5) {
-                        if (nearest instanceof LivingEntity) {
-                            if (knockBack != 0.0) {
-                                nearest.setVelocity(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(knockBack));
-                            }
-                            ((LivingEntity) nearest).damage(damage);
-                        }
-                        for (Entity e : nearest.getNearbyEntities(aoeRange, aoeRange, aoeRange)) {
-                            if (e instanceof LivingEntity) {
-                                if (knockBack != 0.0) {
-                                    e.setVelocity(e.getLocation().toVector().subtract(startLocation.toVector()).multiply(knockBack));
-                                }
-                                ((LivingEntity) e).damage(aoeDamage);
-                            }
-                        }
+        currLocation = startLocation.clone();
+        counter = 0;
+        if (nearest != null && nearest instanceof LivingEntity && currLocation.distance(((LivingEntity) nearest).getEyeLocation()) <= range) {
+            nearestEntityDirection = ((LivingEntity) nearest).getEyeLocation().toVector().subtract(currLocation.toVector()).multiply(speed / particleLifetime).normalize();
+            new BukkitRunnable() {
+                @Override
+                public void run() {
+                    shootRuns.add(this);
+                    particle(currLocation,nearestEntityDirection);
+                    currLocation.add(nearestEntityDirection);
+                    counter++;
+                    if (startLocation.distance(currLocation) > range) {
+                        shootRuns.remove(this);
                         this.cancel();
                     }
-                    counter++;
-                    startLocation.clone().add(nearest.getLocation().toVector().subtract(startLocation.toVector()).multiply(0.005).multiply(speed * counter));
+                    for (Entity e:currLocation.getWorld().getNearbyEntities(currLocation,1,1,1)) {
+                        if (e instanceof Monster && e instanceof LivingEntity) {
+                            ((LivingEntity) e).damage(damage);
+                            shootRuns.remove(this);
+                            this.cancel();
+                        }
+                    }
                 }
-                else {
-                    this.cancel();
-                }
-            }
-        }.runTaskTimer(Zombsio.plugin,0,1);
+            }.runTaskTimer(Zombsio.plugin,0,particleLifetime);
+        }
     }
 
-    private void projectile(Location location) {
-        location.getWorld().spawnParticle(Particle.CRIT,location,1);
+    public void cancelAllShots() {
+        for (BukkitRunnable r:shootRuns) {
+            r.cancel();
+        }
+        shootRuns = new ArrayList<BukkitRunnable>();
+    }
+
+    private void particle(Location location,Vector vector) {
+        location.getWorld().spawnParticle(Particle.FLAME,location,0,vector.getX(),vector.getY(),vector.getZ(),speed/particleLifetime,null);
     }
 }
