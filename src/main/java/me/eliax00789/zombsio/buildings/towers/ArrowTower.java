@@ -2,6 +2,7 @@ package me.eliax00789.zombsio.buildings.towers;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
+import me.eliax00789.zombsio.buildings.towers.projectiles.CannonBall;
 import me.eliax00789.zombsio.buildings.towers.projectiles.CustomProjectile;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
@@ -203,7 +204,7 @@ public class ArrowTower extends Building {
     };
     public ArrowTower(@Nullable Player player, Location location, Integer level) {
         super(player,"ArrowTower",level,8,location,
-                new CustomProjectile(location.clone().add(0,5,0),20.0, 0.0,1.0,0.0, 1.0,(int)(8.0D / (0.5D * 0.8D + 0.2D)) + 4), null, 50,
+                null, null, null,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Health"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.ArrowTower.Damage"),

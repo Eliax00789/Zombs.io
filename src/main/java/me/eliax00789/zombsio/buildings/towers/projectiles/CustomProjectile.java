@@ -27,7 +27,7 @@ public class CustomProjectile {
     private Double speed;
     private Integer particleLifetime;
     private Integer counter;
-    public CustomProjectile(Location startLocation, Double range, Double aoeRange, Double damage, Double aoeDamage, Double speed, Integer particleLifetime) {
+    public CustomProjectile(Location startLocation, Double range, Double aoeRange, Double damage, Double speed, Integer particleLifetime) {
         this.shootRuns = new ArrayList<BukkitRunnable>();
         this.startLocation = startLocation.add(0.5,0,0.5);
         this.range = range;
@@ -65,7 +65,7 @@ public class CustomProjectile {
                         shootRuns.remove(this);
                         this.cancel();
                     }
-                    for (Entity e:currLocation.getWorld().getNearbyEntities(currLocation,1,1,1)) {
+                    for (Entity e:currLocation.getWorld().getNearbyEntities(currLocation,aoeRange,aoeRange,aoeRange)) {
                         if (e instanceof Monster && e instanceof LivingEntity) {
                             ((LivingEntity) e).damage(damage);
                             shootRuns.remove(this);
@@ -73,7 +73,7 @@ public class CustomProjectile {
                         }
                     }
                 }
-            }.runTaskTimer(Zombsio.plugin,0,particleLifetime);
+            }.runTaskTimer(Zombsio.plugin,0,1);
         }
     }
 
@@ -84,7 +84,9 @@ public class CustomProjectile {
         shootRuns = new ArrayList<BukkitRunnable>();
     }
 
-    private void particle(Location location,Vector vector) {
+    public void particle(Location location,Vector vector) {
+        Bukkit.broadcastMessage("THIS IS JUST A PLACEHOLDER");
+        Bukkit.broadcastMessage("PLEASE EXTEND THIS AND OVERRIDE THE METHOD");
         location.getWorld().spawnParticle(Particle.FLAME,location,0,vector.getX(),vector.getY(),vector.getZ(),speed/particleLifetime,null);
     }
 }
