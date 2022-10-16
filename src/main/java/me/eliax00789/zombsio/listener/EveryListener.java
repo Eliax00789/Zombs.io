@@ -170,6 +170,13 @@ public class EveryListener implements Listener {
           e.setCancelled(true);
      }
 
+
+     @EventHandler
+     public void onEntitySpawn(EntitySpawnEvent e) {
+          e.setCancelled(true);
+     }
+
+
      @EventHandler
      public void onRightClickAir(PlayerInteractEvent e) {
           if (e.getAction().equals(Action.RIGHT_CLICK_AIR) && e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.BOW)) {

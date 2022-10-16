@@ -42,10 +42,10 @@ public class Resources implements TabExecutor {
                     sender.sendMessage( "§a" +Integer.valueOf(args[3]) + " Wood has been removed");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    if ((Double.valueOf(args[3])) > 0) {
+                    if ((Double.valueOf(args[3])) > -1) {
                         Config.getInstance().WOOD.put(args[0], Integer.valueOf(args[3]));
                         sender.sendMessage( "§aWood has been set to " + Integer.valueOf(args[3]));
-                    } else sender.sendMessage( "§cYou can't set Stone under 0");
+                    } else sender.sendMessage( "§cYou can't set wood under 0");
                 }
                 else {
                     sender.sendMessage("§cCouldn't recognize operation");
@@ -64,7 +64,7 @@ public class Resources implements TabExecutor {
                     } else sender.sendMessage( "§cYou can't remove Stone under 0");
                 }
                 else if (args[2].equalsIgnoreCase("set")) {
-                    if ((Double.valueOf(args[3])) > 0) {
+                    if ((Double.valueOf(args[3])) > -1) {
                         Config.getInstance().STONE.put(args[0], Integer.valueOf(args[3]));
                         sender.sendMessage( "§aStone has been set to " + Integer.valueOf(args[3]));
                     } else sender.sendMessage( "§cYou can't set Stone under 0");

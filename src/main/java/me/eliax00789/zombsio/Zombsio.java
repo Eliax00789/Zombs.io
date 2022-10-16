@@ -35,6 +35,13 @@ public final class Zombsio extends JavaPlugin {
         plugin = this;
         prefix = "[" + getDescription().getPrefix() + "]" +  " ";
 
+        if (!Bukkit.getPluginManager().isPluginEnabled("HolographicDisplays")) {
+            getLogger().severe("*** HolographicDisplays is not installed or not enabled. ***");
+            getLogger().severe("*** This plugin will be disabled. ***");
+            this.setEnabled(false);
+            return;
+        }
+
         Bukkit.getConsoleSender().sendMessage(prefix + "==================================");
         Bukkit.getConsoleSender().sendMessage(prefix + "Starting " + plugin.getDescription().getName() + " Plugin");
         Bukkit.getConsoleSender().sendMessage(prefix + " ");

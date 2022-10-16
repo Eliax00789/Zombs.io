@@ -40,6 +40,12 @@ class BuildMenuInventory {
                 .setCancelAllClicks(true)
                 .fillPlaceHolder()
                 .addExitButton()
+                .setItem(0, new ItemCreator(Material.OAK_SIGN).setName("Stats")
+                        .setLore("§7CurrentStashLvl : " + currentStashLvl
+                                ,"§7Your Wood : " + playerwood
+                                ,"§7Your Stone : " + playerstone
+                                ,"§7Your Gold : " + playergold
+                        ).getItem())
                 .setItem(10, new ItemCreator(Material.RAW_GOLD_BLOCK).setName("§7Gold Stash")
                         .setLore("§7Cost:  Gold: " + Zombsio.plugin.getConfig().getList("Buildings.GoldStash.Gold").get(0)
                                 ,"§7Health: " + Zombsio.plugin.getConfig().getList("Buildings.GoldStash.Health").get(0)
