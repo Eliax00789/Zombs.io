@@ -1,5 +1,8 @@
 package me.eliax00789.zombsio.listener;
 
+import com.gmail.filoghost.holographicdisplays.api.Hologram;
+import com.gmail.filoghost.holographicdisplays.api.HologramsAPI;
+import com.gmail.filoghost.holographicdisplays.api.line.HologramLine;
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.entity.PlayerStats;
 import me.eliax00789.zombsio.utility.Config;
@@ -19,6 +22,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemFlag;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -173,7 +177,14 @@ public class EveryListener implements Listener {
 
      @EventHandler
      public void onEntitySpawn(EntitySpawnEvent e) {
-          e.setCancelled(true);
+          if (e.getEntityType().equals(EntityType.FIREBALL)
+                  || e.getEntityType().equals(EntityType.ARROW)
+          ) {
+               e.setCancelled(false);
+          } else {
+               e.setCancelled(true);
+          }
+
      }
 
 
