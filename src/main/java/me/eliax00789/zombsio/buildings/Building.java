@@ -49,6 +49,7 @@ public class Building implements Listener {
     public Integer level;
     private Integer maxLevel;
     public Location location;
+    private CustomProjectile projectile;
     private Material [][][][] structure;
     private Integer currentHealth;
     private List<Integer>  health;
@@ -74,6 +75,7 @@ public class Building implements Listener {
             this.level = level;
             this.maxLevel = maxLevel;
             this.location = location;
+            this.projectile = projectile;
             this.structure = structure;
             this.currentHealth = health.get(0);
             this.health = health;
@@ -301,6 +303,7 @@ public class Building implements Listener {
         PlayerInteractEvent.getHandlerList().unregister(this);
         if (projectileLoop != null) {
             projectileLoop.cancel();
+            projectile.cancelAllShots();
         }
         if (goldLoop != null) {
             goldLoop.cancel();

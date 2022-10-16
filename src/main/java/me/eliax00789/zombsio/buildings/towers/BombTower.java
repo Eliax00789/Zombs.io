@@ -2,6 +2,7 @@ package me.eliax00789.zombsio.buildings.towers;
 
 import me.eliax00789.zombsio.Zombsio;
 import me.eliax00789.zombsio.buildings.Building;
+import me.eliax00789.zombsio.buildings.towers.projectiles.CannonBall;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -204,7 +205,7 @@ public class BombTower extends Building {
 
     public BombTower(@Nullable Player player, Location location, Integer level) {
         super(player,"BombTower",level,8,location,
-                null, null, null,
+                new CannonBall(location.clone().add(0,5,0), 20.0, 2.0), null, 50,
                 new Material[][][][]{mk1,mk2,mk3,mk4,mk5,mk6,mk7,mk8},
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Health"),
                 Zombsio.plugin.getConfig().getIntegerList("Buildings.BombTower.Damage"),
