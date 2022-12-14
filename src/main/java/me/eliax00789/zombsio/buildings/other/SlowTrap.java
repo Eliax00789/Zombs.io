@@ -10,8 +10,6 @@ import javax.annotation.Nullable;
 
 public class SlowTrap extends Building {
 
-    //TODO: NIFFLER SLOW TRAP INTO MK THINGS
-
     public static Material[][][] mk1 = new Material[][][] {
             { // x = 0
                     {Material.HONEY_BLOCK, Material.HONEY_BLOCK, Material.HONEY_BLOCK}, // y = 0
