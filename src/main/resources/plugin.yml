@@ -13,7 +13,7 @@ commands:
     usage: /<command> <player> [wood|stone|gold] [add|remove|set] <amount>
     permission: zombs.commands.zresources
   zstats:
-    description: add, remove, set stast
+    description: add, remove, set stats
     usage: /<command> <player> [health|maxhealth|shield|maxshield|defese] [add|remove|set] <amount>
     permission: zombs.commands.zstats
   zbuild:
@@ -22,5 +22,5 @@ commands:
     permission: zombs.commands.zbuild
   ztest:
     description: testing
-    usage: /<command>
+    usage: /<command><
     permission: zombs.commands.ztest

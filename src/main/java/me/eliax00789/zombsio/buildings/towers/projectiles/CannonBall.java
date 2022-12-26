@@ -11,7 +11,7 @@ public class CannonBall extends CustomProjectile {
 
     @Override
     public void particle(Location location, Vector vector) {
-        //CREDIT: https://www.spigotmc.org/threads/particle-sphere.255813/
+        //CREDIT: htps://www.spigotmc.org/threads/particle-sphere.255813/t
         for(double phi=0; phi<=Math.PI; phi+=Math.PI/15) {
             for(double theta=0; theta<=2*Math.PI; theta+=Math.PI/30) {
                 double r = 1.5;
